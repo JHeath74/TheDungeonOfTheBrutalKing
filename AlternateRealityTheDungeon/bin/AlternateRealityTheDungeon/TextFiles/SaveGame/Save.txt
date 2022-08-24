@@ -1,0 +1,16 @@
+Character Name: Kyle
+Class: Bard
+Level0
+Experience: 0
+Hit Points15
+STAMINA: 29
+CHARISMA: 28
+STRENGTH: 25
+INTELLIGENCE: 27
+WISDOM: 18
+AGILITY: 23
+Gold: 100
+Food Packets: 3
+Water Packets3
+Torches: 3
+Gems: 0

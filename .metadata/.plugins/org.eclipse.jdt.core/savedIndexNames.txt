@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+G:\Programs\Cloud\GoogleDrive\Programming\Eclipse\Laptop\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+1289808255.index
+144292913.index

@@ -1,0 +1,94 @@
+package AlternateRealityTheDungeon;
+
+import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
+public class ARDTMenu 
+{
+
+
+	 
+	JFrame frame=new JFrame("Alternate Reality: The Dungeon");
+	
+
+	 
+	//Create the menu bar.
+	 menuBar = new JMenuBar();
+	 
+	//Build the menu.
+	 frame.addWindowListener(new WindowAdapter() {
+       public void windowClosing(WindowEvent windowEvent){
+          System.exit(0);
+       }        
+    });
+	 
+	JMenu gameMenu = new JMenu("Game");
+    JMenu charecterMenu = new JMenu("Charecter"); 
+    JMenu aboutMenu = new JMenu("About");
+
+    //create menu items
+    JMenuItem newMenuItem = new JMenuItem("New Game");
+    newMenuItem.setActionCommand("New Game");
+
+    JMenuItem currentMenuItem = new JMenuItem("Start Current Saved Game");
+    currentMenuItem.setActionCommand("Start Current Saved Game");
+
+    JMenuItem saveMenuItem = new JMenuItem("Save Current Game");
+    saveMenuItem.setActionCommand("Exit");
+
+    JMenuItem exitMenuItem = new JMenuItem("Exit");
+    exitMenuItem.setActionCommand("Exit");
+
+    JMenuItem statsMenuItem = new JMenuItem("Stats");
+    statsMenuItem.setActionCommand("Cut");
+  
+
+    JMenuItem invMenuItem = new JMenuItem("Inventory");
+    invMenuItem.setActionCommand("Inventory");
+
+    JMenuItem aboutMenuItem = new JMenuItem("About");
+    aboutMenuItem.setActionCommand("About");
+ 
+
+  //add menu items to menus
+    gameMenu.add(newMenuItem);
+    gameMenu.add(currentMenuItem);
+    gameMenu.add(saveMenuItem);
+    gameMenu.add(exitMenuItem);
+    		 
+    charecterMenu.add(statsMenuItem);
+    charecterMenu.add(invMenuItem);
+	 
+    aboutMenu.add(aboutMenuItem);
+		 
+
+    //add menu to menubar
+    menuBar.add(gameMenu);
+    menuBar.add(charecterMenu);
+    menuBar.add(aboutMenu);
+
+    //add menubar to the frame
+   frame.setJMenuBar(menuBar);
+	
+	 
+	 //Size and Location for Window
+	 Dimension windowmaximumSize = frame.getMaximumSize();
+
+
+	 //Add Buttons and Display JFrame
+	   
+	 frame.setJMenuBar(menuBar);
+	 
+	 frame.setSize(windowmaximumSize);
+	 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	 frame.setLayout(null);  
+	 frame.setVisible(true); 
+	
+
+}
