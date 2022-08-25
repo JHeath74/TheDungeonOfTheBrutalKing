@@ -39,7 +39,7 @@ public class ARTDMain {
 		// checking if file is empty // if file doesn't exits then also length()
 		// method will consider // it empty.
 		
-		Scanner saveFile = new Scanner(new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//Save.txt"));
+		Scanner saveFile = new Scanner(new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
 
 		if (!saveFile.hasNext())
 		{
@@ -141,7 +141,7 @@ public class ARTDMain {
 					try {
 						
 						
-					      FileWriter writer = new FileWriter("src//AlternateRealityTheDungeon//TextFiles//SaveGame//Save.txt");
+					      FileWriter writer = new FileWriter("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt");
 
 					      ArrayList<String> newChar = new ArrayList<String>();
 					      String charName = String.valueOf(tooncreation.getText());
@@ -153,67 +153,64 @@ public class ARTDMain {
 					      }else {
 					    	  
 					    	//Character Name
-					    	  myChar.CharInfo().add(charName);
+					    	  
 					    	  newChar.add(charName); 
 					      }
 					      
 					      //Character Class
-					      newChar.add("Class: " + toonD);
-					      myChar.CharInfo().add(toonD);
+					      newChar.add(toonD);
+					      
 					      
 					      //Character Level
 					      newChar.add("0");
-					      myChar.CharInfo().add("0");
+					     
 					      
 					      // Character Experience
 					      newChar.add("0");
-					      myChar.CharInfo().add("0");
+					      
 					      
 					      //Character HitPoints
 					      newChar.add("15");
-					      myChar.CharInfo().add("15");
 					      
-					      
+
 					      
 					      //Character Stats
 					      //Stamina
-					      newChar.add("STAMINA: " + stat[0]);
-					      //Collections.addAll(myChar.CharInfo(), stat);
+					      newChar.add(stat[0]);
 					      
 					      //Charisma
-					      newChar.add("CHARISMA: " + stat[1]);
+					      newChar.add(stat[1]);
 					      
 					      //Strength
-					      newChar.add("STRENGTH: " + stat[2]);
+					      newChar.add(stat[2]);
 					      
 					      //Intelligence
-					      newChar.add("INTELLIGENCE: "+ stat[3]); 
+					      newChar.add(stat[3]);
 					      
 					      //Wisdom
-					      newChar.add("WISDOM: " + stat[4]); 
+					      newChar.add(stat[4]);
 					      
 					      //Agility
-					      newChar.add("AGILITY: " +  stat[5]);
+					      newChar.add(stat[5]);
 					      
 					      //Character Gold
-					      newChar.add("100");
-					      myChar.CharInfo().add("100");
+					    
 					      
 					      //Character Food
 					      newChar.add("3");
-					      myChar.CharInfo().add("3");
+					     
 					      
 					      //Character Water
 					      newChar.add("3");
-					      myChar.CharInfo().add("3");
+					    
 					      
 					      //Character Torches
 					      newChar.add("3");
-					      myChar.CharInfo().add("3");
+					   
 					      
 					      //Character Gems
 					      newChar.add("0");
-					      myChar.CharInfo().add("0");
+					      
 							
 					        //newChar[0] = Charecter Name
 							//newChar[1] = Class

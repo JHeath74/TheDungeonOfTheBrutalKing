@@ -53,4 +53,7 @@
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.text.DateFormat"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.util.Calendar"/>
 </qualifiedTypeNameHistroy>
