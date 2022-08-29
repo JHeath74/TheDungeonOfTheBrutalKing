@@ -9,6 +9,8 @@
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
 			<item value="save.txt"/>
+			<item value="Save.Txt"/>
+			<item value="Save.txt"/>
 			<item value="borderlayout"/>
 			<item value="skill"/>
 			<item value="charname"/>

@@ -88,7 +88,7 @@ public class ARDTMenu extends JPanel
 				
 					
 					try {
-						BufferedWriter writer = Files.newBufferedWriter(Paths.get("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
+						BufferedWriter writer = Files.newBufferedWriter(Paths.get("src//AlternateRealityTheDungeon//TextFiles//SaveGame//Save.txt"));
 						writer.write("");
 						writer.flush();
 					} catch (IOException e1) {
@@ -96,13 +96,6 @@ public class ARDTMenu extends JPanel
 						e1.printStackTrace();
 					}
 					
-					File d = new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//");
-					
-					for(File file: d.listFiles()) 
-					    if (!file.isDirectory()) 
-					        file.delete();
-							
-							
 					ARTDMain myMain = new ARTDMain();
 					
 					try {

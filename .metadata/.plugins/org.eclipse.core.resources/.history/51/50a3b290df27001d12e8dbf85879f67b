@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Scanner;
@@ -87,7 +88,7 @@ public class ARDTMenu extends JPanel
 				
 					
 					try {
-						BufferedWriter writer = Files.newBufferedWriter(Paths.get("src//AlternateRealityTheDungeon//TextFiles//SaveGame//Save.txt"));
+						BufferedWriter writer = Files.newBufferedWriter(Paths.get("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
 						writer.write("");
 						writer.flush();
 					} catch (IOException e1) {
@@ -95,6 +96,13 @@ public class ARDTMenu extends JPanel
 						e1.printStackTrace();
 					}
 					
+					
+					
+					for(File file: d.listFiles()) 
+					    if (!file.isDirectory()) 
+					        file.delete();
+							
+							
 					ARTDMain myMain = new ARTDMain();
 					
 					try {
@@ -134,7 +142,7 @@ public class ARDTMenu extends JPanel
 			ARDTLoadSaveGame savegame = new ARDTLoadSaveGame();
 			try {
 				savegame.SaveGame();
-			} catch (IOException e1) {
+			} catch (IOException | ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}

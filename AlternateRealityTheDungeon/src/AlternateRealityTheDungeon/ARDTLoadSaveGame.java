@@ -1,6 +1,8 @@
 package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -57,7 +59,24 @@ public class ARDTLoadSaveGame
 		JButton load = new JButton("Load Game");
 		JComboBox loadGameSelection = new JComboBox();
 		
-		loadGameSelection.list();
+		File loadgamefiles = new File("src\\AlternateRealityTheDungeon\\TextFiles\\SaveGame\\");
+		
+		File[] listOfFiles = loadgamefiles.listFiles();
+		
+		for(int i = 0; i <listOfFiles.length; i++)
+		{
+			loadGameSelection.addItem(listOfFiles[i].getName());
+		}
+		
+		loadGameSelection.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Copy information from the select game file to the arraylist
+				
+			}
+			
+		});
 		
 		
 		lg.add(loadGameSelection);

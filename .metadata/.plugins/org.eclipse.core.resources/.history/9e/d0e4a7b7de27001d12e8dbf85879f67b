@@ -4,14 +4,17 @@ import java.awt.BorderLayout;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class ARDTLoadSaveGame
@@ -21,21 +24,22 @@ public class ARDTLoadSaveGame
 	
 	public void SaveGame() throws IOException, ParseException
 	{
+		Date date = Calendar.getInstance().getTime();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd-hh:mm:ss");  
+ 
 		
-		 
-		//LocalDateTime CurrentDateTime = LocalDateTime.now();
+		String datetime = dateFormat.format(date);  
 		
-		//"src//AlternateRealityTheDungeon//TextFiles//SaveGame//Save.txt"
+		datetime = datetime.replaceAll(":", "."); 
 		
-		String pattern = "HH:mm:ss";
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-		Date date = simpleDateFormat.parse("22:00:03");
+		String GameSaveDateTime = "src/AlternateRealityTheDungeon/TextFiles/SaveGame/SavedGame"+ datetime +".txt";
+		String SavedGameName = "SavedGame"+ datetime;
 		
-		//the line here is broken    java.io.FileNotFoundException: Invalid file path
 		
-		String GameSave = "Save" + date + ".txt";
-		FileWriter writer = new FileWriter("src//AlternateRealityTheDungeon//TextFiles//SaveGame//" + GameSave); 
+		File GameSave = new File(GameSaveDateTime);
+		boolean isFileCreated = GameSave.createNewFile(); 
 		
+		FileWriter writer = new FileWriter(GameSaveDateTime);
 		
 		
 		for(String Charinfo: myChar.CharInfo()) {
@@ -43,21 +47,7 @@ public class ARDTLoadSaveGame
 		}
 		writer.close();
 		
-		JFrame saveGame = new JFrame("Save Current Game");
-		JPanel sG = new JPanel(new BorderLayout());
-		JButton save = new JButton("Save Game");
-		
-		JComboBox saveGameSelection = new JComboBox();
-		
-		
-		sG.add(saveGameSelection);
-		
-		saveGame.add(sG, BorderLayout.CENTER);
-		saveGame.add(save, BorderLayout.SOUTH);
-		
-		saveGame.setLocationRelativeTo(null);
-		saveGame.setSize(640, 480);
-		saveGame.setVisible(true);
+		JOptionPane.showMessageDialog(null, "Game Save: " + SavedGameName);
 	}
 	
 	public void LoadGame()
@@ -66,7 +56,17 @@ public class ARDTLoadSaveGame
 		JPanel lg = new JPanel(new BorderLayout());
 		JButton load = new JButton("Load Game");
 		JComboBox loadGameSelection = new JComboBox();
-		loadGameSelection.list();
+		
+		File loadgamefiles = new File("src\\AlternateRealityTheDungeon\\TextFiles\\SaveGame\\");
+		
+		File[] listOfFiles = loadgamefiles.listFiles();
+		
+		for(int i = 0; i <listOfFiles.length; i++)
+		{
+			loadGameSelection.addItem(listOfFiles[i].getName());
+		}
+		
+		
 		
 		
 		lg.add(loadGameSelection);

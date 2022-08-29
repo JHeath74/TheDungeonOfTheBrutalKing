@@ -97,10 +97,7 @@ public class ARDTMenu extends JPanel
 					}
 					
 					File d = new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//");
-					
-					for(File file: d.listFiles()) 
-					    if (!file.isDirectory()) 
-					        file.delete();
+					d.delete();
 							
 							
 					ARTDMain myMain = new ARTDMain();
