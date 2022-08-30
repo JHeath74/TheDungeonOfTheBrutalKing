@@ -86,52 +86,33 @@ public class ARDTMenu extends JPanel
 				public void actionPerformed(ActionEvent e) {
 				
 				
-					int result = JOptionPane.showConfirmDialog(frame,"Are you sure you wish to delete your current game and start a new one?", "Swing Tester",
-				               JOptionPane.YES_NO_OPTION,
-				               JOptionPane.QUESTION_MESSAGE);
-				            if(result == JOptionPane.YES_OPTION){
-				               
-				            	try {
-									BufferedWriter writer = Files.newBufferedWriter(Paths.get("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
-									writer.write("");
-									writer.flush();
-								} catch (IOException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
-								}
-								
-								File d = new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//");
-								
-								for(File file: d.listFiles()) 
-								    if (!file.isDirectory()) 
-								        file.delete();
-										
-										
-								ARTDMain myMain = new ARTDMain();
-								
-								try {
-									myMain.main(null);
-								} catch (IOException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
-								}
-								
-								frame.dispose();
-								
-								
-								
-								
-				            	
-				            	
-				            }else if (result == JOptionPane.NO_OPTION){
-				               
-				            }else {
-				               
-				            }
 					
+					try {
+						BufferedWriter writer = Files.newBufferedWriter(Paths.get("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
+						writer.write("");
+						writer.flush();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					
+					File d = new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//");
 					
+					for(File file: d.listFiles()) 
+					    if (!file.isDirectory()) 
+					        file.delete();
+							
+							
+					ARTDMain myMain = new ARTDMain();
 					
+					try {
+						myMain.main(null);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					frame.dispose();
 					
 					
 					

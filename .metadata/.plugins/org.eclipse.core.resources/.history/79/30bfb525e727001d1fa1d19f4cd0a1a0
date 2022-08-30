@@ -10,10 +10,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -36,7 +34,7 @@ public class ARTDMain {
 	
 	
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws FileNotFoundException {
 
 		ARTDCharecter myChar = new ARTDCharecter();
 		
@@ -197,7 +195,9 @@ public class ARTDMain {
 					      //Character HitPoints
 					      newChar.add("15");
 					      
-			/*		      
+					      
+					      
+					      
 					      //Character Stats
 					      //Stamina
 					      newChar.add(stat[0]);
@@ -216,11 +216,9 @@ public class ARTDMain {
 					      
 					      //Agility
 					      newChar.add(stat[5]);
-				
-					      
-*/
+	*/				      
 					      //Character Gold
-					      newChar2.add("100");
+					    
 					      
 					      //Character Food
 					      newChar2.add("3");
@@ -255,7 +253,7 @@ public class ARTDMain {
 							//newChar[14] = Torches
 							//newChar[15] = Gems
 					      
-					      				
+					      /*				
 					    
 					      for(String str: newChar) {
 					        writer.write(str + System.lineSeparator());
@@ -273,20 +271,6 @@ public class ARTDMain {
 					      writer.close();
 					      
 						 JOptionPane.showMessageDialog(frame, "Charecter Created");
-						 
-						 BufferedReader bufReader = new BufferedReader(new FileReader("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
-											 
-						 String line = bufReader.readLine(); 
-						 while (line != null) {
-							 myChar.CharInfo().add(line);
-							 line = bufReader.readLine(); 
-							} 
-						 
-						 bufReader.close();
-
-						 
-						 
-						 
 						 frame.dispose();
 						 new ARDTMenu();
 						 
@@ -297,25 +281,12 @@ public class ARTDMain {
 					
 				}});
 			
-			
-			BufferedReader bufReader = new BufferedReader(new FileReader("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
-			 
-			 String line = bufReader.readLine(); 
-			 while (line != null) {
-				 myChar.CharInfo().add(line);
-				 line = bufReader.readLine(); 
-				} 
-			 
-			 bufReader.close();
-			
-			
 			JPanel panel = new JPanel();
 			JPanel panel2 = new JPanel(new FlowLayout());
 			JPanel panel3 = new JPanel(new BorderLayout());
 
 		
 			panel.add(saveToon);
-			
 			
 			
 

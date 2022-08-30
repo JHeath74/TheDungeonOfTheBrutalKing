@@ -10,10 +10,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -36,7 +34,7 @@ public class ARTDMain {
 	
 	
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws FileNotFoundException {
 
 		ARTDCharecter myChar = new ARTDCharecter();
 		
@@ -166,8 +164,6 @@ public class ARTDMain {
 					      FileWriter writer = new FileWriter("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt");
 
 					      ArrayList<String> newChar = new ArrayList<String>();
-					      
-					      ArrayList<String> newChar2 = new ArrayList<String>();
 					      String charName = String.valueOf(tooncreation.getText());
 					      
 					      if(charName.equals("") || charName.equals("Please Enter a User Name.") || charName == "" || charName == null) // if statment isn't
@@ -197,7 +193,13 @@ public class ARTDMain {
 					      //Character HitPoints
 					      newChar.add("15");
 					      
-			/*		      
+					      
+					      FileWriter writer2 = new FileWriter("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"); 
+					      for(Integer str: stat) {
+					        writer.write(str + System.lineSeparator());
+					      }
+/*
+					      
 					      //Character Stats
 					      //Stamina
 					      newChar.add(stat[0]);
@@ -216,26 +218,24 @@ public class ARTDMain {
 					      
 					      //Agility
 					      newChar.add(stat[5]);
-				
-					      
-*/
+	*/				      
 					      //Character Gold
-					      newChar2.add("100");
+					    
 					      
 					      //Character Food
-					      newChar2.add("3");
+					      newChar.add("3");
 					     
 					      
 					      //Character Water
-					      newChar2.add("3");
+					      newChar.add("3");
 					    
 					      
 					      //Character Torches
-					      newChar2.add("3");
+					      newChar.add("3");
 					   
 					      
 					      //Character Gems
-					      newChar2.add("0");
+					      newChar.add("0");
 					      
 							
 					        //newChar[0] = Charecter Name
@@ -255,38 +255,14 @@ public class ARTDMain {
 							//newChar[14] = Torches
 							//newChar[15] = Gems
 					      
-					      				
+						
 					    
 					      for(String str: newChar) {
 					        writer.write(str + System.lineSeparator());
 					      }
-					      
-					    
-					      for(Integer str2: stat) {
-					        writer.write(str2 + System.lineSeparator());
-					      }
-
-					      
-					      for(String str3: newChar2) {
-					    	  writer.write(str3+System.lineSeparator());
-					      }
 					      writer.close();
 					      
 						 JOptionPane.showMessageDialog(frame, "Charecter Created");
-						 
-						 BufferedReader bufReader = new BufferedReader(new FileReader("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
-											 
-						 String line = bufReader.readLine(); 
-						 while (line != null) {
-							 myChar.CharInfo().add(line);
-							 line = bufReader.readLine(); 
-							} 
-						 
-						 bufReader.close();
-
-						 
-						 
-						 
 						 frame.dispose();
 						 new ARDTMenu();
 						 
@@ -297,25 +273,12 @@ public class ARTDMain {
 					
 				}});
 			
-			
-			BufferedReader bufReader = new BufferedReader(new FileReader("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
-			 
-			 String line = bufReader.readLine(); 
-			 while (line != null) {
-				 myChar.CharInfo().add(line);
-				 line = bufReader.readLine(); 
-				} 
-			 
-			 bufReader.close();
-			
-			
 			JPanel panel = new JPanel();
 			JPanel panel2 = new JPanel(new FlowLayout());
 			JPanel panel3 = new JPanel(new BorderLayout());
 
 		
 			panel.add(saveToon);
-			
 			
 			
 
