@@ -1,0 +1,37 @@
+package AlternateRealityTheDungeon;
+
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+
+public class ARDTMessages {
+	
+	
+	public void WelcomeMessage() throws InterruptedException {
+		
+		JFrame f= new JFrame();  
+        JTextArea area=new JTextArea("Your Adventure");
+       
+        area.setBounds(10,30, 200,200); 
+        
+        area.setLineWrap(true);
+        area.setWrapStyleWord(true);
+        f.add(area);  
+        f.setSize(450,450);  
+        f.setLayout(null);  
+        f.setVisible(true);  
+        
+        area.setText("On your way home from your last adventure you are setup up on my an unknown group of people\n");
+        TimeUnit.SECONDS.sleep(5);
+        area.append("You feel yourself being carried for a while and then dropped on something hard.\n");
+        TimeUnit.SECONDS.sleep(5);
+        area.append("You hear a sound like a door shutting then you start to move.  Slowly at first,  then very quickly.  Then you quickly passout.\n");
+        TimeUnit.SECONDS.sleep(5);
+        area.append("You wake up an unknown time later, and see someone standind there.  They look at you for a moment than ask you if you are ok.\n");
+        TimeUnit.SECONDS.sleep(5);
+        area.append("And they want to know a few things about you.");
+		
+	}
+
+}

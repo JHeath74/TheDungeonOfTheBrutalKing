@@ -3,19 +3,21 @@ package AlternateRealityTheDungeon;
 import java.util.ArrayList;
 
 public class ARTDCharecter {
-	
+
 	enum labels
 	{
 		sta, chr, str, inti, wis, agi
 	}
-	
+
 	public ArrayList<String> CharInfo()
 	{
-		
-	
-		
+
+
+
 		ArrayList<String> CharInfo = new ArrayList<>();
-		
+
+
+
 		/*
 		 * newChar.add("Class: " + toonD); 
 		 * newChar.add("Level" + "0");
