@@ -34,9 +34,13 @@ public class ARDTMenu extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 
 	public ARDTMenu() {
 
+		
+		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
+		
 		JFrame frame = new JFrame("Alternate Reality: The Dungeon");
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel l = new JPanel(new FlowLayout());
@@ -44,7 +48,7 @@ public class ARDTMenu extends JPanel {
 
 		Dimension windowSize = frame.getMaximumSize();
 
-		ARTDLoadSaveGame loadsavegame = new ARTDLoadSaveGame();
+		
 
 		// Create the menu bar.
 		JMenuBar menuBar = new JMenuBar();
@@ -82,7 +86,7 @@ public class ARDTMenu extends JPanel {
 						writer.write("");
 						writer.flush();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
+						
 						e1.printStackTrace();
 					}
 
@@ -92,12 +96,15 @@ public class ARDTMenu extends JPanel {
 						if (!file.isDirectory())
 							file.delete();
 
-					ARTDMain myMain = new ARTDMain();
 
 					try {
-						myMain.main(null);
+
+						
+							ARTDMain.main(null);
+						
+
 					} catch (IOException | InterruptedException e1) {
-						// TODO Auto-generated catch block
+						
 						e1.printStackTrace();
 					}
 
@@ -120,7 +127,8 @@ public class ARDTMenu extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				loadsavegame.LoadGame();
+				//ARTDLoadSaveGame.LoadGame();
+				mygamestate.LoadGame();
 
 
 			}
@@ -135,7 +143,9 @@ public class ARDTMenu extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				try {
-					loadsavegame.SaveGame();
+					
+					//ARTDLoadSaveGame.SaveGame();
+					mygamestate.SaveGame();
 				} catch (IOException | ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

@@ -1,15 +1,18 @@
 package AlternateRealityTheDungeon;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 public class ARDTMessages {
+
+	static int count = 0;
 	
 	
-	public void WelcomeMessage() throws InterruptedException {
-		
+	public static void WelcomeMessage() throws InterruptedException, IOException {
+
 		JFrame f= new JFrame("Your Adventure Awaits");  
         JTextArea area=new JTextArea();
 
@@ -17,12 +20,15 @@ public class ARDTMessages {
         area.setBounds(10,30, 400,400); 
         area.setLineWrap(true);
         area.setWrapStyleWord(true);
-        
+
+        area.setEditable(false);
+        area.setVisible(true);
         f.add(area);  
-        f.setSize(450,500);  
+        f.setSize(450,500);
         f.setLayout(null);  
         f.setVisible(true);  
         
+        area.setText("");
         area.setText("On your way home from your last adventure you are set upon on my an unknown group of people.\n\n");
         TimeUnit.SECONDS.sleep(5);
         area.append("You feel yourself being carried for a while and then dropped on something hard.\n\n");
@@ -38,8 +44,9 @@ public class ARDTMessages {
         area.append("At the center of the dungeon is a treasure greater than is possible to comprehend.  Please retrieve it for me and you'll be greatly rewarded.\n\n");
         TimeUnit.SECONDS.sleep(10);
         
+        
         f.dispose();
-		
+
 	}
 
 }
