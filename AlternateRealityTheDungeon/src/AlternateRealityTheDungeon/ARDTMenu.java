@@ -99,7 +99,7 @@ public class ARDTMenu extends JPanel {
 
 					try {
 
-						
+							ARDTMessages.count++;
 							ARTDMain.main(null);
 						
 
