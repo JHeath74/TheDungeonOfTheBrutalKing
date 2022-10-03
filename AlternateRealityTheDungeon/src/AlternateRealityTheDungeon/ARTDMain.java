@@ -80,7 +80,7 @@ public class ARTDMain {
 			toonstats.append("\nWISDOM: \t\t" + stat[4]);
 			toonstats.append("\nAGILITY: \t\t" + stat[5]);
 
-			toonstats.revalidate();
+
 
 			toonstats.setEditable(false);
 
@@ -126,7 +126,30 @@ public class ARTDMain {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					rollstats();
+					Integer[] stat = rollstats();
+					toonstats.setText(" ");
+					
+					for(int i = 0; i < stat.length; i++)
+					{
 
+						System.out.println("Stat " + i + ": " + stat[i]);
+	
+					}
+
+					for(int i = 0; i < stat.length; i++)
+					{
+						
+						toonstats.setText("Charecter Stats\n");
+
+						toonstats.append("\nSTAMINA: \t\t" + stat[0]);
+						toonstats.append("\nCHARISMA: \t\t" + stat[1]);
+						toonstats.append("\nSTRENGTH: \t\t" + stat[2]);
+						toonstats.append("\nINTELLIGENCE: \t" + stat[3]);
+						toonstats.append("\nWISDOM: \t\t" + stat[4]);
+						toonstats.append("\nAGILITY: \t\t" + stat[5]);
+						toonstats.validate();
+					}
+					
 				}
 
 			});
@@ -147,28 +170,6 @@ public class ARTDMain {
 
 						toonName(charName, toonD, newChar, newChar2);
 									
-						//newChar.add(charName);
-						
-						
-						/*
-						 * // Character Class newChar.add(toonD);
-						 * 
-						 * // Character Level newChar.add("0");
-						 * 
-						 * // Character Experience newChar.add("0");
-						 * 
-						 * // Character HitPoints newChar.add("15");
-						 * 
-						 * // Character Gold newChar2.add("100");
-						 * 
-						 * // Character Food newChar2.add("3");
-						 * 
-						 * // Character Water newChar2.add("3");
-						 * 
-						 * // Character Torches newChar2.add("3");
-						 * 
-						 * // Character Gems newChar2.add("0");
-						 */
 						// newChar[0] = Charecter Name
 						// newChar[1] = Class
 						// newChar[2] = Level
@@ -259,13 +260,14 @@ public class ARTDMain {
 		
 
 		  
-		    if (charName.equals("") || charName.equals("Please Enter a User Name.")) 
+		    if (charName.equals("") || charName.equals("Please Enter a User Name.") || charName.equals(" ")) 
 		    {
 		    	
 		    	charName = JOptionPane.showInputDialog("Please Enter a Name for Your Charater.");
 
 		    	
 		    } else {
+		    	
 		    	inputAccepted = true;
 		    	newChar.add(charName);	
 				// Character Class

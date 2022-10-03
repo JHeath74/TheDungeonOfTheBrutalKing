@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Created"/>
+		<item key="selection" value="reRoll"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="reroll"/>
 			<item value="created"/>
 			<item value="newChar"/>
 			<item value="charName"/>
@@ -20,7 +21,6 @@
 			<item value="Other Stat"/>
 			<item value="reRollStats"/>
 			<item value="revalidate"/>
-			<item value="reroll"/>
 			<item value="Save Charecter"/>
 			<item value="saveChar"/>
 		</list>
