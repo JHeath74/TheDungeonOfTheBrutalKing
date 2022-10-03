@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="tooncreation"/>
+		<item key="selection" value="Created"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="created"/>
+			<item value="newChar"/>
+			<item value="charName"/>
 			<item value="tooncreation"/>
+			<item value="return"/>
 			<item value="saveToon"/>
 			<item value="toonstats"/>
 			<item value="repaint"/>
@@ -19,10 +23,6 @@
 			<item value="reroll"/>
 			<item value="Save Charecter"/>
 			<item value="saveChar"/>
-			<item value="count"/>
-			<item value="LoadSaveGame"/>
-			<item value="artload"/>
-			<item value="new"/>
 		</list>
 		<list key="replacehistory">
 		</list>

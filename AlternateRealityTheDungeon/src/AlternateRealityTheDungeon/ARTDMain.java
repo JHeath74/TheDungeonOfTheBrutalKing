@@ -28,8 +28,6 @@ public class ARTDMain {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 
-
-
 		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
 
 		Scanner saveFile = new Scanner(
@@ -38,7 +36,6 @@ public class ARTDMain {
 		if (!saveFile.hasNext()) {
 			JFrame frame = new JFrame("Create New Charecter");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 
 			// Tooncreation, allows user to make up their name
 			JTextField tooncreation = new JTextField("Please Enter a User Name.");
@@ -68,28 +65,19 @@ public class ARTDMain {
 
 			});
 
-			// Toon Stats Randomly Generates Charecter Stats
 
-			/*
-			 * toonstats = new JTextArea("Charecter Stats\nSTAMINA: \t\t"+ stat[0] +
-			 * "  \nCHARISMA:\t\t"+ stat[1] + "\n" + "STRENGTH:\t\t" + stat[2]+
-			 * " \nINTELLIGENCE:\t"+ stat[3] + "\nWISDOM:\t\t" + stat[4] + "\nAGILITY:\t\t"
-			 * + stat[5]);
-			 */
 			Integer[] stat = rollstats();
 
-
-			JTextArea toonstats = new JTextArea(); 
+			JTextArea toonstats = new JTextArea();
 			JScrollPane toonstatsPane = new JScrollPane(toonstats);
-
 
 			toonstats.setText("Charecter Stats\n");
 
-			toonstats.append("\nSTAMINA: \t\t"+ stat[0]);
+			toonstats.append("\nSTAMINA: \t\t" + stat[0]);
 			toonstats.append("\nCHARISMA: \t\t" + stat[1]);
-			toonstats.append("\nSTRENGTH: \t\t"+ stat[2]);
+			toonstats.append("\nSTRENGTH: \t\t" + stat[2]);
 			toonstats.append("\nINTELLIGENCE: \t" + stat[3]);
-			toonstats.append("\nWISDOM: \t\t"+ stat[4]);
+			toonstats.append("\nWISDOM: \t\t" + stat[4]);
 			toonstats.append("\nAGILITY: \t\t" + stat[5]);
 
 			toonstats.revalidate();
@@ -98,8 +86,7 @@ public class ARTDMain {
 
 			String[] toonclass = ARTDCharecter.toonclass;
 
-
-			JComboBox<String> charectorClass = new JComboBox<String>(toonclass); 
+			JComboBox<String> charectorClass = new JComboBox<String>(toonclass);
 
 			JTextArea toonclassDescription = new JTextArea("Choose Your Class from the Dropdown box above."); //
 			toonclassDescription.setLineWrap(true);
@@ -110,31 +97,24 @@ public class ARTDMain {
 				public void itemStateChanged(ItemEvent e) {
 					String toonD = charectorClass.getSelectedItem().toString();
 
-					if(toonD == toonclass[0])
-					{
+					if (toonD == toonclass[0]) {
 						toonclassDescription.setText(ARTDCharecter.toonclassDescription[0]);
 					}
-					if(toonD == toonclass[1])
-					{
+					if (toonD == toonclass[1]) {
 						toonclassDescription.setText(ARTDCharecter.toonclassDescription[1]);
-					}	
-					if(toonD == toonclass[2])
-					{
+					}
+					if (toonD == toonclass[2]) {
 						toonclassDescription.setText(ARTDCharecter.toonclassDescription[2]);
 					}
-					if(toonD == toonclass[3])
-					{
+					if (toonD == toonclass[3]) {
 						toonclassDescription.setText(ARTDCharecter.toonclassDescription[3]);
 					}
-					if(toonD == toonclass[4])
-					{
+					if (toonD == toonclass[4]) {
 						toonclassDescription.setText(ARTDCharecter.toonclassDescription[4]);
 					}
-					if(toonD == toonclass[5])
-					{
+					if (toonD == toonclass[5]) {
 						toonclassDescription.setText(ARTDCharecter.toonclassDescription[5]);
 					}
-
 
 				}
 			});
@@ -165,47 +145,30 @@ public class ARTDMain {
 						ArrayList<String> newChar2 = new ArrayList<String>();
 						String charName = String.valueOf(tooncreation.getText());
 
-						System.out.print("My Name is " + charName);
-
-						if (charName.equals("") || charName == "" || charName == null) {
-							JOptionPane.showMessageDialog(frame,
-									"Please Enter a User Name, in the User Name Box Above");
-						} 
-						else if(!charName.equals("") || !(charName == "") || !(charName == null))
-						{
-
-							// Character Name
-
-							newChar.add(charName);
-						}
-
-						// Character Class
-						newChar.add(toonD);
-
-						// Character Level
-						newChar.add("0");
-
-						// Character Experience
-						newChar.add("0");
-
-						// Character HitPoints
-						newChar.add("15");
-
-						// Character Gold
-						newChar2.add("100");
-
-						// Character Food
-						newChar2.add("3");
-
-						// Character Water
-						newChar2.add("3");
-
-						// Character Torches
-						newChar2.add("3");
-
-						// Character Gems
-						newChar2.add("0");
-
+						toonName(charName, toonD, newChar, newChar2);
+									
+						//newChar.add(charName);
+						
+						
+						/*
+						 * // Character Class newChar.add(toonD);
+						 * 
+						 * // Character Level newChar.add("0");
+						 * 
+						 * // Character Experience newChar.add("0");
+						 * 
+						 * // Character HitPoints newChar.add("15");
+						 * 
+						 * // Character Gold newChar2.add("100");
+						 * 
+						 * // Character Food newChar2.add("3");
+						 * 
+						 * // Character Water newChar2.add("3");
+						 * 
+						 * // Character Torches newChar2.add("3");
+						 * 
+						 * // Character Gems newChar2.add("0");
+						 */
 						// newChar[0] = Charecter Name
 						// newChar[1] = Class
 						// newChar[2] = Level
@@ -223,12 +186,11 @@ public class ARTDMain {
 						// newChar[14] = Torches
 						// newChar[15] = Gems
 
-
 						for (String str : newChar) {
 							writer.write(str + System.lineSeparator());
 						}
 
-						for (Integer str2 : stat ) {
+						for (Integer str2 : stat) {
 							writer.write(str2 + System.lineSeparator());
 						}
 
@@ -287,6 +249,59 @@ public class ARTDMain {
 
 	}
 
+	
+	public static String toonName(String charName, String toonD, ArrayList<String> newChar, ArrayList<String> newChar2)
+	{
+		
+		
+		boolean inputAccepted = false;
+		while(!inputAccepted) {
+		
+
+		  
+		    if (charName.equals("") || charName.equals("Please Enter a User Name.")) 
+		    {
+		    	
+		    	charName = JOptionPane.showInputDialog("Please Enter a Name for Your Charater.");
+
+		    	
+		    } else {
+		    	inputAccepted = true;
+		    	newChar.add(charName);	
+				// Character Class
+				newChar.add(toonD);
+
+				// Character Level
+				newChar.add("0");
+
+				// Character Experience
+				newChar.add("0");
+
+				// Character HitPoints
+				newChar.add("15");
+
+				// Character Gold
+				newChar2.add("100");
+
+				// Character Food
+				newChar2.add("3");
+
+				// Character Water
+				newChar2.add("3");
+
+				// Character Torches
+				newChar2.add("3");
+
+				// Character Gems
+				newChar2.add("0");
+		    }
+
+		    
+		}
+		return charName;
+		
+	}
+	
 	public static Integer[] rollstats() {
 		int range = 20;
 		int lowerbound = 10;
@@ -297,7 +312,6 @@ public class ARTDMain {
 			stats[i] = (int) (Math.random() * range) + lowerbound;
 
 		}
-
 
 		return stats;
 	}
