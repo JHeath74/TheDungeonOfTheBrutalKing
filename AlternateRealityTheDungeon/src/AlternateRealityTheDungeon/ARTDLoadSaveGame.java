@@ -5,14 +5,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Scanner;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -23,6 +27,29 @@ public class ARTDLoadSaveGame
 {
 
 	ARTDCharecter myChar = new ARTDCharecter();
+	
+	public void StartGameLoadCharecter() throws IOException
+	{
+		
+        for(int i = 0; i < myChar.CharInfo().size(); i++)
+        {
+        	System.out.println("Toon Information: " + i);
+        }
+		
+		BufferedReader br = new BufferedReader(new FileReader("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
+        {
+
+            String sCurrentLine;
+
+            while ((sCurrentLine = br.readLine()) != null) {
+                myChar.CharInfo().add(sCurrentLine);
+            }
+            
+
+
+
+        }
+	}
 
 	public void SaveGame() throws IOException, ParseException
 	{
@@ -34,22 +61,28 @@ public class ARTDLoadSaveGame
 
 		datetime = datetime.replaceAll(":", "."); 
 
-		String GameSaveDateTime = "src/AlternateRealityTheDungeon/TextFiles/SaveGame/SavedGame"+ datetime +".txt";
+		String GameLocation = "src/AlternateRealityTheDungeon/TextFiles/SaveGame/SavedGame";
+		
 		String SavedGameName = "SavedGame" + datetime;
+		
+		if(SavedGameName != "IntialCharecterSave.txt")
+		{
+			String GameSaveDateTime = GameLocation + datetime +".txt";
+			
 
+			FileWriter writer = new FileWriter(GameSaveDateTime);
 
-		//File GameSave = new File(GameSaveDateTime);
-		//boolean isFileCreated = GameSave.createNewFile(); 
+			for(String Charinfo: myChar.CharInfo()) {
+				writer.write(Charinfo + System.lineSeparator());
+			}
+			writer.close();
 
-		FileWriter writer = new FileWriter(GameSaveDateTime);
-
-
-		for(String Charinfo: myChar.CharInfo()) {
-			writer.write(Charinfo + System.lineSeparator());
+			JOptionPane.showMessageDialog(null, "Game Saved: " + SavedGameName);
+		}else{
+			JOptionPane.showMessageDialog(null, "Unable to Save Current Game Over Saved Game called  'InitialCharecterSave.txt'\n");
 		}
-		writer.close();
+		
 
-		JOptionPane.showMessageDialog(null, "Game Save: " + SavedGameName);
 	}
 
 	public void LoadGame()
@@ -96,7 +129,10 @@ public class ARTDLoadSaveGame
 					@Override
 					public void actionPerformed(ActionEvent e) {
 
-
+						if(gameInfo == "InitialCharecterSave.txt")
+						{
+							JOptionPane.showConfirmDialog(null, "This will reload the original saved game and restart character", "Reload Save Game", JOptionPane.YES_NO_OPTION);
+						}
 						JOptionPane.showMessageDialog(null, "Game Loaded: " + gameInfo);
 
 						loadGame.dispose();
@@ -113,28 +149,12 @@ public class ARTDLoadSaveGame
 		loadGame.setSize(640, 480);
 
 		loadGame.setVisible(true);
-
+	
 	}
 
-	public void StartGameLoadCharecter()
-	{
+	
 
-		try {
-			BufferedReader bufReader = new BufferedReader(new FileReader("src\\AlternateRealityTheDungeon\\TextFiles\\SaveGame\\InitialCharecterSave.txt"));
-			String line = bufReader.readLine();
-			while (line != null) { 
-				myChar.CharInfo().add(line); 
-				line = bufReader.readLine();
-			}
-			bufReader.close();
-
-
-		}
-		catch(Exception e1) {
-
-		}
-
-	}
+		
 
 
 }

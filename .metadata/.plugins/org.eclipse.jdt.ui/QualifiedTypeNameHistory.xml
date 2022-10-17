@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.swing.JMenuItem"/>
     <fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
     <fullyQualifiedTypeName name="javax.swing.KeyStroke"/>
     <fullyQualifiedTypeName name="java.awt.event.WindowAdapter"/>
@@ -44,7 +43,6 @@
     <fullyQualifiedTypeName name="java.text.DateFormat"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.util.Calendar"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.io.BufferedReader"/>
     <fullyQualifiedTypeName name="java.io.FileReader"/>
     <fullyQualifiedTypeName name="javax.swing.JTextArea"/>
@@ -59,5 +57,7 @@
     <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDCharecter.toonclass"/>
     <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

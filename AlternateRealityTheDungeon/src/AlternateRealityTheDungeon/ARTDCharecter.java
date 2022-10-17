@@ -52,11 +52,10 @@ public class ARTDCharecter {
 	public ArrayList<String> CharInfo()
 	{
 
-
-
-		ArrayList<String> CharInfo = new ArrayList<>();
-
-
+		
+		ArrayList<String> CharInfo = new ArrayList<String>();
+	
+		
 		/*
 		 * newChar.add("Class: " + toonD); 
 		 * newChar.add("Level" + "0");

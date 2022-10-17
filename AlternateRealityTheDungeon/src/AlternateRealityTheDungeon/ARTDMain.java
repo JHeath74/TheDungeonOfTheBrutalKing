@@ -9,6 +9,7 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -128,13 +129,7 @@ public class ARTDMain {
 					rollstats();
 					Integer[] stat = rollstats();
 					toonstats.setText(" ");
-					
-					for(int i = 0; i < stat.length; i++)
-					{
 
-						System.out.println("Stat " + i + ": " + stat[i]);
-	
-					}
 
 					for(int i = 0; i < stat.length; i++)
 					{
@@ -206,11 +201,23 @@ public class ARTDMain {
 						new ARDTMenu();
 
 					} catch (IOException e1) {
-						System.out.println("An error occurred.");
+						JOptionPane.showMessageDialog(null, "Error:\n " + e1);
 						e1.printStackTrace();
 					}
 
-					mygamestate.StartGameLoadCharecter();
+					try {
+						ARTDCharecter myChar = new ARTDCharecter();
+				        for(int i = 0; i < myChar.CharInfo().size(); i++)
+				        {
+				        	System.out.println("Toon Information: " + i);
+				        }
+						
+						mygamestate.StartGameLoadCharecter();
+						
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 
 				}
 			});
