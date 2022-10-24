@@ -131,7 +131,7 @@ public class ARTDLoadSaveGame
 
 						if(gameInfo == "InitialCharecterSave.txt")
 						{
-							JOptionPane.showConfirmDialog(null, "This will reload the original saved game and restart character", "Reload Save Game", JOptionPane.YES_NO_OPTION);
+							JOptionPane.showConfirmDialog(null, "This will reload the original saved game and restart your character", "Reload Save Game", JOptionPane.YES_NO_OPTION);
 						}
 						JOptionPane.showMessageDialog(null, "Game Loaded: " + gameInfo);
 

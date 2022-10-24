@@ -148,6 +148,7 @@ public class ARTDMain {
 				}
 
 			});
+			
 			JButton saveToon = new JButton("Save Charecter"); // Save Button for Charecter creation
 			saveToon.addActionListener(new ActionListener() {
 
@@ -162,43 +163,78 @@ public class ARTDMain {
 
 						ArrayList<String> newChar2 = new ArrayList<String>();
 						String charName = String.valueOf(tooncreation.getText());
-
-						toonName(charName, toonD, newChar, newChar2);
+						//tooncreation.setText(charName);
+						//System.out.print("My Name is: " + charName);
+						toonName(tooncreation, charName, toonD, newChar, newChar2);
 									
-						// newChar[0] = Charecter Name
-						// newChar[1] = Class
-						// newChar[2] = Level
-						// newChar[3] = Experience
-						// newChar[4] = Hit Points
-						// newChar[5] = Stat: Stamina
-						// newChar[6] = Stat: Charisma
-						// newChar[7] = Stat: Strength
-						// newChar[8] = Stat: Intelligence
-						// newChar[9] = Stat: Wisdom
-						// newChar[10] = Stat: Agility
-						// newChar[11] = Gold
-						// newChar[12] = Food
-						// newChar[13] = Water
-						// newChar[14] = Torches
-						// newChar[15] = Gems
 
-						for (String str : newChar) {
-							writer.write(str + System.lineSeparator());
+						while(!saveToon.getModel().isPressed()) {
+							
+						
+							// Character Class
+							newChar.add(toonD);
+
+							// Character Level
+							newChar.add("0");
+
+							// Character Experience
+							newChar.add("0");
+
+							// Character HitPoints
+							newChar.add("15");
+
+							// Character Gold
+							newChar2.add("100");
+
+							// Character Food
+							newChar2.add("3");
+
+							// Character Water
+							newChar2.add("3");
+
+							// Character Torches
+							newChar2.add("3");
+
+							// Character Gems
+							newChar2.add("0");
+							
+							// newChar[0] = Charecter Name
+							// newChar[1] = Class
+							// newChar[2] = Level
+							// newChar[3] = Experience
+							// newChar[4] = Hit Points
+							// newChar[5] = Stat: Stamina
+							// newChar[6] = Stat: Charisma
+							// newChar[7] = Stat: Strength
+							// newChar[8] = Stat: Intelligence
+							// newChar[9] = Stat: Wisdom
+							// newChar[10] = Stat: Agility
+							// newChar[11] = Gold
+							// newChar[12] = Food
+							// newChar[13] = Water
+							// newChar[14] = Torches
+							// newChar[15] = Gems
+
+							for (String str : newChar) {
+								writer.write(str + System.lineSeparator());
+							}
+
+							for (Integer str2 : stat) {
+								writer.write(str2 + System.lineSeparator());
+							}
+
+							for (String str3 : newChar2) {
+								writer.write(str3 + System.lineSeparator());
+							}
+							writer.close();
+
+							JOptionPane.showMessageDialog(frame, "Charecter Created");
+
+							frame.dispose();
+							new ARDTMenu();
 						}
-
-						for (Integer str2 : stat) {
-							writer.write(str2 + System.lineSeparator());
-						}
-
-						for (String str3 : newChar2) {
-							writer.write(str3 + System.lineSeparator());
-						}
-						writer.close();
-
-						JOptionPane.showMessageDialog(frame, "Charecter Created");
-
-						frame.dispose();
-						new ARDTMenu();
+							
+							
 
 					} catch (IOException e1) {
 						JOptionPane.showMessageDialog(null, "Error:\n " + e1);
@@ -224,10 +260,13 @@ public class ARTDMain {
 
 			mygamestate.StartGameLoadCharecter();
 
-			/*
-			 * if (ARDTMessages.count == 0) { ARDTMessages.count++;
-			 * ARDTMessages.WelcomeMessage(); }
-			 */
+			
+			  if (ARDTMessages.count == 0) 
+			  { 
+				  ARDTMessages.count++;
+			      ARDTMessages.WelcomeMessage();
+			  }
+			 
 
 			JPanel panel = new JPanel();
 			JPanel panel2 = new JPanel(new FlowLayout());
@@ -258,7 +297,7 @@ public class ARTDMain {
 	}
 
 	
-	public static String toonName(String charName, String toonD, ArrayList<String> newChar, ArrayList<String> newChar2)
+	public static String toonName(JTextField tooncreation, String charName, String toonD, ArrayList<String> newChar, ArrayList<String> newChar2)
 	{
 		
 		
@@ -274,35 +313,12 @@ public class ARTDMain {
 
 		    	
 		    } else {
-		    	
+		    	tooncreation.setText(charName);
 		    	inputAccepted = true;
 		    	newChar.add(charName);	
-				// Character Class
-				newChar.add(toonD);
+		    	
+		    	
 
-				// Character Level
-				newChar.add("0");
-
-				// Character Experience
-				newChar.add("0");
-
-				// Character HitPoints
-				newChar.add("15");
-
-				// Character Gold
-				newChar2.add("100");
-
-				// Character Food
-				newChar2.add("3");
-
-				// Character Water
-				newChar2.add("3");
-
-				// Character Torches
-				newChar2.add("3");
-
-				// Character Gems
-				newChar2.add("0");
 		    }
 
 		    

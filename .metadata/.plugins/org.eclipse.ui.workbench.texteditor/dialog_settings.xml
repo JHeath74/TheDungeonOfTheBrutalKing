@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Initial"/>
+		<item key="selection" value="Created"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="created"/>
+			<item value="WelcomeMessage"/>
+			<item value="JButton"/>
+			<item value="tooncreation"/>
+			<item value="charName"/>
+			<item value="setText"/>
+			<item value="Please Press"/>
+			<item value="save Button"/>
+			<item value="saveToon"/>
+			<item value="save"/>
+			<item value="toonName"/>
+			<item value="toonname"/>
 			<item value="initial"/>
 			<item value="Initial"/>
 			<item value="reroll"/>
-			<item value="created"/>
-			<item value="newChar"/>
-			<item value="charName"/>
-			<item value="tooncreation"/>
-			<item value="return"/>
-			<item value="saveToon"/>
-			<item value="toonstats"/>
-			<item value="repaint"/>
-			<item value="other stat"/>
-			<item value="Other Stat"/>
-			<item value="reRollStats"/>
-			<item value="revalidate"/>
 		</list>
 		<list key="replacehistory">
 		</list>

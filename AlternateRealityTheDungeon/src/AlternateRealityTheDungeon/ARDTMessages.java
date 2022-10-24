@@ -3,6 +3,7 @@ package AlternateRealityTheDungeon;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
@@ -14,6 +15,7 @@ public class ARDTMessages {
 	public static void WelcomeMessage() throws InterruptedException, IOException {
 
 		JFrame f= new JFrame("Your Adventure Awaits");  
+		
         JTextArea area=new JTextArea();
 
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,7 +25,9 @@ public class ARDTMessages {
 
         area.setEditable(false);
         area.setVisible(true);
+        
         f.add(area);  
+        
         f.setSize(450,500);
         f.setLayout(null);  
         f.setVisible(true);  
