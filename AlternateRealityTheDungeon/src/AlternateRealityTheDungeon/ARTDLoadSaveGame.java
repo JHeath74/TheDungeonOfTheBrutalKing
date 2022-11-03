@@ -28,7 +28,7 @@ public class ARTDLoadSaveGame
 
 	ARTDCharecter myChar = new ARTDCharecter();
 	
-	public void StartGameLoadCharecter() throws IOException
+	public void NewGameLoadCharecter() throws IOException
 	{
 		
         for(int i = 0; i < myChar.CharInfo().size(); i++)
@@ -45,9 +45,6 @@ public class ARTDLoadSaveGame
                 myChar.CharInfo().add(sCurrentLine);
             }
             
-
-
-
         }
 	}
 

@@ -30,7 +30,7 @@ public class ARTDMain {
 	public static void main(String[] args) throws IOException, InterruptedException {
 
 		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
-
+		
 		Scanner saveFile = new Scanner(
 				new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
 
@@ -133,7 +133,7 @@ public class ARTDMain {
 
 					for(int i = 0; i < stat.length; i++)
 					{
-						
+
 						toonstats.setText("Charecter Stats\n");
 
 						toonstats.append("\nSTAMINA: \t\t" + stat[0]);
@@ -144,11 +144,11 @@ public class ARTDMain {
 						toonstats.append("\nAGILITY: \t\t" + stat[5]);
 						toonstats.validate();
 					}
-					
+
 				}
 
 			});
-			
+
 			JButton saveToon = new JButton("Save Charecter"); // Save Button for Charecter creation
 			saveToon.addActionListener(new ActionListener() {
 
@@ -163,14 +163,14 @@ public class ARTDMain {
 
 						ArrayList<String> newChar2 = new ArrayList<String>();
 						String charName = String.valueOf(tooncreation.getText());
-						//tooncreation.setText(charName);
-						//System.out.print("My Name is: " + charName);
-						toonName(tooncreation, charName, toonD, newChar, newChar2);
-									
 
-						while(!saveToon.getModel().isPressed()) {
-							
-						
+						toonName(tooncreation, charName, toonD, newChar, newChar2);
+
+
+						while(saveToon.getModel().isPressed()) 
+						{
+
+
 							// Character Class
 							newChar.add(toonD);
 
@@ -197,7 +197,7 @@ public class ARTDMain {
 
 							// Character Gems
 							newChar2.add("0");
-							
+
 							// newChar[0] = Charecter Name
 							// newChar[1] = Class
 							// newChar[2] = Level
@@ -226,47 +226,34 @@ public class ARTDMain {
 							for (String str3 : newChar2) {
 								writer.write(str3 + System.lineSeparator());
 							}
-							writer.close();
 
 							JOptionPane.showMessageDialog(frame, "Charecter Created");
-
+							writer.close();
 							frame.dispose();
 							new ARDTMenu();
 						}
-							
-							
 
-					} catch (IOException e1) {
+
+
+
+					} catch (IOException e1){
 						JOptionPane.showMessageDialog(null, "Error:\n " + e1);
-						e1.printStackTrace();
-					}
-
-					try {
-						ARTDCharecter myChar = new ARTDCharecter();
-				        for(int i = 0; i < myChar.CharInfo().size(); i++)
-				        {
-				        	System.out.println("Toon Information: " + i);
-				        }
-						
-						mygamestate.StartGameLoadCharecter();
-						
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 
 				}
 			});
 
-			mygamestate.StartGameLoadCharecter();
+			mygamestate.NewGameLoadCharecter();
+
 
 			
 			  if (ARDTMessages.count == 0) 
-			  { 
-				  ARDTMessages.count++;
-			      ARDTMessages.WelcomeMessage();
+			  { ARDTMessages.count++;
+			  ARDTMessages.WelcomeMessage(); 
 			  }
 			 
+
 
 			JPanel panel = new JPanel();
 			JPanel panel2 = new JPanel(new FlowLayout());
@@ -285,7 +272,7 @@ public class ARTDMain {
 			frame.add((panel3), BorderLayout.SOUTH);
 
 			frame.setSize(400, 600);
-
+			frame.setLocationRelativeTo(null);
 			frame.setVisible(true);
 
 		} else {
@@ -296,37 +283,37 @@ public class ARTDMain {
 
 	}
 
-	
+
 	public static String toonName(JTextField tooncreation, String charName, String toonD, ArrayList<String> newChar, ArrayList<String> newChar2)
 	{
-		
-		
+
+
 		boolean inputAccepted = false;
 		while(!inputAccepted) {
-		
 
-		  
-		    if (charName.equals("") || charName.equals("Please Enter a User Name.") || charName.equals(" ")) 
-		    {
-		    	
-		    	charName = JOptionPane.showInputDialog("Please Enter a Name for Your Charater.");
 
-		    	
-		    } else {
-		    	tooncreation.setText(charName);
-		    	inputAccepted = true;
-		    	newChar.add(charName);	
-		    	
-		    	
 
-		    }
+			if (charName.equals("") || charName.equals("Please Enter a User Name.") || charName.equals(" ")) 
+			{
 
-		    
+				charName = JOptionPane.showInputDialog("Please Enter a Name for Your Charater.");
+
+
+			} else {
+				tooncreation.setText(charName);
+				inputAccepted = true;
+				newChar.add(charName);	
+
+
+
+			}
+
+
 		}
 		return charName;
-		
+
 	}
-	
+
 	public static Integer[] rollstats() {
 		int range = 20;
 		int lowerbound = 10;
