@@ -9,13 +9,11 @@ import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -30,7 +28,7 @@ public class ARTDMain {
 	public static void main(String[] args) throws IOException, InterruptedException {
 
 		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
-		
+
 		Scanner saveFile = new Scanner(
 				new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
 
@@ -66,7 +64,6 @@ public class ARTDMain {
 
 			});
 
-
 			Integer[] stat = rollstats();
 
 			JTextArea toonstats = new JTextArea();
@@ -81,8 +78,6 @@ public class ARTDMain {
 			toonstats.append("\nWISDOM: \t\t" + stat[4]);
 			toonstats.append("\nAGILITY: \t\t" + stat[5]);
 
-
-
 			toonstats.setEditable(false);
 
 			String[] toonclass = ARTDCharecter.toonclass;
@@ -96,31 +91,31 @@ public class ARTDMain {
 
 				@Override
 				public void itemStateChanged(ItemEvent e) {
-					String toonD = charectorClass.getSelectedItem().toString();
+					String toonClass = charectorClass.getSelectedItem().toString();
 
-					if (toonD == toonclass[0]) {
+					if (toonClass == toonclass[0]) {
 						toonclassDescription.setText(ARTDCharecter.toonclassDescription[0]);
 					}
-					if (toonD == toonclass[1]) {
+					if (toonClass == toonclass[1]) {
 						toonclassDescription.setText(ARTDCharecter.toonclassDescription[1]);
 					}
-					if (toonD == toonclass[2]) {
+					if (toonClass == toonclass[2]) {
 						toonclassDescription.setText(ARTDCharecter.toonclassDescription[2]);
 					}
-					if (toonD == toonclass[3]) {
+					if (toonClass == toonclass[3]) {
 						toonclassDescription.setText(ARTDCharecter.toonclassDescription[3]);
 					}
-					if (toonD == toonclass[4]) {
+					if (toonClass == toonclass[4]) {
 						toonclassDescription.setText(ARTDCharecter.toonclassDescription[4]);
 					}
-					if (toonD == toonclass[5]) {
+					if (toonClass == toonclass[5]) {
 						toonclassDescription.setText(ARTDCharecter.toonclassDescription[5]);
 					}
 
 				}
 			});
 
-			String toonD = charectorClass.getSelectedItem().toString();
+			String toonClass = charectorClass.getSelectedItem().toString();
 			JButton reRollStats = new JButton("Reroll Stats");
 			reRollStats.addActionListener(new ActionListener() {
 
@@ -130,9 +125,7 @@ public class ARTDMain {
 					Integer[] stat = rollstats();
 					toonstats.setText(" ");
 
-
-					for(int i = 0; i < stat.length; i++)
-					{
+					for (int i = 0; i < stat.length; i++) {
 
 						toonstats.setText("Charecter Stats\n");
 
@@ -164,15 +157,12 @@ public class ARTDMain {
 						ArrayList<String> newChar2 = new ArrayList<String>();
 						String charName = String.valueOf(tooncreation.getText());
 
-						toonName(tooncreation, charName, toonD, newChar, newChar2);
+						do {
 
-
-						while(saveToon.getModel().isPressed()) 
-						{
-
+							toonName(tooncreation, charName, toonClass, newChar, newChar2);
 
 							// Character Class
-							newChar.add(toonD);
+							newChar.add(toonClass);
 
 							// Character Level
 							newChar.add("0");
@@ -231,12 +221,10 @@ public class ARTDMain {
 							writer.close();
 							frame.dispose();
 							new ARDTMenu();
-						}
 
+						} while (saveToon.getModel().isPressed());
 
-
-
-					} catch (IOException e1){
+					} catch (IOException e1) {
 						JOptionPane.showMessageDialog(null, "Error:\n " + e1);
 						e1.printStackTrace();
 					}
@@ -246,14 +234,13 @@ public class ARTDMain {
 
 			mygamestate.NewGameLoadCharecter();
 
+			File newFile = new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt");
+			if (newFile.length() == 0) {
+				ARDTMessages.WelcomeMessage();
+				;
+			} else {
 
-			
-			  if (ARDTMessages.count == 0) 
-			  { ARDTMessages.count++;
-			  ARDTMessages.WelcomeMessage(); 
-			  }
-			 
-
+			}
 
 			JPanel panel = new JPanel();
 			JPanel panel2 = new JPanel(new FlowLayout());
@@ -283,34 +270,24 @@ public class ARTDMain {
 
 	}
 
-
-	public static String toonName(JTextField tooncreation, String charName, String toonD, ArrayList<String> newChar, ArrayList<String> newChar2)
-	{
-
+	public static void toonName(JTextField tooncreation, String charName, String toonClass, ArrayList<String> newChar,
+			ArrayList<String> newChar2) {
 
 		boolean inputAccepted = false;
-		while(!inputAccepted) {
+		while (!inputAccepted) {
 
-
-
-			if (charName.equals("") || charName.equals("Please Enter a User Name.") || charName.equals(" ")) 
-			{
+			if (charName.equals("") || charName.equals("Please Enter a User Name.") || charName.equals(" ")) {
 
 				charName = JOptionPane.showInputDialog("Please Enter a Name for Your Charater.");
-
 
 			} else {
 				tooncreation.setText(charName);
 				inputAccepted = true;
-				newChar.add(charName);	
-
-
+				newChar.add(charName);
 
 			}
 
-
 		}
-		return charName;
 
 	}
 

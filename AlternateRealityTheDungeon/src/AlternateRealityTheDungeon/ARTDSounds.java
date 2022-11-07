@@ -39,14 +39,11 @@ public class ARTDSounds extends JFrame
 	             
 	            audioClip.start();
 	             
-	            while (!playCompleted) {
-	                // wait for the playback completes
-	                try {
-	                    Thread.sleep(10);
-	                } catch (InterruptedException ex) {
-	                    ex.printStackTrace();
-	                }
-	            }
+				/*
+				 * while (!playCompleted) { // wait for the playback completes try {
+				 * Thread.sleep(10); } catch (InterruptedException ex) { ex.printStackTrace(); }
+				 * }
+				 */
 	             
 	            audioClip.close();
 	             
@@ -61,6 +58,8 @@ public class ARTDSounds extends JFrame
 	            ex.printStackTrace();
 	        }
 	}
+
+	
 
 
 

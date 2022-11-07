@@ -42,7 +42,10 @@ public class ARDTMessages {
        
         
         area.setText("");
-        ARTDSounds.Sound(audioFilePath);
+        
+       
+        
+        //ARTDSounds.Sound(audioFilePath);
         area.setText("On your way home from your last adventure you are set upon on my an unknown group of people.\n\n");
         TimeUnit.SECONDS.sleep(3);
         area.append("You feel yourself being carried for a while and then dropped on something hard.\n\n");
@@ -64,6 +67,8 @@ public class ARDTMessages {
      
 	}
 
+
+	
 	
 	
 	
