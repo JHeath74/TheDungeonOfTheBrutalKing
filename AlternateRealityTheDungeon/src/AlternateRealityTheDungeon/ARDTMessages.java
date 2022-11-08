@@ -11,12 +11,11 @@ import javax.swing.JTextArea;
 public class ARDTMessages {
 
 	
-	static int count = 0;
 	
 	 
 	public static void WelcomeMessage() throws InterruptedException, IOException {
 
-		String audioFilePath = "src//AlternateRealityTheDungeon//Sounds//Welcome//Windy.wav";
+	//	String audioFilePath = "src//AlternateRealityTheDungeon//Sounds//Welcome//Windy.wav";
 		
 		
 		JFrame f= new JFrame("Your Adventure Awaits");  
@@ -42,8 +41,7 @@ public class ARDTMessages {
        
         
         area.setText("");
-        
-       
+           
         
         //ARTDSounds.Sound(audioFilePath);
         area.setText("On your way home from your last adventure you are set upon on my an unknown group of people.\n\n");
@@ -60,7 +58,6 @@ public class ARDTMessages {
         TimeUnit.SECONDS.sleep(3);
         area.append("At the center of the dungeon is a treasure that is important to me.  Please retrieve it and you'll be greatly rewarded.\n\n");
         TimeUnit.SECONDS.sleep(7);
-        
         
         f.dispose();
 

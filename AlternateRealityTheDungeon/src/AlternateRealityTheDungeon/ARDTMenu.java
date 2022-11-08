@@ -26,21 +26,20 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
+import javax.swing.event.MenuKeyListener;
 
 public class ARDTMenu extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	
+
 
 	public ARDTMenu() {
 
-		
+
 		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
-		
+
 		JFrame frame = new JFrame("Alternate Reality: The Dungeon");
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel l = new JPanel(new FlowLayout());
@@ -48,7 +47,7 @@ public class ARDTMenu extends JPanel {
 
 		Dimension windowSize = frame.getMaximumSize();
 
-		
+
 
 		// Create the menu bar.
 		JMenuBar menuBar = new JMenuBar();
@@ -62,15 +61,22 @@ public class ARDTMenu extends JPanel {
 		});
 
 		JMenu gameMenu = new JMenu("Game");
+		gameMenu.setMnemonic(KeyEvent.VK_G);
+		
+		
 		JMenu charecterMenu = new JMenu("Charecter");
+		charecterMenu.setMnemonic(KeyEvent.VK_C);
+		
+		
 		JMenu helpMenu = new JMenu("About");
+		helpMenu.setMnemonic(KeyEvent.VK_H);
 
 		///////////////////////// create groups of menu
 		///////////////////////// items/////////////////////////////////////
-		JMenuItem newMenuItem = new JMenuItem("New Game");
-		newMenuItem.setMnemonic(KeyEvent.VK_N);
-		newMenuItem.getAccessibleContext().setAccessibleDescription("New Game");
-		newMenuItem.addActionListener(new ActionListener() {
+		JMenuItem newGameMenuItem = new JMenuItem("New Game");
+		newGameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_MASK));
+		newGameMenuItem.getAccessibleContext().setAccessibleDescription("New Game");
+		newGameMenuItem.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -86,7 +92,7 @@ public class ARDTMenu extends JPanel {
 						writer.write("");
 						writer.flush();
 					} catch (IOException e1) {
-						
+
 						e1.printStackTrace();
 					}
 
@@ -99,12 +105,12 @@ public class ARDTMenu extends JPanel {
 
 					try {
 
-							ARDTMessages.count++;
-							ARTDMain.main(null);
-						
+
+						ARTDMain.main(null);
+
 
 					} catch (IOException | InterruptedException e1) {
-						
+
 						e1.printStackTrace();
 					}
 
@@ -119,10 +125,10 @@ public class ARDTMenu extends JPanel {
 			}
 		});
 
-		JMenuItem currentMenuItem = new JMenuItem("Load Saved Game");
-		currentMenuItem.setMnemonic(KeyEvent.VK_L);
-		currentMenuItem.getAccessibleContext().setAccessibleDescription("Load Saved Game");
-		currentMenuItem.addActionListener(new ActionListener() {
+		JMenuItem LoadSavedGameMenuItem = new JMenuItem("Load Saved Game");
+		LoadSavedGameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, KeyEvent.CTRL_MASK));
+		LoadSavedGameMenuItem.getAccessibleContext().setAccessibleDescription("Load Saved Game");
+		LoadSavedGameMenuItem.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -135,7 +141,7 @@ public class ARDTMenu extends JPanel {
 		});
 
 		JMenuItem saveMenuItem = new JMenuItem("Save Current Game");
-		saveMenuItem.setMnemonic(KeyEvent.VK_S);
+		saveMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_MASK));
 		saveMenuItem.getAccessibleContext().setAccessibleDescription("Save Current Game");
 		saveMenuItem.addActionListener(new ActionListener() {
 
@@ -143,8 +149,8 @@ public class ARDTMenu extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				try {
+
 					
-					//ARTDLoadSaveGame.SaveGame();
 					mygamestate.SaveGame();
 				} catch (IOException | ParseException e1) {
 					// TODO Auto-generated catch block
@@ -153,10 +159,10 @@ public class ARDTMenu extends JPanel {
 			}
 		});
 
-		JMenuItem exitMenuItem = new JMenuItem("Exit");
-		exitMenuItem.setMnemonic(KeyEvent.VK_X);
-		exitMenuItem.getAccessibleContext().setAccessibleDescription("Exit Game");
-		exitMenuItem.addActionListener(new ActionListener() {
+		JMenuItem exitGameMenuItem = new JMenuItem("Exit");
+		exitGameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_MASK));
+		exitGameMenuItem.getAccessibleContext().setAccessibleDescription("Exit Game");
+		exitGameMenuItem.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -167,9 +173,9 @@ public class ARDTMenu extends JPanel {
 
 		///////////////////////// Charecter Menu Group ////////////////////////////
 
-		JMenuItem statsMenuItem = new JMenuItem("Stats");
-		statsMenuItem.setMnemonic(KeyEvent.VK_T);
-		statsMenuItem.addActionListener(new ActionListener() {
+		JMenuItem charecterstatsMenuItem = new JMenuItem("Stats");
+		charecterstatsMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_MASK));
+		charecterstatsMenuItem.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -178,9 +184,9 @@ public class ARDTMenu extends JPanel {
 			}
 		});
 
-		JMenuItem invMenuItem = new JMenuItem("Inventory");
-		invMenuItem.setMnemonic(KeyEvent.VK_I);
-		invMenuItem.addActionListener(new ActionListener() {
+		JMenuItem charecterinventoryMenuItem = new JMenuItem("Inventory");
+		charecterinventoryMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, KeyEvent.CTRL_MASK));
+		charecterinventoryMenuItem.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -194,7 +200,7 @@ public class ARDTMenu extends JPanel {
 
 		// Help and About Menu Items -- About the Game and any Help Information
 		JMenuItem aboutMenuItem = new JMenuItem("About");
-		aboutMenuItem.setMnemonic(KeyEvent.VK_A);
+		aboutMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_MASK));
 		aboutMenuItem.getAccessibleContext().setAccessibleDescription("About Game");
 		aboutMenuItem.addActionListener(new ActionListener() {
 
@@ -248,7 +254,7 @@ public class ARDTMenu extends JPanel {
 		});
 
 		JMenuItem helpMenuItem = new JMenuItem("Help");
-		helpMenuItem.setMnemonic(KeyEvent.VK_H);
+		helpMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, KeyEvent.CTRL_MASK));
 		helpMenuItem.getAccessibleContext().setAccessibleDescription("Help");
 		helpMenuItem.addActionListener(new ActionListener() {
 
@@ -301,13 +307,13 @@ public class ARDTMenu extends JPanel {
 		});
 
 		// add menu items to menus
-		gameMenu.add(newMenuItem);
-		gameMenu.add(currentMenuItem);
+		gameMenu.add(newGameMenuItem);
+		gameMenu.add(LoadSavedGameMenuItem);
 		gameMenu.add(saveMenuItem);
-		gameMenu.add(exitMenuItem);
+		gameMenu.add(exitGameMenuItem);
 
-		charecterMenu.add(statsMenuItem);
-		charecterMenu.add(invMenuItem);
+		charecterMenu.add(charecterstatsMenuItem);
+		charecterMenu.add(charecterinventoryMenuItem);
 		charecterMenu.add(mapMenu);
 
 		helpMenu.add(aboutMenuItem);
@@ -319,7 +325,7 @@ public class ARDTMenu extends JPanel {
 		menuBar.add(helpMenu);
 
 		JMenuItem mapFloor1MenuItem = new JMenuItem("Floor 1");
-		mapFloor1MenuItem.setMnemonic(KeyEvent.VK_1);
+		mapFloor1MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, KeyEvent.CTRL_MASK));
 		mapFloor1MenuItem.addActionListener(new ActionListener() {
 
 			@Override
@@ -330,7 +336,7 @@ public class ARDTMenu extends JPanel {
 		});
 
 		JMenuItem mapFloor2MenuItem = new JMenuItem("Floor 2");
-		mapFloor2MenuItem.setMnemonic(KeyEvent.VK_2);
+		mapFloor2MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, KeyEvent.CTRL_MASK));
 		mapFloor2MenuItem.addActionListener(new ActionListener() {
 
 			@Override
@@ -341,7 +347,7 @@ public class ARDTMenu extends JPanel {
 		});
 
 		JMenuItem mapFloor3MenuItem = new JMenuItem("Floor 3");
-		mapFloor3MenuItem.setMnemonic(KeyEvent.VK_3);
+		mapFloor3MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_3, KeyEvent.CTRL_MASK));
 		mapFloor3MenuItem.addActionListener(new ActionListener() {
 
 			@Override
@@ -351,7 +357,7 @@ public class ARDTMenu extends JPanel {
 			}
 		});
 		JMenuItem mapFloor4MenuItem = new JMenuItem("Floor 4");
-		mapFloor4MenuItem.setMnemonic(KeyEvent.VK_4);
+		mapFloor4MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_4, KeyEvent.CTRL_MASK));
 		mapFloor4MenuItem.addActionListener(new ActionListener() {
 
 			@Override

@@ -152,13 +152,15 @@ public class ARTDMain {
 						FileWriter writer = new FileWriter(
 								"src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt");
 
-						ArrayList<String> newChar = new ArrayList<String>();
-
-						ArrayList<String> newChar2 = new ArrayList<String>();
-						String charName = String.valueOf(tooncreation.getText());
+						
 
 						do {
 
+							ArrayList<String> newChar = new ArrayList<String>();
+
+							ArrayList<String> newChar2 = new ArrayList<String>();
+							String charName = String.valueOf(tooncreation.getText());
+							
 							toonName(tooncreation, charName, toonClass, newChar, newChar2);
 
 							// Character Class
@@ -237,7 +239,7 @@ public class ARTDMain {
 			File newFile = new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt");
 			if (newFile.length() == 0) {
 				ARDTMessages.WelcomeMessage();
-				;
+				
 			} else {
 
 			}
@@ -264,7 +266,7 @@ public class ARTDMain {
 
 		} else {
 
-			ARDTMessages.count++;
+			
 			new ARDTMenu();
 		}
 
