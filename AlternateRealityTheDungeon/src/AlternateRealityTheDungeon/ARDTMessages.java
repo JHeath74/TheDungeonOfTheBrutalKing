@@ -50,7 +50,7 @@ public class ARDTMessages {
         TimeUnit.SECONDS.sleep(3);
         area.append("You hear a sound like a door shutting then you start to move.  Slowly at first,  then very quickly.  Then you passout.\n\n");
         TimeUnit.SECONDS.sleep(3);
-        area.append("You wake up an unknown time later, and see someone standing there.  They look at you for a moment, than ask you if you are ok?\n\n");
+        area.append("You wake up an unknown time later, with minimal weapons and armor with someone standing over.  They look at you for a moment, than ask you if you are ok?\n\n");
         TimeUnit.SECONDS.sleep(3);
         area.append("And they want to know a few things about you, to prepare you for adventure.\n\n");
         TimeUnit.SECONDS.sleep(3);

@@ -151,17 +151,20 @@ public class ARTDMain {
 
 						FileWriter writer = new FileWriter(
 								"src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt");
+						ArrayList<String> newChar = new ArrayList<String>();
 
+						ArrayList<String> newChar2 = new ArrayList<String>();
+						String charName = String.valueOf(tooncreation.getText());
+						
+						//toonName(tooncreation, charName, newChar);
+						
+						
+						
+						
 						
 
 						do {
-
-							ArrayList<String> newChar = new ArrayList<String>();
-
-							ArrayList<String> newChar2 = new ArrayList<String>();
-							String charName = String.valueOf(tooncreation.getText());
-							
-							toonName(tooncreation, charName, toonClass, newChar, newChar2);
+						
 
 							// Character Class
 							newChar.add(toonClass);
@@ -272,8 +275,7 @@ public class ARTDMain {
 
 	}
 
-	public static void toonName(JTextField tooncreation, String charName, String toonClass, ArrayList<String> newChar,
-			ArrayList<String> newChar2) {
+	public static void toonName(JTextField tooncreation, String charName, ArrayList<String> newChar) {
 
 		boolean inputAccepted = false;
 		while (!inputAccepted) {
