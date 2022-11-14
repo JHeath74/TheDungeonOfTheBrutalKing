@@ -16,26 +16,26 @@ public class ARDTWeapons {
 	
     
 	
-	//WeaponName, Agility Required
-	public void AgilityWeaponsAvalible()
+	//WeaponName, Strength Required
+	public void StrengthWeaponsAvalible()
     {
     	  
-    	StrengthWeapons.put("Dagger", 5);
+    	StrengthWeapons.put("Dagger", 3);
     	StrengthWeapons.put("Stilleto", 5);
-    	StrengthWeapons.put("Club", 5);
-    	StrengthWeapons.put("Short Sword", 5);
-    	StrengthWeapons.put("Flail", 5);
-    	StrengthWeapons.put("War Net", 5);
-    	StrengthWeapons.put("Whip", 5);
-    	StrengthWeapons.put("Sword", 5);
-    	StrengthWeapons.put("Long Sword", 5);
-    	StrengthWeapons.put("Battle Hammer ", 5);
-    	StrengthWeapons.put("Battle Axe ", 5);
+    	StrengthWeapons.put("Club", 7);
+    	StrengthWeapons.put("Short Sword", 9);
+    	StrengthWeapons.put("Flail", 11);
+    	StrengthWeapons.put("War Net", 15);
+    	StrengthWeapons.put("Whip", 18);
+    	StrengthWeapons.put("Sword", 21);
+    	StrengthWeapons.put("Long Sword", 25);
+    	StrengthWeapons.put("Battle Hammer ", 27);
+    	StrengthWeapons.put("Battle Axe ", 30);
     	
     }
 	
 	//WeaponName, Agility Required
-    public void StengthWeaponsAvailable()
+    public void AgilityWeaponsAvalible()
     {
     	AgilityWeapons.put("Dart", 5);
     	AgilityWeapons.put("Sling", 7);
@@ -45,9 +45,14 @@ public class ARDTWeapons {
     	AgilityWeapons.put("Longbow", 25);
     }
 
-    //Spellname, Wisdom Required, Damage or Healing
-	public void Spells()
+    //Spellname, Wisdom Required, Damage or Healing	
+    public void SpellsAvalible()
 	{
+    	Spells.put("Healing", 3);
+    	Spells.put("Fireball", 6);
+    	Spells.put("Lightining", 9);
+    	Spells.put("Shield", 15);
+    	Spells.put("Return", 18);
 		
 	}
 	
