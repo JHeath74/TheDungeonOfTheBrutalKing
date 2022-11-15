@@ -5,17 +5,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Scanner;
+
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -44,7 +44,7 @@ public class ARTDLoadSaveGame
             while ((sCurrentLine = br.readLine()) != null) {
                 myChar.CharInfo().add(sCurrentLine);
             }
-            
+            br.close();
         }
 	}
 

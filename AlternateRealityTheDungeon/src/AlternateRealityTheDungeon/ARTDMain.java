@@ -29,12 +29,21 @@ public class ARTDMain {
 
 		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
 
-		Scanner saveFile = new Scanner(
-				new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
+		String InitialCharecterSave = "src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt";
+
+		File charSave = new File(InitialCharecterSave);
+		if (!charSave.createNewFile()) {
+
+		} else {
+			ARDTMessages.WelcomeMessage();
+		}
+
+		Scanner saveFile = new Scanner(charSave);
 
 		if (!saveFile.hasNext()) {
 			JFrame frame = new JFrame("Create New Charecter");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			saveFile.close();
 
 			// Tooncreation, allows user to make up their name
 			JTextField tooncreation = new JTextField("Please Enter a User Name.");
@@ -155,16 +164,10 @@ public class ARTDMain {
 
 						ArrayList<String> newChar2 = new ArrayList<String>();
 						String charName = String.valueOf(tooncreation.getText());
-						
-						//toonName(tooncreation, charName, newChar);
-						
-						
-						
-						
-						
+
+						toonName(tooncreation, charName, newChar);
 
 						do {
-						
 
 							// Character Class
 							newChar.add(toonClass);
@@ -241,8 +244,8 @@ public class ARTDMain {
 
 			File newFile = new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt");
 			if (newFile.length() == 0) {
-				ARDTMessages.WelcomeMessage();
-				
+				// ARDTMessages.WelcomeMessage();
+
 			} else {
 
 			}
@@ -269,7 +272,6 @@ public class ARTDMain {
 
 		} else {
 
-			
 			new ARDTMenu();
 		}
 
