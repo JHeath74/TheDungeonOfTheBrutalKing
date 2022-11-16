@@ -1,0 +1,101 @@
+package AlternateRealityTheDungeon;
+
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+
+public class ARTDGameMenuItems 
+{
+	
+	ARTDCharecter myChar = new ARTDCharecter();
+	
+	public void Stats()
+	{
+		JFrame statsFrame = new JFrame("Charecter");
+		statsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JTextArea statsArea = new JTextArea();
+		JButton closeStats = new JButton("Click to Close Stats.");
+				
+		statsFrame.add(statsArea, BorderLayout.CENTER);
+		statsFrame.add(closeStats, BorderLayout.SOUTH);
+		
+		statsArea.setVisible(true);
+		
+		statsFrame.setSize(400, 600);
+		statsFrame.setLocationRelativeTo(null);
+		statsFrame.setVisible(true);
+		statsFrame.toFront();
+		statsFrame.requestFocus();
+		
+		statsArea.setText("");
+		
+		//  newChar.add("Class: " + toonD); 
+		//  newChar.add("Level" + "0");
+		//  newChar.add("Experience: "+ "0"); 
+		//  newChar.add("Hit Points" + "15");
+		//  newChar.add("STAMINA: " + stat[0]);
+		//  newChar.add("CHARISMA: " + stat[1]);
+		//  newChar.add("STRENGTH: " + stat[2]);
+		//  newChar.add("INTELLIGENCE: "+ stat[3]);
+		//  newChar.add("WISDOM: " + stat[4]); 
+		//  newChar.add("AGILITY: " + stat[5]);
+		//  newChar.add("Gold: " + "100"); 
+		//  newChar.add("Food: " + "5");
+		//  newChar.add("Torches: " + "5"); 
+		//  newChar.add("Gems: " + "0" );
+		
+		
+		statsArea.setText("Name: " + myChar.CharInfo().get(0));
+		statsArea.append("Level: " + myChar.CharInfo().get(1));
+		statsArea.append("Experience: " + myChar.CharInfo().get(2));
+		statsArea.append("Hit Points: " + myChar.CharInfo().get(3));
+		statsArea.append("Stamina: " + myChar.CharInfo().get(4));
+		statsArea.append("Charisma: " + myChar.CharInfo().get(5));
+		statsArea.append("Strength: " + myChar.CharInfo().get(6));
+		statsArea.append("Intelligence: " + myChar.CharInfo().get(7));
+		statsArea.append("Wisdom: " + myChar.CharInfo().get(8));
+		statsArea.append("Agility: " + myChar.CharInfo().get(9));
+		statsArea.append("Gems: " + myChar.CharInfo().get(13));
+		
+		
+		
+		
+		
+		
+	}
+	
+	public void Inventory()
+	{
+		JFrame inv = new JFrame("Inventory");
+		inv.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JTextArea invArea = new JTextArea();
+		JButton closeStats = new JButton("Click to Close Stats Window");
+		
+		
+		
+		
+		inv.add(invArea, BorderLayout.CENTER);
+		inv.add(closeStats, BorderLayout.SOUTH);
+		
+		invArea.setVisible(true);
+		
+		inv.setLocationRelativeTo(null);
+		inv.setSize(400, 600);
+		inv.setLocationRelativeTo(null);
+		inv.setVisible(true);
+		inv.toFront();
+		inv.requestFocus();
+		
+		invArea.setText("");
+		
+		
+		invArea.append("Gold: " + myChar.CharInfo().get(10));
+		invArea.append("Food: " + myChar.CharInfo().get(11));
+		invArea.append("Torches: " + myChar.CharInfo().get(12));
+	}
+
+}

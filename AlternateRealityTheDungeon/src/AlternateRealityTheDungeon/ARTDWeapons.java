@@ -4,7 +4,7 @@ package AlternateRealityTheDungeon;
 import java.util.HashMap;
 
 
-public class ARDTWeapons {
+public class ARTDWeapons {
 
 	
 	

@@ -2,7 +2,7 @@ package AlternateRealityTheDungeon;
 
 import java.util.HashMap;
 
-public class ARDTArmor {
+public class ARTDArmor {
 	
 	HashMap<String, Integer> Armour = new HashMap<String, Integer>();
 	

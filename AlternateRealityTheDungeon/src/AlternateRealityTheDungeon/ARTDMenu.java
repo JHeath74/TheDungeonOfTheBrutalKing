@@ -30,15 +30,16 @@ import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 
 
-public class ARDTMenu extends JPanel {
+public class ARTDMenu extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
 
-	public ARDTMenu() {
+	public ARTDMenu() {
 
 
 		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
+		ARTDGameMenuItems myGameMenuItems = new ARTDGameMenuItems();
 
 		JFrame frame = new JFrame("Alternate Reality: The Dungeon");
 		JPanel panel = new JPanel(new BorderLayout());
@@ -133,7 +134,7 @@ public class ARDTMenu extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				//ARTDLoadSaveGame.LoadGame();
+				
 				mygamestate.LoadGame();
 
 
@@ -179,7 +180,7 @@ public class ARDTMenu extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				myGameMenuItems.Stats();
 
 			}
 		});
@@ -190,7 +191,7 @@ public class ARDTMenu extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				myGameMenuItems.Inventory();
 
 			}
 		});

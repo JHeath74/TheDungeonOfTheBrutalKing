@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 
 import java.util.Calendar;
 import java.util.Date;
-
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -28,23 +28,22 @@ public class ARTDLoadSaveGame
 
 	ARTDCharecter myChar = new ARTDCharecter();
 	
-	public void NewGameLoadCharecter() throws IOException
+	public void StartGameLoadCharecter() throws IOException
 	{
 		
-        for(int i = 0; i < myChar.CharInfo().size(); i++)
-        {
-        	System.out.println("Toon Information: " + i);
-        }
+
 		
-		BufferedReader br = new BufferedReader(new FileReader("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
+		File filepath = new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt");
         {
 
-            String sCurrentLine;
-
-            while ((sCurrentLine = br.readLine()) != null) {
-                myChar.CharInfo().add(sCurrentLine);
-            }
-            br.close();
+        	Scanner s = new Scanner(new File("filepath"));
+        	
+        	while (s.hasNextLine()){
+        		myChar.CharInfo().add(s.nextLine());
+        	}
+        	s.close();
+        	
+            
         }
 	}
 

@@ -11,6 +11,10 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,21 +29,29 @@ import javax.swing.JTextField;
 
 public class ARTDMain {
 
+	private static final String SaveDirectoryPath = null;
+
 	public static void main(String[] args) throws IOException, InterruptedException {
 
+		String SaveDirectoryPath = "src//AlternateRealityTheDungeon//TextFiles//SaveGame//";
+		
 		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
 
+		//When a new game is started,  this is the file where the initial charecter information is stored		
 		String InitialCharecterSave = "src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt";
 
+		//Checking to see if the file is there, and if it isn't then a blank file is generated.
 		File charSave = new File(InitialCharecterSave);
 		if (!charSave.createNewFile()) {
 
 		} else {
-			ARDTMessages.WelcomeMessage();
+			ARTDMessages.WelcomeMessage();
+			
 		}
 
 		Scanner saveFile = new Scanner(charSave);
 
+		//If the file is blank,  then start creating a new charecter
 		if (!saveFile.hasNext()) {
 			JFrame frame = new JFrame("Create New Charecter");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -165,6 +177,7 @@ public class ARTDMain {
 						ArrayList<String> newChar2 = new ArrayList<String>();
 						String charName = String.valueOf(tooncreation.getText());
 
+						//Validating if the Charecter Name is blank or not
 						toonName(tooncreation, charName, newChar);
 
 						do {
@@ -228,7 +241,7 @@ public class ARTDMain {
 							JOptionPane.showMessageDialog(frame, "Charecter Created");
 							writer.close();
 							frame.dispose();
-							new ARDTMenu();
+							new ARTDMenu();
 
 						} while (saveToon.getModel().isPressed());
 
@@ -240,15 +253,12 @@ public class ARTDMain {
 				}
 			});
 
-			mygamestate.NewGameLoadCharecter();
-
-			File newFile = new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt");
-			if (newFile.length() == 0) {
-				// ARDTMessages.WelcomeMessage();
-
-			} else {
-
-			}
+			mygamestate.StartGameLoadCharecter();
+			
+			
+			
+			
+	
 
 			JPanel panel = new JPanel();
 			JPanel panel2 = new JPanel(new FlowLayout());
@@ -269,10 +279,20 @@ public class ARTDMain {
 			frame.setSize(400, 600);
 			frame.setLocationRelativeTo(null);
 			frame.setVisible(true);
+			frame.toFront();
+			frame.requestFocus();
 
 		} else {
-
-			new ARDTMenu();
+			
+			//mygamestate.StartGameLoadCharecter();
+			
+			
+			
+			//getLastModified();
+			
+			
+			
+			new ARTDMenu();
 		}
 
 	}
@@ -309,6 +329,31 @@ public class ARTDMain {
 		}
 
 		return stats;
+	}
+	
+	public static File getLastModified()
+	{
+	    File directory = new File(SaveDirectoryPath);
+	    File[] files = directory.listFiles(File::isFile);
+	    long lastModifiedTime = Long.MIN_VALUE;
+	    File chosenFile = null;
+	    File recentlySavedFile = null;
+
+	    if (files != null)
+	    {
+	        for (File file : files)
+	        {
+	            if (file.lastModified() > lastModifiedTime)
+	            {
+	                chosenFile = file;
+	                lastModifiedTime = file.lastModified();
+	                
+	               
+	            }
+	        }
+	    }
+
+	    return chosenFile;
 	}
 
 }
