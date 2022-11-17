@@ -33,7 +33,7 @@ public class ARTDMain {
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 
-		String SaveDirectoryPath = "src//AlternateRealityTheDungeon//TextFiles//SaveGame//";
+		//String SaveDirectoryPath = "src//AlternateRealityTheDungeon//TextFiles//SaveGame//";
 		
 		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
 
@@ -253,7 +253,7 @@ public class ARTDMain {
 				}
 			});
 
-			mygamestate.StartGameLoadCharecter();
+			//mygamestate.StartGameLoadCharecter();
 			
 			
 			
@@ -331,29 +331,29 @@ public class ARTDMain {
 		return stats;
 	}
 	
-	public static File getLastModified()
-	{
-	    File directory = new File(SaveDirectoryPath);
-	    File[] files = directory.listFiles(File::isFile);
-	    long lastModifiedTime = Long.MIN_VALUE;
-	    File chosenFile = null;
-	    File recentlySavedFile = null;
-
-	    if (files != null)
-	    {
-	        for (File file : files)
-	        {
-	            if (file.lastModified() > lastModifiedTime)
-	            {
-	                chosenFile = file;
-	                lastModifiedTime = file.lastModified();
-	                
-	               
-	            }
-	        }
-	    }
-
-	    return chosenFile;
-	}
+//	public static File getLastModified()
+//	{
+//	    File directory = new File(SaveDirectoryPath);
+//	    File[] files = directory.listFiles(File::isFile);
+//	    long lastModifiedTime = Long.MIN_VALUE;
+//	    File chosenFile = null;
+//	    File recentlySavedFile = null;
+//
+//	    if (files != null)
+//	    {
+//	        for (File file : files)
+//	        {
+//	            if (file.lastModified() > lastModifiedTime)
+//	            {
+//	                chosenFile = file;
+//	                lastModifiedTime = file.lastModified();
+//	                
+//	               
+//	            }
+//	        }
+//	    }
+//
+//	    return chosenFile;
+//	}
 
 }

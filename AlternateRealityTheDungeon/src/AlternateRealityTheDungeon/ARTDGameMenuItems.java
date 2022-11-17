@@ -1,6 +1,8 @@
 package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,7 +19,17 @@ public class ARTDGameMenuItems
 		statsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JTextArea statsArea = new JTextArea();
-		JButton closeStats = new JButton("Click to Close Stats.");
+		JButton closeStats = new JButton("Ok");
+		
+		closeStats.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				statsFrame.dispose();
+				
+			}
+			
+		});
 				
 		statsFrame.add(statsArea, BorderLayout.CENTER);
 		statsFrame.add(closeStats, BorderLayout.SOUTH);
@@ -65,30 +77,40 @@ public class ARTDGameMenuItems
 		
 		
 		
+		
 	}
 	
 	public void Inventory()
 	{
-		JFrame inv = new JFrame("Inventory");
-		inv.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JFrame invFrame = new JFrame("Inventory");
+		invFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JTextArea invArea = new JTextArea();
-		JButton closeStats = new JButton("Click to Close Stats Window");
+		JButton closeStats = new JButton("Ok");
+		
+		closeStats.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+				invFrame.dispose();
+				
+			}
+			
+		});
 		
 		
-		
-		
-		inv.add(invArea, BorderLayout.CENTER);
-		inv.add(closeStats, BorderLayout.SOUTH);
+		invFrame.add(invArea, BorderLayout.CENTER);
+		invFrame.add(closeStats, BorderLayout.SOUTH);
 		
 		invArea.setVisible(true);
 		
-		inv.setLocationRelativeTo(null);
-		inv.setSize(400, 600);
-		inv.setLocationRelativeTo(null);
-		inv.setVisible(true);
-		inv.toFront();
-		inv.requestFocus();
+		invFrame.setLocationRelativeTo(null);
+		invFrame.setSize(400, 600);
+		invFrame.setLocationRelativeTo(null);
+		invFrame.setVisible(true);
+		invFrame.toFront();
+		invFrame.requestFocus();
 		
 		invArea.setText("");
 		
@@ -96,6 +118,8 @@ public class ARTDGameMenuItems
 		invArea.append("Gold: " + myChar.CharInfo().get(10));
 		invArea.append("Food: " + myChar.CharInfo().get(11));
 		invArea.append("Torches: " + myChar.CharInfo().get(12));
+		
+		
 	}
 
 }

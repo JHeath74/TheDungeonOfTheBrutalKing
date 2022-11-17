@@ -41,6 +41,13 @@ public class ARTDMenu extends JPanel {
 		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
 		ARTDGameMenuItems myGameMenuItems = new ARTDGameMenuItems();
 
+		try {
+			mygamestate.StartGameLoadCharecter();
+		} catch (IOException e2) {
+			
+			e2.printStackTrace();
+		}
+		
 		JFrame frame = new JFrame("Alternate Reality: The Dungeon");
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel l = new JPanel(new FlowLayout());

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.awt.event.ItemListener"/>
-    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
     <fullyQualifiedTypeName name="java.awt.FlowLayout"/>
     <fullyQualifiedTypeName name="java.awt.GridLayout"/>
     <fullyQualifiedTypeName name="java.awt.GridBagLayout"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="java.nio.file.attribute.BasicFileAttributes"/>
     <fullyQualifiedTypeName name="java.nio.file.Files"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
 </qualifiedTypeNameHistroy>
