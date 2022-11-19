@@ -34,7 +34,7 @@ public class ARTDMain {
 	public static void main(String[] args) throws IOException, InterruptedException {
 
 		//String SaveDirectoryPath = "src//AlternateRealityTheDungeon//TextFiles//SaveGame//";
-		
+
 		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
 
 		//When a new game is started,  this is the file where the initial charecter information is stored		
@@ -46,7 +46,7 @@ public class ARTDMain {
 
 		} else {
 			ARTDMessages.WelcomeMessage();
-			
+
 		}
 
 		Scanner saveFile = new Scanner(charSave);
@@ -254,11 +254,11 @@ public class ARTDMain {
 			});
 
 			//mygamestate.StartGameLoadCharecter();
-			
-			
-			
-			
-	
+
+
+
+
+
 
 			JPanel panel = new JPanel();
 			JPanel panel2 = new JPanel(new FlowLayout());
@@ -283,15 +283,15 @@ public class ARTDMain {
 			frame.requestFocus();
 
 		} else {
-			
+
 			//mygamestate.StartGameLoadCharecter();
-			
-			
-			
+
+
+
 			//getLastModified();
-			
-			
-			
+
+
+
 			new ARTDMenu();
 		}
 
@@ -330,30 +330,30 @@ public class ARTDMain {
 
 		return stats;
 	}
-	
-//	public static File getLastModified()
-//	{
-//	    File directory = new File(SaveDirectoryPath);
-//	    File[] files = directory.listFiles(File::isFile);
-//	    long lastModifiedTime = Long.MIN_VALUE;
-//	    File chosenFile = null;
-//	    File recentlySavedFile = null;
-//
-//	    if (files != null)
-//	    {
-//	        for (File file : files)
-//	        {
-//	            if (file.lastModified() > lastModifiedTime)
-//	            {
-//	                chosenFile = file;
-//	                lastModifiedTime = file.lastModified();
-//	                
-//	               
-//	            }
-//	        }
-//	    }
-//
-//	    return chosenFile;
-//	}
+
+	//	public static File getLastModified()
+	//	{
+	//	    File directory = new File(SaveDirectoryPath);
+	//	    File[] files = directory.listFiles(File::isFile);
+	//	    long lastModifiedTime = Long.MIN_VALUE;
+	//	    File chosenFile = null;
+	//	    File recentlySavedFile = null;
+	//
+	//	    if (files != null)
+	//	    {
+	//	        for (File file : files)
+	//	        {
+	//	            if (file.lastModified() > lastModifiedTime)
+	//	            {
+	//	                chosenFile = file;
+	//	                lastModifiedTime = file.lastModified();
+	//	                
+	//	               
+	//	            }
+	//	        }
+	//	    }
+	//
+	//	    return chosenFile;
+	//	}
 
 }

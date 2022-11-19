@@ -23,31 +23,19 @@ import javax.swing.JPanel;
 public class ARTDLoadSaveGame {
 
 	ARTDCharecter myChar = new ARTDCharecter();
+	String SavedGameDirectory = "src\\AlternateRealityTheDungeon\\TextFiles\\SaveGame\\");
 
-	public void StartGameLoadCharecter() throws IOException {
-
-		String path = "src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt";
-//		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-//
-//			String sCurrentLine;
-//
-//			while ((sCurrentLine = br.readLine()) != null) {
-//
-//				myChar.CharInfo().add(sCurrentLine);
-//
-//			}
-//
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
+	public void StartGameLoadCharecter() throws IOException
+	{
+		getLastModified(SavedGameDirectory);
 		
-		FileWriter writer = new FileWriter("local.txt"); 
-	    for(String i : myChar.CharInfo()) {
-	    	  myChar.CharInfo().add(i);
-	          System.out.println("We have written " + i);
-	        }
-	      writer.close();
-
+		Scanner s = new Scanner(new File(SavedGameDirectory + chosenfile));
+		
+		while (s.hasNextLine()){
+		    myChar.CharInfo.add(s.nextLine());
+		}
+		s.close();
+		
 	}
 
 	public void SaveGame() throws IOException, ParseException {
@@ -86,7 +74,7 @@ public class ARTDLoadSaveGame {
 		JButton load = new JButton("Load Game");
 		JComboBox<String> loadGameSelection = new JComboBox<String>();
 
-		File loadgamefiles = new File("src\\AlternateRealityTheDungeon\\TextFiles\\SaveGame\\");
+		File loadgamefiles = new File();
 
 		File[] listOfFiles = loadgamefiles.listFiles();
 
@@ -143,6 +131,28 @@ public class ARTDLoadSaveGame {
 
 		loadGame.setVisible(true);
 
+	}
+	
+	public static File getLastModified(String SavedGameDirectory)
+	{
+	    File directory = new File(SavedGameDirectory);
+	    File[] files = directory.listFiles(File::isFile);
+	    long lastModifiedTime = Long.MIN_VALUE;
+	    File chosenFile = null;
+
+	    if (files != null)
+	    {
+	        for (File file : files)
+	        {
+	            if (file.lastModified() > lastModifiedTime)
+	            {
+	                chosenFile = file;
+	                lastModifiedTime = file.lastModified();
+	            }
+	        }
+	    }
+
+	    return chosenFile;
 	}
 
 }
