@@ -8,11 +8,19 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -23,18 +31,32 @@ import javax.swing.JPanel;
 public class ARTDLoadSaveGame {
 
 	ARTDCharecter myChar = new ARTDCharecter();
-	String SavedGameDirectory = "src\\AlternateRealityTheDungeon\\TextFiles\\SaveGame\\");
+	String SavedGameDirectory = ("src\\AlternateRealityTheDungeon\\TextFiles\\SaveGame\\");
+	
+
 
 	public void StartGameLoadCharecter() throws IOException
 	{
-		getLastModified(SavedGameDirectory);
 		
-		Scanner s = new Scanner(new File(SavedGameDirectory + chosenfile));
+		ArrayList<String> SaveLoadChar = new ArrayList<String>();
+		File chosenFile = getLastModified(SavedGameDirectory);
+
+		BufferedReader bufReader = new BufferedReader(new FileReader(chosenFile));
 		
-		while (s.hasNextLine()){
-		    myChar.CharInfo.add(s.nextLine());
+		String line = bufReader.readLine();
+		while (line != null) 
+		{	  
+			SaveLoadChar.add(line);
+			
+			line = bufReader.readLine(); 
+			
 		}
-		s.close();
+		
+		myChar.CharInfo.addAll(SaveLoadChar);
+		System.out.println(myChar.CharInfo.toString());
+		
+		bufReader.close();
+
 		
 	}
 
@@ -55,7 +77,7 @@ public class ARTDLoadSaveGame {
 
 			FileWriter writer = new FileWriter(GameSaveDateTime);
 
-			for (String Charinfo : myChar.CharInfo()) {
+			for (String Charinfo : myChar.CharInfo) {
 				writer.write(Charinfo + System.lineSeparator());
 			}
 			writer.close();
@@ -74,7 +96,7 @@ public class ARTDLoadSaveGame {
 		JButton load = new JButton("Load Game");
 		JComboBox<String> loadGameSelection = new JComboBox<String>();
 
-		File loadgamefiles = new File();
+		File loadgamefiles = new File(SavedGameDirectory);
 
 		File[] listOfFiles = loadgamefiles.listFiles();
 
@@ -94,7 +116,7 @@ public class ARTDLoadSaveGame {
 							new FileReader("src\\AlternateRealityTheDungeon\\TextFiles\\SaveGame\\" + gameInfo));
 					String line = bufReader.readLine();
 					while (line != null) {
-						myChar.CharInfo().add(line);
+						myChar.CharInfo.add(line);
 						line = bufReader.readLine();
 					}
 					bufReader.close();
