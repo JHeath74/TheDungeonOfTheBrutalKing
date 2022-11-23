@@ -3,6 +3,7 @@ package AlternateRealityTheDungeon;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,8 +11,9 @@ import javax.swing.JTextArea;
 
 public class ARTDGameMenuItems 
 {
-	
+
 	ARTDCharecter myChar = new ARTDCharecter();
+	
 	
 	public void Stats()
 	{
@@ -58,30 +60,20 @@ public class ARTDGameMenuItems
 		//  newChar.add("Food: " + "5");
 		//  newChar.add("Torches: " + "5"); 
 		//  newChar.add("Gems: " + "0" );
-		
 
-		for(int i = 0; i < myChar.CharInfo.size(); i++)
-		{
-			System.out.println("Arraytest");
-		}
 		
-		statsArea.setText("Name: " + myChar.CharInfo.get(0));
-		statsArea.append("Level: " + myChar.CharInfo.get(1));
-		statsArea.append("Experience: " + myChar.CharInfo.get(2));
-		statsArea.append("Hit Points: " + myChar.CharInfo.get(3));
-		statsArea.append("Stamina: " + myChar.CharInfo.get(4));
-		statsArea.append("Charisma: " + myChar.CharInfo.get(5));
-		statsArea.append("Strength: " + myChar.CharInfo.get(6));
-		statsArea.append("Intelligence: " + myChar.CharInfo.get(7));
-		statsArea.append("Wisdom: " + myChar.CharInfo.get(8));
-		statsArea.append("Agility: " + myChar.CharInfo.get(9));
-		statsArea.append("Gems: " + myChar.CharInfo.get(13));
-		
-		
-		
-		
-		
-		
+//		statsArea.setText("Name: " + myChar.CharInfo.get(0));
+//		statsArea.append("Level: " + myChar.CharInfo.get(1));
+//		statsArea.append("Experience: " + myChar.CharInfo.get(2));
+//		statsArea.append("Hit Points: " + myChar.CharInfo.get(3));
+//		statsArea.append("Stamina: " + myChar.CharInfo.get(4));
+//		statsArea.append("Charisma: " + myChar.CharInfo.get(5));
+//		statsArea.append("Strength: " + myChar.CharInfo.get(6));
+//		statsArea.append("Intelligence: " + myChar.CharInfo.get(7));
+//		statsArea.append("Wisdom: " + myChar.CharInfo.get(8));
+//		statsArea.append("Agility: " + myChar.CharInfo.get(9));
+//		statsArea.append("Gems: " + myChar.CharInfo.get(13));
+	
 		
 	}
 	
@@ -93,6 +85,8 @@ public class ARTDGameMenuItems
 		JTextArea invArea = new JTextArea();
 		JButton closeStats = new JButton("Ok");
 		
+		//System.out.println("ARTDGameMenuItems: " + ARTDCharecter.CharInfoArray());
+		
 		closeStats.addActionListener(new ActionListener() {
 
 			@Override
@@ -103,7 +97,6 @@ public class ARTDGameMenuItems
 			}
 			
 		});
-		
 		
 		invFrame.add(invArea, BorderLayout.CENTER);
 		invFrame.add(closeStats, BorderLayout.SOUTH);
@@ -118,14 +111,16 @@ public class ARTDGameMenuItems
 		invFrame.requestFocus();
 		
 		invArea.setText("");
-				
-		invArea.append("Gold: " + myChar.CharInfo.get(10));
-		invArea.append("Food: " + myChar.CharInfo.get(11));
-		invArea.append("Torches: " + myChar.CharInfo.get(12));
+		System.out.println("ARTDLoadSaveGame11: " + myChar.CharInfo.toString());
+		
+		//invArea.setText("Gold: " + myChar.CharInfo.get(12));
+		//invArea.append("Food: " + myChar.CharInfo.get(13));
+	    //invArea.append("Torches: " + myChar.CharInfo.get(14));
 		//invArea.append("Armour: " + myChar.CharInfo.get());
 		//invArea.append("Weapon: " + myChar.CharInfo.get());
 		
 		
 	}
+
 
 }

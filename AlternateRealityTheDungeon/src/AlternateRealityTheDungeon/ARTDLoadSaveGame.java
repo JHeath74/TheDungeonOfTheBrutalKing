@@ -45,16 +45,21 @@ public class ARTDLoadSaveGame {
 		
 		String line = bufReader.readLine();
 		while (line != null) 
-		{	  
+		{	
+			
 			SaveLoadChar.add(line);
 			
 			line = bufReader.readLine(); 
-			
+			System.out.println("Line: " + line);
+			//System.out.println("ArrayList: " + ARTDCharecter.CharInfo().toString());
 		}
 		
+
+		//ARTDCharecter.CharInfo().addAll(SaveLoadChar);
 		myChar.CharInfo.addAll(SaveLoadChar);
-		System.out.println(myChar.CharInfo.toString());
-		
+		//System.out.println("ARTDLoadSaveGame: " + myChar.CharInfo().toString());
+		System.out.println("ARTDLoadSaveGame: " + myChar.CharInfo.toString());
+		System.out.println("Array:" + Arrays.toString(myChar.charArray()));
 		bufReader.close();
 
 		
@@ -78,6 +83,7 @@ public class ARTDLoadSaveGame {
 			FileWriter writer = new FileWriter(GameSaveDateTime);
 
 			for (String Charinfo : myChar.CharInfo) {
+			//for (String Charinfo : ARTDCharecter.CharInfo()) {
 				writer.write(Charinfo + System.lineSeparator());
 			}
 			writer.close();
@@ -117,6 +123,7 @@ public class ARTDLoadSaveGame {
 					String line = bufReader.readLine();
 					while (line != null) {
 						myChar.CharInfo.add(line);
+						//ARTDCharecter.CharInfo();
 						line = bufReader.readLine();
 					}
 					bufReader.close();

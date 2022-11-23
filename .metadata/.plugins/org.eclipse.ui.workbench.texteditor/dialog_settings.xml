@@ -8,6 +8,7 @@
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="LoadSaveGame"/>
 			<item value="SaveDirectoryPath"/>
 			<item value="initial"/>
 			<item value="stat"/>
@@ -22,7 +23,6 @@
 			<item value="f."/>
 			<item value="frame"/>
 			<item value="l."/>
-			<item value="l"/>
 		</list>
 		<list key="replacehistory">
 			<item value="LoadSavedGameMenuItem"/>
