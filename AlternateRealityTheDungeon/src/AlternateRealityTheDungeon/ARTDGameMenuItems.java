@@ -1,6 +1,8 @@
 package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -36,6 +38,14 @@ public class ARTDGameMenuItems
 		statsFrame.add(statsArea, BorderLayout.CENTER);
 		statsFrame.add(closeStats, BorderLayout.SOUTH);
 		
+		
+		
+		Color sab = new Color(25, 50, 75);
+		Color sabText = new Color(255,255,255);
+		
+		statsArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 15));
+		statsArea.setForeground(sabText);
+		statsArea.setBackground(sab);
 		statsArea.setVisible(true);
 		
 		statsFrame.setSize(400, 600);
@@ -101,6 +111,13 @@ public class ARTDGameMenuItems
 		invFrame.add(invArea, BorderLayout.CENTER);
 		invFrame.add(closeStats, BorderLayout.SOUTH);
 		
+		invArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 15));
+		Color sab = new Color(25, 50, 75);
+		Color sabText = new Color(255,255,255);
+		
+		invArea.setForeground(sabText);
+		invArea.setBackground(sab);
+		
 		invArea.setVisible(true);
 		
 		invFrame.setLocationRelativeTo(null);
@@ -111,7 +128,6 @@ public class ARTDGameMenuItems
 		invFrame.requestFocus();
 		
 		invArea.setText("");
-		System.out.println("ARTDGameMenuItems-Inventory: " + myChar.CharInfo.toString());
 		
 		invArea.setText("Gold: " + myChar.CharInfo.get(12)+"\n");
 		invArea.append("Gems: " + myChar.CharInfo.get(15)+"\n");
