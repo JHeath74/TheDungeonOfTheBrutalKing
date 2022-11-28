@@ -30,39 +30,41 @@ import javax.swing.JPanel;
 
 public class ARTDLoadSaveGame {
 
-	ARTDCharecter myChar = new ARTDCharecter();
+	
+
+	ARTDCharecter myChar = ARTDCharecter.Singleton();
 	String SavedGameDirectory = ("src\\AlternateRealityTheDungeon\\TextFiles\\SaveGame\\");
+
 	
 
 
 	public void StartGameLoadCharecter() throws IOException
 	{
-		
+
 		ArrayList<String> SaveLoadChar = new ArrayList<String>();
 		File chosenFile = getLastModified(SavedGameDirectory);
 
 		BufferedReader bufReader = new BufferedReader(new FileReader(chosenFile));
-		
+
 		String line = bufReader.readLine();
 		while (line != null) 
 		{	
-			
+
 			SaveLoadChar.add(line);
-			
+
 			line = bufReader.readLine(); 
-			System.out.println("Line: " + line);
-			//System.out.println("ArrayList: " + ARTDCharecter.CharInfo().toString());
+
 		}
-		
+
 
 		//ARTDCharecter.CharInfo().addAll(SaveLoadChar);
 		myChar.CharInfo.addAll(SaveLoadChar);
 		//System.out.println("ARTDLoadSaveGame: " + myChar.CharInfo().toString());
 		System.out.println("ARTDLoadSaveGame: " + myChar.CharInfo.toString());
-		System.out.println("Array:" + Arrays.toString(myChar.charArray()));
+
 		bufReader.close();
 
-		
+
 	}
 
 	public void SaveGame() throws IOException, ParseException {
@@ -83,7 +85,7 @@ public class ARTDLoadSaveGame {
 			FileWriter writer = new FileWriter(GameSaveDateTime);
 
 			for (String Charinfo : myChar.CharInfo) {
-			//for (String Charinfo : ARTDCharecter.CharInfo()) {
+				//for (String Charinfo : ARTDCharecter.CharInfo()) {
 				writer.write(Charinfo + System.lineSeparator());
 			}
 			writer.close();
@@ -161,27 +163,27 @@ public class ARTDLoadSaveGame {
 		loadGame.setVisible(true);
 
 	}
-	
+
 	public static File getLastModified(String SavedGameDirectory)
 	{
-	    File directory = new File(SavedGameDirectory);
-	    File[] files = directory.listFiles(File::isFile);
-	    long lastModifiedTime = Long.MIN_VALUE;
-	    File chosenFile = null;
+		File directory = new File(SavedGameDirectory);
+		File[] files = directory.listFiles(File::isFile);
+		long lastModifiedTime = Long.MIN_VALUE;
+		File chosenFile = null;
 
-	    if (files != null)
-	    {
-	        for (File file : files)
-	        {
-	            if (file.lastModified() > lastModifiedTime)
-	            {
-	                chosenFile = file;
-	                lastModifiedTime = file.lastModified();
-	            }
-	        }
-	    }
+		if (files != null)
+		{
+			for (File file : files)
+			{
+				if (file.lastModified() > lastModifiedTime)
+				{
+					chosenFile = file;
+					lastModifiedTime = file.lastModified();
+				}
+			}
+		}
 
-	    return chosenFile;
+		return chosenFile;
 	}
 
 }

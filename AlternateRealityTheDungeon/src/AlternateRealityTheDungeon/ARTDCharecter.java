@@ -4,7 +4,26 @@ import java.util.ArrayList;
 
 public class ARTDCharecter {
 	
+	private static ARTDCharecter single_instance = null;
 	ArrayList<String> CharInfo = new ArrayList<String>();
+	
+	private ARTDCharecter()
+	{
+
+	}
+
+	// Method
+	// Static method to create instance of Singleton class
+	public static ARTDCharecter Singleton()
+	{
+		// To ensure only one instance is created
+		if (single_instance == null) {
+			single_instance = new ARTDCharecter();
+		}
+		return single_instance;
+	}
+	
+	
 	
 	enum labels {
 		sta, chr, str, inti, wis, agi
@@ -51,20 +70,6 @@ public class ARTDCharecter {
 
 	};
 	
-	public String[] charArray()
-	{
-		String[] charinfoArray = {"45", "22"};
-		
-		return charinfoArray;
-		
-	}
 
-//	public static ArrayList<String> CharInfo()
-//	{
-//		ArrayList<String> CharInfo = new ArrayList<String>();
-//		
-//
-//		return CharInfo;
-//	}
 	 
 }
