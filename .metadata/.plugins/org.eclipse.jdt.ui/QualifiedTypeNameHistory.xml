@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.awt.GridBagLayout"/>
-    <fullyQualifiedTypeName name="java.io.Writer"/>
-    <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
-    <fullyQualifiedTypeName name="javax.swing.JComboBox"/>
-    <fullyQualifiedTypeName name="java.io.FileWriter"/>
     <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
     <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
@@ -60,4 +55,9 @@
     <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDCharecter"/>
     <fullyQualifiedTypeName name="java.awt.Font"/>
     <fullyQualifiedTypeName name="java.awt.Color"/>
+    <fullyQualifiedTypeName name="javax.swing.JTextPane"/>
+    <fullyQualifiedTypeName name="javax.swing.text.StyledDocument"/>
+    <fullyQualifiedTypeName name="javax.swing.text.Style"/>
+    <fullyQualifiedTypeName name="javax.swing.text.StyleConstants"/>
+    <fullyQualifiedTypeName name="javax.swing.text.BadLocationException"/>
 </qualifiedTypeNameHistroy>

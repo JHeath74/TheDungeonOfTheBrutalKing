@@ -22,8 +22,7 @@ public class ARTDCharecter {
 		}
 		return single_instance;
 	}
-	
-	
+		
 	
 	enum labels {
 		sta, chr, str, inti, wis, agi
