@@ -11,13 +11,8 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -29,13 +24,13 @@ import javax.swing.JTextField;
 
 public class ARTDMain {
 
-	private static final String SaveDirectoryPath = null;
+
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 
-		//String SaveDirectoryPath = "src//AlternateRealityTheDungeon//TextFiles//SaveGame//";
+		
 
-		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
+
 
 		//When a new game is started,  this is the file where the initial charecter information is stored		
 		String InitialCharecterSave = "src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt";
@@ -331,29 +326,6 @@ public class ARTDMain {
 		return stats;
 	}
 
-	//	public static File getLastModified()
-	//	{
-	//	    File directory = new File(SaveDirectoryPath);
-	//	    File[] files = directory.listFiles(File::isFile);
-	//	    long lastModifiedTime = Long.MIN_VALUE;
-	//	    File chosenFile = null;
-	//	    File recentlySavedFile = null;
-	//
-	//	    if (files != null)
-	//	    {
-	//	        for (File file : files)
-	//	        {
-	//	            if (file.lastModified() > lastModifiedTime)
-	//	            {
-	//	                chosenFile = file;
-	//	                lastModifiedTime = file.lastModified();
-	//	                
-	//	               
-	//	            }
-	//	        }
-	//	    }
-	//
-	//	    return chosenFile;
-	//	}
+
 
 }

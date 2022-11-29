@@ -1,4 +1,25 @@
 							Alternate Reality the Dungeon
+											
+											Money
+											
+GOLD:
+
+This is used to by most general in games items.  Such as weapons, armour, food, torches
+
+GEMS
+
+Harder to come by than gold but is used to enchant weapons, armour or a few other secret items
+
+											Misc
+											
+TORCHES:
+
+A dungeon is a very dark place.  You can't make it most places without them.  In a pinch can be used as a weapon.
+
+FOOD:
+
+How can any adventure expect to be successful on an empty stomach.  Besure to stock up on food.											
+											
 															
 							Charecter Stats
 							

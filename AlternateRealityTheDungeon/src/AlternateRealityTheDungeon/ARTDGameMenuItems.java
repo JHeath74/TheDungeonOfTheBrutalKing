@@ -5,17 +5,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.JTextComponent;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
+
 
 public class ARTDGameMenuItems
 {
@@ -26,7 +20,7 @@ public class ARTDGameMenuItems
 	public void Stats()
 	{
 		JFrame statsFrame = new JFrame("Charecter Stats");
-		//statsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 		
 		JTextArea statsArea = new JTextArea();
 		JButton closeStats = new JButton("Ok");
@@ -87,7 +81,6 @@ public class ARTDGameMenuItems
 		statsArea.setText("Name: " + myChar.CharInfo.get(0)+"\n");
 		statsArea.append("Class: " + myChar.CharInfo.get(1)+"\n" );
 		statsArea.append("Level: " + myChar.CharInfo.get(2)+"\n");
-		
 		statsArea.append("Experience: " + myChar.CharInfo.get(3)+"\n");
 		statsArea.append("Hit Points: " + myChar.CharInfo.get(4)+"\n");
 		statsArea.append("Stamina: " + myChar.CharInfo.get(5)+"\n");
@@ -116,6 +109,7 @@ public class ARTDGameMenuItems
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
+				myChar.CharInfo.set(11, "300");
 				invFrame.dispose();
 				
 			}
@@ -147,14 +141,17 @@ public class ARTDGameMenuItems
 		invFrame.requestFocus();
 		
 		invArea.setText("");
-		
-		
-		
+
+		for(int i =0; i < myChar.CharInfo.size(); i++)
+		{
+			System.out.println("i: " + myChar.CharInfo.toString());
+			myChar.CharInfo.set(3, "30");
+		}
 	      
 	    
 		invArea.setText("Gold: " + myChar.CharInfo.get(11)+"\n");
 		invArea.append("Gems: " + myChar.CharInfo.get(15)+"\n");
-		invArea.append("__________ Misc__________\n");
+		invArea.append("\t__________ Misc__________\n");
 		invArea.append("Food: " + myChar.CharInfo.get(13)+"\n");
 	    invArea.append("Torches: " + myChar.CharInfo.get(14)+"\n");
 		//invArea.append("Armour: " + myChar.CharInfo.get());

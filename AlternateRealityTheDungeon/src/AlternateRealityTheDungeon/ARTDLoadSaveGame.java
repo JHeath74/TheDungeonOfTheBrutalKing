@@ -8,20 +8,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -57,10 +49,10 @@ public class ARTDLoadSaveGame {
 		}
 
 
-		//ARTDCharecter.CharInfo().addAll(SaveLoadChar);
+
 		myChar.CharInfo.addAll(SaveLoadChar);
-		//System.out.println("ARTDLoadSaveGame: " + myChar.CharInfo().toString());
-		System.out.println("ARTDLoadSaveGame: " + myChar.CharInfo.toString());
+		
+	
 
 		bufReader.close();
 
@@ -85,7 +77,7 @@ public class ARTDLoadSaveGame {
 			FileWriter writer = new FileWriter(GameSaveDateTime);
 
 			for (String Charinfo : myChar.CharInfo) {
-				//for (String Charinfo : ARTDCharecter.CharInfo()) {
+				
 				writer.write(Charinfo + System.lineSeparator());
 			}
 			writer.close();
@@ -99,6 +91,9 @@ public class ARTDLoadSaveGame {
 	}
 
 	public void LoadGame() {
+		
+		ArrayList<String> LoadChar = new ArrayList<String>();
+		
 		JFrame loadGame = new JFrame("Load Game");
 		JPanel lg = new JPanel(new BorderLayout());
 		JButton load = new JButton("Load Game");
@@ -117,33 +112,43 @@ public class ARTDLoadSaveGame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				String gameInfo = loadGameSelection.getSelectedItem().toString();
-
-				try {
-					BufferedReader bufReader = new BufferedReader(
-							new FileReader("src\\AlternateRealityTheDungeon\\TextFiles\\SaveGame\\" + gameInfo));
-					String line = bufReader.readLine();
-					while (line != null) {
-						myChar.CharInfo.add(line);
-						//ARTDCharecter.CharInfo();
-						line = bufReader.readLine();
-					}
-					bufReader.close();
-
-				} catch (Exception e1) {
-
-				}
-
+				
+				
 				load.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-
+						
+						String gameInfo = loadGameSelection.getSelectedItem().toString();	
+						
 						if (gameInfo == "InitialCharecterSave.txt") {
 							JOptionPane.showConfirmDialog(null,
 									"This will reload the original saved game and restart your character",
 									"Reload Save Game", JOptionPane.YES_NO_OPTION);
+						
+						
+						try {
+							BufferedReader bufReader = new BufferedReader(
+									new FileReader(SavedGameDirectory + gameInfo));
+							String line = bufReader.readLine();
+							while (line != null) {
+								LoadChar.add(line);
+							
+								line = bufReader.readLine();
+							}
+							
+							myChar.CharInfo.addAll(LoadChar);
+							
+							bufReader.close();
+
+						} catch (Exception e1) {
+
 						}
+						}
+						
+						
+						
+
 						JOptionPane.showMessageDialog(null, "Game Loaded: " + gameInfo);
 
 						loadGame.dispose();

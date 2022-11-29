@@ -308,6 +308,7 @@ public class ARTDMenu extends JPanel {
 				p.add(helpbutton, BorderLayout.SOUTH);
 				helpbutton.setSize(120, 120);
 
+				frame.setLocationRelativeTo(null);
 				frame.pack();
 				frame.setVisible(true);
 
