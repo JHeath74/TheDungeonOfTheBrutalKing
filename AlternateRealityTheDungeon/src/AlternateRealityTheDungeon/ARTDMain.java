@@ -96,7 +96,7 @@ public class ARTDMain {
 
 			toonstats.setEditable(false);
 
-			String[] toonclass = ARTDCharecter.toonclass;
+			String[] toonclass = ARTDClass.toonclass;
 
 			JComboBox<String> charectorClass = new JComboBox<String>(toonclass);
 
@@ -110,22 +110,22 @@ public class ARTDMain {
 					String toonClass = charectorClass.getSelectedItem().toString();
 
 					if (toonClass == toonclass[0]) {
-						toonclassDescription.setText(ARTDCharecter.toonclassDescription[0]);
+						toonclassDescription.setText(ARTDPaladin.PaladinClassDescription);
 					}
 					if (toonClass == toonclass[1]) {
-						toonclassDescription.setText(ARTDCharecter.toonclassDescription[1]);
+						toonclassDescription.setText(ARTDCleric.ClericClassDescription);
 					}
 					if (toonClass == toonclass[2]) {
-						toonclassDescription.setText(ARTDCharecter.toonclassDescription[2]);
+						toonclassDescription.setText(ARTDRogue.RogueClassDescription);
 					}
 					if (toonClass == toonclass[3]) {
-						toonclassDescription.setText(ARTDCharecter.toonclassDescription[3]);
+						toonclassDescription.setText(ARTDHunter.HunterClassDescription);
 					}
 					if (toonClass == toonclass[4]) {
-						toonclassDescription.setText(ARTDCharecter.toonclassDescription[4]);
+						toonclassDescription.setText(ARTDWarrior.WarriorClassDescription);
 					}
 					if (toonClass == toonclass[5]) {
-						toonclassDescription.setText(ARTDCharecter.toonclassDescription[5]);
+						toonclassDescription.setText(ARTDBard.BardClassDescription);
 					}
 
 				}

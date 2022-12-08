@@ -22,16 +22,10 @@ import javax.swing.JPanel;
 
 public class ARTDLoadSaveGame {
 
-	
-
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
 	String SavedGameDirectory = ("src\\AlternateRealityTheDungeon\\TextFiles\\SaveGame\\");
 
-	
-
-
-	public void StartGameLoadCharecter() throws IOException
-	{
+	public void StartGameLoadCharecter() throws IOException {
 
 		ArrayList<String> SaveLoadChar = new ArrayList<String>();
 		File chosenFile = getLastModified(SavedGameDirectory);
@@ -39,23 +33,17 @@ public class ARTDLoadSaveGame {
 		BufferedReader bufReader = new BufferedReader(new FileReader(chosenFile));
 
 		String line = bufReader.readLine();
-		while (line != null) 
-		{	
+		while (line != null) {
 
 			SaveLoadChar.add(line);
 
-			line = bufReader.readLine(); 
+			line = bufReader.readLine();
 
 		}
 
-
-
 		myChar.CharInfo.addAll(SaveLoadChar);
-		
-	
 
 		bufReader.close();
-
 
 	}
 
@@ -77,7 +65,7 @@ public class ARTDLoadSaveGame {
 			FileWriter writer = new FileWriter(GameSaveDateTime);
 
 			for (String Charinfo : myChar.CharInfo) {
-				
+
 				writer.write(Charinfo + System.lineSeparator());
 			}
 			writer.close();
@@ -91,9 +79,9 @@ public class ARTDLoadSaveGame {
 	}
 
 	public void LoadGame() {
-		
+
 		ArrayList<String> LoadChar = new ArrayList<String>();
-		
+
 		JFrame loadGame = new JFrame("Load Game");
 		JPanel lg = new JPanel(new BorderLayout());
 		JButton load = new JButton("Load Game");
@@ -112,42 +100,62 @@ public class ARTDLoadSaveGame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
-				
 				load.addActionListener(new ActionListener() {
 
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						
-						String gameInfo = loadGameSelection.getSelectedItem().toString();	
-						
-						if (gameInfo == "InitialCharecterSave.txt") {
-							JOptionPane.showConfirmDialog(null,
+
+						String gameInfo = loadGameSelection.getSelectedItem().toString();
+
+						System.out.println("Game Info: " + gameInfo);
+
+						if (gameInfo.equals("InitialCharecterSave.txt")) {
+
+							int response = JOptionPane.showConfirmDialog(null,
 									"This will reload the original saved game and restart your character",
 									"Reload Save Game", JOptionPane.YES_NO_OPTION);
-						
-						
-						try {
-							BufferedReader bufReader = new BufferedReader(
-									new FileReader(SavedGameDirectory + gameInfo));
-							String line = bufReader.readLine();
-							while (line != null) {
-								LoadChar.add(line);
-							
-								line = bufReader.readLine();
+							if (response == JOptionPane.YES_OPTION) {
+								try {
+									BufferedReader bufReader = new BufferedReader(
+											new FileReader(SavedGameDirectory + gameInfo));
+									String line = bufReader.readLine();
+									while (line != null) {
+										LoadChar.add(line);
+
+										line = bufReader.readLine();
+									}
+
+									myChar.CharInfo.addAll(LoadChar);
+
+									bufReader.close();
+
+								} catch (Exception e1) {
+
+								}
+							} else {
+
 							}
-							
-							myChar.CharInfo.addAll(LoadChar);
-							
-							bufReader.close();
+						} else {
 
-						} catch (Exception e1) {
+							try {
+								BufferedReader bufReader = new BufferedReader(
+										new FileReader(SavedGameDirectory + gameInfo));
+								String line = bufReader.readLine();
+								while (line != null) {
+									LoadChar.add(line);
+
+									line = bufReader.readLine();
+								}
+
+								myChar.CharInfo.addAll(LoadChar);
+
+								bufReader.close();
+
+							} catch (Exception e1) {
+
+							}
 
 						}
-						}
-						
-						
-						
 
 						JOptionPane.showMessageDialog(null, "Game Loaded: " + gameInfo);
 
@@ -169,19 +177,15 @@ public class ARTDLoadSaveGame {
 
 	}
 
-	public static File getLastModified(String SavedGameDirectory)
-	{
+	public static File getLastModified(String SavedGameDirectory) {
 		File directory = new File(SavedGameDirectory);
 		File[] files = directory.listFiles(File::isFile);
 		long lastModifiedTime = Long.MIN_VALUE;
 		File chosenFile = null;
 
-		if (files != null)
-		{
-			for (File file : files)
-			{
-				if (file.lastModified() > lastModifiedTime)
-				{
+		if (files != null) {
+			for (File file : files) {
+				if (file.lastModified() > lastModifiedTime) {
 					chosenFile = file;
 					lastModifiedTime = file.lastModified();
 				}
