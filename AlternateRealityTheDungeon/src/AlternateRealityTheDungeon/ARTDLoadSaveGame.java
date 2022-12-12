@@ -43,6 +43,8 @@ public class ARTDLoadSaveGame {
 
 		myChar.CharInfo.addAll(SaveLoadChar);
 
+		
+		
 		bufReader.close();
 
 	}
