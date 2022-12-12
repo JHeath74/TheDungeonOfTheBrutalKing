@@ -1,4 +1,4 @@
-package AlternateRealityTheDungeon;
+package ARTDCharecterClass;
 
 public class ARTDWarrior {
 

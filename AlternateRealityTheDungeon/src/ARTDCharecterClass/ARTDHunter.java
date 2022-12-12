@@ -1,4 +1,6 @@
-package AlternateRealityTheDungeon;
+package ARTDCharecterClass;
+
+import AlternateRealityTheDungeon.ARTDClass;
 
 public class ARTDHunter extends ARTDClass
 {

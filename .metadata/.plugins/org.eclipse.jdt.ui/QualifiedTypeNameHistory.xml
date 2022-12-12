@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="java.text.DateFormat"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="java.util.Calendar"/>
-    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
     <fullyQualifiedTypeName name="java.io.FileReader"/>
     <fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
     <fullyQualifiedTypeName name="java.awt.GraphicsDevice"/>
@@ -60,4 +55,9 @@
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDClass"/>
     <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDCleric"/>
+    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDWeapons"/>
+    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDArmor"/>
+    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDArmour"/>
+    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDSpells"/>
+    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDMaps"/>
 </qualifiedTypeNameHistroy>

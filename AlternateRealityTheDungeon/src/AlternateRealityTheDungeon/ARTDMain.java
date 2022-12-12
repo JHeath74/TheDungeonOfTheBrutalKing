@@ -22,6 +22,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import ARTDCharecterClass.ARTDCleric;
+import ARTDCharecterClass.ARTDHunter;
+import ARTDCharecterClass.ARTDPaladin;
+import ARTDCharecterClass.ARTDRogue;
+import ARTDCharecterClass.ARTDWarrior;
+
 public class ARTDMain {
 
 
