@@ -7,6 +7,9 @@ public class ARTDCharecter {
 	private static ARTDCharecter single_instance = null;
 	ArrayList<String> CharInfo = new ArrayList<String>();
 	
+	
+	//Add Magic Points 
+	
 	// CharInfo[0] = Charecter Name
 	// CharInfo[1] = Class
 	// CharInfo[2] = Level

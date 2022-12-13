@@ -4,18 +4,21 @@ import java.util.Random;
 
 import AlternateRealityTheDungeon.ARTDSpells;
 
-public class ARTDFireball extends ARTDSpells{
+public class ARTDCold_Blast extends ARTDSpells
+{
 
 	int requiredint;
 	int damagecaused;
 	
-	public ARTDFireball() {
-		
-		requiredint = 15;
+	public ARTDCold_Blast() 
+	{
+		requiredint = 30;
 		
 		
 		Random rn = new Random();
-		damagecaused = rn.nextInt(10) + 1;
+		damagecaused = rn.nextInt(30) + 1;
+		
+		
 	}
 
 }

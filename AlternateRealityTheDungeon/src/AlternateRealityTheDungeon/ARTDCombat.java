@@ -2,12 +2,9 @@ package AlternateRealityTheDungeon;
 
 public class ARTDCombat
 {
-	
-	
+		
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
-	
-	
-	
+	ARTDMenu myMenu = new ARTDMenu();
 	
 	public ARTDCombat()
 	{
@@ -18,12 +15,19 @@ public class ARTDCombat
 	}
 
 	
-	public void combatEncounter(int HP, int EnemiesHP) {
+	public void combatEncounter(int HP, int EnemiesHP) 
+	{
 	
+		
+		
+		
 		while(HP > 0 || EnemiesHP > 0 )
 		{
 			
+			
+			
 		}
+		
 		
 		
 	}

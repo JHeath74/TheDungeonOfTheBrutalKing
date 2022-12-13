@@ -1,6 +1,8 @@
-package AlternateRealityTheDungeon;
+package ARTDCharecterClass;
 
-public class ARTDBard {
+import AlternateRealityTheDungeon.ARTDClass;
+
+public class ARTDBard extends ARTDClass{
 	
 	
 	int sta; //Stamina

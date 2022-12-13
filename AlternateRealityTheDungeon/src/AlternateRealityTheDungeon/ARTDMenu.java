@@ -3,6 +3,11 @@ package AlternateRealityTheDungeon;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.Frame;
+import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -33,6 +38,7 @@ import javax.swing.WindowConstants;
 public class ARTDMenu extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	ARTDCharecter myChar = ARTDCharecter.Singleton();
 
 
 	public ARTDMenu() {
@@ -52,7 +58,22 @@ public class ARTDMenu extends JPanel {
 		JPanel panel = new JPanel(new BorderLayout());
 		JPanel l = new JPanel(new FlowLayout());
 		JPanel s = new JPanel(new FlowLayout());
-
+		
+	    JTextArea messagearea = new JTextArea(); 
+	    messagearea.setLineWrap(true);
+	    messagearea.setWrapStyleWord(true);
+	    messagearea.setEditable(false);
+	    
+	    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	    double width = screenSize.getWidth();
+	    
+	   
+	
+	   	Font font = new Font("Times New Roman", Font.BOLD, 20);
+        messagearea.setFont(font);	    
+	    messagearea.setLocation(0,800);
+	    messagearea.setSize((int) width, 250);
+	    
 		Dimension windowSize = frame.getMaximumSize();
 
 
@@ -391,6 +412,7 @@ public class ARTDMenu extends JPanel {
 		frame.add(panel, BorderLayout.NORTH);
 		panel.add(l);
 		panel.add(s);
+		frame.add(messagearea, BorderLayout.SOUTH);
 
 		frame.setSize(windowSize);
 

@@ -22,6 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import ARTDCharecterClass.ARTDBard;
 import ARTDCharecterClass.ARTDCleric;
 import ARTDCharecterClass.ARTDHunter;
 import ARTDCharecterClass.ARTDPaladin;
@@ -33,10 +34,6 @@ public class ARTDMain {
 
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-
-		
-
-
 
 		//When a new game is started,  this is the file where the initial charecter information is stored		
 		String InitialCharecterSave = "src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt";
