@@ -109,7 +109,7 @@ public class ARTDGameMenuItems
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
-				myChar.CharInfo.set(11, "300");
+			
 				invFrame.dispose();
 				
 			}
@@ -142,11 +142,11 @@ public class ARTDGameMenuItems
 		
 		invArea.setText("");
 
-		for(int i =0; i < myChar.CharInfo.size(); i++)
-		{
-			System.out.println("i: " + myChar.CharInfo.toString());
-			myChar.CharInfo.set(3, "30");
-		}
+//		for(int i =0; i < myChar.CharInfo.size(); i++)
+//		{
+//			System.out.println("i: " + myChar.CharInfo.toString());
+//			myChar.CharInfo.set(3, "30");
+//		}
 	      
 	    
 		invArea.setText("Gold: " + myChar.CharInfo.get(11)+"\n");

@@ -109,7 +109,7 @@ public class ARTDLoadSaveGame {
 
 						String gameInfo = loadGameSelection.getSelectedItem().toString();
 
-						System.out.println("Game Info: " + gameInfo);
+				
 
 						if (gameInfo.equals("InitialCharecterSave.txt")) {
 

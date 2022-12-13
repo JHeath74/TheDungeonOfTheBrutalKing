@@ -1,12 +1,11 @@
 package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+
 import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.Frame;
-import java.awt.GraphicsEnvironment;
+
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +19,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
+
 import java.util.Objects;
 
 import javax.swing.JButton;
@@ -31,6 +31,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.WindowConstants;
 
@@ -43,6 +44,13 @@ public class ARTDMenu extends JPanel {
 
 	public ARTDMenu() {
 
+		JFrame frame = new JFrame("Alternate Reality: The Dungeon");
+		frame.setLayout(new BorderLayout());
+
+	    Font font = new Font("Times New Roman", Font.BOLD, 20);
+	    Dimension windowSize = frame.getMaximumSize();
+		frame.setSize(windowSize);
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
 		ARTDGameMenuItems myGameMenuItems = new ARTDGameMenuItems();
@@ -54,27 +62,66 @@ public class ARTDMenu extends JPanel {
 			e2.printStackTrace();
 		}
 		
-		JFrame frame = new JFrame("Alternate Reality: The Dungeon");
-		JPanel panel = new JPanel(new BorderLayout());
-		JPanel l = new JPanel(new FlowLayout());
-		JPanel s = new JPanel(new FlowLayout());
+//		toonstats.append("\nSTAMINA: \t\t" + stat[0]);
+//		toonstats.append("\nCHARISMA: \t\t" + stat[1]);
+//		toonstats.append("\nSTRENGTH: \t\t" + stat[2]);
+//		toonstats.append("\nINTELLIGENCE: \t" + stat[3]);
+//		toonstats.append("\nWISDOM: \t\t" + stat[4]);
+//		toonstats.append("\nAGILITY: \t\t" + stat[5]);
 		
+		// CharInfo[0] = Charecter Name
+		// CharInfo[1] = Class
+		// CharInfo[2] = Level
+		// CharInfo[3] = Experience
+		// CharInfo[4] = Hit Points
+		// CharInfo[5] = Stat: Stamina
+		// CharInfo[6] = Stat: Charisma
+		// CharInfo[7] = Stat: Strength
+		// CharInfo[8] = Stat: Intelligence
+		// CharInfo[9] = Stat: Wisdom
+		// CharInfo[10] = Stat: Agility
+		// CharInfo[11] = Gold
+		// CharInfo[12] = Food
+		// CharInfo[13] = Water
+		// CharInfo[14] = Torches
+		// CharInfo[15] = Gems
+		
+		
+		
+		JTextField CharecterInfo = new JTextField();
+		CharecterInfo.setFont(font);
+		CharecterInfo.setBackground(Color.GRAY);
+		CharecterInfo.setEditable(false);
+
+		CharecterInfo.setText("Name: " + myChar.CharInfo.get(0)+"\t\t" + "Class: "+ myChar.CharInfo.get(1) + "\t\t"+" Level: " + myChar.CharInfo.get(2));
+		
+		JTextField charStats = new JTextField();
+	    charStats.setFont(font);
+	    charStats.setBackground(Color.red);
+		charStats.setEditable(false);
+
+
+		charStats.setText("Stamina: " + myChar.CharInfo.get(5) + "\t\t"+ "Charisma: " + myChar.CharInfo.get(6) + "\t\t"+"Strength: " +myChar.CharInfo.get(7) + "\t\t"+ "Intelligence: " + myChar.CharInfo.get(8) 
+		+ "\t\t"+ "Wisdom"+ myChar.CharInfo.get(9) + "\t\t"+"Agility: " + myChar.CharInfo.get(10));
+		
+		
+		JTextField charInfostats = new JTextField();
+		charInfostats.setFont(font);
+		charInfostats.setEditable(false);
+		charInfostats.setBackground(Color.yellow);
+		
+		charInfostats.setText("Experience: " + myChar.CharInfo.get(3) + "\t\t" + "Hit Points: " + myChar.CharInfo.get(4));
+		
+		
+		//Text Area at the bottom of the play window
 	    JTextArea messagearea = new JTextArea(); 
 	    messagearea.setLineWrap(true);
 	    messagearea.setWrapStyleWord(true);
 	    messagearea.setEditable(false);
-	    
-	    Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	    double width = screenSize.getWidth();
-	    
-	   
-	
-	   	Font font = new Font("Times New Roman", Font.BOLD, 20);
         messagearea.setFont(font);	    
-	    messagearea.setLocation(0,800);
-	    messagearea.setSize((int) width, 250);
+
 	    
-		Dimension windowSize = frame.getMaximumSize();
+		
 
 
 
@@ -107,9 +154,13 @@ public class ARTDMenu extends JPanel {
 		newGameMenuItem.getAccessibleContext().setAccessibleDescription("New Game");
 		newGameMenuItem.addActionListener(new ActionListener() {
 
+			
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+			
+				
 				int result = JOptionPane.showConfirmDialog(frame,
 						"Are you sure you wish to delete your current game and start a new one?", "Start New Game?",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -329,7 +380,7 @@ public class ARTDMenu extends JPanel {
 				p.add(helpbutton, BorderLayout.SOUTH);
 				helpbutton.setSize(120, 120);
 
-				frame.setLocationRelativeTo(null);
+			//	frame.setLocationRelativeTo(null);
 				frame.pack();
 				frame.setVisible(true);
 
@@ -409,15 +460,14 @@ public class ARTDMenu extends JPanel {
 		// Add Menubar and Display JFrame
 
 		frame.setJMenuBar(menuBar);
-		frame.add(panel, BorderLayout.NORTH);
-		panel.add(l);
-		panel.add(s);
+
+		
+		frame.add(CharecterInfo, BorderLayout.NORTH);
+		frame.add(charStats, BorderLayout.NORTH);
+		frame.add(charInfostats, BorderLayout.NORTH);
 		frame.add(messagearea, BorderLayout.SOUTH);
-
-		frame.setSize(windowSize);
-
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		frame.setLayout(null);
+		
+		
 		frame.setVisible(true);
 	}
 
