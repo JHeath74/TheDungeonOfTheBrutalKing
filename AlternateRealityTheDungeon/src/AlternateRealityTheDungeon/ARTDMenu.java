@@ -1,12 +1,9 @@
 package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 
 import java.awt.Font;
-
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -33,6 +30,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
+
 import javax.swing.WindowConstants;
 
 
@@ -40,12 +38,15 @@ public class ARTDMenu extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
+	ARDTGamePreferences myPreferences = new ARDTGamePreferences();
 
 
 	public ARTDMenu() {
 
 		JFrame frame = new JFrame("Alternate Reality: The Dungeon");
 		frame.setLayout(new BorderLayout());
+		
+		frame.setForeground(myPreferences.colorBrown);
 
 	    Font font = new Font("Times New Roman", Font.BOLD, 20);
 	    Dimension windowSize = frame.getMaximumSize();
@@ -54,6 +55,11 @@ public class ARTDMenu extends JPanel {
 
 		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
 		ARTDGameMenuItems myGameMenuItems = new ARTDGameMenuItems();
+		
+		JPanel p1 = new JPanel(new BorderLayout());
+		JPanel p2 = new JPanel(new BorderLayout());
+		JPanel p3 = new JPanel(new BorderLayout());
+		JPanel p4 = new JPanel(new BorderLayout());
 
 		try {
 			mygamestate.StartGameLoadCharecter();
@@ -88,29 +94,29 @@ public class ARTDMenu extends JPanel {
 		
 		
 		
-		JTextField CharecterInfo = new JTextField();
-		CharecterInfo.setFont(font);
-		CharecterInfo.setBackground(Color.GRAY);
-		CharecterInfo.setEditable(false);
+		JTextField CharNameClassLevel = new JTextField();
+		CharNameClassLevel.setFont(font);
+		CharNameClassLevel.setBackground(myPreferences.colorLightBrown);
+		CharNameClassLevel.setEditable(false);
 
-		CharecterInfo.setText("Name: " + myChar.CharInfo.get(0)+"\t\t" + "Class: "+ myChar.CharInfo.get(1) + "\t\t"+" Level: " + myChar.CharInfo.get(2));
+		CharNameClassLevel.setText("Name: " + myChar.CharInfo.get(0)+"\t\t" + "Class: "+ myChar.CharInfo.get(1) + "\t\t"+" Level: " + myChar.CharInfo.get(2)  + "\t\t" + "Experience: " + myChar.CharInfo.get(3));
 		
-		JTextField charStats = new JTextField();
-	    charStats.setFont(font);
-	    charStats.setBackground(Color.red);
-		charStats.setEditable(false);
+		JTextField CharStats = new JTextField();
+		CharStats.setFont(font);
+		CharStats.setBackground(myPreferences.colorLightYellow);
+		CharStats.setEditable(false);
 
 
-		charStats.setText("Stamina: " + myChar.CharInfo.get(5) + "\t\t"+ "Charisma: " + myChar.CharInfo.get(6) + "\t\t"+"Strength: " +myChar.CharInfo.get(7) + "\t\t"+ "Intelligence: " + myChar.CharInfo.get(8) 
-		+ "\t\t"+ "Wisdom"+ myChar.CharInfo.get(9) + "\t\t"+"Agility: " + myChar.CharInfo.get(10));
+		CharStats.setText("Stamina: " + myChar.CharInfo.get(5) + "\t\t"+ "Charisma: " + myChar.CharInfo.get(6) + "\t\t"+"Strength: " +myChar.CharInfo.get(7) + "\t\t"+ "Intelligence: " + myChar.CharInfo.get(8) 
+		+ "\t\t"+ "Wisdom: "+ myChar.CharInfo.get(9) + "\t\t"+"Agility: " + myChar.CharInfo.get(10));
 		
 		
-		JTextField charInfostats = new JTextField();
-		charInfostats.setFont(font);
-		charInfostats.setEditable(false);
-		charInfostats.setBackground(Color.yellow);
+		JTextField CharXPHPGold = new JTextField();
+		CharXPHPGold.setFont(font);
+		CharXPHPGold.setEditable(false);
+		CharXPHPGold.setBackground(myPreferences.colorLightBrown);
 		
-		charInfostats.setText("Experience: " + myChar.CharInfo.get(3) + "\t\t" + "Hit Points: " + myChar.CharInfo.get(4));
+		CharXPHPGold.setText("Hit Points: " + myChar.CharInfo.get(4) + "\t\t" + "Gold: " + myChar.CharInfo.get(11) +"\t\t"+ "Gems: " + myChar.CharInfo.get(12));
 		
 		
 		//Text Area at the bottom of the play window
@@ -461,10 +467,18 @@ public class ARTDMenu extends JPanel {
 
 		frame.setJMenuBar(menuBar);
 
+		frame.add(p1, BorderLayout.NORTH);
+		p1.add(p2, BorderLayout.NORTH);
+		p1.add(p3, BorderLayout.CENTER);
+		p1.add(p4, BorderLayout.SOUTH);
+		p2.add(CharNameClassLevel);
+		p3.add(CharStats);
+		p4.add(CharXPHPGold);
 		
-		frame.add(CharecterInfo, BorderLayout.NORTH);
-		frame.add(charStats, BorderLayout.NORTH);
-		frame.add(charInfostats, BorderLayout.NORTH);
+//		frame.add(CharNameClassLevel, BorderLayout.NORTH);
+//		frame.add(CharStats, BorderLayout.NORTH);
+//		frame.add(CharXPHPGold, BorderLayout.NORTH);
+
 		frame.add(messagearea, BorderLayout.SOUTH);
 		
 		

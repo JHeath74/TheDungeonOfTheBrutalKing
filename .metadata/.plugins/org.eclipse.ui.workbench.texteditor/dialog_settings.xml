@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Inventory"/>
+		<item key="selection" value="Wisdom"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<item key="wrap" value="true"/>
 		<item key="incremental" value="false"/>
 		<list key="findhistory">
+			<item value="Wisdom"/>
+			<item value="grey"/>
+			<item value="Jtextfield"/>
+			<item value="yell"/>
+			<item value="yellow"/>
 			<item value="inventory"/>
 			<item value="Inventory"/>
 			<item value="System.out.println"/>
@@ -18,11 +23,6 @@
 			<item value="panel"/>
 			<item value="load"/>
 			<item value="Line"/>
-			<item value="ARTDLoadSaveGame11"/>
-			<item value="11"/>
-			<item value="LoadSaveGame"/>
-			<item value="SaveDirectoryPath"/>
-			<item value="initial"/>
 		</list>
 		<list key="replacehistory">
 			<item value="LoadSavedGameMenuItem"/>
@@ -30,7 +30,7 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="-482"/>
+		<item key="DIALOG_X_ORIGIN" value="-173"/>
 		<item key="DIALOG_Y_ORIGIN" value="235"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
