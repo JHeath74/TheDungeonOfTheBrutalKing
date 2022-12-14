@@ -19,6 +19,7 @@ import java.text.ParseException;
 
 import java.util.Objects;
 
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -30,7 +31,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
-
+import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
 
@@ -99,7 +100,6 @@ public class ARTDMenu extends JPanel {
 		CharNameClassLevel.setBackground(myPreferences.colorLightBrown);
 		CharNameClassLevel.setEditable(false);
 
-		CharNameClassLevel.setText("Name: " + myChar.CharInfo.get(0)+"\t\t" + "Class: "+ myChar.CharInfo.get(1) + "\t\t"+" Level: " + myChar.CharInfo.get(2)  + "\t\t" + "Experience: " + myChar.CharInfo.get(3));
 		
 		JTextField CharStats = new JTextField();
 		CharStats.setFont(font);
@@ -107,8 +107,6 @@ public class ARTDMenu extends JPanel {
 		CharStats.setEditable(false);
 
 
-		CharStats.setText("Stamina: " + myChar.CharInfo.get(5) + "\t\t"+ "Charisma: " + myChar.CharInfo.get(6) + "\t\t"+"Strength: " +myChar.CharInfo.get(7) + "\t\t"+ "Intelligence: " + myChar.CharInfo.get(8) 
-		+ "\t\t"+ "Wisdom: "+ myChar.CharInfo.get(9) + "\t\t"+"Agility: " + myChar.CharInfo.get(10));
 		
 		
 		JTextField CharXPHPGold = new JTextField();
@@ -116,8 +114,25 @@ public class ARTDMenu extends JPanel {
 		CharXPHPGold.setEditable(false);
 		CharXPHPGold.setBackground(myPreferences.colorLightBrown);
 		
-		CharXPHPGold.setText("Hit Points: " + myChar.CharInfo.get(4) + "\t\t" + "Gold: " + myChar.CharInfo.get(11) +"\t\t"+ "Gems: " + myChar.CharInfo.get(12));
 		
+		
+		
+		ActionListener task = new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+            	CharNameClassLevel.setText("Name: " + myChar.CharInfo.get(0)+"\t\t" + "Class: "+ myChar.CharInfo.get(1) + "\t\t"+" Level: " + myChar.CharInfo.get(2)
+            	+ "\t\t" + "Experience: " + myChar.CharInfo.get(3));
+        		
+            	
+            	CharStats.setText("Stamina: " + myChar.CharInfo.get(5) + "\t\t"+ "Charisma: " + myChar.CharInfo.get(6)
+            	+ "\t\t"+"Strength: " +myChar.CharInfo.get(7) + "\t\t"+ "Intelligence: " + myChar.CharInfo.get(8) 
+        		+ "\t\t"+ "Wisdom: "+ myChar.CharInfo.get(9) + "\t\t"+"Agility: " + myChar.CharInfo.get(10));
+        		
+            	CharXPHPGold.setText("Hit Points: " + myChar.CharInfo.get(4) + "\t\t" + "Gold: " + myChar.CharInfo.get(11) +"\t\t"+ "Gems: " + myChar.CharInfo.get(12));
+            }
+		};
+		Timer timer = new Timer(100 ,task); // Execute task each 100 miliseconds
+		timer.setRepeats(true);
+		timer.start();
 		
 		//Text Area at the bottom of the play window
 	    JTextArea messagearea = new JTextArea(); 
