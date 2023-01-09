@@ -106,8 +106,6 @@ public class ARTDMenu extends JPanel {
 		CharStats.setBackground(myPreferences.colorLightYellow);
 		CharStats.setEditable(false);
 
-
-		
 		
 		JTextField CharXPHPGold = new JTextField();
 		CharXPHPGold.setFont(font);

@@ -1,9 +1,11 @@
 package ARTDCharecterClass;
 
+import AlternateRealityTheDungeon.ARTDCharecter;
 import AlternateRealityTheDungeon.ARTDClass;
 
 public class ARTDRogue extends ARTDClass
 {
+	ARTDCharecter myChar = new ARTDCharecter();
 
 	int sta; //Stamina
 	int chr; //Charisma
@@ -18,6 +20,8 @@ public class ARTDRogue extends ARTDClass
 	public ARTDRogue()
 	{
 		
+		int Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
+		
 		charClass = "Rogue";
 		
 		RogueClassDescription = "As adventurers, " + ARTDRogue.charClass + " fall on both sides of the law. Some are hardened criminals "
@@ -25,17 +29,13 @@ public class ARTDRogue extends ARTDClass
 				+ "from the law. Others have learned and perfected their skills with the explicit purpose of infiltrating "
 				+ "ancient ruins and hidden crypts in search of treasure. \n\n"
 				+ "AGILITY (AGI) followed by Intelligence are important stats for a " + ARTDRogue.charClass;
-		
-		//A multiplier for using weapons, encounters and opening chests
-		sta = 1;
-		chr = 1;
-		str = 1;
-		inti = 3;
-		wis = 1;
-		agi = 3;
-			
-		
-		
+
+	}
+
+	@Override
+	public double Heal() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	

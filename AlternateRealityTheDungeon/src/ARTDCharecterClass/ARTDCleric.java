@@ -1,9 +1,11 @@
 package ARTDCharecterClass;
 
+import AlternateRealityTheDungeon.ARTDCharecter;
 import AlternateRealityTheDungeon.ARTDClass;
 
 public class ARTDCleric extends ARTDClass {
 	
+	ARTDCharecter myChar = new ARTDCharecter();
 	
 	int sta; //Stamina
 	int chr; //Charisma
@@ -11,6 +13,9 @@ public class ARTDCleric extends ARTDClass {
 	int inti; //Intelligence
 	int wis; //Wisdom
 	int agi; //Agility
+	
+	
+	int Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
 	
 	public static String charclass;
 	
@@ -27,15 +32,14 @@ public class ARTDCleric extends ARTDClass {
 				+ " also able to repel or control undead creatures."
 				+ "	\n\nWisdom (WIS) is your most important stat,\n followed closely by INTELLIGENCE (INTI).";
 		
-		//A multiplier for using weapons, encounters and casting spells
-		sta = 1;
-		chr = 1;
-		str = 1;
-		inti = 3;
-		wis = 3;
-		agi = 1;
 		
-		
+	}
+	
+	public double Heal()
+	{
+	
+		double Heal = inti + 10 + Herolevel;  
+		return Heal;
 	}
 	
 

@@ -7,4 +7,43 @@ package AlternateRealityTheDungeon;
 public class ARTDEnemies 
 {
 
+	double sta;
+	double chr;
+	double str;
+	double inti;
+	double wis;
+	double agi;
+	double basedamage;
+
+	
+	public ARTDEnemies()
+	{
+		double sta;
+		double chr;
+		double str;
+		double inti;
+		double wis;
+		double agi;
+		double basedamage;
+	}
+	
+	public double attackdamage(double str, double basedamage)
+	{
+		
+		double attackdamage = str + basedamage;
+		
+		return attackdamage;
+	}
+	
+	public double defenseToDamage(double str, double agi)
+	{
+		
+		double defenseToDamage = str+agi;
+		
+		return defenseToDamage;
+	}
+	
+	
+			
+	
 }

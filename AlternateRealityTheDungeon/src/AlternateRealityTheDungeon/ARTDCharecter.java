@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ARTDCharecter {
 	
 	private static ARTDCharecter single_instance = null;
-	ArrayList<String> CharInfo = new ArrayList<String>();
+	public ArrayList<String> CharInfo = new ArrayList<String>();
 	
 	
 	//Add Magic Points 
@@ -27,7 +27,7 @@ public class ARTDCharecter {
 	// CharInfo[14] = Torches
 	// CharInfo[15] = Gems
 	
-	private ARTDCharecter()
+	public ARTDCharecter()
 	{
 
 	}
@@ -43,6 +43,7 @@ public class ARTDCharecter {
 		return single_instance;
 	}
 		
+	
 
 
 

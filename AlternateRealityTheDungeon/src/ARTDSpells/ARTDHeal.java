@@ -14,10 +14,7 @@ public class ARTDHeal extends ARTDSpells {
 	public ARTDHeal() 
 	{
 		
-		Random rn = new Random();
-		healamount = rn.nextInt(10) + 1;
-		
-		int requiredint = 20;
+
 		
 		
 	}

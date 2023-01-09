@@ -1,5 +1,6 @@
 package ARTDCharecterClass;
 
+import AlternateRealityTheDungeon.ARTDCharecter;
 import AlternateRealityTheDungeon.ARTDClass;
 
 public class ARTDPaladin extends ARTDClass 
@@ -11,11 +12,15 @@ public class ARTDPaladin extends ARTDClass
 	int wis; //Wisdom
 	int agi; //Agility
 
+	ARTDCharecter myChar = new ARTDCharecter();
+	
 	public static String charClass = "Paladin";
 	
 	public static String PaladinClassDescription;
 	public ARTDPaladin()
 	{
+		int Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
+		
 		charClass = "Paladin";
 		
 		PaladinClassDescription = "Compared with other classes the " + ARTDPaladin.charClass + " class has one of the most/n restrictive codes"
@@ -29,5 +34,10 @@ public class ARTDPaladin extends ARTDClass
 		inti = 1;
 		wis = 3;
 		agi = 1;
+	}
+	@Override
+	public double Heal() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

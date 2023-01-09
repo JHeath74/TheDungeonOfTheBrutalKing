@@ -1,9 +1,12 @@
 package ARTDCharecterClass;
 
+import AlternateRealityTheDungeon.ARTDCharecter;
 import AlternateRealityTheDungeon.ARTDClass;
 
 public class ARTDBard extends ARTDClass{
 	
+	
+	ARTDCharecter myChar = new ARTDCharecter();
 	
 	int sta; //Stamina
 	int chr; //Charisma
@@ -19,6 +22,8 @@ public class ARTDBard extends ARTDClass{
 	public ARTDBard()
 	{
 
+		int Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
+		
 		charClass = "Bard";
 		
 		BardClassDescription = "A "  + ARTDBard.charClass 	+ " is traditionally defined as a poet, especially one who writes \n"
@@ -27,14 +32,12 @@ public class ARTDBard extends ARTDClass{
 				+ "\n Charisma (CHA) is an important skill for a " + ARTDBard.charClass;
 
 		
-		//A multiplier for using weapons, encounters and charming someone
-		sta = 1;
-		chr = 5;
-		str = 1;
-		inti = 1;
-		wis = 1;
-		agi = 1;
-		
+	}
+
+	@Override
+	public double Heal() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
 
