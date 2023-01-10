@@ -15,7 +15,7 @@ public class ARTDHunter extends ARTDClass
 	int wis; //Wisdom
 	int agi; //Agility
 	
-	int Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
+	int Herolevel;
 	
 	public static String charClass;
 	
@@ -23,7 +23,7 @@ public class ARTDHunter extends ARTDClass
 	
 	public ARTDHunter()
 	{
-		int Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
+		Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
 		
 		charClass = "Hunter";
 		
@@ -35,10 +35,61 @@ public class ARTDHunter extends ARTDClass
 		
 	}
 
+	//Spells
+	
 	public double Heal()
 	{
 	
-		double Heal = inti + Herolevel;  
+		double Heal = inti;  
 		return Heal;
+	}
+
+	@Override
+	public double Cold_Blast() {
+		double ColdBlast = inti;
+		return ColdBlast;
+		
+	}
+
+	@Override
+	public double Conjure_Food() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Fire_Ball() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Light() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Location() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Shield() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double RandomStat() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Port() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

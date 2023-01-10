@@ -1,7 +1,12 @@
 package ARTDCharecterClass;
 
-public class ARTDWarrior {
+import AlternateRealityTheDungeon.ARTDCharecter;
+import AlternateRealityTheDungeon.ARTDClass;
 
+public class ARTDWarrior extends ARTDClass {
+
+	ARTDCharecter myChar = new ARTDCharecter();
+	
 	int sta; //Stamina
 	int chr; //Charisma
 	int str; //Strength
@@ -9,12 +14,15 @@ public class ARTDWarrior {
 	int wis; //Wisdom
 	int agi; //Agility
 	
+	int Herolevel;
+	
 	public static String charClass;
 	
 	public static String WarriorClassDescription;
 	
 	public ARTDWarrior()
 	{
+		Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
 		
 		charClass = "Warrior";
 		
@@ -24,15 +32,63 @@ public class ARTDWarrior {
 				+ "					  share an unparalleled mastery with weapons and armor, and a thorough knowledge of the \"\r\n"
 				+ "					 skills of combat. They are well acquainted with death, both meting it out and staring it defiantly in the face.\\n\\n\"\r\n"
 				+ "					 Strength (STR) is an important skill for a " + ARTDWarrior.charClass;
+
 		
-		//A multiplier for using strength weapons in combat.
-		sta = 5;
-		chr = 1;
-		str = 1;
-		inti = 1;
-		wis = 1;
-		agi = 1;
+	}
+
+	@Override
+	public double Heal() {
+		double Heal = inti;  
+		return Heal;
 		
+	}
+
+	@Override
+	public double Cold_Blast() {
+		double ColdBlast = inti;
+		return ColdBlast;
+	}
+
+	@Override
+	public double Conjure_Food() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Fire_Ball() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Light() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Location() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Shield() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double RandomStat() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double Port() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 }

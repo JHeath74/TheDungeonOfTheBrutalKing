@@ -8,14 +8,17 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import AlternateRealityTheDungeon.ARTDCharecter;
 import AlternateRealityTheDungeon.ARTDEnemies;
+import AlternateRealityTheDungeon.ARTDSpells;
 
 public class ARTDRats extends ARTDEnemies {
 	
@@ -44,7 +47,8 @@ public class ARTDRats extends ARTDEnemies {
 		double agi;
 		double basedamage = 1;
 		double HP = 3;
-		double HeroHP = myChar.CharInfo.indexOf(myChar.CharInfo.get(4));
+	//	double HeroHP = myChar.CharInfo.indexOf(myChar.CharInfo.get(4));
+		double HeroHP = 5;
 		
 	}
 	
@@ -85,7 +89,7 @@ public class ARTDRats extends ARTDEnemies {
 		JTextArea RatsCombatTextArea = new JTextArea();
 		
 		JButton RatsAttack = new JButton("Attack");
-		JButton RatsPotion = new JButton("Use Healing Potion");
+		JButton RatsSpell = new JButton("Cast Spell");
 		JButton RatsRun = new JButton("Run Away!");
 		
 		RatsFrame.add(RatsPanel);
@@ -93,14 +97,15 @@ public class ARTDRats extends ARTDEnemies {
 		RatsPanel.add(RatsPanelButtons, BorderLayout.SOUTH);
 		RatsPanel.add(RatsCombatTextArea, BorderLayout.CENTER);
 		
-		RatsPanelImage.add(RatsPanelImage, new ImageIcon(GiantRatImage));
+		//RatsPanelImage.add(RatsPanelImage, new ImageIcon(GiantRatImage));
 		RatsPanelButtons.add(RatsAttack);
-		RatsPanelButtons.add(RatsPotion);
+		RatsPanelButtons.add(RatsSpell);
 		RatsPanelButtons.add(RatsRun);
 		
 		RatsPanelCombatArea.add(RatsCombatTextArea);
 		
-		
+		RatsFrame.setSize(800, 800);
+		RatsFrame.setLocationRelativeTo(null);
 		RatsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		RatsFrame.setVisible(true);
 		
@@ -116,12 +121,21 @@ public class ARTDRats extends ARTDEnemies {
 				
 			}});
 		
-		RatsPotion.addActionListener(new ActionListener() {
+		RatsSpell.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				// TODO Auto-generated method stub
+				JFrame spellsBox = new JFrame();
+				
+				JComboBox spellList = new JComboBox();
+				spellList.setModel(new DefaultComboBoxModel(ARTDSpells.Spells.values()));
+				
+				spellsBox.add(spellList);
+				spellsBox.setSize(400, 200);
+				spellsBox.setLocationRelativeTo(null);
+				spellList.setVisible(true);
+				spellsBox.setVisible(true);
 				
 			}});
 		

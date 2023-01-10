@@ -11,6 +11,8 @@ public class ARTDPaladin extends ARTDClass
 	int inti; //Intelligence
 	int wis; //Wisdom
 	int agi; //Agility
+	
+	int Herolevel;
 
 	ARTDCharecter myChar = new ARTDCharecter();
 	
@@ -19,24 +21,58 @@ public class ARTDPaladin extends ARTDClass
 	public static String PaladinClassDescription;
 	public ARTDPaladin()
 	{
-		int Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
+		Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
 		
 		charClass = "Paladin";
 		
 		PaladinClassDescription = "Compared with other classes the " + ARTDPaladin.charClass + " class has one of the most/n restrictive codes"
 				+ " of conduct and paladin characters are expected to/n demonstrate and embody goodness. \n\n"
 				+ "Wisdom (WIS) followed by Strength is most important stats for a " + ARTDPaladin.charClass;
-		
-		//A multiplier for using strength weapons in combat.
-		sta = 3;
-		chr = 1;
-		str = 1;
-		inti = 1;
-		wis = 3;
-		agi = 1;
+
 	}
 	@Override
 	public double Heal() {
+		double Heal = inti + Herolevel;
+		
+		return Heal;
+	}
+	@Override
+	public double Cold_Blast() {
+		double ColdBlast = inti + Herolevel;
+		return ColdBlast;
+	}
+	@Override
+	public double Conjure_Food() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public double Fire_Ball() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public double Light() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public double Location() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public double Shield() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public double RandomStat() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public double Port() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

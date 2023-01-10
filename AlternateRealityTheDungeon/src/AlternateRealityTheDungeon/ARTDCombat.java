@@ -2,8 +2,7 @@ package AlternateRealityTheDungeon;
 
 
 
-import java.util.ArrayList;
-import java.util.Collection;
+
 import java.util.Random;
 
 import ARTDEnemies.*;
@@ -19,32 +18,26 @@ public class ARTDCombat
 	ARTDMenu myMenu = new ARTDMenu();
 	
 
-
-	
-	
-	
 	int upperbound;
 	double HeroHP;
 	double HP;
-	
-	
-	
+
 	
 	public ARTDCombat()
 	{
 		
-		int upperbound = 4;
+		int upperbound = 3;
 		
 
 	}
 
 	
-	public void combatEncounter(int HP, int HeroHP, int upperbound) 
+	public void combatEncounter(int upperbound) 
 	{
 		
 		Random myRandom = new Random();
 		
-		int randomEncounter = myRandom.nextInt(upperbound);
+		int randomEncounter = myRandom.nextInt(upperbound) + 1;
 		
 		switch(randomEncounter) {
 		  case 0:
@@ -52,8 +45,10 @@ public class ARTDCombat
 			  myRats.RatsCombatEncouter();
 		    break;
 		  case 1:
-		    // code block
+		    
 		    break;
+		  case 10:
+			  
 		  default:
 		    // code block
 		}

@@ -27,6 +27,7 @@ STAMINA:
 						   
 This proficiency allows a character to perform continuous strenuous physical activity 
 for twice as long as other characters before succumbing to fatigue and exhaustion.
+Stamina is important if you're to survive. This Stat determines your health, endurance, and resistance to magic.
 						   
 CHARISMA:
 
@@ -34,26 +35,41 @@ Charisma measures a character's force of personality, force of will, persuasiven
 ability to lead, and physical attractiveness. This ability represents actual strength of personality, 
 not merely how one is perceived by others in a social setting.
 
+Charm determines how other life forms react to you. The higher your Charm, the better your chances are for making friends.
+
 STRENGTH:
 
 Strength measures a characters ability to exert physical force. A character with high Strength
 can lift heavier objects, carry more gear without being overloaded, break things with brute strength,
 shove and grapple creatures more effectively, and is more accurate and more effective with melee weapons.
 
+Strength is crucial when you're fighting. The stronger you are initially, the better, 
+since you enter The Dungeon armed with nothing but your bare hands.
+Later, when you acquire Weapons, your expertiese with them depends on Strength and Skill.
+ Strength also determines the size and number of combat implements you can carry. .
+
 INTELLIGENCE:
 
 Intelligence determines how well your character learns and reasons.
+Intelligence is crucial for casting Spells. Tricking enemies also depends on this Stat, 
+but Tricking is an Evil act (see Moral Alignment).
 
 WISDOM:
+
 Wisdom measures a character's practical intelligence, their cleverness, their perceptiveness, and how in tune 
 they are with the world around them. Characters with high Wisdom are perceptive, observant, and sensible.
-
+Wisdom enhances your Intelligence. It's the Stat that determines how many Spells you can learn and how easily you're able to identify Potions.
 
 AGILITY:
 
 Agility encompasses a number of physical attributes including hand-eye coordination, reflexes,
 fine motor skills, balance and speed of movement; a high dexterity score indicates superiority in all these attributes.
-															
+Agility helps you avoid blows from an adversary. 
+
+HIT POINTS:
+
+Hit Points are very important: the more you have, the harder you are to kill (death occurs when Hit Points go to 0)!
+As you ascend Character Levels, Hit Points increase.
 															
 						         Charecter Classes
 

@@ -34,6 +34,8 @@ import javax.swing.KeyStroke;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
+import ARTDEnemies.ARTDRats;
+
 
 public class ARTDMenu extends JPanel {
 
@@ -360,6 +362,10 @@ public class ARTDMenu extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+				ARTDRats myRats = new ARTDRats();
+				myRats.RatsCombatEncouter();
+				
+				
 				JFrame frame = new JFrame("Help Information");
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

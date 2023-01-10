@@ -31,7 +31,7 @@ import ARTDCharecterClass.ARTDWarrior;
 
 public class ARTDMain {
 
-
+ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 
@@ -250,8 +250,8 @@ public class ARTDMain {
 
 				}
 			});
-
-			//mygamestate.StartGameLoadCharecter();
+			ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
+			myGameState.StartGameLoadCharecter();
 
 
 
@@ -282,12 +282,13 @@ public class ARTDMain {
 
 		} else {
 
-			//mygamestate.StartGameLoadCharecter();
-
-
-
-			//getLastModified();
-
+			try {
+				ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
+				myGameState.StartGameLoadCharecter();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 
 			new ARTDMenu();
