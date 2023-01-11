@@ -1,10 +1,11 @@
 package AlternateRealityTheDungeon;
 
-import javax.swing.ComboBoxModel;
+
 
 public class ARTDSpells {
 
-	public enum Spells {Heal, Cold_Blast, Conjure_Food, Fire_Ball, Light, Location, Shield, RandomStat }
+	
+	public static final String[] Spells = {"Heal", "Cold_Blast", "Conjure_Food", "Fire_Ball", "Light", "Location", "Shield", "RandomStat" };
 	
 /*
  * 

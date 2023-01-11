@@ -1,20 +1,27 @@
 package ARTDEnemies;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
+import javax.swing.Timer;
 
 import AlternateRealityTheDungeon.ARTDCharecter;
 import AlternateRealityTheDungeon.ARTDEnemies;
@@ -32,23 +39,23 @@ public class ARTDRats extends ARTDEnemies {
 	public double HP;
 	public double HeroHP;
 	
-	ARTDCharecter myChar = new ARTDCharecter();
+	ARTDCharecter myChar = ARTDCharecter.Singleton();
 	
 	
 	
 	public ARTDRats()
 	{
 
-		double sta = 1;
+		double sta;
 		double chr;
 		double str;
 		double inti;
 		double wis;
 		double agi;
-		double basedamage = 1;
-		double HP = 3;
-	//	double HeroHP = myChar.CharInfo.indexOf(myChar.CharInfo.get(4));
-		double HeroHP = 5;
+		double basedamage;
+		double HP =3;
+	   // double HeroHP = myChar.CharInfo.indexOf(myChar.CharInfo.get(4));
+		
 		
 	}
 	
@@ -68,47 +75,106 @@ public class ARTDRats extends ARTDEnemies {
 		return defenseToDamage;
 	}
 	
-	public void RatsCombatEncouter()
+	public void RatsCombatEncouter() throws IOException
 	{
 		
-		BufferedImage GiantRatImage = null;
-		try {
-			GiantRatImage = ImageIO.read(new File("src\\AlternateRealityTheDungeon\\Images\\GiantRat.jpg"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-       
-		
+		//Adding JFrame
 		JFrame RatsFrame = new JFrame("You've encountered a Rat");
+		
+		//Adding JPanels
 		JPanel RatsPanel = new JPanel(new BorderLayout());
 		JPanel RatsPanelImage = new JPanel();
-		JPanel RatsPanelButtons = new JPanel();
+		JPanel RatsPanelButtons = new JPanel(new FlowLayout());
 		JPanel RatsPanelCombatArea = new JPanel();
+		JPanel RatsPanelCombatUpdateInfo = new JPanel();
+		JPanel RatsNameAndHPPanel = new JPanel();
 		
+		//Added JTextArea To display Combat outcomes
 		JTextArea RatsCombatTextArea = new JTextArea();
 		
+		//Adding JTextField to Display Name and HP of Hero and Monster
+		JTextArea RatsNameAndHPfield = new JTextArea();
+		
+		//Creating Buttons for Combat
 		JButton RatsAttack = new JButton("Attack");
-		JButton RatsSpell = new JButton("Cast Spell");
+		JButton RatsSpell = new JButton("Select Spell to Cast");
 		JButton RatsRun = new JButton("Run Away!");
 		
-		RatsFrame.add(RatsPanel);
-		RatsPanel.add(RatsPanelImage, BorderLayout.NORTH);
-		RatsPanel.add(RatsPanelButtons, BorderLayout.SOUTH);
-		RatsPanel.add(RatsCombatTextArea, BorderLayout.CENTER);
+		//Adding Image to JPanel
+		BufferedImage myPicture = ImageIO.read(new File("src\\AlternateRealityTheDungeon\\Images\\GiantRat.jpg"));
+		JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+	
+		RatsPanelImage.add(picLabel);
 		
-		//RatsPanelImage.add(RatsPanelImage, new ImageIcon(GiantRatImage));
+		RatsPanel.add(RatsPanelButtons, BorderLayout.SOUTH); // Place the "Attack", "Select Spell" and "Run Away" Buttons
+				
+		//Adding Buttons to RatsPanelButtons JPanel		
 		RatsPanelButtons.add(RatsAttack);
 		RatsPanelButtons.add(RatsSpell);
 		RatsPanelButtons.add(RatsRun);
+				
+		//Adding Parent JPanel to JFrame
+		RatsFrame.add(RatsPanel, BorderLayout.CENTER);
 		
+		//added Jtextarea to JPanel used to Display Combat outcomes
 		RatsPanelCombatArea.add(RatsCombatTextArea);
+				
+		//Adding Fields to JPanel
+		RatsPanelCombatUpdateInfo.add(RatsCombatTextArea);
+		RatsNameAndHPPanel.add(RatsNameAndHPfield);
 		
-		RatsFrame.setSize(800, 800);
+		
+		//Adding and Setting up JSplitPanes
+		JSplitPane RatsImageAndCombatUpdatesStats = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		JSplitPane RatsCombatUpdatesAndStats = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		
+		RatsImageAndCombatUpdatesStats.setLeftComponent(RatsPanelImage);
+		RatsImageAndCombatUpdatesStats.setRightComponent(RatsCombatUpdatesAndStats);
+		RatsCombatUpdatesAndStats.setTopComponent(RatsNameAndHPPanel);
+		RatsCombatUpdatesAndStats.setBottomComponent(RatsPanelCombatUpdateInfo);
+		RatsImageAndCombatUpdatesStats.setDividerLocation(0.5);
+		RatsCombatUpdatesAndStats.setDividerLocation(0.5);
+
+			
+		//Adding Child JPanels to Parent JPanel
+		RatsPanel.add(RatsImageAndCombatUpdatesStats, BorderLayout.CENTER);
+
+
+		
+		//Setting the JFrame to fill the screen
+		Toolkit tk=Toolkit.getDefaultToolkit(); //Initializing the Toolkit class.
+		Dimension screenSize = tk.getScreenSize(); //Get the Screen resolution of our device.
+		
+		int RatsWidth = RatsFrame.getWidth()/2;
+		int RatHeight = RatsFrame.getHeight()/2;
+		
+		RatsNameAndHPfield.setSize(RatsWidth, RatHeight);
+		
+		RatsNameAndHPfield.setLineWrap(true);
+		RatsFrame.setSize(screenSize);
+		RatsFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
 		RatsFrame.setLocationRelativeTo(null);
 		RatsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		RatsFrame.setVisible(true);
 		
+		
+		ActionListener task = new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+            	RatsNameAndHPfield.setText("Name: " + myChar.CharInfo.get(0)+"\t\t"+"Enemy Name: \n" 
+            	+"HP: " + myChar.CharInfo.get(4)+"\t\tEnemy HP: "+"5");
+
+ 
+            	
+            	
+            }
+		};
+		Timer timer = new Timer(100 ,task); // Execute task each 100 miliseconds
+		timer.setRepeats(true);
+		timer.start();
+		
+		
+		//Attack Button in Combat
 		RatsAttack.addActionListener(new ActionListener() {
 
 			@Override
@@ -121,21 +187,81 @@ public class ARTDRats extends ARTDEnemies {
 				
 			}});
 		
+		//Cast Spell Button in Combat
 		RatsSpell.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				JFrame spellsBox = new JFrame();
+				JFrame spellsFrame = new JFrame();
+				JButton RatsSpellCast = new JButton("Cast Selected Spell");
+				JPanel spelllistbox = new JPanel(new BorderLayout());
 				
-				JComboBox spellList = new JComboBox();
-				spellList.setModel(new DefaultComboBoxModel(ARTDSpells.Spells.values()));
 				
-				spellsBox.add(spellList);
-				spellsBox.setSize(400, 200);
-				spellsBox.setLocationRelativeTo(null);
-				spellList.setVisible(true);
-				spellsBox.setVisible(true);
+				String[] spellList = ARTDSpells.Spells; //Get the list of spells from the Array in ARTDSpells class
+				JComboBox<String> spells = new JComboBox<String>(spellList); // Add the spells from the Array into the JCombobox
+				spells.setEditable(false);
+				
+				spells.addItemListener(new ItemListener() {
+
+					@Override
+					public void itemStateChanged(ItemEvent e) {
+						
+						String castspell = spells.getSelectedItem().toString();  //get the selected item in the JComboBox
+						
+
+						
+						
+						if(castspell.equals("Heal"))
+						{
+							
+						}else if(castspell.equals("Cold_Blast"))
+						{
+							
+						}else if(castspell.equals("Conjure_Food"))
+						{
+							JOptionPane.showMessageDialog(null, "Not Able to Cast the spell " + castspell + " in Combat");
+							
+						}else if(castspell.equals("Fire_Ball"))
+						{
+							
+						}else if(castspell.equals("Light"))
+						{
+							
+						}else if(castspell.equals("Location"))
+						{
+							JOptionPane.showMessageDialog(null, "Not Able to Cast the spell " + castspell + " in Combat");
+						}else if (castspell.equals("Shield"))
+						{
+							
+						}else if(castspell.equals("RandomStat"))
+						{
+							
+						}else if(castspell.equals("Port"))
+						{
+							JOptionPane.showMessageDialog(null, "Not Able to Cast the spell " + castspell + " in Combat");
+						}
+						
+						
+					}});
+				
+				spellsFrame.add(spelllistbox);
+				spelllistbox.add(spells, BorderLayout.CENTER);
+				spelllistbox.add(RatsSpellCast, BorderLayout.SOUTH);
+				
+				spellsFrame.setSize(400, 200);
+				spellsFrame.setLocationRelativeTo(null);
+				
+				spellsFrame.setVisible(true);
+				
+				RatsSpellCast.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						JOptionPane.showMessageDialog(null, "Add ability to cast spell in ARTDRats Class");
+						
+					}});
+				
 				
 			}});
 		

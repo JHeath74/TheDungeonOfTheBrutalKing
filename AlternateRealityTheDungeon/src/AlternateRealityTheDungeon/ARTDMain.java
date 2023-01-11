@@ -11,6 +11,7 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.JButton;
@@ -32,6 +33,9 @@ import ARTDCharecterClass.ARTDWarrior;
 public class ARTDMain {
 
 ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
+
+
+static String toonClass = "";
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 
@@ -83,7 +87,7 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 
 			});
 
-			Integer[] stat = rollstats();
+			Integer[] stat = rollstats(toonClass);
 
 			JTextArea toonstats = new JTextArea();
 			JScrollPane toonstatsPane = new JScrollPane(toonstats);
@@ -134,14 +138,14 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 				}
 			});
 
-			String toonClass = charectorClass.getSelectedItem().toString();
+			toonClass = charectorClass.getSelectedItem().toString();
 			JButton reRollStats = new JButton("Reroll Stats");
 			reRollStats.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					rollstats();
-					Integer[] stat = rollstats();
+					rollstats(toonClass);
+					Integer[] stat = rollstats(toonClass);
 					toonstats.setText(" ");
 
 					for (int i = 0; i < stat.length; i++) {
@@ -316,7 +320,7 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 
 	}
 
-	public static Integer[] rollstats() {
+	public static Integer[] rollstats(String toonClass) {
 		int range = 20;
 		int lowerbound = 10;
 
@@ -327,9 +331,58 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 
 		}
 
+		if(toonClass.equalsIgnoreCase("Bard"))
+		{
+		
+		}else if(toonClass.equalsIgnoreCase("Cleric"))
+		{
+			int Strength = Array.getInt(stats, 2);
+			int newStrength = Strength - 10;
+			Array.setInt(stats, 2, newStrength);
+			
+			int Inti = Array.getInt(stats, 3);
+			int newInti = Inti + 10;
+			Array.setInt(stats, 3, newInti);
+			
+			
+		}else if(toonClass.equalsIgnoreCase("Hunter"))
+		{
+			int Agility = Array.getInt(stats, 5);
+			int newAgility = Agility + 10;
+			Array.setInt(stats, 5, newAgility);
+			
+			int Strength = Array.getInt(stats, 2);
+			int newStrength = Strength - 10;
+			Array.setInt(stats, 2, newStrength);
+			
+			
+		} else if(toonClass.equalsIgnoreCase("Paladin"))
+		{
+			
+		}else if(toonClass.equalsIgnoreCase("Rogue"))
+		{
+			
+		}else if(toonClass.equalsIgnoreCase("Warrior"))
+		{
+	       int Strength = Array.getInt(stats, 2);
+		   int newStrength = Strength +10;
+		   Array.setInt(stats, 2, newStrength);
+			
+			int Inti = Array.getInt(stats, 3);
+			int newInti = Inti - 10;
+			Array.setInt(stats, 3, newInti);
+		}
+
 		return stats;
 	}
 
-
+/*
+ * 		toonstats.append("\nSTAMINA: \t\t" + stat[0]);
+			toonstats.append("\nCHARISMA: \t\t" + stat[1]);
+			toonstats.append("\nSTRENGTH: \t\t" + stat[2]);
+			toonstats.append("\nINTELLIGENCE: \t" + stat[3]);
+			toonstats.append("\nWISDOM: \t\t" + stat[4]);
+			toonstats.append("\nAGILITY: \t\t" + stat[5]);
+ */
 
 }

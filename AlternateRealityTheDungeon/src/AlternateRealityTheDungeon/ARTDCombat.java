@@ -3,6 +3,7 @@ package AlternateRealityTheDungeon;
 
 
 
+import java.io.IOException;
 import java.util.Random;
 
 import ARTDEnemies.*;
@@ -32,7 +33,7 @@ public class ARTDCombat
 	}
 
 	
-	public void combatEncounter(int upperbound) 
+	public void combatEncounter(int upperbound) throws IOException 
 	{
 		
 		Random myRandom = new Random();
