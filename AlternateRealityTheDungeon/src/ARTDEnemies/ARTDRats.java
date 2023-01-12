@@ -83,11 +83,15 @@ public class ARTDRats extends ARTDEnemies {
 		
 		//Adding JPanels
 		JPanel RatsPanel = new JPanel(new BorderLayout());
-		JPanel RatsPanelImage = new JPanel();
-		JPanel RatsPanelButtons = new JPanel(new FlowLayout());
-		JPanel RatsPanelCombatArea = new JPanel();
-		JPanel RatsPanelCombatUpdateInfo = new JPanel();
+		JPanel RatsPanelImage = new JPanel();     //Display Image of Enemy
+		JPanel RatsPanelButtons = new JPanel(new FlowLayout()); // Display Buttons for Combat
+		JPanel RatsPanelCombatArea = new JPanel(); //Display Combat Updates such as sucessful or not-successful attacks or HP lost
+		JPanel RatsPanelCombatUpdateInfo = new JPanel(); // Your Stats
 		JPanel RatsNameAndHPPanel = new JPanel();
+		
+		//Adding and Setting up JSplitPanes
+		JSplitPane RatsImageAndCombatUpdatesStats = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		JSplitPane RatsCombatUpdatesAndStats = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		
 		//Added JTextArea To display Combat outcomes
 		JTextArea RatsCombatTextArea = new JTextArea();
@@ -100,57 +104,46 @@ public class ARTDRats extends ARTDEnemies {
 		JButton RatsSpell = new JButton("Select Spell to Cast");
 		JButton RatsRun = new JButton("Run Away!");
 		
+		//Adding Parent JPanel to JFrame
+		RatsFrame.add(RatsPanel, BorderLayout.CENTER);
+		
 		//Adding Image to JPanel
 		BufferedImage myPicture = ImageIO.read(new File("src\\AlternateRealityTheDungeon\\Images\\GiantRat.jpg"));
 		JLabel picLabel = new JLabel(new ImageIcon(myPicture));
 	
 		RatsPanelImage.add(picLabel);
 		
+		//Adding Panel for buttons to Master Panel
 		RatsPanel.add(RatsPanelButtons, BorderLayout.SOUTH); // Place the "Attack", "Select Spell" and "Run Away" Buttons
-				
+			
+		//Adding Child JPanels to Parent JPanel
+		RatsPanel.add(RatsImageAndCombatUpdatesStats, BorderLayout.CENTER);
+		
 		//Adding Buttons to RatsPanelButtons JPanel		
 		RatsPanelButtons.add(RatsAttack);
 		RatsPanelButtons.add(RatsSpell);
 		RatsPanelButtons.add(RatsRun);
 				
-		//Adding Parent JPanel to JFrame
-		RatsFrame.add(RatsPanel, BorderLayout.CENTER);
 		
 		//added Jtextarea to JPanel used to Display Combat outcomes
 		RatsPanelCombatArea.add(RatsCombatTextArea);
-				
-		//Adding Fields to JPanel
-		RatsPanelCombatUpdateInfo.add(RatsCombatTextArea);
-		RatsNameAndHPPanel.add(RatsNameAndHPfield);
-		
-		
-		//Adding and Setting up JSplitPanes
-		JSplitPane RatsImageAndCombatUpdatesStats = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		JSplitPane RatsCombatUpdatesAndStats = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		
 		RatsImageAndCombatUpdatesStats.setLeftComponent(RatsPanelImage);
 		RatsImageAndCombatUpdatesStats.setRightComponent(RatsCombatUpdatesAndStats);
 		RatsCombatUpdatesAndStats.setTopComponent(RatsNameAndHPPanel);
 		RatsCombatUpdatesAndStats.setBottomComponent(RatsPanelCombatUpdateInfo);
-		RatsImageAndCombatUpdatesStats.setDividerLocation(0.5);
-		RatsCombatUpdatesAndStats.setDividerLocation(0.5);
-
-			
-		//Adding Child JPanels to Parent JPanel
-		RatsPanel.add(RatsImageAndCombatUpdatesStats, BorderLayout.CENTER);
-
-
+	
+		RatsImageAndCombatUpdatesStats.setVisible(true);
+		RatsCombatUpdatesAndStats.setVisible(true);
+		RatsCombatUpdatesAndStats.setResizeWeight(.2d);
+		RatsImageAndCombatUpdatesStats.setDividerLocation(0.5); //Places the Split in the middle of the pane
+		RatsCombatUpdatesAndStats.setDividerLocation(0.25); //Sets the divider 3/4 of the way up the pane
 		
 		//Setting the JFrame to fill the screen
 		Toolkit tk=Toolkit.getDefaultToolkit(); //Initializing the Toolkit class.
 		Dimension screenSize = tk.getScreenSize(); //Get the Screen resolution of our device.
 		
-		int RatsWidth = RatsFrame.getWidth()/2;
-		int RatHeight = RatsFrame.getHeight()/2;
-		
-		RatsNameAndHPfield.setSize(RatsWidth, RatHeight);
-		
-		RatsNameAndHPfield.setLineWrap(true);
+		//RatsNameAndHPfield.setLineWrap(true);
 		RatsFrame.setSize(screenSize);
 		RatsFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		
@@ -161,8 +154,8 @@ public class ARTDRats extends ARTDEnemies {
 		
 		ActionListener task = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-            	RatsNameAndHPfield.setText("Name: " + myChar.CharInfo.get(0)+"\t\t"+"Enemy Name: \n" 
-            	+"HP: " + myChar.CharInfo.get(4)+"\t\tEnemy HP: "+"5");
+            	RatsNameAndHPfield.setText("Name: \t\t" + myChar.CharInfo.get(0)+"\n" 
+            	+"HP: " + "Enemy Name: \t\t"+ "Enemy HP: "+"5");
 
  
             	
