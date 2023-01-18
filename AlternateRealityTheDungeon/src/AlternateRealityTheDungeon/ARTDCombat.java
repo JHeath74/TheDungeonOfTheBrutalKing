@@ -36,18 +36,19 @@ public class ARTDCombat
 	//https://stackoverflow.com/questions/18435992/java-call-object-methods-through-arraylist
 	
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
-	ARTDMenu myMenu = new ARTDMenu();
-	
 
 	int upperbound;
-	double HeroHP;
-	double HP;
+	int HP;
+	String HeroHPArrayList;
 
 	
 	public ARTDCombat()
 	{
 		
-		int upperbound = 3;
+		upperbound = 3;
+		HeroHPArrayList = myChar.CharInfo.get(4);
+		int HeroHP = Integer.parseInt("HeroHPArrayList"); 
+		
 		
 
 	}
@@ -131,13 +132,13 @@ public class ARTDCombat
 			CombatFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			CombatFrame.setVisible(true);
 			
-			CombatNameAndHPfield.setText("Name:" + myChar.CharInfo.get(0)+"\t\tEnemy Name:" 
-	            	+"\nHP: "+ "\t\tEnemy HP: "+"5");
+//			CombatNameAndHPfield.setText("Name:" + myChar.CharInfo.get(0)+"\t\tEnemy Name:" 
+//	            	+"\nHP: "+ "\t\tEnemy HP: "+"5");
 			
 			ActionListener task = new ActionListener() {
 	            public void actionPerformed(ActionEvent evt) {
 	            	CombatNameAndHPfield.setText("Name:" + myChar.CharInfo.get(0)+"\t\tEnemy Name:" 
-					+"\nHP: "+ "\t\tEnemy HP: "+"5");
+					+"\nHP: "+  myChar.CharInfo.get(4) + "\t\tEnemy HP: "+"5");
 
 	 
 	            	

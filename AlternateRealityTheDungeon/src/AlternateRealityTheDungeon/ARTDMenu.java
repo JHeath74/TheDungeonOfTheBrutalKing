@@ -362,13 +362,6 @@ public class ARTDMenu extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				ARTDRats myRats = new ARTDRats();
-				try {
-					myRats.RatsCombatEncouter();
-				} catch (IOException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
 				
 				
 				JFrame frame = new JFrame("Help Information");
