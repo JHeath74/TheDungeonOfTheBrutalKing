@@ -127,6 +127,7 @@ public class ARTDRats extends ARTDEnemies {
 		
 		//added Jtextarea to JPanel used to Display Combat outcomes
 		RatsPanelCombatArea.add(RatsCombatTextArea);
+		RatsNameAndHPPanel.add(RatsNameAndHPfield);
 		
 		RatsImageAndCombatUpdatesStats.setLeftComponent(RatsPanelImage);
 		RatsImageAndCombatUpdatesStats.setRightComponent(RatsCombatUpdatesAndStats);
@@ -151,11 +152,13 @@ public class ARTDRats extends ARTDEnemies {
 		RatsFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		RatsFrame.setVisible(true);
 		
+		RatsNameAndHPfield.setText("Name:" + myChar.CharInfo.get(0)+"\t\tEnemy Name:" 
+            	+"\nHP: "+ "\t\tEnemy HP: "+"5");
 		
 		ActionListener task = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-            	RatsNameAndHPfield.setText("Name: \t\t" + myChar.CharInfo.get(0)+"\n" 
-            	+"HP: " + "Enemy Name: \t\t"+ "Enemy HP: "+"5");
+            	RatsNameAndHPfield.setText("Name:" + myChar.CharInfo.get(0)+"\t\tEnemy Name:" 
+				+"\nHP: "+ "\t\tEnemy HP: "+"5");
 
  
             	
