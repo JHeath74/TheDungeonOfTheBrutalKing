@@ -40,14 +40,14 @@ public class ARTDCombat
 	int upperbound;
 	int HP;
 	String HeroHPArrayList;
-
+	int HeroHP;
 	
 	public ARTDCombat()
 	{
 		
 		upperbound = 3;
 		HeroHPArrayList = myChar.CharInfo.get(4);
-		int HeroHP = Integer.parseInt("HeroHPArrayList"); 
+		HeroHP = Integer.parseInt("HeroHPArrayList"); 
 		
 		
 
