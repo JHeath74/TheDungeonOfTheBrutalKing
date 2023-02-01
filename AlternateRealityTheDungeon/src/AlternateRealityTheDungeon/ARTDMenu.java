@@ -34,8 +34,6 @@ import javax.swing.KeyStroke;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
-import ARTDEnemies.ARTDRats;
-
 
 public class ARTDMenu extends JPanel {
 

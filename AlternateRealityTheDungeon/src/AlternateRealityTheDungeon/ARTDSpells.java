@@ -5,7 +5,7 @@ package AlternateRealityTheDungeon;
 public class ARTDSpells {
 
 	
-	public static final String[] Spells = {"Heal", "Cold_Blast", "Conjure_Food", "Fire_Ball", "Light", "Location", "Shield", "RandomStat" };
+	//public static final String[] Spells = {"Heal", "Cold_Blast", "Conjure_Food", "Fire_Ball", "Light", "Location", "Shield", "RandomStat" };
 	
 /*
  * 
@@ -17,7 +17,7 @@ public class ARTDSpells {
 	Location; // Find your location in the game
 	Shield; // Increases your protection for a short time
 	RandomStat; //Increases a random Stat for a short time
-    Port; // Port to the Dungeon Enterance
+    Port; // Port to the Dungeon Entrance
  * 
  * 
  */

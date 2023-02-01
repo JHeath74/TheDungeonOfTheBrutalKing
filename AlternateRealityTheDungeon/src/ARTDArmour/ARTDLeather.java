@@ -4,8 +4,14 @@ import AlternateRealityTheDungeon.ARTDArmour;
 
 public class ARTDLeather extends ARTDArmour {
 
-	public ARTDLeather() {
-		// TODO Auto-generated constructor stub
+	private String armourName = "Leather";
+	private int armourDefense = 8;
+	
+	
+	public ARTDLeather(String name, int defense) {
+		
+		name = armourName;
+		defense = armourDefense;
 	}
 
 }

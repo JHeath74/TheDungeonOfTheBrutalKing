@@ -4,6 +4,7 @@ package AlternateRealityTheDungeon;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Frame;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +13,7 @@ import java.awt.event.ItemListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
+
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -26,7 +27,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
 
-import ARTDEnemies.*;
+
 
 
 public class ARTDCombat
@@ -126,14 +127,13 @@ public class ARTDCombat
 			
 			//CombatNameAndHPfield.setLineWrap(true);
 			CombatFrame.setSize(screenSize);
-			CombatFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			//CombatFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+			CombatFrame.setState(Frame.NORMAL);
 			
 			CombatFrame.setLocationRelativeTo(null);
 			CombatFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			CombatFrame.setVisible(true);
-			
-//			CombatNameAndHPfield.setText("Name:" + myChar.CharInfo.get(0)+"\t\tEnemy Name:" 
-//	            	+"\nHP: "+ "\t\tEnemy HP: "+"5");
+
 			
 			ActionListener task = new ActionListener() {
 	            public void actionPerformed(ActionEvent evt) {
@@ -141,7 +141,6 @@ public class ARTDCombat
 					+"\nHP: "+  myChar.CharInfo.get(4) + "\t\tEnemy HP: "+"5");
 
 	 
-	            	
 	            	
 	            }
 			};
@@ -172,9 +171,17 @@ public class ARTDCombat
 					JFrame spellsFrame = new JFrame();
 					JButton CombatSpellCast = new JButton("Cast Selected Spell");
 					JPanel spelllistbox = new JPanel(new BorderLayout());
+			
+					//String[] spellList = (String[]) myChar.mySpells.toArray();
+					String[] spellList = null;
+					
+					for(int i = 20; i < myChar.CharInfo.size(); i++)
+					{
+						myChar.CharInfo.indexOf(i);
+					}
 					
 					
-					String[] spellList = ARTDSpells.Spells; //Get the list of spells from the Array in ARTDSpells class
+					
 					JComboBox<String> spells = new JComboBox<String>(spellList); // Add the spells from the Array into the JCombobox
 					spells.setEditable(false);
 					

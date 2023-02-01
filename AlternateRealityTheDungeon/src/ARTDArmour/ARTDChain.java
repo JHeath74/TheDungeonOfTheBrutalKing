@@ -4,8 +4,13 @@ import AlternateRealityTheDungeon.ARTDArmour;
 
 public class ARTDChain extends ARTDArmour {
 
-	public ARTDChain() {
-		// TODO Auto-generated constructor stub
+	private String armourName = "Chain";
+	private int armourDefense = 12;	
+	
+	public ARTDChain(String name, int defense) {
+		
+		name = armourName;
+		defense = armourDefense;
 	}
 
 }

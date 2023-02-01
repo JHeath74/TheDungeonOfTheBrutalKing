@@ -15,7 +15,7 @@ public class ARTDGameMenuItems
 {
 
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
-	
+	ARDTGamePreferences myGamePreferences = new ARDTGamePreferences();
 	
 	public void Stats()
 	{
@@ -37,19 +37,13 @@ public class ARTDGameMenuItems
 				
 		statsFrame.add(statsArea, BorderLayout.CENTER);
 		statsFrame.add(closeStats, BorderLayout.SOUTH);
-		
-		
-		//Background Colors
-		Color sab = new Color(25, 50, 75);
-		
-		//Text Colors
-		Color sabText = new Color(255,255,255);
+
 		
 		//Text Font Settings
 		statsArea.setFont(new Font(Font.SERIF, Font.PLAIN, 15));
 		
-		statsArea.setForeground(sabText);
-		statsArea.setBackground(sab);
+		statsArea.setForeground(myGamePreferences.colorWhite);
+		statsArea.setBackground(myGamePreferences.colorBlack);
 		statsArea.setVisible(true);
 		
 		statsFrame.setSize(400, 600);
@@ -142,21 +136,50 @@ public class ARTDGameMenuItems
 		
 		invArea.setText("");
 
-//		for(int i =0; i < myChar.CharInfo.size(); i++)
-//		{
-//			System.out.println("i: " + myChar.CharInfo.toString());
-//			myChar.CharInfo.set(3, "30");
-//		}
-	      
-	    
-		invArea.setText("Gold: " + myChar.CharInfo.get(11)+"\n");
+	    invArea.setText("Money");
+		invArea.append("Gold: " + myChar.CharInfo.get(11)+"\n");
 		invArea.append("Gems: " + myChar.CharInfo.get(15)+"\n");
 		invArea.append("\t__________ Misc__________\n");
 		invArea.append("Food: " + myChar.CharInfo.get(13)+"\n");
 	    invArea.append("Torches: " + myChar.CharInfo.get(14)+"\n");
-		//invArea.append("Armour: " + myChar.CharInfo.get());
-		//invArea.append("Weapon: " + myChar.CharInfo.get());
+	    invArea.append("________Weapons and Armour_______\n");
+	  
+	    String weapon = "";
+	    String armour = "";
+
+	    
+	    weapon = myChar.CharInfo.get(16);
+	    armour = myChar.CharInfo.get(17);
+	    
+
+	    
+	    if(weapon.isEmpty() || weapon == null | weapon == "" || weapon.isBlank())
+	    {
+	    	invArea.append("Weapon: ");
+	    }else {
+	    	invArea.append("Weapon: " + myChar.CharInfo.get(14)+"\n");
+	    }
+	    
+	    if(armour.isEmpty())
+	    {
+	    	invArea.append("Armour: ");
+	    }else {
+	    	invArea.append("Armour: " + myChar.CharInfo.get(15)+"\n");
+	    }
 		
+		invArea.append("\t_____Your Spells_____\n");
+//		invArea.append(myChar.CharInfo.get(20)+"\n");
+//		invArea.append(myChar.CharInfo.get(21)+"\n");
+//		invArea.append(myChar.CharInfo.get(22)+"\n");
+//		invArea.append(myChar.CharInfo.get(23)+"\n");
+//		invArea.append(myChar.CharInfo.get(24)+"\n");
+//		invArea.append(myChar.CharInfo.get(25)+"\n");
+//		invArea.append(myChar.CharInfo.get(26)+"\n");
+//		invArea.append(myChar.CharInfo.get(27)+"\n");
+//		invArea.append(myChar.CharInfo.get(28)+"\n");
+//		invArea.append(myChar.CharInfo.get(29)+"\n");
+//		invArea.append(myChar.CharInfo.get(30)+"\n");
+//		
 		
 	}
 	
