@@ -49,8 +49,6 @@
     <fullyQualifiedTypeName name="javax.swing.JSplitPane"/>
     <fullyQualifiedTypeName name="ARTDEnemies.ARTDRats"/>
     <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARDTGamePreferences"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="ARTDWeapons.ARTDBattleAxe"/>
     <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDArmour"/>
     <fullyQualifiedTypeName name="ARTDArmour.ARTDSkin"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="ARTDArmour.ARTDChain"/>
     <fullyQualifiedTypeName name="ARTDArmour.ARTDBreastPlate"/>
     <fullyQualifiedTypeName name="ARTDArmour.ARTDPlate"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>
