@@ -306,9 +306,20 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 				charName = JOptionPane.showInputDialog("Please Enter a Name for Your Charater.");
 
 			} else {
-				tooncreation.setText(charName);
-				inputAccepted = true;
-				newChar.add(charName);
+
+				
+				if(charName == ("^[A-Za-z]\\w{5, 29}$"))
+				{
+					tooncreation.setText(charName);
+					inputAccepted = true;
+					newChar.add(charName);
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "Username must be 6 to 30 charecters long and consist of Numbers and Letters", "Invalid UserName",
+					        JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+
 
 			}
 
