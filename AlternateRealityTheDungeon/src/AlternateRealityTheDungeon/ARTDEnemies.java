@@ -1,47 +1,35 @@
 package AlternateRealityTheDungeon;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import ARTDEnemies.ARTDRats;
+import ARTDEnemies.ARTDSkeletons;
+import ARTDEnemies.ARTDSpiders;
+
 //https://gamedev.stackexchange.com/questions/81884/making-a-monster-encounter-method
 
 //https://www.geeksforgeeks.org/inheritance-in-java/
 
+
+
 public class ARTDEnemies 
 {
 
-	double sta;
-	double chr;
-	double str;
-	double inti;
-	double wis;
-	double agi;
-	double basedamage;
-
+	List<ARTDEnemies> monsterList = new ArrayList<ARTDEnemies>();
+	
 	
 	public ARTDEnemies()
 	{
-		double sta;
-		double chr;
-		double str;
-		double inti;
-		double wis;
-		double agi;
-		double basedamage;
+
+		monsterList.add(new ARTDRats());
+		monsterList.add(new ARTDSkeletons());
+		monsterList.add(new ARTDSpiders());
+
+		
+		
 	}
 	
-	public double attackdamage(double str, double basedamage)
-	{
-		
-		double attackdamage = str + basedamage;
-		
-		return attackdamage;
-	}
-	
-	public double defenseToDamage(double str, double agi)
-	{
-		
-		double defenseToDamage = str+agi;
-		
-		return defenseToDamage;
-	}
 	
 	
 			

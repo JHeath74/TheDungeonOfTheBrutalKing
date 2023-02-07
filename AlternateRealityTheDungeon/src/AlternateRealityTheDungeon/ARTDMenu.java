@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
-
+import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -175,10 +175,12 @@ public class ARTDMenu extends JPanel {
 
 			
 			
+			
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-			
+
 				
 				int result = JOptionPane.showConfirmDialog(frame,
 						"Are you sure you wish to delete your current game and start a new one?", "Start New Game?",
@@ -306,6 +308,15 @@ public class ARTDMenu extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+				ARTDCombat myCombat = new ARTDCombat();
+				try {
+					myCombat.CombatEncouter();
+				} catch (IOException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				
+				
 				JFrame frame = new JFrame("Help Information");
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

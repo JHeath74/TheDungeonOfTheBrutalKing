@@ -1,6 +1,6 @@
 package ARTDEnemies;
 
-import AlternateRealityTheDungeon.ARTDCharecter;
+
 import AlternateRealityTheDungeon.ARTDEnemies;
 
 
@@ -13,24 +13,26 @@ public class ARTDRats extends ARTDEnemies {
 	public double wis;
 	public double agi;
 	public double basedamage;
-	public double HP;
-	public double HeroHP;
+	private double basedefense;
+	public double MonsterHP;
+
 	
-	ARTDCharecter myChar = ARTDCharecter.Singleton();
+
 	
 	
 	
 	public ARTDRats()
 	{
 
-		double sta;
-		double chr;
-		double str;
-		double inti;
-		double wis;
-		double agi;
-		double basedamage;
-		double HP =3;
+		sta =1;
+		chr =1;
+		str = 1;
+		inti =1;
+		wis =1;
+		agi =1;
+		basedamage = 2;
+		basedefense = 1;
+		MonsterHP = 3;
 		
 		
 	}
@@ -43,10 +45,10 @@ public class ARTDRats extends ARTDEnemies {
 		return attackdamage;
 	}
 	
-	public double defenseToDamage(double str, double agi)
+	public double defenseToDamage(double basedefense, double agi)
 	{
 		
-		double defenseToDamage = str+agi;
+		double defenseToDamage = basedefense+agi;
 		
 		return defenseToDamage;
 	}

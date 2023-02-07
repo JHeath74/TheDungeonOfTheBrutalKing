@@ -13,7 +13,9 @@ import java.awt.event.ItemListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -27,6 +29,10 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
 
+import ARTDEnemies.ARTDRats;
+import ARTDEnemies.ARTDSkeletons;
+import ARTDEnemies.ARTDSpiders;
+
 
 
 
@@ -36,7 +42,9 @@ public class ARTDCombat
 	//https://stackoverflow.com/questions/38288522/how-to-get-a-random-item-from-a-class-in-java
 	//https://stackoverflow.com/questions/18435992/java-call-object-methods-through-arraylist
 	
+	ARTDEnemies myEnemies = new ARTDEnemies();
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
+	ArrayList<ARTDEnemies> monsterList = new ArrayList<ARTDEnemies>();
 
 	int upperbound;
 	int HP;
@@ -52,15 +60,21 @@ public class ARTDCombat
 		
 		
 
+		
+
 	}
 
 	
 	public void CombatEncouter() throws IOException
 	{
-		
-	
+			
+			
+			int rnd = new Random().nextInt(myEnemies.monsterList.size());
+			ARTDEnemies enemy = myEnemies.monsterList.get(rnd);
+		    
+
 			//Adding JFrame
-			JFrame CombatFrame = new JFrame("You've encountered a " + "");
+			JFrame CombatFrame = new JFrame("You've encountered a ");
 			
 			//Adding JPanels
 			JPanel CombatPanel = new JPanel(new BorderLayout());

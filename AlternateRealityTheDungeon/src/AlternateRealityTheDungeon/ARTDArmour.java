@@ -23,16 +23,19 @@ public class ARTDArmour {
 	
 	  public ARTDArmour()
 	  {
-		  armourList.add(0, new ARTDSkin());
-		  armourList.add(1, new ARTDCloth());
-		  armourList.add(2, new ARTDLeater());
-		  armourList.add(3, new ARTDStuddedLeather());
-		  armourList.add(4, new ARTDChain());
-		  armourList.add(5, new ARTDBreastPlate());
-		  armourList.add(6, new ARTDPlate());
-		  armourList.add(7, new ARTDSkin());
-		  armourList.add(8, new ARTDSkin());
-		  armourList.add(9, new ARTDSkin());
+		 //		name = armourName;
+		 //defense = armourDefense;
+		 //	requiredStr = requiredStrength;
+		  
+		  
+		  armourList.add(0, new ARTDSkin("Skin", 0, 0));
+		  armourList.add(1, new ARTDCloth("Cloth", 0, 0));
+		  armourList.add(2, new ARTDLeather("Leather", 0, 0));
+		  armourList.add(3, new ARTDStuddedLeather("StuddedLeather", 0, 0));
+		  armourList.add(4, new ARTDChain("Chain", 0, 0));
+		  armourList.add(5, new ARTDBreastPlate("BreastPlate", 0, 0));
+		  armourList.add(6, new ARTDPlate("Plate", 0, 0));
+
 		  
 		  
 	  }
