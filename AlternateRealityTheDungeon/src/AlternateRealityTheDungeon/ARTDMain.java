@@ -308,7 +308,7 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 			} else {
 
 				
-				if(charName == ("^[A-Za-z]\\w{5, 29}$"))
+				if(charName.matches("^[A-Za-z]\\w{5, 29}$"))
 				{
 					tooncreation.setText(charName);
 					inputAccepted = true;
@@ -317,6 +317,7 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 				}else {
 					JOptionPane.showMessageDialog(null, "Username must be 6 to 30 charecters long and consist of Numbers and Letters", "Invalid UserName",
 					        JOptionPane.INFORMATION_MESSAGE);
+					toonName(tooncreation, charName, newChar);
 				}
 				
 
