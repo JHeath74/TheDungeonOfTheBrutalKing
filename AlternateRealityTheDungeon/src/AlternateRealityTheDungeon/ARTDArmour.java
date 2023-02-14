@@ -16,16 +16,15 @@ public class ARTDArmour {
 //	static ARTDArmour[] armourArray = {new ARTDSkin(), new ARTDCloth(), new ARTDLeather(), new ARTDStuddedLeather(),
 //	new ARTDChain(), new ARTDBreastPlate(), new ARTDPlate()};
 
+	private static ARTDArmour single_instance_armour = new ARTDArmour();
 	List<ARTDArmour> armourList = new ArrayList<ARTDArmour>();
-    //static boolean[] hasArmour = {false, true};
-	static boolean hasArmour = false;  
 	
 	
-	  public ARTDArmour()
+	  protected ARTDArmour()
 	  {
 		 //		name = armourName;
-		 //defense = armourDefense;
-		 //	requiredStr = requiredStrength;
+		 //     defense = armourDefense;
+		 //	    requiredStr = requiredStrength;
 		  
 		  
 		  armourList.add(0, new ARTDSkin("Skin", 0, 0));
@@ -37,9 +36,27 @@ public class ARTDArmour {
 		  armourList.add(6, new ARTDPlate("Plate", 0, 0));
 
 		  
+	  }
+    	
+	  public static ARTDArmour Singleton()
+	  {
+		if(single_instance_armour == null)
+		{
+			single_instance_armour = new ARTDArmour();
+		}
+		return single_instance_armour;
 		  
 	  }
-    		  
+	  
+	  public ARTDArmour ARTDSkin()
+	  {
+		if(this.single_instance_armour == null)
+		{
+			this.single_instance_armour = new ARTDArmour();
+		}
+		return this.single_instance_armour.armourList.get(0);
+		  
+	  }
     		
     
 }

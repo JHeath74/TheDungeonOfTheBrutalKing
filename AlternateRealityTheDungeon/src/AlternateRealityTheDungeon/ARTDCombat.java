@@ -43,7 +43,7 @@ public class ARTDCombat
 	//https://stackoverflow.com/questions/18435992/java-call-object-methods-through-arraylist
 	
 	ARTDEnemies myEnemies = new ARTDEnemies();
-	ARTDCharecter myChar = ARTDCharecter.Singleton();
+	
 	ArrayList<ARTDEnemies> monsterList = new ArrayList<ARTDEnemies>();
 
 	int upperbound;
@@ -55,12 +55,9 @@ public class ARTDCombat
 	{
 		
 		upperbound = 3;
-		HeroHPArrayList = myChar.CharInfo.get(4);
+		HeroHPArrayList = ARTDSingleton.myCharSingleton().CharInfo.get(4);
 		HeroHP = Integer.parseInt("HeroHPArrayList"); 
-		
-		
-
-		
+	
 
 	}
 
@@ -69,8 +66,8 @@ public class ARTDCombat
 	{
 			
 			
-			int rnd = new Random().nextInt(myEnemies.monsterList.size());
-			ARTDEnemies enemy = myEnemies.monsterList.get(rnd);
+			int rnd = new Random().nextInt(ARTDSingleton.monsterList().size());
+			ARTDEnemies enemy = ARTDSingleton.monsterList().get(rnd);
 		    
 
 			//Adding JFrame
@@ -151,8 +148,8 @@ public class ARTDCombat
 			
 			ActionListener task = new ActionListener() {
 	            public void actionPerformed(ActionEvent evt) {
-	            	CombatNameAndHPfield.setText("Name:" + myChar.CharInfo.get(0)+"\t\tEnemy Name:" 
-					+"\nHP: "+  myChar.CharInfo.get(4) + "\t\tEnemy HP: "+"5");
+	            	CombatNameAndHPfield.setText("Name:" + ARTDSingleton.myCharSingleton().CharInfo.get(0)+"\t\tEnemy Name:" 
+					+"\nHP: "+  ARTDSingleton.myCharSingleton().CharInfo.get(4) + "\t\tEnemy HP: "+"5");
 
 	 
 	            	
@@ -189,9 +186,9 @@ public class ARTDCombat
 					//String[] spellList = (String[]) myChar.mySpells.toArray();
 					String[] spellList = null;
 					
-					for(int i = 20; i < myChar.CharInfo.size(); i++)
+					for(int i = 20; i < ARTDSingleton.myCharSingleton().CharInfo.size(); i++)
 					{
-						myChar.CharInfo.indexOf(i);
+						ARTDSingleton.myCharSingleton().CharInfo.indexOf(i);
 					}
 					
 					

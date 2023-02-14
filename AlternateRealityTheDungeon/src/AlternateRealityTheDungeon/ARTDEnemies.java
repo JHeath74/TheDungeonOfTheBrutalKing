@@ -16,15 +16,13 @@ import ARTDEnemies.ARTDSpiders;
 public class ARTDEnemies 
 {
 
-	List<ARTDEnemies> monsterList = new ArrayList<ARTDEnemies>();
+	
 	
 	
 	public ARTDEnemies()
 	{
 
-		monsterList.add(new ARTDRats());
-		monsterList.add(new ARTDSkeletons());
-		monsterList.add(new ARTDSpiders());
+
 
 		
 		

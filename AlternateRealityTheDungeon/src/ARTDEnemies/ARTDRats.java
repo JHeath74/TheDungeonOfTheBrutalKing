@@ -12,43 +12,36 @@ public class ARTDRats extends ARTDEnemies {
 	public double inti;
 	public double wis;
 	public double agi;
-	public double basedamage;
-	private double basedefense;
 	public double MonsterHP;
 
-	
-
-	
 	
 	
 	public ARTDRats()
 	{
 
-		sta =1;
-		chr =1;
+		sta = 1;
+		chr = 1;
 		str = 1;
-		inti =1;
-		wis =1;
-		agi =1;
-		basedamage = 2;
-		basedefense = 1;
+		inti = 1;
+		wis = 1;
+		agi = 1;
 		MonsterHP = 3;
 		
 		
 	}
 	
-	public double attackdamage(double str, double basedamage)
+	public double attackdamage(double str)
 	{
 		
-		double attackdamage = str + basedamage;
+		double attackdamage = str * 1.5;
 		
 		return attackdamage;
 	}
 	
-	public double defenseToDamage(double basedefense, double agi)
+	public double defenseToDamage(double agi)
 	{
 		
-		double defenseToDamage = basedefense+agi;
+		double defenseToDamage = agi * 1.5;
 		
 		return defenseToDamage;
 	}
