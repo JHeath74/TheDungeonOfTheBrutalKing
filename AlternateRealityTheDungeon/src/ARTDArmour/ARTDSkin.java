@@ -9,11 +9,9 @@ public class ARTDSkin extends ARTDArmour {
 	private int requiredStrength = 0;
 
 	
-	public ARTDSkin(String name, int defense, int requiredStr)
+	public ARTDSkin()
 	{
-		name = armourName;
-		defense = armourDefense;
-		requiredStr = requiredStrength;
+
 		
 		
 	}

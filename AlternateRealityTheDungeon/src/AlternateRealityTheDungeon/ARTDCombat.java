@@ -44,34 +44,35 @@ public class ARTDCombat
 	
 	ARTDEnemies myEnemies = new ARTDEnemies();
 	
-	ArrayList<ARTDEnemies> monsterList = new ArrayList<ARTDEnemies>();
+	//ArrayList<ARTDEnemies> monsterList = new ArrayList<ARTDEnemies>();
 
-	int upperbound;
+	
 	int HP;
 	String HeroHPArrayList;
 	int HeroHP;
 	
 	public ARTDCombat()
 	{
-		
-		upperbound = 3;
+				
 		HeroHPArrayList = ARTDSingleton.myCharSingleton().CharInfo.get(4);
-		HeroHP = Integer.parseInt("HeroHPArrayList"); 
+		HeroHP = Integer.parseInt(HeroHPArrayList); 
 	
-
 	}
 
 	
 	public void CombatEncouter() throws IOException
 	{
+		
 			
 			
 			int rnd = new Random().nextInt(ARTDSingleton.monsterList().size());
+						
 			ARTDEnemies enemy = ARTDSingleton.monsterList().get(rnd);
 		    
+			enemy.toString().charAt(1);
 
 			//Adding JFrame
-			JFrame CombatFrame = new JFrame("You've encountered a ");
+			JFrame CombatFrame = new JFrame("You've encountered a " + ARTDSingleton.monsterList().indexOf(1));
 			
 			//Adding JPanels
 			JPanel CombatPanel = new JPanel(new BorderLayout());
@@ -149,7 +150,7 @@ public class ARTDCombat
 			ActionListener task = new ActionListener() {
 	            public void actionPerformed(ActionEvent evt) {
 	            	CombatNameAndHPfield.setText("Name:" + ARTDSingleton.myCharSingleton().CharInfo.get(0)+"\t\tEnemy Name:" 
-					+"\nHP: "+  ARTDSingleton.myCharSingleton().CharInfo.get(4) + "\t\tEnemy HP: "+"5");
+					+"\nHP: "+  ARTDSingleton.myCharSingleton().CharInfo.get(4) + "\t\tEnemy HP: ");
 
 	 
 	            	

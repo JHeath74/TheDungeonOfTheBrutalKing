@@ -11,8 +11,6 @@ public class ARTDSkeletons extends ARTDEnemies {
 	public double inti;
 	public double wis;
 	public double agi;
-	public double basedamage;
-	private double basedefense;
 	public double MonsterHP;
 	
 	
@@ -21,28 +19,27 @@ public class ARTDSkeletons extends ARTDEnemies {
 		
 		sta =1;
 		chr =1;
-		str = 1;
+		str = 2;
 		inti =1;
 		wis =1;
-		agi =1;
-		basedamage = 5;
-		basedefense = 5;
+		agi =2;
+
 		MonsterHP = 7;
 		
 	}
 	
-	public double attackdamage(double str, double basedamage)
+	public double attackdamage(double str)
 	{
 		
-		double attackdamage = str + basedamage;
+		double attackdamage = str * 1.7;
 		
 		return attackdamage;
 	}
 	
-	public double defenseToDamage(double basedefense, double agi)
+	public double defenseToDamage(double agi)
 	{
 		
-		double defenseToDamage = basedefense+agi;
+		double defenseToDamage = agi * 1.7;
 		
 		return defenseToDamage;
 	}

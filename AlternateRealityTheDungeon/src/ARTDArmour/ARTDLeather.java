@@ -9,11 +9,9 @@ public class ARTDLeather extends ARTDArmour {
 	private int requiredStrength = 20;
 	
 	
-	public ARTDLeather(String name, int defense, int requiredStr) {
+	public ARTDLeather() {
 		
-		name = armourName;
-		defense = armourDefense;
-		requiredStr = requiredStrength;
+
 	}
 
 }

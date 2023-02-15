@@ -9,11 +9,8 @@ public class ARTDPlate extends ARTDArmour {
 	private int armourDefense = 15;	
 	private int requiredStrength = 40;
 	
-	public ARTDPlate(String name, int defense, int requiredStr) {
-		
-		name = armourName;
-		defense = armourDefense;
-		requiredStr = requiredStrength;
+	public ARTDPlate() {
+
 	}
 
 }

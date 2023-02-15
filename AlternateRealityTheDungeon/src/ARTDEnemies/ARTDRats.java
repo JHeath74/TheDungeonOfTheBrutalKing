@@ -33,7 +33,7 @@ public class ARTDRats extends ARTDEnemies {
 	public double attackdamage(double str)
 	{
 		
-		double attackdamage = str * 1.5;
+		double attackdamage = str * 1.1;
 		
 		return attackdamage;
 	}
@@ -41,7 +41,7 @@ public class ARTDRats extends ARTDEnemies {
 	public double defenseToDamage(double agi)
 	{
 		
-		double defenseToDamage = agi * 1.5;
+		double defenseToDamage = agi * 1.4;
 		
 		return defenseToDamage;
 	}

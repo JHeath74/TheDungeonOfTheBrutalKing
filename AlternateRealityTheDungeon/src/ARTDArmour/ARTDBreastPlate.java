@@ -8,11 +8,8 @@ public class ARTDBreastPlate extends ARTDArmour {
 	private int armourDefense = 15;	
 	private int requiredStrength = 35;
 	
-	public ARTDBreastPlate(String name, int defense, int requiredStr) {
-		
-		name = armourName;
-		defense = armourDefense;
-		requiredStr = requiredStrength;
+	public ARTDBreastPlate() {
+
 	}
 
 }
