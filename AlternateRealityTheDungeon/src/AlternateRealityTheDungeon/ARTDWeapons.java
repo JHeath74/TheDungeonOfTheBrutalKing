@@ -1,15 +1,16 @@
 package AlternateRealityTheDungeon;
 
-import java.util.ArrayList;
+
 
 
 public class ARTDWeapons {
 	
-	 private ArrayList<String> weapons;
+	
+	 private static ARTDWeapons single_instance_weapons;
 
 public ARTDWeapons()
 {
-	weapons = new ArrayList<String>();
+	
 	
 //	ARTDWeapons BattleAxe = new ARTDWeapons();
 //	ARTDWeapons BattleHammer = new ARTDWeapons();
@@ -31,6 +32,15 @@ public ARTDWeapons()
 
 	
 	
+}
+
+public static ARTDWeapons Singleton()
+{
+	// To ensure only one instance is created
+	if (single_instance_weapons == null) {
+		single_instance_weapons = new ARTDWeapons();
+	}
+	return single_instance_weapons;
 }
 	
 

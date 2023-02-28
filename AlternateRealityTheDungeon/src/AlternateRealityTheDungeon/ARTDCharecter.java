@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class ARTDCharecter {
 	
-	private static ARTDCharecter single_instance = null;
+	
+	private static ARTDCharecter single_instance_myChar;
 	public ArrayList<String> CharInfo = new ArrayList<String>();
 
 	
@@ -59,10 +60,10 @@ public class ARTDCharecter {
 	public static ARTDCharecter Singleton()
 	{
 		// To ensure only one instance is created
-		if (single_instance == null) {
-			single_instance = new ARTDCharecter();
+		if (single_instance_myChar == null) {
+			single_instance_myChar = new ARTDCharecter();
 		}
-		return single_instance;
+		return single_instance_myChar;
 	}
 		
 	

@@ -17,5 +17,15 @@ public class ARTDSkin extends ARTDArmour {
 	}
 
 
+	public int getRequiredStrength() {
+		return requiredStrength;
+	}
+
+
+	public void setRequiredStrength(int requiredStrength) {
+		this.requiredStrength = requiredStrength;
+	}
+
+
 	
 }
