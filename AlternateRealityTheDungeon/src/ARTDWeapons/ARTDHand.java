@@ -1,5 +1,5 @@
 package ARTDWeapons;
 
-public class ARTDSkin {
+public class ARTDHand {
 
 }
