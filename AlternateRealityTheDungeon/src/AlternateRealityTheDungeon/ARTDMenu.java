@@ -166,6 +166,14 @@ public class ARTDMenu extends JPanel {
 		JMenu helpMenu = new JMenu("About");
 		helpMenu.setMnemonic(KeyEvent.VK_H);
 
+		ARTDCombat artdCombat = new ARTDCombat();
+		try {
+			artdCombat.CombatEncouter();
+		} catch (IOException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
+		
 		///////////////////////// create groups of menu
 		///////////////////////// items/////////////////////////////////////
 		JMenuItem newGameMenuItem = new JMenuItem("New Game");

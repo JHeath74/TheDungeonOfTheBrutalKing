@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.swing.ComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -42,9 +43,10 @@ public class ARTDCombat
 	//https://stackoverflow.com/questions/38288522/how-to-get-a-random-item-from-a-class-in-java
 	//https://stackoverflow.com/questions/18435992/java-call-object-methods-through-arraylist
 	
-	ARTDEnemies myEnemies = new ARTDEnemies();
 	
-	//ArrayList<ARTDEnemies> monsterList = new ArrayList<ARTDEnemies>();
+	ARTDSingleton mySingleton = new ARTDSingleton();
+	ARTDSingleton myCharSingleton = new ARTDSingleton();
+	
 
 	
 	int HP;
@@ -53,7 +55,7 @@ public class ARTDCombat
 	
 	public ARTDCombat()
 	{
-				
+			
 		HeroHPArrayList = ARTDSingleton.myCharSingleton().CharInfo.get(4);
 		HeroHP = Integer.parseInt(HeroHPArrayList); 
 	
@@ -72,7 +74,7 @@ public class ARTDCombat
 			enemy.toString().charAt(1);
 
 			//Adding JFrame
-			JFrame CombatFrame = new JFrame("You've encountered a " + ARTDSingleton.monsterList().indexOf(1));
+			JFrame CombatFrame = new JFrame("You've encountered a " + ARTDSingleton.monsterList().indexOf(0));
 			
 			//Adding JPanels
 			JPanel CombatPanel = new JPanel(new BorderLayout());
@@ -94,6 +96,7 @@ public class ARTDCombat
 			
 			//Creating Buttons for Combat
 			JButton CombatAttack = new JButton("Attack");
+			JButton CastSelectedSpell = new JButton("Cast Selected Spell");
 			JButton CombatSpell = new JButton("Select Spell to Cast");
 			JButton CombatRun = new JButton("Run Away!");
 			
@@ -114,6 +117,7 @@ public class ARTDCombat
 			
 			//Adding Buttons to CombatPanelButtons JPanel		
 			CombatPanelButtons.add(CombatAttack);
+			CombatPanelButtons.add(CastSelectedSpell);
 			CombatPanelButtons.add(CombatSpell);
 			CombatPanelButtons.add(CombatRun);
 					
@@ -174,25 +178,41 @@ public class ARTDCombat
 					
 				}});
 			
-			//Cast Spell Button in Combat
+			//CastSpell Button in Combat
+			CastSelectedSpell.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					
+				}});
+			
+			//Select Spell to Cast
 			CombatSpell.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					
 					JFrame spellsFrame = new JFrame();
-					JButton CombatSpellCast = new JButton("Cast Selected Spell");
+					JButton SelectSpellToCast = new JButton("Select Spell to Cast");
+					
 					JPanel spelllistbox = new JPanel(new BorderLayout());
 			
-					//String[] spellList = (String[]) myChar.mySpells.toArray();
-					String[] spellList = null;
 					
-					for(int i = 20; i < ARTDSingleton.myCharSingleton().CharInfo.size(); i++)
+					
+					String[] spellList = new String[ARTDSingleton.myCharSingleton().CharInfo.size()];
+			  
+					for (int i = 20; i < ARTDSingleton.myCharSingleton().CharInfo.size(); i++)
+						spellList[i] = ARTDSingleton.myCharSingleton().CharInfo.get(i);
+					
+				
+			
+					if(spellList.length == 0 | spellList == null)
 					{
-						ARTDSingleton.myCharSingleton().CharInfo.indexOf(i);
+						JComboBox<String> spells = new JComboBox<String>();
+						spells.addItem("No Known Spells");
 					}
-					
-					
+			        
 					
 					JComboBox<String> spells = new JComboBox<String>(spellList); // Add the spells from the Array into the JCombobox
 					spells.setEditable(false);
@@ -205,57 +225,55 @@ public class ARTDCombat
 							String castspell = spells.getSelectedItem().toString();  //get the selected item in the JComboBox
 							
 
+							if(castspell.equals(null))
+							{
+								
+							}else {
 							
-							
-							if(castspell.equals("Heal"))
-							{
-								
-							}else if(castspell.equals("Cold_Blast"))
-							{
-								
-							}else if(castspell.equals("Conjure_Food"))
-							{
-								JOptionPane.showMessageDialog(null, "Not Able to Cast the spell " + castspell + " in Combat");
-								
-							}else if(castspell.equals("Fire_Ball"))
-							{
-								
-							}else if(castspell.equals("Light"))
-							{
-								
-							}else if(castspell.equals("Location"))
-							{
-								JOptionPane.showMessageDialog(null, "Not Able to Cast the spell " + castspell + " in Combat");
-							}else if (castspell.equals("Shield"))
-							{
-								
-							}else if(castspell.equals("RandomStat"))
-							{
-								
-							}else if(castspell.equals("Port"))
-							{
-								JOptionPane.showMessageDialog(null, "Not Able to Cast the spell " + castspell + " in Combat");
+								if(castspell.equals("Heal"))
+								{
+									
+								}else if(castspell.equals("Cold_Blast"))
+								{
+									
+								}else if(castspell.equals("Conjure_Food"))
+								{
+									JOptionPane.showMessageDialog(null, "Not Able to Cast the spell " + castspell + " in Combat");
+									
+								}else if(castspell.equals("Fire_Ball"))
+								{
+									
+								}else if(castspell.equals("Light"))
+								{
+									
+								}else if(castspell.equals("Location"))
+								{
+									JOptionPane.showMessageDialog(null, "Not Able to Cast the spell " + castspell + " in Combat");
+								}else if (castspell.equals("Shield"))
+								{
+									
+								}else if(castspell.equals("RandomStat"))
+								{
+									
+								}else if(castspell.equals("Port"))
+								{
+									JOptionPane.showMessageDialog(null, "Not Able to Cast the spell " + castspell + " in Combat");
+								}
 							}
-							
 							
 						}});
 					
 					spellsFrame.add(spelllistbox);
 					spelllistbox.add(spells, BorderLayout.CENTER);
-					spelllistbox.add(CombatSpellCast, BorderLayout.SOUTH);
+					spelllistbox.add(CastSelectedSpell, BorderLayout.SOUTH);
+					spelllistbox.add(SelectSpellToCast, BorderLayout.SOUTH);
 					
 					spellsFrame.setSize(400, 200);
 					spellsFrame.setLocationRelativeTo(null);
 					
 					spellsFrame.setVisible(true);
 					
-					CombatSpellCast.addActionListener(new ActionListener() {
-
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							JOptionPane.showMessageDialog(null, "Add ability to cast spell in ARTDCombat Class");
-							
-						}});
+					
 					
 					
 				}});

@@ -33,8 +33,8 @@ public class ARTDCharecter {
 	// CharInfo[15] = Gems
 	// CharInfo[16] = Weapon
 	// CharInfo[17] = Armour
-	// CharInfo[18] = 
-	// CharInfo[19] = Map Location
+	// CharInfo[18] = Map Location
+	// CharInfo[19] = 
 	
 	//Acquired Spells
 	
@@ -48,7 +48,7 @@ public class ARTDCharecter {
 	// CharInfo[27]
 	// CharInfo[28]
 	// CharInfo[29]
-	// CharInfo[30]
+	
 	
 	public ARTDCharecter()
 	{

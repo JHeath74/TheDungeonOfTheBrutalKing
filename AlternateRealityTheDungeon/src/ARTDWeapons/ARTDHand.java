@@ -1,5 +1,11 @@
 package ARTDWeapons;
 
-public class ARTDHand {
+import AlternateRealityTheDungeon.ARTDWeapons;
+
+public class ARTDHand extends ARTDWeapons {
+	
+	public ARTDHand() {
+		
+	}
 
 }

@@ -1,6 +1,7 @@
 package AlternateRealityTheDungeon;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import ARTDArmour.ARTDBreastPlate;
@@ -14,7 +15,15 @@ import ARTDArmour.ARTDStuddedLeather;
 import ARTDEnemies.ARTDRats;
 import ARTDEnemies.ARTDSkeletons;
 import ARTDEnemies.ARTDSpiders;
-
+import ARTDSpells.ARTDLight;
+import ARTDSpells.ARTDLocation;
+import ARTDSpells.ARTDPort;
+import ARTDSpells.ARTDRandomStat;
+import ARTDSpells.ARTDShield;
+import ARTDSpells.ARTDCold_Blast;
+import ARTDSpells.ARTDConjure_Food;
+import ARTDSpells.ARTDFireball;
+import ARTDSpells.ARTDHeal;
 import ARTDWeapons.ARTDBattleAxe;
 import ARTDWeapons.ARTDBattleHammer;
 import ARTDWeapons.ARTDClub;
@@ -69,10 +78,7 @@ public class ARTDSingleton
 	public static ARTDSpells mySpellsSingleton()
 	{
 		return mySpells;
-	}
-	
-	//Return Arrays that stores the armour, weapons, spells and enemies
-	
+	}	
 	
 	public static List<ARTDArmour> armourList()
 	{
@@ -81,21 +87,17 @@ public class ARTDSingleton
 	
 	public static List<ARTDEnemies> monsterList()
 	{
-		
 		return monsterList;
-		
 	}
 	
 	public static List<ARTDWeapons> weaponsList()
 	{
 		return weaponList;
-		
 	}
 	
 	public static List<ARTDSpells> spellList()
 	{
 		return spellList;
-		
 	}
 	
 	//Adding Spells, Enemies, Weapons and Armour to Arrays
@@ -156,6 +158,18 @@ public class ARTDSingleton
 	private static List<ARTDSpells> addSpells()
 	{
 		spellList = new ArrayList<ARTDSpells>();
+		
+		spellList.add(new ARTDCold_Blast());
+		spellList.add(new ARTDConjure_Food());
+		spellList.add(new ARTDFireball());
+		spellList.add(new ARTDHeal());
+		spellList.add(new ARTDLight());
+		spellList.add(new ARTDLocation());
+		spellList.add(new ARTDShield());
+		spellList.add(new ARTDRandomStat());
+		spellList.add(new ARTDPort());
+		
+		
 		
 		return spellList;
 		

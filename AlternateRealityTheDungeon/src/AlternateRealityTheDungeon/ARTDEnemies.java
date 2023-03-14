@@ -11,15 +11,15 @@ package AlternateRealityTheDungeon;
 public class ARTDEnemies 
 {
 
-	private static ARTDSpells single_instance_enemies;
+	private static ARTDEnemies single_instance_enemies;
 
 
 
-	public static ARTDSpells Singleton()
+	public static ARTDEnemies Singleton()
 	{
 		// To ensure only one instance is created
 		if (single_instance_enemies == null) {
-			single_instance_enemies = new ARTDSpells();
+			single_instance_enemies = new ARTDEnemies();
 		}
 		return single_instance_enemies;
 	}
