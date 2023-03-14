@@ -210,13 +210,9 @@ public class ARTDCombat
 					if(spellList.length == 0 | spellList == null)
 					{
 						JComboBox<String> spells = new JComboBox<String>();
-						spells.addItem("No Known Spells");
-					}
-			        
-					
-					JComboBox<String> spells = new JComboBox<String>(spellList); // Add the spells from the Array into the JCombobox
-					spells.setEditable(false);
-					
+						spells.setSelectedItem("No Spells Available");
+						spells.setEditable(false);
+											
 					spells.addItemListener(new ItemListener() {
 
 						@Override
