@@ -1,24 +1,15 @@
 package ARTDEnemies;
 
-
 import AlternateRealityTheDungeon.ARTDEnemies;
-
 
 public class ARTDRats extends ARTDEnemies {
 	
-	public double sta;
-	public double chr;
-	public double str;
-	public double inti;
-	public double wis;
-	public double agi;
-	public double MonsterHP;
 
 	
 	
 	public ARTDRats()
 	{
-
+		name = "Rat";
 		sta = 1;
 		chr = 1;
 		str = 1;
@@ -26,6 +17,7 @@ public class ARTDRats extends ARTDEnemies {
 		wis = 1;
 		agi = 1;
 		MonsterHP = 3;
+		MonsterImage = "GiantRat.jpg";
 		
 		
 	}

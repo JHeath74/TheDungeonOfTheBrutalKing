@@ -3,28 +3,19 @@ package ARTDEnemies;
 import AlternateRealityTheDungeon.ARTDEnemies;
 
 public class ARTDSkeletons extends ARTDEnemies {
-	
-	
-	public double sta;
-	public double chr;
-	public double str;
-	public double inti;
-	public double wis;
-	public double agi;
-	public double MonsterHP;
-	
-	
+
 	public ARTDSkeletons()
 	{
-		
+		name = "Skeleton";
 		sta =1;
 		chr =1;
 		str = 2;
 		inti =1;
 		wis =1;
 		agi =2;
-
 		MonsterHP = 7;
+		
+		MonsterImage = "Skeleton.jpg";
 		
 	}
 	

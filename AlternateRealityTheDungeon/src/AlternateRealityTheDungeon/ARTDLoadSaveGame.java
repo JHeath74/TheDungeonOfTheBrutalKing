@@ -178,6 +178,30 @@ public class ARTDLoadSaveGame {
 		loadGame.setVisible(true);
 
 	}
+	
+	public void AutoSaveGame() throws IOException
+	{
+		String GameLocation = "src/AlternateRealityTheDungeon/TextFiles/SaveGame/SavedGame";
+
+		String SavedGameName = "AutoGameSave.Txt";
+
+		if (SavedGameName != "IntialCharecterSave.txt") {
+			String AutoSaveGameName = GameLocation + SavedGameName;
+
+			FileWriter writer = new FileWriter(AutoSaveGameName);
+
+			for (String Charinfo : myChar.CharInfo) {
+
+				writer.write(Charinfo + System.lineSeparator());
+			}
+			writer.close();
+
+			JOptionPane.showMessageDialog(null, "Game Saved: " + SavedGameName);
+		} else {
+			JOptionPane.showMessageDialog(null,
+					"Unable to Save Current Game Over Saved Game called  'InitialCharecterSave.txt'\n");
+		}
+	}
 
 	public static File getLastModified(String SavedGameDirectory) {
 		File directory = new File(SavedGameDirectory);

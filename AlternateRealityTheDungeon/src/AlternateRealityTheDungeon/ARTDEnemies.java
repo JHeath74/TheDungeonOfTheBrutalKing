@@ -1,6 +1,6 @@
 package AlternateRealityTheDungeon;
 
-
+import java.util.ArrayList;
 
 //https://gamedev.stackexchange.com/questions/81884/making-a-monster-encounter-method
 
@@ -10,18 +10,31 @@ package AlternateRealityTheDungeon;
 
 public class ARTDEnemies 
 {
-
-	private static ARTDEnemies single_instance_enemies;
+	public ArrayList<String> myMonsters = new ArrayList<String>();
+	private static ARTDEnemies single_instance_myEnemies;
+	
+	
+	public double sta;
+	public double chr;
+	public double str;
+	public double inti;
+	public double wis;
+	public double agi;
+	public double MonsterHP;
+	public String name;
+	public String MonsterImage;
+	public double basedamage;
+	public double basedefense;
 
 
 
 	public static ARTDEnemies Singleton()
 	{
 		// To ensure only one instance is created
-		if (single_instance_enemies == null) {
-			single_instance_enemies = new ARTDEnemies();
+		if (single_instance_myEnemies == null) {
+			single_instance_myEnemies = new ARTDEnemies();
 		}
-		return single_instance_enemies;
+		return single_instance_myEnemies;
 	}
 	
 	
@@ -34,7 +47,14 @@ public class ARTDEnemies
 		
 	}
 	
-	
+
+
+
+
+	@Override
+	public String toString() {
+		return this.name;
+	}
 	
 			
 	

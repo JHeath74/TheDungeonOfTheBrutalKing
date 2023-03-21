@@ -54,7 +54,7 @@ public class ARTDSingleton
 	
 	
 	private static List<ARTDArmour> armourList = addArmour();
-	private static List<ARTDEnemies> monsterList = addEnemies();
+	private static List<ARTDEnemies> myMonsters = addEnemies();
 	private static List<ARTDWeapons> weaponList = addWeapon();
 	private static List<ARTDSpells> spellList = addSpells();
 	
@@ -80,15 +80,20 @@ public class ARTDSingleton
 		return mySpells;
 	}	
 	
+	public static List<ARTDEnemies> myMonsters()
+	{
+		if(myMonsters.size() == 0)
+		{
+			addEnemies();
+		}
+		return myMonsters;
+	}
+	
 	public static List<ARTDArmour> armourList()
 	{
 		return armourList;
 	}
-	
-	public static List<ARTDEnemies> monsterList()
-	{
-		return monsterList;
-	}
+	 
 	
 	public static List<ARTDWeapons> weaponsList()
 	{
@@ -104,12 +109,12 @@ public class ARTDSingleton
 	
 	private static List<ARTDEnemies> addEnemies()
 	{
-		monsterList = new ArrayList<ARTDEnemies>();
+		myMonsters = new ArrayList<ARTDEnemies>();
 		
-		monsterList.add(new ARTDRats());
-		monsterList.add(new ARTDSkeletons());
-		monsterList.add(new ARTDSpiders());
-		return monsterList;
+		myMonsters.add(new ARTDRats());
+		myMonsters.add(new ARTDSkeletons());
+		myMonsters.add(new ARTDSpiders());
+		return myMonsters;
 	}
 	
 	private static List<ARTDArmour> addArmour()

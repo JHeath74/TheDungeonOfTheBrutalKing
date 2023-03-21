@@ -34,7 +34,10 @@ import javax.swing.KeyStroke;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
-
+/*
+ * Games Menu Items
+ * 
+ */
 public class ARTDMenu extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -138,10 +141,6 @@ public class ARTDMenu extends JPanel {
 	    messagearea.setWrapStyleWord(true);
 	    messagearea.setEditable(false);
         messagearea.setFont(font);	    
-
-	    
-		
-
 
 
 		// Create the menu bar.

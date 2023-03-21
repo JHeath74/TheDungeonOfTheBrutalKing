@@ -44,7 +44,7 @@ public class ARTDCombat
 	//https://stackoverflow.com/questions/18435992/java-call-object-methods-through-arraylist
 	
 	
-	ARTDSingleton mySingleton = new ARTDSingleton();
+	
 	ARTDSingleton myCharSingleton = new ARTDSingleton();
 	
 
@@ -67,14 +67,12 @@ public class ARTDCombat
 		
 			
 			
-			int rnd = new Random().nextInt(ARTDSingleton.monsterList().size());
+			int rnd = new Random().nextInt(ARTDSingleton.myMonsters().size());
 						
-			ARTDEnemies enemy = ARTDSingleton.monsterList().get(rnd);
+			ARTDEnemies enemy = ARTDSingleton.myMonsters().get(rnd);
 		    
-			enemy.toString().charAt(1);
-
 			//Adding JFrame
-			JFrame CombatFrame = new JFrame("You've encountered a " + ARTDSingleton.monsterList().indexOf(0));
+			JFrame CombatFrame = new JFrame("You've encountered a " + ARTDSingleton.myMonsters().get(rnd).toString());
 			
 			//Adding JPanels
 			JPanel CombatPanel = new JPanel(new BorderLayout());
@@ -104,9 +102,13 @@ public class ARTDCombat
 			CombatFrame.add(CombatPanel, BorderLayout.CENTER);
 			
 			//Adding Image to JPanel
-			BufferedImage myPicture = ImageIO.read(new File("src\\AlternateRealityTheDungeon\\Images\\GiantRat.jpg"));
+			BufferedImage myPicture = ImageIO.read(new File("src\\AlternateRealityTheDungeon\\Images\\"+ARTDSingleton.myMonsters().get(rnd).MonsterImage));
 			JLabel picLabel = new JLabel(new ImageIcon(myPicture));
 		
+			Dimension imageSize = new Dimension();
+			imageSize.setSize(768, 1024); //Double Width, Double Height
+			
+			picLabel.setPreferredSize(imageSize);; //Getting the size of the JPanel for the monster image
 			CombatPanelImage.add(picLabel);
 			
 			//Adding Panel for buttons to Master Panel
@@ -153,10 +155,11 @@ public class ARTDCombat
 			
 			ActionListener task = new ActionListener() {
 	            public void actionPerformed(ActionEvent evt) {
-	            	CombatNameAndHPfield.setText("Name:" + ARTDSingleton.myCharSingleton().CharInfo.get(0)+"\t\tEnemy Name:" 
-					+"\nHP: "+  ARTDSingleton.myCharSingleton().CharInfo.get(4) + "\t\tEnemy HP: ");
-
-	 
+	       
+	            	
+	            	CombatNameAndHPfield.setText("Name:" + ARTDSingleton.myCharSingleton().CharInfo.get(rnd)+
+	            			"\t\tEnemy Name:" + ARTDSingleton.myMonsters().get(rnd).toString()
+					+"\nHP: "+  ARTDSingleton.myCharSingleton().CharInfo.get(4) + "\t\tEnemy HP: "+ ARTDSingleton.myMonsters().get(rnd).MonsterHP);
 	            	
 	            }
 			};
@@ -270,7 +273,7 @@ public class ARTDCombat
 					spellsFrame.setVisible(true);
 					
 					
-					
+					}
 					
 				}});
 			
