@@ -38,8 +38,11 @@ import javax.swing.WindowConstants;
  * Games Menu Items
  * 
  */
-public class ARTDMenu extends JPanel {
+public class ARTDMenu extends JPanel{
 
+    
+	
+	
 	private static final long serialVersionUID = 1L;
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
 	ARDTGamePreferences myPreferences = new ARDTGamePreferences();
@@ -141,6 +144,7 @@ public class ARTDMenu extends JPanel {
 	    messagearea.setWrapStyleWord(true);
 	    messagearea.setEditable(false);
         messagearea.setFont(font);	    
+        
 
 
 		// Create the menu bar.
@@ -172,6 +176,8 @@ public class ARTDMenu extends JPanel {
 			// TODO Auto-generated catch block
 			e3.printStackTrace();
 		}
+		
+
 		
 		///////////////////////// create groups of menu
 		///////////////////////// items/////////////////////////////////////
@@ -378,7 +384,7 @@ public class ARTDMenu extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+
 				
 				JFrame frame = new JFrame("Help Information");
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -500,6 +506,8 @@ public class ARTDMenu extends JPanel {
 
 		frame.setJMenuBar(menuBar);
 
+	
+		
 		frame.add(p1, BorderLayout.NORTH);
 		p1.add(p2, BorderLayout.NORTH);
 		p1.add(p3, BorderLayout.CENTER);
@@ -507,15 +515,20 @@ public class ARTDMenu extends JPanel {
 		p2.add(CharNameClassLevel);
 		p3.add(CharStats);
 		p4.add(CharXPHPGold);
-		
-//		frame.add(CharNameClassLevel, BorderLayout.NORTH);
-//		frame.add(CharStats, BorderLayout.NORTH);
-//		frame.add(CharXPHPGold, BorderLayout.NORTH);
 
+		
+		JTextArea amessagearea = new JTextArea();
+		frame.add(amessagearea,BorderLayout.CENTER);
 		frame.add(messagearea, BorderLayout.SOUTH);
+		
+		messagearea.setText("JTextArea messagearea");
+		amessagearea.setText("A New MessageArea");
 		
 		
 		frame.setVisible(true);
 	}
+
+
+
 
 }

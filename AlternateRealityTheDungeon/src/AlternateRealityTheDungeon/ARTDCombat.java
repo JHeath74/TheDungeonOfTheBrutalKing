@@ -43,12 +43,8 @@ public class ARTDCombat
 	//https://stackoverflow.com/questions/38288522/how-to-get-a-random-item-from-a-class-in-java
 	//https://stackoverflow.com/questions/18435992/java-call-object-methods-through-arraylist
 	
-	
-	
 	ARTDSingleton myCharSingleton = new ARTDSingleton();
-	
 
-	
 	int HP;
 	String HeroHPArrayList;
 	int HeroHP;
@@ -98,8 +94,11 @@ public class ARTDCombat
 			JButton CombatSpell = new JButton("Select Spell to Cast");
 			JButton CombatRun = new JButton("Run Away!");
 			
+			
+			
 			//Adding Parent JPanel to JFrame
 			CombatFrame.add(CombatPanel, BorderLayout.CENTER);
+			
 			
 			//Adding Image to JPanel
 			BufferedImage myPicture = ImageIO.read(new File("src\\AlternateRealityTheDungeon\\Images\\"+ARTDSingleton.myMonsters().get(rnd).MonsterImage));
