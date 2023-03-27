@@ -1,25 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
-    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDSpells.Spells"/>
-    <fullyQualifiedTypeName name="java.awt.FlowLayout"/>
-    <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
-    <fullyQualifiedTypeName name="java.awt.Toolkit"/>
-    <fullyQualifiedTypeName name="java.awt.Dimension"/>
-    <fullyQualifiedTypeName name="javax.swing.JSplitPane"/>
-    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARDTGamePreferences"/>
-    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDArmour"/>
-    <fullyQualifiedTypeName name="ARTDArmour.ARTDSkin"/>
-    <fullyQualifiedTypeName name="ARTDArmour.ARTDCloth"/>
-    <fullyQualifiedTypeName name="ARTDArmour.ARTDLeather"/>
-    <fullyQualifiedTypeName name="ARTDArmour.ARTDStuddedLeather"/>
-    <fullyQualifiedTypeName name="ARTDArmour.ARTDChain"/>
-    <fullyQualifiedTypeName name="ARTDArmour.ARTDBreastPlate"/>
-    <fullyQualifiedTypeName name="ARTDArmour.ARTDPlate"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="ARTDEnemies.ARTDRats"/>
-    <fullyQualifiedTypeName name="ARTDEnemies.ARTDSkeletons"/>
-    <fullyQualifiedTypeName name="ARTDEnemies.ARTDSpiders"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.Random"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
@@ -57,7 +37,27 @@
     <fullyQualifiedTypeName name="ARTDEnemies.ARTDDevourer"/>
     <fullyQualifiedTypeName name="ARTDEnemies.ARTDNight_Stalker"/>
     <fullyQualifiedTypeName name="ARTDEnemies.ARTDWraiths"/>
-    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDEnemies"/>
     <fullyQualifiedTypeName name="ARTDEnemies.ARTDGhosts"/>
     <fullyQualifiedTypeName name="ARTDEnemies.ARTDWhirlwind"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDGuards"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDBrigands"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDKnights"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDThieves"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDNoblemen"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDMaster_Thieves"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDAssassins"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDMages"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDWizard"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDValkyries"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDDwarves"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDTrolls"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDGoblins"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDGnomes"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDOrcs"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDGnolls"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDWolves"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDGiant_Bats"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDMold"/>
+    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDEnemies"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDSlime"/>
 </qualifiedTypeNameHistroy>
