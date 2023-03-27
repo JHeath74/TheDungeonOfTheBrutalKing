@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="java.util.Random"/>
-    <fullyQualifiedTypeName name="java.util.Arrays"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDHand"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDStilleto"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDDart"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDSling"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDShortSword"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDShortbow"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDWarNet"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDFlail"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDClub"/>
     <fullyQualifiedTypeName name="ARTDWeapons.ARTDWhip"/>
     <fullyQualifiedTypeName name="ARTDWeapons.ARTDCrossbow"/>
     <fullyQualifiedTypeName name="ARTDWeapons.ARTDLongSword"/>
@@ -58,6 +46,18 @@
     <fullyQualifiedTypeName name="ARTDEnemies.ARTDWolves"/>
     <fullyQualifiedTypeName name="ARTDEnemies.ARTDGiant_Bats"/>
     <fullyQualifiedTypeName name="ARTDEnemies.ARTDMold"/>
-    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDEnemies"/>
     <fullyQualifiedTypeName name="ARTDEnemies.ARTDSlime"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDStorm_Devils"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDIce_Demons"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDFlame_Demons"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDHorned_Devils"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDImps"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDGremlins"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDHomunculi"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDPhoenix"/>
+    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDEnemies"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARDTSalamander"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARDTGhouls"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARDTLiches"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARDTVampires"/>
 </qualifiedTypeNameHistroy>
