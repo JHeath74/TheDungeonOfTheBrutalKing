@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDCharecter"/>
-    <fullyQualifiedTypeName name="javax.swing.JComboBox"/>
-    <fullyQualifiedTypeName name="javax.swing.DefaultComboBoxModel"/>
-    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDClass"/>
-    <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
     <fullyQualifiedTypeName name="javax.swing.JLabel"/>
     <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDSpells.Spells"/>
     <fullyQualifiedTypeName name="java.awt.FlowLayout"/>
@@ -27,7 +22,6 @@
     <fullyQualifiedTypeName name="ARTDEnemies.ARTDSpiders"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.Random"/>
-    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDEnemies"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="ARTDWeapons.ARTDHand"/>
     <fullyQualifiedTypeName name="ARTDWeapons.ARTDStilleto"/>
@@ -60,4 +54,10 @@
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.lang.Thread"/>
     <fullyQualifiedTypeName name="java.lang.Thread.State"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDDevourer"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDNight_Stalker"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDWraiths"/>
+    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDEnemies"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDGhosts"/>
+    <fullyQualifiedTypeName name="ARTDEnemies.ARTDWhirlwind"/>
 </qualifiedTypeNameHistroy>

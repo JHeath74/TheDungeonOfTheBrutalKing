@@ -11,10 +11,14 @@ import ARTDArmour.ARTDLeather;
 import ARTDArmour.ARTDPlate;
 import ARTDArmour.ARTDSkin;
 import ARTDArmour.ARTDStuddedLeather;
-
+import ARTDEnemies.ARTDDevourer;
+import ARTDEnemies.ARTDGhosts;
+import ARTDEnemies.ARTDNight_Stalker;
 import ARTDEnemies.ARTDRats;
 import ARTDEnemies.ARTDSkeletons;
 import ARTDEnemies.ARTDSpiders;
+import ARTDEnemies.ARTDWhirlwind;
+import ARTDEnemies.ARTDWraiths;
 import ARTDSpells.ARTDLight;
 import ARTDSpells.ARTDLocation;
 import ARTDSpells.ARTDPort;
@@ -114,6 +118,11 @@ public class ARTDSingleton
 		myMonsters.add(new ARTDRats());
 		myMonsters.add(new ARTDSkeletons());
 		myMonsters.add(new ARTDSpiders());
+		myMonsters.add(new ARTDDevourer());
+		myMonsters.add(new ARTDNight_Stalker());
+		myMonsters.add(new ARTDWraiths());
+		myMonsters.add(new ARTDGhosts());
+		myMonsters.add(new ARTDWhirlwind());
 		return myMonsters;
 	}
 	
