@@ -5,7 +5,9 @@ import AlternateRealityTheDungeon.ARTDWeapons;
 public class ARTDFlail extends ARTDWeapons {
 
 	public ARTDFlail() {
-		// TODO Auto-generated constructor stub
+		name = "Flail";
+		requiredStrength = 35;
+		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
 	}
 
 }

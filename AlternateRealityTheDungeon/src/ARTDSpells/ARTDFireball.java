@@ -12,8 +12,8 @@ public class ARTDFireball extends ARTDSpells{
 		name = "FireBall";
 		requiredint = 20;
 		requiredwis = 20;
-		intelligence = myChar.myCharSingleton().CharInfo.get(8).toString();
-		wisdom = myChar.myCharSingleton().CharInfo.get(8).toString();
+		charintelligence = myChar.myCharSingleton().CharInfo.get(8).toString();
+		charwisdom = myChar.myCharSingleton().CharInfo.get(9).toString();
 	}
 
 	

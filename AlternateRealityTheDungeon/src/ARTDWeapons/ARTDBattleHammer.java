@@ -5,7 +5,9 @@ import AlternateRealityTheDungeon.ARTDWeapons;
 public class ARTDBattleHammer extends ARTDWeapons {
 
 	public ARTDBattleHammer() {
-		// TODO Auto-generated constructor stub
+		name = "Battle Hammer";
+		requiredStrength = 35;
+		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
 	}
 
 }

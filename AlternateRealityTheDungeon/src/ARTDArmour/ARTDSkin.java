@@ -4,10 +4,6 @@ import AlternateRealityTheDungeon.ARTDArmour;
 
 public class ARTDSkin extends ARTDArmour {
 
-	private String armourName = "Skin";
-	private int armourDefense = 1;
-	private int requiredStrength = 0;
-
 	
 	public ARTDSkin()
 	{
@@ -15,6 +11,7 @@ public class ARTDSkin extends ARTDArmour {
 		name = "Skin";
 		armourDefense = 1;
 		requiredStrength = 0;
+		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
 		
 	}
 

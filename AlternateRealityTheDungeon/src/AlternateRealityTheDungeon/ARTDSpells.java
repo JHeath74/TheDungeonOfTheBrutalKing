@@ -9,8 +9,8 @@ public class ARTDSpells {
 	public ArrayList<String> myMonsters = new ArrayList<String>();
 	private static ARTDSpells single_instance_spells;
 	
-	public String intelligence;
-	public String wisdom;
+	public String charintelligence;
+	public String charwisdom;
 	public int requiredwis;
 	public int requiredint;
 	public int damagecaused;

@@ -5,7 +5,9 @@ import AlternateRealityTheDungeon.ARTDWeapons;
 public class ARTDWarNet extends ARTDWeapons {
 
 	public ARTDWarNet() {
-		// TODO Auto-generated constructor stub
+		name = "WarNet";
+		requiredStrength = 35;
+		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
 	}
 
 }

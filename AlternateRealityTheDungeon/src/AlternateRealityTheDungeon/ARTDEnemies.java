@@ -37,25 +37,7 @@ public class ARTDEnemies
 		return single_instance_myEnemies;
 	}
 	
-	
-	public ARTDEnemies()
-	{
 
-
-
-		
-		
-	}
-	
-
-
-
-
-	@Override
-	public String toString() {
-		return this.name;
-	}
-	
 			
 	
 }

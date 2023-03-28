@@ -12,6 +12,7 @@ public class ARTDCloth extends ARTDArmour {
 		name = "Cloth";
 		armourDefense = 5;	
 		requiredStrength = 10;
+		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
 	}
 
 

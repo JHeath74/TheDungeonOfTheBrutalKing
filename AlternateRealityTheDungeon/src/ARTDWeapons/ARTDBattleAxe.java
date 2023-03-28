@@ -5,7 +5,10 @@ import AlternateRealityTheDungeon.ARTDWeapons;
 public class ARTDBattleAxe extends ARTDWeapons {
 
 	public ARTDBattleAxe() {
-		// TODO Auto-generated constructor stub
+		
+		name = "Battle Axe";
+		requiredStrength = 35;
+		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
 	}
 
 }

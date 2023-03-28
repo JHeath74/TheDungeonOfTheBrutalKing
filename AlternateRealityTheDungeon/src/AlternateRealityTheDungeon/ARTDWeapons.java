@@ -1,16 +1,18 @@
 package AlternateRealityTheDungeon;
 
-
-
-
 public class ARTDWeapons {
+	
+protected ARTDSingleton myChar = new ARTDSingleton();
 	
 private static ARTDWeapons myWeapon = ARTDWeapons.Singleton();
 private static ARTDWeapons single_instance_weapons;
 
+public String name;
+public int requiredStrength;
+public String charStrength;
+
 public ARTDWeapons()
 {
-	
 	
 }
 

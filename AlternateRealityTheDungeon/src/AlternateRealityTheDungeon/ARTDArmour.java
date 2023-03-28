@@ -7,9 +7,12 @@ public class ARTDArmour {
 	public ArrayList<String> myArmour = new ArrayList<String>();
 	private static ARTDArmour single_instance_armour;
 	
+	protected ARTDSingleton myChar = new ARTDSingleton();
+	
 	public String name;
 	public int armourDefense;
 	public int requiredStrength;
+	public String charStrength;
 	
 
 

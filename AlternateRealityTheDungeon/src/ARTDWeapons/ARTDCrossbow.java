@@ -5,7 +5,9 @@ import AlternateRealityTheDungeon.ARTDWeapons;
 public class ARTDCrossbow extends ARTDWeapons {
 
 	public ARTDCrossbow() {
-		// TODO Auto-generated constructor stub
+		name = "Cross Bow";
+		requiredStrength = 35;
+		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
 	}
 
 }

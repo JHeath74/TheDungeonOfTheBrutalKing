@@ -5,7 +5,9 @@ import AlternateRealityTheDungeon.ARTDWeapons;
 public class ARTDDart extends ARTDWeapons {
 
 	public ARTDDart() {
-		// TODO Auto-generated constructor stub
+		name = "Dart";
+		requiredStrength = 35;
+		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
 	}
 
 }

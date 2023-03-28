@@ -10,6 +10,8 @@ public class ARTDBreastPlate extends ARTDArmour {
 		name = "Breast Plate";
 		armourDefense = 15;	
 		requiredStrength = 35;
+		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
+
 	}
 
 }

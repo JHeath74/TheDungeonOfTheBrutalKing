@@ -9,7 +9,7 @@ public class ARTDRandomStat extends ARTDSpells {
 		name = "Random Stat";
 		requiredint = 30;
 		requiredwis = 30;
-		intelligence = myChar.myCharSingleton().CharInfo.get(8).toString();
-		wisdom = myChar.myCharSingleton().CharInfo.get(8).toString();
+		charintelligence = myChar.myCharSingleton().CharInfo.get(8).toString();
+		charwisdom = myChar.myCharSingleton().CharInfo.get(9).toString();
 	}
 }

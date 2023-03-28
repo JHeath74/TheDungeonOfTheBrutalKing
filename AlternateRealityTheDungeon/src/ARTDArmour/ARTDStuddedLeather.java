@@ -10,6 +10,7 @@ public class ARTDStuddedLeather extends ARTDArmour {
 		name = "Studded Leather";
 		armourDefense = 8;
 		requiredStrength = 15;
+		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
 	}
 
 }

@@ -5,7 +5,9 @@ import AlternateRealityTheDungeon.ARTDWeapons;
 public class ARTDJavelin extends ARTDWeapons {
 
 	public ARTDJavelin() {
-		// TODO Auto-generated constructor stub
+		name = "Javelin";
+		requiredStrength = 35;
+		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
 	}
 
 }
