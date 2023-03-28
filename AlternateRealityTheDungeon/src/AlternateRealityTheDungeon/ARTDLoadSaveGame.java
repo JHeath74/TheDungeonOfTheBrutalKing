@@ -57,12 +57,10 @@ public class ARTDLoadSaveGame {
 
 		datetime = datetime.replaceAll(":", ".");
 
-		String GameLocation = "src/AlternateRealityTheDungeon/TextFiles/SaveGame/SavedGame";
-
 		String SavedGameName = "SavedGame" + datetime;
 
 		if (SavedGameName != "IntialCharecterSave.txt") {
-			String GameSaveDateTime = GameLocation + datetime + ".txt";
+			String GameSaveDateTime = SavedGameDirectory + datetime + ".txt";
 
 			FileWriter writer = new FileWriter(GameSaveDateTime);
 
@@ -181,12 +179,11 @@ public class ARTDLoadSaveGame {
 	
 	public void AutoSaveGame() throws IOException
 	{
-		String GameLocation = "src/AlternateRealityTheDungeon/TextFiles/SaveGame/SavedGame";
 
 		String SavedGameName = "AutoGameSave.Txt";
 
 		if (SavedGameName != "IntialCharecterSave.txt") {
-			String AutoSaveGameName = GameLocation + SavedGameName;
+			String AutoSaveGameName = SavedGameDirectory + SavedGameName;
 
 			FileWriter writer = new FileWriter(AutoSaveGameName);
 

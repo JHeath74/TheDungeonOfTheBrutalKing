@@ -1,12 +1,21 @@
 package AlternateRealityTheDungeon;
 
-
+import java.util.ArrayList;
 
 public class ARTDSpells {
 	
+	protected ARTDSingleton myChar = new ARTDSingleton();
+	
+	public ArrayList<String> myMonsters = new ArrayList<String>();
 	private static ARTDSpells single_instance_spells;
-
-
+	
+	public String intelligence;
+	public String wisdom;
+	public int requiredwis;
+	public int requiredint;
+	public int damagecaused;
+	public String name;
+	public int foodconjured;
 
 	public static ARTDSpells Singleton()
 	{

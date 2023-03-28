@@ -91,10 +91,11 @@ public class ARTDSingleton
 	private static ARTDWeapons myWeapon = ARTDWeapons.Singleton();
 	private static ARTDArmour myArmour = ARTDArmour.Singleton();
 	private static ARTDSpells mySpells = ARTDSpells.Singleton();
+	private static ARTDEnemies myMonsters = ARTDEnemies.Singleton();
 	
 	
 	private static List<ARTDArmour> armourList = addArmour();
-	private static List<ARTDEnemies> myMonsters = addEnemies();
+	private static List<ARTDEnemies> monsterList = addEnemies();
 	private static List<ARTDWeapons> weaponList = addWeapon();
 	private static List<ARTDSpells> spellList = addSpells();
 	
@@ -118,55 +119,55 @@ public class ARTDSingleton
 	
 	private static List<ARTDEnemies> addEnemies()
 	{
-		myMonsters = new ArrayList<ARTDEnemies>();
+		monsterList = new ArrayList<ARTDEnemies>();
 		
-		myMonsters.add(new ARTDAssassins());
-		myMonsters.add(new ARTDBrigands());
-		myMonsters.add(new ARTDCutthroats());
-		myMonsters.add(new ARTDDevourer());
-		myMonsters.add(new ARTDDragon());
-		myMonsters.add(new ARTDDwarves());
-		myMonsters.add(new ARTDFlame_Demons());
-		myMonsters.add(new ARTDGhosts());
-		myMonsters.add(new ARDTGhouls());
-		myMonsters.add(new ARTDGiant_Bats());
-		myMonsters.add(new ARTDGladiators());
-		myMonsters.add(new ARTDGnolls());
-		myMonsters.add(new ARTDGnomes());
-		myMonsters.add(new ARTDGoblins());
-		myMonsters.add(new ARTDGremlins());
-		myMonsters.add(new ARTDGuards());
-		myMonsters.add(new ARTDHomunculi());
-		myMonsters.add(new ARTDHorned_Devils());
-		myMonsters.add(new ARTDIce_Demons());
-		myMonsters.add(new ARTDImps());
-		myMonsters.add(new ARTDKnights());
-		myMonsters.add(new ARDTLiches());
-		myMonsters.add(new ARTDMages());
-		myMonsters.add(new ARTDMaster_Thieves());
-		myMonsters.add(new ARTDMold());
-		myMonsters.add(new ARTDNight_Stalker());
-		myMonsters.add(new ARTDNoblemen());
-		myMonsters.add(new ARTDOrcs());
-		myMonsters.add(new ARTDPhoenix());
-		myMonsters.add(new ARTDRats());
-		myMonsters.add(new ARDTSalamander());
-		myMonsters.add(new ARTDSkeletons());
-		myMonsters.add(new ARTDSlime());
-		myMonsters.add(new ARTDSpectres());
-		myMonsters.add(new ARTDSpiders());
-		myMonsters.add(new ARTDStorm_Devils());
-		myMonsters.add(new ARTDThieves());	
-		myMonsters.add(new ARTDTrolls());
-		myMonsters.add(new ARTDValkyries());
-		myMonsters.add(new ARDTVampires());
-		myMonsters.add(new ARTDWhirlwind());
-		myMonsters.add(new ARTDWizard());
-		myMonsters.add(new ARTDWolves());
-		myMonsters.add(new ARTDWraiths());
+	//	monsterList.add(new ARTDAssassins());
+	//	monsterList.add(new ARTDBrigands());
+	//	monsterList.add(new ARTDCutthroats());
+	//	monsterList.add(new ARTDDevourer());
+	//	monsterList.add(new ARTDDragon());
+	//	monsterList.add(new ARTDDwarves());
+	//	monsterList.add(new ARTDFlame_Demons());
+	//	monsterList.add(new ARTDGhosts());
+	//	monsterList.add(new ARDTGhouls());
+	//	monsterList.add(new ARTDGiant_Bats());
+	//	monsterList.add(new ARTDGladiators());
+	//	monsterList.add(new ARTDGnolls());
+	//	monsterList.add(new ARTDGnomes());
+	//	monsterList.add(new ARTDGoblins());
+	//	monsterList.add(new ARTDGremlins());
+	//	monsterList.add(new ARTDGuards());
+	//	monsterList.add(new ARTDHomunculi());
+	//	monsterList.add(new ARTDHorned_Devils());
+	//	monsterList.add(new ARTDIce_Demons());
+	//	monsterList.add(new ARTDImps());
+	//	monsterList.add(new ARTDKnights());
+	//	monsterList.add(new ARDTLiches());
+	//	monsterList.add(new ARTDMages());
+	//	monsterList.add(new ARTDMaster_Thieves());
+	//	monsterList.add(new ARTDMold());
+	//	monsterList.add(new ARTDNight_Stalker());
+	//	monsterList.add(new ARTDNoblemen());
+	//	monsterList.add(new ARTDOrcs());
+	//	monsterList.add(new ARTDPhoenix());
+		monsterList.add(new ARTDRats());
+	//	monsterList.add(new ARDTSalamander());
+		monsterList.add(new ARTDSkeletons());
+	//	monsterList.add(new ARTDSlime());
+	//	monsterList.add(new ARTDSpectres());
+		monsterList.add(new ARTDSpiders());
+	//	monsterList.add(new ARTDStorm_Devils());
+	//	monsterList.add(new ARTDThieves());	
+	//	monsterList.add(new ARTDTrolls());
+	//	monsterList.add(new ARTDValkyries());
+	//	monsterList.add(new ARDTVampires());
+	//	monsterList.add(new ARTDWhirlwind());
+	//	monsterList.add(new ARTDWizard());
+	//	monsterList.add(new ARTDWolves());
+	//	monsterList.add(new ARTDWraiths());
 		
 		
-		return myMonsters;
+		return monsterList;
 	}
 	
 	private static List<ARTDSpells> addSpells()
@@ -234,16 +235,16 @@ public class ARTDSingleton
 	
 	public static List<ARTDEnemies> myMonsters()
 	{
-		if(myMonsters.size() == 0)
+		if(monsterList.size() == 0)
 		{
 			addEnemies();
 		}
-		return myMonsters;
+		return monsterList;
 	}
 	
-	//Adding Spells, Enemies, Weapons and Armour to Arrays
+
 	
-	public static ARTDSpells mySpellsSingleton()
+	public static ARTDSpells spellListSingleton()
 	{
 		return mySpells;
 	}

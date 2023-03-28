@@ -12,19 +12,12 @@ public class ARTDSkin extends ARTDArmour {
 	public ARTDSkin()
 	{
 
+		name = "Skin";
+		armourDefense = 1;
+		requiredStrength = 0;
 		
-		
 	}
 
-
-	public int getRequiredStrength() {
-		return requiredStrength;
-	}
-
-
-	public void setRequiredStrength(int requiredStrength) {
-		this.requiredStrength = requiredStrength;
-	}
 
 
 	

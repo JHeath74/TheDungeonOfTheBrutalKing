@@ -2,22 +2,23 @@ package ARTDSpells;
 
 import java.util.Random;
 
+import AlternateRealityTheDungeon.ARTDCharecter;
+import AlternateRealityTheDungeon.ARTDSingleton;
 import AlternateRealityTheDungeon.ARTDSpells;
 
 public class ARTDCold_Blast extends ARTDSpells
 {
-
-	int requiredint;
-	int damagecaused;
+	
+	//Damaged Base off of intelligence or Wisdom
 	
 	public ARTDCold_Blast() 
 	{
+		name = "Cold Blast";
 		requiredint = 30;
-		
-		
-		Random rn = new Random();
-		damagecaused = rn.nextInt(30) + 1;
-		
+		requiredwis = 30;
+		intelligence = myChar.myCharSingleton().CharInfo.get(8).toString();
+		wisdom = myChar.myCharSingleton().CharInfo.get(8).toString();
+
 		
 	}
 

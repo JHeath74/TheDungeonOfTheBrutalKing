@@ -6,16 +6,16 @@ import AlternateRealityTheDungeon.ARTDSpells;
 
 public class ARTDFireball extends ARTDSpells{
 
-	int requiredint;
-	int damagecaused;
-	
+
 	public ARTDFireball() {
 		
-		requiredint = 15;
-		
-		
-		Random rn = new Random();
-		damagecaused = rn.nextInt(10) + 1;
+		name = "FireBall";
+		requiredint = 20;
+		requiredwis = 20;
+		intelligence = myChar.myCharSingleton().CharInfo.get(8).toString();
+		wisdom = myChar.myCharSingleton().CharInfo.get(8).toString();
 	}
+
+	
 
 }

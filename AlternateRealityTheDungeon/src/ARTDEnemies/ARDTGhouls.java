@@ -13,7 +13,7 @@ public class ARDTGhouls extends ARTDEnemies {
 		wis = 1;
 		agi = 1;
 		MonsterHP = 20;
-		//MonsterImage = "Ghouls.jpg";}
+		//MonsterImage = "Ghouls.jpg";
 	}
 
 }

@@ -13,7 +13,7 @@ public class ARDTLiches extends ARTDEnemies{
 		wis = 1;
 		agi = 1;
 		MonsterHP = 20;
-		//MonsterImage = "Liches.jpg";}
+		//MonsterImage = "Liches.jpg";
 	}
 
 }

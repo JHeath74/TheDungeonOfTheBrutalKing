@@ -5,13 +5,16 @@ import AlternateRealityTheDungeon.ARTDSpells;
 public class ARTDConjure_Food extends ARTDSpells 
 {
 
-	int requiredint;
-	int foodconjured;
+
 	
 	public ARTDConjure_Food()
 	{
+		name = "Conjure Food";
 		requiredint = 20;
+		requiredwis = 20;
 		foodconjured = 2;
+		intelligence = myChar.myCharSingleton().CharInfo.get(8).toString();
+		wisdom = myChar.myCharSingleton().CharInfo.get(8).toString();
 				
 	}
 

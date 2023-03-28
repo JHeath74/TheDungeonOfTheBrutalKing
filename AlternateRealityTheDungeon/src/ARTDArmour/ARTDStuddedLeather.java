@@ -4,12 +4,12 @@ import AlternateRealityTheDungeon.ARTDArmour;
 
 public class ARTDStuddedLeather extends ARTDArmour {
 
-	private String armourName = "Studded Leather";
-	private int armourDefense = 8;
-	private int requiredStrength = 15;
+
 	
 	public ARTDStuddedLeather() {
-
+		name = "Studded Leather";
+		armourDefense = 8;
+		requiredStrength = 15;
 	}
 
 }

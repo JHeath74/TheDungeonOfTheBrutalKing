@@ -4,4 +4,12 @@ import AlternateRealityTheDungeon.ARTDSpells;
 
 public class ARTDPort extends ARTDSpells{
 
+	public ARTDPort()
+	{
+		name = "Port";
+		requiredint = 30;
+		requiredwis = 30;
+		intelligence = myChar.myCharSingleton().CharInfo.get(8).toString();
+		wisdom = myChar.myCharSingleton().CharInfo.get(8).toString();
+	}
 }

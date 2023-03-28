@@ -13,7 +13,7 @@ public class ARDTSalamander extends ARTDEnemies{
 		wis = 1;
 		agi = 1;
 		MonsterHP = 20;
-		//MonsterImage = "Salamader.jpg";}
+		//MonsterImage = "Salamader.jpg";
 	}
 
 }

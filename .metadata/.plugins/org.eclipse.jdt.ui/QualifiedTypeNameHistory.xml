@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDWhip"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDCrossbow"/>
     <fullyQualifiedTypeName name="ARTDWeapons.ARTDLongSword"/>
     <fullyQualifiedTypeName name="ARTDWeapons.ARTDLongbow"/>
     <fullyQualifiedTypeName name="ARTDWeapons.ARTDJavelin"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="ARTDEnemies.ARDTGhouls"/>
     <fullyQualifiedTypeName name="ARTDEnemies.ARDTLiches"/>
     <fullyQualifiedTypeName name="ARTDEnemies.ARDTVampires"/>
+    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDCharecter"/>
+    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDSingleton"/>
 </qualifiedTypeNameHistroy>

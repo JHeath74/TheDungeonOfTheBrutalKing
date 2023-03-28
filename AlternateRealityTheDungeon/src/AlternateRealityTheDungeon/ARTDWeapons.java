@@ -5,6 +5,7 @@ package AlternateRealityTheDungeon;
 
 public class ARTDWeapons {
 	
+private static ARTDWeapons myWeapon = ARTDWeapons.Singleton();
 private static ARTDWeapons single_instance_weapons;
 
 public ARTDWeapons()
