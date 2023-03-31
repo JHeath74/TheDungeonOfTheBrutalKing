@@ -55,6 +55,11 @@ import ARTDEnemies.ARTDWhirlwind;
 import ARTDEnemies.ARTDWizard;
 import ARTDEnemies.ARTDWolves;
 import ARTDEnemies.ARTDWraiths;
+import ARTDShields.ARTDMagical_Shield;
+import ARTDShields.ARTDMagical_Spiked_Shield;
+import ARTDShields.ARTDSmall_Shield;
+import ARTDShields.ARTDSpiked_Shield;
+import ARTDShields.ARTDWooden_Shield;
 import ARTDSpells.ARTDLight;
 import ARTDSpells.ARTDLocation;
 import ARTDSpells.ARTDPort;
@@ -90,6 +95,7 @@ public class ARTDSingleton
 	
 	private static ARTDWeapons myWeapon = ARTDWeapons.Singleton();
 	private static ARTDArmour myArmour = ARTDArmour.Singleton();
+	private static ARTDShields myShields = ARTDShields.Singleton();
 	private static ARTDSpells mySpells = ARTDSpells.Singleton();
 	private static ARTDEnemies myMonsters = ARTDEnemies.Singleton();
 	
@@ -98,6 +104,7 @@ public class ARTDSingleton
 	private static List<ARTDEnemies> monsterList = addEnemies();
 	private static List<ARTDWeapons> weaponList = addWeapon();
 	private static List<ARTDSpells> spellList = addSpells();
+	private static List<ARTDShields> shieldList = addShields();
 	
 	//Singletons
 	
@@ -117,6 +124,19 @@ public class ARTDSingleton
 		
 	}
 	
+	private static List<ARTDShields> addShields() {
+		
+		shieldList.add(new ARTDWooden_Shield());
+		shieldList.add(new ARTDSmall_Shield());
+		shieldList.add(new ARTDSpiked_Shield());
+		shieldList.add(new ARTDMagical_Shield());
+		shieldList.add(new ARTDMagical_Small_Shield());
+		shieldList.add(new ARTDMagical_Spiked_Shield());
+		
+		
+		return shieldList;
+	}
+
 	private static List<ARTDEnemies> addEnemies()
 	{
 		monsterList = new ArrayList<ARTDEnemies>();

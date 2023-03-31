@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDLongSword"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDLongbow"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDJavelin"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDBattleAxe"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDBattleHammer"/>
-    <fullyQualifiedTypeName name="ARTDWeapons.ARTDSword"/>
-    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDWeapons"/>
     <fullyQualifiedTypeName name="ARTDSpells.ARTDCold_Blast"/>
     <fullyQualifiedTypeName name="ARTDSpells.ARTDConjure_Food"/>
     <fullyQualifiedTypeName name="ARTDSpells.ARTDFireball"/>
     <fullyQualifiedTypeName name="ARTDSpells.ARTDHeal"/>
     <fullyQualifiedTypeName name="ARTDSpells.ARDTLight"/>
     <fullyQualifiedTypeName name="ARTDSpells.ARTDLocation"/>
-    <fullyQualifiedTypeName name="ARTDSpells.ARTDShield"/>
     <fullyQualifiedTypeName name="ARTDSpells.ARTDRandomStat"/>
     <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDSpells"/>
     <fullyQualifiedTypeName name="ARTDSpells.ARTDPort"/>
@@ -60,4 +52,12 @@
     <fullyQualifiedTypeName name="ARTDEnemies.ARDTVampires"/>
     <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDCharecter"/>
     <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDSingleton"/>
+    <fullyQualifiedTypeName name="ARTDShields.ARTDWooden_Shield"/>
+    <fullyQualifiedTypeName name="ARTDShields.ARTDSmall_Shield"/>
+    <fullyQualifiedTypeName name="ARTDShields.ARTDSpiked_Shield"/>
+    <fullyQualifiedTypeName name="ARTDShields.ARTDMagical_Spiked_Shield"/>
+    <fullyQualifiedTypeName name="ARTDSpells.ARTDShield"/>
+    <fullyQualifiedTypeName name="ARTDShields.ARTDMagical_Shield"/>
+    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDShields"/>
+    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDNPC"/>
 </qualifiedTypeNameHistroy>
