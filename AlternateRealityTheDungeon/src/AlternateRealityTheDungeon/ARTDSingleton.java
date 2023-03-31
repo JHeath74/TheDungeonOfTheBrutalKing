@@ -56,6 +56,7 @@ import ARTDEnemies.ARTDWizard;
 import ARTDEnemies.ARTDWolves;
 import ARTDEnemies.ARTDWraiths;
 import ARTDShields.ARTDMagical_Shield;
+import ARTDShields.ARTDMagical_Small_Shield;
 import ARTDShields.ARTDMagical_Spiked_Shield;
 import ARTDShields.ARTDSmall_Shield;
 import ARTDShields.ARTDSpiked_Shield;
