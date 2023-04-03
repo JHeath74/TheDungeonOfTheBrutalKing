@@ -16,7 +16,7 @@ public class ARTDHeal extends ARTDSpells {
 		charwisdom = myChar.myCharSingleton().CharInfo.get(9).toString();
 
 		
-		
+		isCombatSpell = true;
 	}
 
 }

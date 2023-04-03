@@ -44,7 +44,7 @@ public class ARTDCombat
 	//https://stackoverflow.com/questions/18435992/java-call-object-methods-through-arraylist
 	
 	ARTDSingleton myCharSingleton = new ARTDSingleton();
-
+	
 	int HP;
 	String HeroHPArrayList;
 	int HeroHP;
@@ -68,7 +68,7 @@ public class ARTDCombat
 			ARTDEnemies enemy = ARTDSingleton.myMonsters().get(rnd);
 		    
 			//Adding JFrame
-			JFrame CombatFrame = new JFrame("You've encountered a " + ARTDSingleton.myMonsters().get(rnd).toString());
+			JFrame CombatFrame = new JFrame("You've encountered a " + ARTDSingleton.myMonsters().get(rnd).name.toString());
 			
 			//Adding JPanels
 			JPanel CombatPanel = new JPanel(new BorderLayout());
@@ -197,12 +197,10 @@ public class ARTDCombat
 					JButton SelectSpellToCast = new JButton("Select Spell to Cast");
 					
 					JPanel spelllistbox = new JPanel(new BorderLayout());
-			
-					
 					
 					String[] spellList = new String[ARTDSingleton.myCharSingleton().CharInfo.size()];
 			  
-					for (int i = 20; i < ARTDSingleton.myCharSingleton().CharInfo.size(); i++)
+					for (int i = 21; i < ARTDSingleton.myCharSingleton().CharInfo.size(); i++)
 						spellList[i] = ARTDSingleton.myCharSingleton().CharInfo.get(i);
 					
 					JComboBox<String> spells = new JComboBox<String>(spellList);
@@ -223,7 +221,7 @@ public class ARTDCombat
 							
 							String castspell = spells.getSelectedItem().toString();  //get the selected item in the JComboBox
 							
-							ARTDCastSpells.Castspell(castspell);
+							ARTDSpellList.getSpells(castspell);
 								
 							
 						}});

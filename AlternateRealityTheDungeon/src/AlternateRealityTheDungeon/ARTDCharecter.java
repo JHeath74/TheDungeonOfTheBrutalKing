@@ -10,6 +10,8 @@ public class ARTDCharecter {
 
 	public ArrayList<String> SpellsLearned = new ArrayList<String>();
 	
+	int combatSpells = 21;
+	
 	//Add Magic Points 
 	
 	// CharInfo[0] = Charecter Name
@@ -39,7 +41,6 @@ public class ARTDCharecter {
 	
 	//Acquired Spells
 	
-	// CharInfo[20]
 	// CharInfo[21]
 	// CharInfo[22]
 	// CharInfo[23]
@@ -50,6 +51,7 @@ public class ARTDCharecter {
 	// CharInfo[28]
 	// CharInfo[29]
 	// CharInfo[30]
+	// CharInfo[31]
 	
 	
 	public ARTDCharecter()
