@@ -150,19 +150,17 @@ public class ARTDCombat
 			CombatFrame.setLocationRelativeTo(null);
 			CombatFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			CombatFrame.setVisible(true);
-
 			
 			ActionListener task = new ActionListener() {
 	            public void actionPerformed(ActionEvent evt) {
-	       
-	            	
-	            	CombatNameAndHPfield.setText("Name:" + ARTDSingleton.myCharSingleton().CharInfo.get(rnd)+
-	            			"\t\tEnemy Name:" + ARTDSingleton.myMonsters().get(rnd).toString()
+	                	
+	            	CombatNameAndHPfield.setText("Name:" + ARTDSingleton.myCharSingleton().CharInfo.get(0)+
+	            			"\t\tEnemy Name:" + ARTDSingleton.myMonsters().get(rnd).name.toString()
 					+"\nHP: "+  ARTDSingleton.myCharSingleton().CharInfo.get(4) + "\t\tEnemy HP: "+ ARTDSingleton.myMonsters().get(rnd).MonsterHP);
 	            	
 	            }
 			};
-			Timer timer = new Timer(100 ,task); // Execute task each 100 miliseconds
+			Timer timer = new Timer(1000 ,task); // Execute task each 1000 miliseconds
 			timer.setRepeats(true);
 			timer.start();
 			
@@ -207,13 +205,16 @@ public class ARTDCombat
 					for (int i = 20; i < ARTDSingleton.myCharSingleton().CharInfo.size(); i++)
 						spellList[i] = ARTDSingleton.myCharSingleton().CharInfo.get(i);
 					
-				
-			
-					if(spellList.length == 0 | spellList == null)
-					{
-						JComboBox<String> spells = new JComboBox<String>();
-						spells.setSelectedItem("No Spells Available");
-						spells.setEditable(false);
+					JComboBox<String> spells = new JComboBox<String>(spellList);
+
+					
+						if(spellList.length == 0) {
+							spells.addItem("No Spells To Cast");
+							spells.setEditable(false);
+						}else {
+							
+						}
+						
 											
 					spells.addItemListener(new ItemListener() {
 
@@ -222,42 +223,8 @@ public class ARTDCombat
 							
 							String castspell = spells.getSelectedItem().toString();  //get the selected item in the JComboBox
 							
-
-							if(castspell.equals(null))
-							{
+							ARTDCastSpells.Castspell(castspell);
 								
-							}else {
-							
-								if(castspell.equals("Heal"))
-								{
-									
-								}else if(castspell.equals("Cold_Blast"))
-								{
-									
-								}else if(castspell.equals("Conjure_Food"))
-								{
-									JOptionPane.showMessageDialog(null, "Not Able to Cast the spell " + castspell + " in Combat");
-									
-								}else if(castspell.equals("Fire_Ball"))
-								{
-									
-								}else if(castspell.equals("Light"))
-								{
-									
-								}else if(castspell.equals("Location"))
-								{
-									JOptionPane.showMessageDialog(null, "Not Able to Cast the spell " + castspell + " in Combat");
-								}else if (castspell.equals("Shield"))
-								{
-									
-								}else if(castspell.equals("RandomStat"))
-								{
-									
-								}else if(castspell.equals("Port"))
-								{
-									JOptionPane.showMessageDialog(null, "Not Able to Cast the spell " + castspell + " in Combat");
-								}
-							}
 							
 						}});
 					
@@ -274,7 +241,7 @@ public class ARTDCombat
 					
 					}
 					
-				}});
+				});
 			
 			CombatRun.addActionListener(new ActionListener() {
 

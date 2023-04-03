@@ -8,7 +8,7 @@ public class ARTDCharecter {
 	private static ARTDCharecter single_instance_myChar;
 	public ArrayList<String> CharInfo = new ArrayList<String>();
 
-	
+	public ArrayList<String> SpellsLearned = new ArrayList<String>();
 	
 	//Add Magic Points 
 	
@@ -33,8 +33,9 @@ public class ARTDCharecter {
 	// CharInfo[15] = Gems
 	// CharInfo[16] = Weapon
 	// CharInfo[17] = Armour
-	// CharInfo[18] = Map Location
-	// CharInfo[19] = 
+	// CharInfo[18] = Shield
+	// CharInfo[19] = Map Location
+	// CharInfo[20] = Morality
 	
 	//Acquired Spells
 	
@@ -48,6 +49,7 @@ public class ARTDCharecter {
 	// CharInfo[27]
 	// CharInfo[28]
 	// CharInfo[29]
+	// CharInfo[30]
 	
 	
 	public ARTDCharecter()

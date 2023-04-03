@@ -36,59 +36,6 @@ public class ARTDWarrior extends ARTDClass {
 		
 	}
 
-	@Override
-	public double Heal() {
-		double Heal = inti;  
-		return Heal;
-		
-	}
-
-	@Override
-	public double Cold_Blast() {
-		double ColdBlast = inti;
-		return ColdBlast;
-	}
-
-	@Override
-	public double Conjure_Food() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double Fire_Ball() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double Light() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double Location() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double Shield() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double RandomStat() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double Port() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 	
 }

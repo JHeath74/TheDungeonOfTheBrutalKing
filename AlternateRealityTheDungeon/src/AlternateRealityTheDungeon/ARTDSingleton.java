@@ -127,9 +127,11 @@ public class ARTDSingleton
 	
 	private static List<ARTDShields> addShields() {
 		
+		shieldList = new ArrayList<ARTDShields>();
+		
 		shieldList.add(new ARTDWooden_Shield());
 		shieldList.add(new ARTDSmall_Shield());
-		shieldList.add(new ARTDSpiked_Shield());
+	    shieldList.add(new ARTDSpiked_Shield());
 		shieldList.add(new ARTDMagical_Shield());
 		shieldList.add(new ARTDMagical_Small_Shield());
 		shieldList.add(new ARTDMagical_Spiked_Shield());

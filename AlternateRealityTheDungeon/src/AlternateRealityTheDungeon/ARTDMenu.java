@@ -528,7 +528,4 @@ public class ARTDMenu extends JPanel{
 		frame.setVisible(true);
 	}
 
-
-
-
 }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="ARTDSpells.ARTDConjure_Food"/>
     <fullyQualifiedTypeName name="ARTDSpells.ARTDFireball"/>
     <fullyQualifiedTypeName name="ARTDSpells.ARTDHeal"/>
     <fullyQualifiedTypeName name="ARTDSpells.ARDTLight"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDShields"/>
     <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDNPC"/>
     <fullyQualifiedTypeName name="ARTDShields.ARTDMagical_Small_Shield"/>
+    <fullyQualifiedTypeName name="AlternateRealityTheDungeon.ARTDCastSpells"/>
 </qualifiedTypeNameHistroy>
