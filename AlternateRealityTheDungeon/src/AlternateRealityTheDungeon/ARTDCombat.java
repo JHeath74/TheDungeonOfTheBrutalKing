@@ -245,7 +245,25 @@ public class ARTDCombat
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
+					
+					Random rnd = new Random();
+					
+					int run_away = rnd.nextInt(101);
+					
+					if(run_away >= 50)
+					{
+						JFrame escapedFrame = new JFrame();
+						escapedFrame=new JFrame();  
+						    JOptionPane.showMessageDialog(escapedFrame,"You've Escaped, But gained nothing from the fight"); 
+						    
+						    CombatFrame.dispose();
+						
+					}else {
+						JFrame failedescapedFrame = new JFrame();
+						failedescapedFrame=new JFrame();  
+						    JOptionPane.showMessageDialog(failedescapedFrame,"You've Failed to Escape,  You Must Continue to fight");  
+					}
+					
 					
 				}});
 			
