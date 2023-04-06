@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +22,7 @@ import javax.swing.ComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -33,35 +35,41 @@ import ARTDEnemies.ARTDRats;
 import ARTDEnemies.ARTDSkeletons;
 import ARTDEnemies.ARTDSpiders;
 
-public class ARTDCombat {
+public class ARTDCombat extends JPanel{
 
 	// https://stackoverflow.com/questions/38288522/how-to-get-a-random-item-from-a-class-in-java
 	// https://stackoverflow.com/questions/18435992/java-call-object-methods-through-arraylist
 
 	ARTDSingleton myCharSingleton = new ARTDSingleton();
 
+
 	int HP;
 	String HeroHPArrayList;
 	int HeroHP;
+	JPanel CombatPanel;
 
 	public ARTDCombat() {
 
 		HeroHPArrayList = ARTDSingleton.myCharSingleton().CharInfo.get(4);
 		HeroHP = Integer.parseInt(HeroHPArrayList);
+		CombatPanel = new JPanel(new BorderLayout());
+		
 
 	}
 
 	public void CombatEncouter() throws IOException {
-
+		
 		int rnd = new Random().nextInt(ARTDSingleton.myMonsters().size());
 
 		ARTDEnemies enemy = ARTDSingleton.myMonsters().get(rnd);
 
 		// Adding JFrame
 		JFrame CombatFrame = new JFrame("You've encountered a " + ARTDSingleton.myMonsters().get(rnd).name.toString());
-
+		CombatFrame.toFront(); // Bringing the Combat Window to the Front
+		CombatFrame.requestFocus(); //Bringing the Combat Window as Focus
+		
 		// Adding JPanels
-		JPanel CombatPanel = new JPanel(new BorderLayout());
+		
 		JPanel CombatPanelImage = new JPanel(); // Display Image of Enemy
 		JPanel CombatPanelButtons = new JPanel(new FlowLayout()); // Display Buttons for Combat
 		JPanel CombatPanelCombatArea = new JPanel(); // Display Combat Updates such as sucessful or not-successful
@@ -91,13 +99,14 @@ public class ARTDCombat {
 		// Adding Image to JPanel
 		BufferedImage myPicture = ImageIO.read(new File(
 				"src\\AlternateRealityTheDungeon\\Images\\" + ARTDSingleton.myMonsters().get(rnd).MonsterImage));
-		JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+		
+		JLabel picLabel = new JLabel(new ImageIcon(myPicture));		
 
 		Dimension imageSize = new Dimension();
 		imageSize.setSize(768, 1024); // Double Width, Double Height
-
 		picLabel.setPreferredSize(imageSize);
-		; // Getting the size of the JPanel for the monster image
+
+		// Getting the size of the JPanel for the monster image
 		CombatPanelImage.add(picLabel);
 
 		// Adding Panel for buttons to Master Panel
@@ -134,7 +143,7 @@ public class ARTDCombat {
 
 		// CombatNameAndHPfield.setLineWrap(true);
 		CombatFrame.setSize(screenSize);
-		// CombatFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		CombatFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		CombatFrame.setState(Frame.NORMAL);
 
 		CombatFrame.setLocationRelativeTo(null);
@@ -185,7 +194,6 @@ public class ARTDCombat {
 
 				JFrame spellsFrame = new JFrame();
 				JButton SelectSpellToCast = new JButton("Select Spell to Cast");
-
 				JPanel spelllistbox = new JPanel(new BorderLayout());
 
 				String[] spellList = new String[ARTDSingleton.myCharSingleton().CharInfo.size()];
@@ -193,24 +201,26 @@ public class ARTDCombat {
 				for (int i = 21; i < ARTDSingleton.myCharSingleton().CharInfo.size(); i++)
 					spellList[i] = ARTDSingleton.myCharSingleton().CharInfo.get(i);
 
-				JComboBox<String> spells = new JComboBox<String>(spellList);
+				JComboBox<String> spells = new JComboBox<String>();
 
 				if (spellList.length == 0) {
-					spells.addItem("No Spells To Cast");
+					spells = new JComboBox<String>();
+					spells.addItem("No Spells Available To Cast");
 					spells.setEditable(false);
-				} else {
-
 				}
+					spells = new JComboBox<String>(spellList);
+					spells.setEditable(false);
+				
 
 				spells.addItemListener(new ItemListener() {
 
 					@Override
 					public void itemStateChanged(ItemEvent e) {
 
-						String castspell = spells.getSelectedItem().toString(); // get the selected item in the
+						//String castspell = spells.getSelectedItem().toString(); // get the selected item in the
 																				// JComboBox
 
-						ARTDSpellList.getSpells(castspell);
+						//ARTDSpellList.getSpells(castspell);
 
 					}
 				});
@@ -230,33 +240,26 @@ public class ARTDCombat {
 		});
 
 		CombatRun.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				Random rnd = new Random();
-
-
-				int randomCombatChance = rnd.nextInt(101);
 				
-				  if(randomCombatChance < 51)
-				  { 
-					  JFrame escapedFrame = new JFrame(); 
-					  JOptionPane.showMessageDialog(escapedFrame,
-							  "You've Escaped, But gained nothing from the fight");
-				  
-					  CombatFrame.dispose();
-				  
-				  }else { 
-					  JFrame failedescapedFrame = new JFrame();  
-					  JOptionPane.showMessageDialog(failedescapedFrame,
-							  "You've Failed to Escape,  You Must Continue to fight"); }
-				} 
-				 
-
-			
-		});
-
+				Random rand = new Random();
+				
+				int randomCombatChance = rand.nextInt(101);
+				
+				if(randomCombatChance <= 50)
+				{
+					
+				}else{
+					
+				
+					//CombatPanel.dispose();
+					CombatFrame.dispose();
+				}
+				
+			}});
+		
 	}
-
+	
+	
 }

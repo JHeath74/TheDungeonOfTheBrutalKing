@@ -16,7 +16,6 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -46,10 +45,12 @@ public class ARTDMenu extends JPanel{
 	private static final long serialVersionUID = 1L;
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
 	ARDTGamePreferences myPreferences = new ARDTGamePreferences();
+	ARTDCombat myCombatPanel = new ARTDCombat();
+	
 
 
 	public ARTDMenu() {
-
+		
 		JFrame frame = new JFrame("Alternate Reality: The Dungeon");
 		frame.setLayout(new BorderLayout());
 		
@@ -67,6 +68,9 @@ public class ARTDMenu extends JPanel{
 		JPanel p2 = new JPanel(new BorderLayout());
 		JPanel p3 = new JPanel(new BorderLayout());
 		JPanel p4 = new JPanel(new BorderLayout());
+		
+		
+		myCombatPanel.size();
 
 		try {
 			mygamestate.StartGameLoadCharecter();
@@ -139,7 +143,7 @@ public class ARTDMenu extends JPanel{
 		timer.start();
 		
 		//Text Area at the bottom of the play window
-	    JTextArea messagearea = new JTextArea(); 
+		JTextArea messagearea = new JTextArea();
 	    messagearea.setLineWrap(true);
 	    messagearea.setWrapStyleWord(true);
 	    messagearea.setEditable(false);
@@ -505,8 +509,6 @@ public class ARTDMenu extends JPanel{
 		// Add Menubar and Display JFrame
 
 		frame.setJMenuBar(menuBar);
-
-	
 		
 		frame.add(p1, BorderLayout.NORTH);
 		p1.add(p2, BorderLayout.NORTH);
@@ -518,7 +520,10 @@ public class ARTDMenu extends JPanel{
 
 		
 		JTextArea amessagearea = new JTextArea();
+		
+		myCombatPanel.CombatPanel.setSize(800, 600);
 		frame.add(amessagearea,BorderLayout.CENTER);
+		//frame.add(myCombatPanel, BorderLayout.CENTER);
 		frame.add(messagearea, BorderLayout.SOUTH);
 		
 		messagearea.setText("JTextArea messagearea");
@@ -527,5 +532,7 @@ public class ARTDMenu extends JPanel{
 		
 		frame.setVisible(true);
 	}
+
+
 
 }

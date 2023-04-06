@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="ARTDEnemies.ARTDNight_Stalker"/>
-    <fullyQualifiedTypeName name="ARTDEnemies.ARTDWraiths"/>
     <fullyQualifiedTypeName name="ARTDEnemies.ARTDGhosts"/>
     <fullyQualifiedTypeName name="ARTDEnemies.ARTDWhirlwind"/>
     <fullyQualifiedTypeName name="ARTDEnemies.ARTDGuards"/>
@@ -60,4 +58,6 @@
     <fullyQualifiedTypeName name="ARTDSpells.ARTDShield"/>
     <fullyQualifiedTypeName name="ARTDSpells.ARTDRandomStat"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="javax.swing.JDialog"/>
+    <fullyQualifiedTypeName name="java.awt.Image"/>
 </qualifiedTypeNameHistroy>
