@@ -1,9 +1,12 @@
 package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
-
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -38,17 +41,11 @@ import javax.swing.WindowConstants;
  * 
  */
 public class ARTDMenu extends JPanel{
-
-    
-	
 	
 	private static final long serialVersionUID = 1L;
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
 	ARDTGamePreferences myPreferences = new ARDTGamePreferences();
-	ARTDCombat myCombatPanel = new ARTDCombat();
 	
-
-
 	public ARTDMenu() {
 		
 		JFrame frame = new JFrame("Alternate Reality: The Dungeon");
@@ -57,8 +54,13 @@ public class ARTDMenu extends JPanel{
 		frame.setForeground(myPreferences.colorBrown);
 
 	    Font font = new Font("Times New Roman", Font.BOLD, 20);
-	    Dimension windowSize = frame.getMaximumSize();
-		frame.setSize(windowSize);
+	    
+	    GraphicsDevice screenSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		int width = screenSize.getDisplayMode().getWidth();
+		int height = screenSize.getDisplayMode().getHeight();
+		
+		//frame.setSize(width, height);
+		frame.setUndecorated(true);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
 		ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
@@ -70,7 +72,7 @@ public class ARTDMenu extends JPanel{
 		JPanel p4 = new JPanel(new BorderLayout());
 		
 		
-		myCombatPanel.size();
+		
 
 		try {
 			mygamestate.StartGameLoadCharecter();
@@ -142,15 +144,13 @@ public class ARTDMenu extends JPanel{
 		timer.setRepeats(true);
 		timer.start();
 		
-		//Text Area at the bottom of the play window
-		JTextArea messagearea = new JTextArea();
-	    messagearea.setLineWrap(true);
-	    messagearea.setWrapStyleWord(true);
-	    messagearea.setEditable(false);
-        messagearea.setFont(font);	    
+		
         
+		//****************************************************************************************
+		//----------------------------Menu Bar and Menu Items ------------------------------------
+		//****************************************************************************************
 
-
+        
 		// Create the menu bar.
 		JMenuBar menuBar = new JMenuBar();
 
@@ -161,6 +161,9 @@ public class ARTDMenu extends JPanel{
 				System.exit(0);
 			}
 		});
+		//*************************************************************
+		//------------------- Adding Menu Headers -----------------------------
+		//*************************************************************
 
 		JMenu gameMenu = new JMenu("Game");
 		gameMenu.setMnemonic(KeyEvent.VK_G);
@@ -169,10 +172,16 @@ public class ARTDMenu extends JPanel{
 		JMenu charecterMenu = new JMenu("Charecter");
 		charecterMenu.setMnemonic(KeyEvent.VK_C);
 		
+		JMenu settingsMenu = new JMenu("Preferences");
+		settingsMenu.setMnemonic(KeyEvent.VK_P);
+		
 		
 		JMenu helpMenu = new JMenu("About");
 		helpMenu.setMnemonic(KeyEvent.VK_H);
 
+		//*********************************************
+		//--------------- Used for Testing Combat------
+		//---------------------------------------------
 		ARTDCombat artdCombat = new ARTDCombat();
 		try {
 			artdCombat.CombatEncouter();
@@ -181,10 +190,13 @@ public class ARTDMenu extends JPanel{
 			e3.printStackTrace();
 		}
 		
-
+		//****************************************************************************************
+		//----------------------------Adding Menu Items-------------------------------------------
+		//****************************************************************************************
+		//****************************************************************************************
+		//----------------------------Load, Save and Exit------------------------------------
+		//****************************************************************************************
 		
-		///////////////////////// create groups of menu
-		///////////////////////// items/////////////////////////////////////
 		JMenuItem newGameMenuItem = new JMenuItem("New Game");
 		newGameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_MASK));
 		newGameMenuItem.getAccessibleContext().setAccessibleDescription("New Game");
@@ -220,12 +232,9 @@ public class ARTDMenu extends JPanel{
 						if (!file.isDirectory())
 							file.delete();
 
-
 					try {
 
-
 						ARTDMain.main(null);
-
 
 					} catch (IOException | InterruptedException e1) {
 
@@ -243,6 +252,10 @@ public class ARTDMenu extends JPanel{
 			}
 		});
 
+		//***************************************************************************
+		//----------------------------- Loading a Previously Saved Game--------------
+		//***************************************************************************
+		
 		JMenuItem LoadSavedGameMenuItem = new JMenuItem("Load Saved Game");
 		LoadSavedGameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, KeyEvent.CTRL_MASK));
 		LoadSavedGameMenuItem.getAccessibleContext().setAccessibleDescription("Load Saved Game");
@@ -258,6 +271,10 @@ public class ARTDMenu extends JPanel{
 			}
 		});
 
+		//***************************************************************************
+		//----------------------------- Saving Your Game ----------------------------
+		//***************************************************************************
+		
 		JMenuItem saveMenuItem = new JMenuItem("Save Current Game");
 		saveMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_MASK));
 		saveMenuItem.getAccessibleContext().setAccessibleDescription("Save Current Game");
@@ -277,6 +294,10 @@ public class ARTDMenu extends JPanel{
 			}
 		});
 
+		//***************************************************************************
+		//----------------------------- Exiting Your Game ---------------------------
+		//***************************************************************************
+		
 		JMenuItem exitGameMenuItem = new JMenuItem("Exit");
 		exitGameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyEvent.CTRL_MASK));
 		exitGameMenuItem.getAccessibleContext().setAccessibleDescription("Exit Game");
@@ -289,7 +310,9 @@ public class ARTDMenu extends JPanel{
 			}
 		});
 
-		///////////////////////// Charecter Menu Group ////////////////////////////
+		//****************************************************************************************
+		//----------------------------Stats, Inventory and Maps------------------------------------
+		//****************************************************************************************
 
 		JMenuItem charecterstatsMenuItem = new JMenuItem("Stats");
 		charecterstatsMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, KeyEvent.CTRL_MASK));
@@ -315,7 +338,35 @@ public class ARTDMenu extends JPanel{
 
 		JMenuItem mapMenu = new JMenu("Map");
 		mapMenu.setMnemonic(KeyEvent.VK_M);
+		
+		//****************************************************************************************
+		//----------------------------Settings and Preferences------------------------------------
+		//****************************************************************************************
+		
+		JMenuItem gameSettingsMenuItem = new JMenuItem("Settings");
+		gameSettingsMenuItem = new JMenuItem("Settings");
+		gameSettingsMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P,KeyEvent.CTRL_MASK));
+		gameSettingsMenuItem.getAccessibleContext().setAccessibleDescription("Game Settings");
+		gameSettingsMenuItem.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//Settings Such as 
+				//Auto Save Timer
+				//Set Brightness
+				//Set Resolution
+				//Set Colors
+				//Set Volume
+				
+				System.out.print("Settings and Preferences");
+				
+				
+			}});
+		
+		//****************************************************************************************
+		//---------------------------- Help and About -------------------------------------------
+		//****************************************************************************************
+		
 		// Help and About Menu Items -- About the Game and any Help Information
 		JMenuItem aboutMenuItem = new JMenuItem("About");
 		aboutMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_MASK));
@@ -445,6 +496,8 @@ public class ARTDMenu extends JPanel{
 		charecterMenu.add(charecterstatsMenuItem);
 		charecterMenu.add(charecterinventoryMenuItem);
 		charecterMenu.add(mapMenu);
+		
+		settingsMenu.add(gameSettingsMenuItem);
 
 		helpMenu.add(aboutMenuItem);
 		helpMenu.add(helpMenuItem);
@@ -452,6 +505,7 @@ public class ARTDMenu extends JPanel{
 		// add menu to menubar
 		menuBar.add(gameMenu);
 		menuBar.add(charecterMenu);
+		menuBar.add(settingsMenu);
 		menuBar.add(helpMenu);
 
 		JMenuItem mapFloor1MenuItem = new JMenuItem("Floor 1");
@@ -504,9 +558,9 @@ public class ARTDMenu extends JPanel{
 		// add menubar to the frame
 		frame.setJMenuBar(menuBar);
 
-		// Size and Location for Window
-
-		// Add Menubar and Display JFrame
+		//****************************************************************************************
+		//----------------------------Setting Up Menubar and JFrame ------------------------------
+		//****************************************************************************************
 
 		frame.setJMenuBar(menuBar);
 		
@@ -519,17 +573,33 @@ public class ARTDMenu extends JPanel{
 		p4.add(CharXPHPGold);
 
 		
-		JTextArea amessagearea = new JTextArea();
+
+		//---------------------------------------------------------------------------------
+		//Text Area at the bottom of the play window
 		
-		myCombatPanel.CombatPanel.setSize(800, 600);
-		frame.add(amessagearea,BorderLayout.CENTER);
-		//frame.add(myCombatPanel, BorderLayout.CENTER);
-		frame.add(messagearea, BorderLayout.SOUTH);
+		/*
+		 * JTextArea messagearea = new JTextArea(); messagearea.setLineWrap(true);
+		 * messagearea.setWrapStyleWord(true); messagearea.setEditable(false);
+		 * messagearea.setFont(font); messagearea.setSize(250, 250);
+		 * messagearea.setText("JTextArea AMessageArea - Center");
+		 * frame.add(messagearea, BorderLayout.CENTER);
+		 * 
+		 * JTextArea amessagearea = new JTextArea(); amessagearea.setLineWrap(true);
+		 * amessagearea.setWrapStyleWord(true); amessagearea.setEditable(false);
+		 * amessagearea.setFont(font); amessagearea.setSize(1500, 1500);
+		 * amessagearea.setText("JTextArea MessageArea - South");
+		 * frame.add(amessagearea, BorderLayout.SOUTH);
+		 */
 		
-		messagearea.setText("JTextArea messagearea");
-		amessagearea.setText("A New MessageArea");
+		ARTDCombat myCombat = new ARTDCombat();
+		
+		JPanel CombatPanel = myCombat.CombatPanel;
+		
+		frame.add(CombatPanel);
 		
 		
+		
+				
 		frame.setVisible(true);
 	}
 

@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Frame;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -46,7 +48,8 @@ public class ARTDCombat extends JPanel{
 	int HP;
 	String HeroHPArrayList;
 	int HeroHP;
-	JPanel CombatPanel;
+	JFrame CombatFrame;
+	public JPanel CombatPanel;
 
 	public ARTDCombat() {
 
@@ -64,9 +67,9 @@ public class ARTDCombat extends JPanel{
 		ARTDEnemies enemy = ARTDSingleton.myMonsters().get(rnd);
 
 		// Adding JFrame
-		JFrame CombatFrame = new JFrame("You've encountered a " + ARTDSingleton.myMonsters().get(rnd).name.toString());
-		CombatFrame.toFront(); // Bringing the Combat Window to the Front
-		CombatFrame.requestFocus(); //Bringing the Combat Window as Focus
+		//JFrame CombatFrame = new JFrame("You've encountered a " + ARTDSingleton.myMonsters().get(rnd).name.toString());
+		//CombatFrame.toFront(); // Bringing the Combat Window to the Front
+		//CombatFrame.requestFocus(); //Bringing the Combat Window as Focus
 		
 		// Adding JPanels
 		
@@ -94,7 +97,7 @@ public class ARTDCombat extends JPanel{
 		JButton CombatRun = new JButton("Run Away!");
 
 		// Adding Parent JPanel to JFrame
-		CombatFrame.add(CombatPanel, BorderLayout.CENTER);
+		//CombatFrame.add(CombatPanel, BorderLayout.CENTER);
 
 		// Adding Image to JPanel
 		BufferedImage myPicture = ImageIO.read(new File(
@@ -138,17 +141,19 @@ public class ARTDCombat extends JPanel{
 		CombatCombatUpdatesAndStats.setDividerLocation(0.25); // Sets the divider 3/4 of the way up the pane
 
 		// Setting the JFrame to fill the screen
-		Toolkit tk = Toolkit.getDefaultToolkit(); // Initializing the Toolkit class.
-		Dimension screenSize = tk.getScreenSize(); // Get the Screen resolution of our device.
+		GraphicsDevice screenSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		int width = screenSize.getDisplayMode().getWidth();
+		int height = screenSize.getDisplayMode().getHeight();
+		
+		//CombatFrame.setSize(width, height);
+		CombatNameAndHPfield.setLineWrap(true);
+		
+		//CombatFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		//CombatFrame.setState(Frame.NORMAL);
 
-		// CombatNameAndHPfield.setLineWrap(true);
-		CombatFrame.setSize(screenSize);
-		CombatFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		CombatFrame.setState(Frame.NORMAL);
-
-		CombatFrame.setLocationRelativeTo(null);
-		CombatFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		CombatFrame.setVisible(true);
+		//CombatFrame.setLocationRelativeTo(null);
+	//	CombatFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	//	CombatFrame.setVisible(true);
 
 		ActionListener task = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -249,12 +254,12 @@ public class ARTDCombat extends JPanel{
 				
 				if(randomCombatChance <= 50)
 				{
-					
+					JOptionPane.showMessageDialog( null, "Sorry,  You Didn't Escape", "Result", JOptionPane.PLAIN_MESSAGE ) ;
 				}else{
 					
-				
+					JOptionPane.showMessageDialog( null, "You Got Away!", "Result", JOptionPane.PLAIN_MESSAGE ) ;
 					//CombatPanel.dispose();
-					CombatFrame.dispose();
+					//CombatFrame.dispose();
 				}
 				
 			}});
