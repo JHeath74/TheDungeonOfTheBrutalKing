@@ -1,9 +1,7 @@
 package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+
 import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -59,7 +57,7 @@ public class ARTDMenu extends JPanel{
 		int width = screenSize.getDisplayMode().getWidth();
 		int height = screenSize.getDisplayMode().getHeight();
 		
-		//frame.setSize(width, height);
+		frame.setSize(width, height);
 		frame.setUndecorated(true);
 		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -596,9 +594,6 @@ public class ARTDMenu extends JPanel{
 		JPanel CombatPanel = myCombat.CombatPanel;
 		
 		frame.add(CombatPanel);
-		
-		
-		
 				
 		frame.setVisible(true);
 	}

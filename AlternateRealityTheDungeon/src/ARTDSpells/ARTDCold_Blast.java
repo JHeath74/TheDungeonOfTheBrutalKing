@@ -3,7 +3,6 @@ package ARTDSpells;
 import java.util.Random;
 
 import AlternateRealityTheDungeon.ARTDCharecter;
-import AlternateRealityTheDungeon.ARTDSingleton;
 import AlternateRealityTheDungeon.ARTDSpells;
 
 public class ARTDCold_Blast extends ARTDSpells
