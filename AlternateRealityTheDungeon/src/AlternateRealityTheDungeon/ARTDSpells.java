@@ -1,17 +1,6 @@
 package AlternateRealityTheDungeon;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
 
-import ARTDSpells.ARTDCold_Blast;
-import ARTDSpells.ARTDConjure_Food;
-import ARTDSpells.ARTDFireball;
-import ARTDSpells.ARTDHeal;
-import ARTDSpells.ARTDLight;
-import ARTDSpells.ARTDLocation;
-import ARTDSpells.ARTDPort;
-import ARTDSpells.ARTDRandomStat;
-import ARTDSpells.ARTDShield;
 
 public class ARTDSpells {
 	

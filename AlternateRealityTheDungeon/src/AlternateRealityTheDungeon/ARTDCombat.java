@@ -35,26 +35,41 @@ import ARTDEnemies.ARTDRats;
 import ARTDEnemies.ARTDSkeletons;
 import ARTDEnemies.ARTDSpiders;
 
-public class ARTDCombat extends JPanel{
+public class ARTDCombat extends JFrame{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 
 	// https://stackoverflow.com/questions/38288522/how-to-get-a-random-item-from-a-class-in-java
 	// https://stackoverflow.com/questions/18435992/java-call-object-methods-through-arraylist
 
 	ARTDSingleton myCharSingleton = new ARTDSingleton();
+	ARDTGamePreferences myGamePreferences = new ARDTGamePreferences();
 
 
-	int HP;
-	String HeroHPArrayList;
-	int HeroHP;
-	JFrame CombatFrame;
-	public JPanel CombatPanel;
+	String HeroHPArrayList = "";
+	
+	public JFrame CombatFrame, spellsFrame;
+	public JPanel CombatPanel, CombatPanelImage, CombatPanelButtons, 
+		   CombatPanelCombatArea, CombatPanelCombatUpdateInfo,
+		   CombatNameAndHPPanel, spelllistbox = null;
+	public JSplitPane CombatImageAndCombatUpdatesStats, CombatCombatUpdatesAndStats  = null;
+	public JTextArea CombatCombatTextArea, CombatNameAndHPfield  = null;
+	public JButton CombatAttack, CastSelectedSpell, CombatSpell, CombatRun, SelectSpellToCast  = null;
+	public JLabel picLabel  = null;
+	public int width, height, HP, HeroHP, randomCombatChance = 0;
+	public Dimension imageSize = null;
+	public BufferedImage myPicture = null;
+	public Timer timer = null;
+	public String[] spellList = null;
 
 	public ARTDCombat() {
 
 		HeroHPArrayList = ARTDSingleton.myCharSingleton().CharInfo.get(4);
-		HeroHP = Integer.parseInt(HeroHPArrayList);
-		CombatPanel = new JPanel(new BorderLayout());
-		
+		HeroHP = Integer.parseInt(HeroHPArrayList);		
 
 	}
 
@@ -64,50 +79,62 @@ public class ARTDCombat extends JPanel{
 
 		ARTDEnemies enemy = ARTDSingleton.myMonsters().get(rnd);
 
-		// Adding JFrame
-		//JFrame CombatFrame = new JFrame("You've encountered a " + ARTDSingleton.myMonsters().get(rnd).name.toString());
-		//CombatFrame.toFront(); // Bringing the Combat Window to the Front
-		//CombatFrame.requestFocus(); //Bringing the Combat Window as Focus
+		//*************************************************************
+		//-------------------Adding and Setting Up JPanels-------------
+		//*************************************************************
 		
-		// Adding JPanels
 		
-		JPanel CombatPanelImage = new JPanel(); // Display Image of Enemy
-		JPanel CombatPanelButtons = new JPanel(new FlowLayout()); // Display Buttons for Combat
-		JPanel CombatPanelCombatArea = new JPanel(); // Display Combat Updates such as sucessful or not-successful
+		
+		CombatPanel = new JPanel(new BorderLayout());
+		CombatPanelImage = new JPanel(); // Display Image of Enemy
+		CombatPanelButtons = new JPanel(new FlowLayout()); // Display Buttons for Combat
+		CombatPanelCombatArea = new JPanel(); // Display Combat Updates such as sucessful or not-successful
 														// attacks or HP lost
-		JPanel CombatPanelCombatUpdateInfo = new JPanel(); // Your Stats
-		JPanel CombatNameAndHPPanel = new JPanel();
+		CombatPanelCombatUpdateInfo = new JPanel(); // Your Stats
+		CombatNameAndHPPanel = new JPanel();
 
-		// Adding and Setting up JSplitPanes
-		JSplitPane CombatImageAndCombatUpdatesStats = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		JSplitPane CombatCombatUpdatesAndStats = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		//*************************************************************
+		//-------------------Adding and Setting Up JSplitPanes---------
+		//*************************************************************
+		
+		
+		CombatImageAndCombatUpdatesStats = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		CombatCombatUpdatesAndStats = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		
+		//*************************************************************
+		//-------------------Adding and Setting Up JTextArea-----------
+		//*************************************************************
 
 		// Added JTextArea To display Combat outcomes
-		JTextArea CombatCombatTextArea = new JTextArea();
+		CombatCombatTextArea = new JTextArea();
 
 		// Adding JTextField to Display Name and HP of Hero and Monster
-		JTextArea CombatNameAndHPfield = new JTextArea();
+		CombatNameAndHPfield = new JTextArea();
+		
+		//*************************************************************
+		//-------------------Adding and Setting Up JButtons-----------
+		//*************************************************************
 
 		// Creating Buttons for Combat
-		JButton CombatAttack = new JButton("Attack");
-		JButton CastSelectedSpell = new JButton("Cast Selected Spell");
-		JButton CombatSpell = new JButton("Select Spell to Cast");
-		JButton CombatRun = new JButton("Run Away!");
+		CombatAttack = new JButton("Attack");
+		CastSelectedSpell = new JButton("Cast Selected Spell");
+		CombatSpell = new JButton("Select Spell to Cast");
+		CombatRun = new JButton("Run Away!");
 
 		// Adding Parent JPanel to JFrame
-		//CombatFrame.add(CombatPanel, BorderLayout.CENTER);
+		  //CombatFrame.add(CombatPanel, BorderLayout.CENTER);
 
 		// Adding Image to JPanel
-		BufferedImage myPicture = ImageIO.read(new File(
-				"src\\AlternateRealityTheDungeon\\Images\\" + ARTDSingleton.myMonsters().get(rnd).MonsterImage));
+		myPicture = ImageIO.read(new File(
+				myGamePreferences.MonsterImagePath + ARTDSingleton.myMonsters().get(rnd).MonsterImage));
 		
-		JLabel picLabel = new JLabel(new ImageIcon(myPicture));		
+		picLabel = new JLabel(new ImageIcon(myPicture));		
 
-		Dimension imageSize = new Dimension();
+		imageSize = new Dimension();
 		imageSize.setSize(768, 1024); // Double Width, Double Height
 		picLabel.setPreferredSize(imageSize);
 
-		// Getting the size of the JPanel for the monster image
+		// Adding the image to the JPanel for the monster image
 		CombatPanelImage.add(picLabel);
 
 		// Adding Panel for buttons to Master Panel
@@ -140,18 +167,12 @@ public class ARTDCombat extends JPanel{
 
 		// Setting the JFrame to fill the screen
 		GraphicsDevice screenSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-		int width = screenSize.getDisplayMode().getWidth();
-		int height = screenSize.getDisplayMode().getHeight();
+		width = screenSize.getDisplayMode().getWidth();
+		height = screenSize.getDisplayMode().getHeight();
 		
 		//CombatFrame.setSize(width, height);
 		CombatNameAndHPfield.setLineWrap(true);
 		
-		//CombatFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		//CombatFrame.setState(Frame.NORMAL);
-
-		//CombatFrame.setLocationRelativeTo(null);
-	//	CombatFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//	CombatFrame.setVisible(true);
 
 		ActionListener task = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -163,7 +184,7 @@ public class ARTDCombat extends JPanel{
 
 			}
 		};
-		Timer timer = new Timer(1000, task); // Execute task each 1000 miliseconds
+		timer = new Timer(1000, task); // Execute task each 1000 miliseconds
 		timer.setRepeats(true);
 		timer.start();
 
@@ -195,11 +216,11 @@ public class ARTDCombat extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				JFrame spellsFrame = new JFrame();
-				JButton SelectSpellToCast = new JButton("Select Spell to Cast");
-				JPanel spelllistbox = new JPanel(new BorderLayout());
+				spellsFrame = new JFrame();
+				SelectSpellToCast = new JButton("Select Spell to Cast");
+				spelllistbox = new JPanel(new BorderLayout());
 
-				String[] spellList = new String[ARTDSingleton.myCharSingleton().CharInfo.size()];
+				spellList = new String[ARTDSingleton.myCharSingleton().CharInfo.size()];
 
 				for (int i = 21; i < ARTDSingleton.myCharSingleton().CharInfo.size(); i++)
 					spellList[i] = ARTDSingleton.myCharSingleton().CharInfo.get(i);
@@ -248,7 +269,7 @@ public class ARTDCombat extends JPanel{
 				
 				Random rand = new Random();
 				
-				int randomCombatChance = rand.nextInt(101);
+				randomCombatChance = rand.nextInt(101);
 				
 				if(randomCombatChance <= 50)
 				{
@@ -256,8 +277,8 @@ public class ARTDCombat extends JPanel{
 				}else{
 					
 					JOptionPane.showMessageDialog( null, "You Got Away!", "Result", JOptionPane.PLAIN_MESSAGE ) ;
-					//CombatPanel.dispose();
-					//CombatFrame.dispose();
+					
+					CombatFrame.dispose();
 				}
 				
 			}});

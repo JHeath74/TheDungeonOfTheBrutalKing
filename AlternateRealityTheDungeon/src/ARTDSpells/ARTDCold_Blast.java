@@ -1,8 +1,5 @@
 package ARTDSpells;
 
-import java.util.Random;
-
-import AlternateRealityTheDungeon.ARTDCharecter;
 import AlternateRealityTheDungeon.ARTDSpells;
 
 public class ARTDCold_Blast extends ARTDSpells
