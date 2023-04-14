@@ -9,7 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 
-public class ARDTGamePreferences
+public class ARDTGameSettings
 {
 	String FontPath = "//src//AlternateRealityTheDungeon//Fonts";
 	Color colorBrown, colorLightBrown, colorLightYellow, colorBlack, colorWhite,
@@ -26,14 +26,16 @@ public class ARDTGamePreferences
 	String ProgramImagePath, MonsterImagePath;
 	
 	
-	public ARDTGamePreferences()
+	public ARDTGameSettings()
 	{
 		ProgramImagePath = "src\\AlternateRealityTheDungeon\\Images\\Program\\";
 		MonsterImagePath = "src\\AlternateRealityTheDungeon\\Images\\Monsters\\";
 		
 		//https://www.rapidtables.com/web/color/RGB_Color.html
 		
-		//Colors
+		//*********************************************************************************
+		//--------------------------- Colors ----------------------------------------------
+		//*********************************************************************************
 		
 		colorBrown = new Color(165, 42, 42);
 		colorLightBrown = new Color(196, 164, 132);
@@ -60,12 +62,17 @@ public class ARDTGamePreferences
 		colorMediumBlue = new Color(0,0,205);
 		
 		
-		//Fonts
+		//*********************************************************************************
+		//--------------------------- Fonts ----------------------------------------------
+		//*********************************************************************************
 		
 		fontTimesNewRoman = new Font("Times New Roman", Font.BOLD, 20);
 		fontAvatar = new Font(FontPath + "avatar.ttf", Font.BOLD, 20);
 		
-		//Pictures
+		
+		//*********************************************************************************
+		//--------------------------- Pictures ----------------------------------------------
+		//*********************************************************************************
 		try {
 			myJMenuBarPicture = ImageIO.read(new File(ProgramImagePath + "AlternateReality - MenuBar.jpg"));
 		} catch (IOException e) {

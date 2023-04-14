@@ -1,12 +1,13 @@
 package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -47,7 +48,7 @@ public class ARTDCombat extends JFrame{
 	// https://stackoverflow.com/questions/18435992/java-call-object-methods-through-arraylist
 
 	ARTDSingleton myCharSingleton = new ARTDSingleton();
-	ARDTGamePreferences myGamePreferences = new ARDTGamePreferences();
+	ARDTGameSettings myGamePreferences = new ARDTGameSettings();
 
 
 	String HeroHPArrayList = "";
@@ -77,13 +78,32 @@ public class ARTDCombat extends JFrame{
 		
 		int rnd = new Random().nextInt(ARTDSingleton.myMonsters().size());
 
-		ARTDEnemies enemy = ARTDSingleton.myMonsters().get(rnd);
-
+		//*************************************************************
+		//-------------------Adding and Setting Up JFrame -------------
+		//*************************************************************
+			CombatFrame = new JFrame();
+			CombatFrame.setLayout(new BorderLayout());
+			
+			// Setting the JFrame to fill the screen
+			// getScreenSize() returns the size
+	        // of the screen in pixels
+	        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+	        
+	        // width will store the width of the screen
+	        width = (int)size.getWidth();
+	        
+	        // height will store the height of the screen
+	        height = (int)size.getHeight();
+			
+	        System.out.println("Width: " + width
+	        					+"Height: " + height);
+	        
+			CombatFrame.setSize(width, height);
+		
 		//*************************************************************
 		//-------------------Adding and Setting Up JPanels-------------
 		//*************************************************************
-		
-		
+				
 		
 		CombatPanel = new JPanel(new BorderLayout());
 		CombatPanelImage = new JPanel(); // Display Image of Enemy
@@ -91,7 +111,7 @@ public class ARTDCombat extends JFrame{
 		CombatPanelCombatArea = new JPanel(); // Display Combat Updates such as sucessful or not-successful
 														// attacks or HP lost
 		CombatPanelCombatUpdateInfo = new JPanel(); // Your Stats
-		CombatNameAndHPPanel = new JPanel();
+		CombatNameAndHPPanel = new JPanel(new FlowLayout());
 
 		//*************************************************************
 		//-------------------Adding and Setting Up JSplitPanes---------
@@ -122,7 +142,7 @@ public class ARTDCombat extends JFrame{
 		CombatRun = new JButton("Run Away!");
 
 		// Adding Parent JPanel to JFrame
-		  //CombatFrame.add(CombatPanel, BorderLayout.CENTER);
+		   CombatFrame.add(CombatPanel, BorderLayout.CENTER);
 
 		// Adding Image to JPanel
 		myPicture = ImageIO.read(new File(
@@ -165,22 +185,21 @@ public class ARTDCombat extends JFrame{
 		CombatImageAndCombatUpdatesStats.setDividerLocation(0.5); // Places the Split in the middle of the pane
 		CombatCombatUpdatesAndStats.setDividerLocation(0.25); // Sets the divider 3/4 of the way up the pane
 
-		// Setting the JFrame to fill the screen
-		GraphicsDevice screenSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-		width = screenSize.getDisplayMode().getWidth();
-		height = screenSize.getDisplayMode().getHeight();
 		
-		//CombatFrame.setSize(width, height);
-		CombatNameAndHPfield.setLineWrap(true);
+		CombatNameAndHPfield.setLineWrap(false);
+		CombatNameAndHPfield.setEditable(false);
+		CombatNameAndHPfield.setBackground(myGamePreferences.colorLightYellow);
+		CombatNameAndHPfield.setSize(CombatNameAndHPPanel.getSize());
+		
+		CombatNameAndHPPanel.setBackground(myGamePreferences.colorCoral);
 		
 
 		ActionListener task = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 
-				CombatNameAndHPfield.setText("Name:" + ARTDSingleton.myCharSingleton().CharInfo.get(0)
-						+ "\t\tEnemy Name:" + ARTDSingleton.myMonsters().get(rnd).name.toString() + "\nHP: "
-						+ ARTDSingleton.myCharSingleton().CharInfo.get(4) + "\t\tEnemy HP: "
-						+ ARTDSingleton.myMonsters().get(rnd).MonsterHP);
+				CombatNameAndHPfield.setText("Name: " + ARTDSingleton.myCharSingleton().CharInfo.get(0)
+						 + "\nYour HP: " + ARTDSingleton.myCharSingleton().CharInfo.get(4) + "\n\nEnemy Name: " + ARTDSingleton.myMonsters().get(rnd).name.toString()
+						 + "\nEnemy HP: " + ARTDSingleton.myMonsters().get(rnd).MonsterHP);
 
 			}
 		};
@@ -282,7 +301,7 @@ public class ARTDCombat extends JFrame{
 				}
 				
 			}});
-		
+		CombatFrame.setVisible(true);
 	}
 	
 	

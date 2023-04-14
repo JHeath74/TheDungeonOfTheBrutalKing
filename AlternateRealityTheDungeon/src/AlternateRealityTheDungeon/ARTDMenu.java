@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -40,11 +41,11 @@ import javax.swing.WindowConstants;
  * Games Menu Items
  * 
  */
-public class ARTDMenu extends JPanel {
+public class ARTDMenu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
-	ARDTGamePreferences myPreferences = new ARDTGamePreferences();
+	ARDTGameSettings myPreferences = new ARDTGameSettings();
 	ARTDCombat myCombat = new ARTDCombat();
 	ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
 	ARTDGameMenuItems myGameMenuItems = new ARTDGameMenuItems();
@@ -59,7 +60,7 @@ public class ARTDMenu extends JPanel {
 				exitGameMenuItem,charecterstatsMenuItem,
 				charecterinventoryMenuItem, mapMenu, gameSettingsMenuItem,
 				aboutMenuItem, helpMenuItem, mapFloor1MenuItem, mapFloor2MenuItem,
-				mapFloor3MenuItem, mapFloor4MenuItem= null;
+				mapFloor3MenuItem, mapFloor4MenuItem = null;
 	JLabel picLabel = null;
 	Dimension screenSize = null;
 	int width, height = 0;
@@ -75,21 +76,23 @@ public class ARTDMenu extends JPanel {
 		frame.setLayout(new BorderLayout());
 		frame.setForeground(myPreferences.colorBrown);
 		frame.setUndecorated(true);
-		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-		//Screen Size Information
-		//screenSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-		//width = screenSize.getDisplayMode().getWidth();
-		//height = screenSize.getDisplayMode().getHeight();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
 		
-		
-		GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-		//int width = gd.getDisplayMode().getWidth();
-		//int height = gd.getDisplayMode().getHeight();
-
-		int width = 1400;
-		int height = 900;
-		
+		// getScreenSize() returns the size
+        // of the screen in pixels
+        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+        
+        // width will store the width of the screen
+        width = (int)size.getWidth();
+        
+        // height will store the height of the screen
+        height = (int)size.getHeight();
+        
+        System.out.println("Width: " + width
+				+"\nHeight: " + height);
+        
+		frame.pack();
 		frame.setSize(width, height);
 
 
@@ -109,6 +112,7 @@ public class ARTDMenu extends JPanel {
 		// -----------  Fields at top of the screen displaying
 		//------------ Name and Stats for toon
 		//***********************************************************
+		
 		CharNameClassLevel = new JTextField();
 		CharNameClassLevel.setFont(myPreferences.fontTimesNewRoman);
 		CharNameClassLevel.setBackground(myPreferences.colorLightBrown);
@@ -120,23 +124,25 @@ public class ARTDMenu extends JPanel {
 		CharStats.setBackground(myPreferences.colorLightYellow);
 		CharStats.setEditable(false);
 		CharStats.setColumns(6);
+		
 
 		CharXPHPGold = new JTextField();
 		CharXPHPGold.setFont(myPreferences.fontTimesNewRoman);
 		CharXPHPGold.setEditable(false);
 		CharXPHPGold.setBackground(myPreferences.colorLightBrown);
-		CharXPHPGold.setColumns(3);
+		
 
 		ActionListener task = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				
-				 CharNameClassLevel.setText("Name: " + myChar.CharInfo.get(0) +"\t" + "Class: " +
-				 myChar.CharInfo.get(1)+"\t" + "Level: " + myChar.CharInfo.get(2) + "\t" +"Experience: " +
-				 myChar.CharInfo.get(3));
+				 CharNameClassLevel.setText("Name: " + myChar.CharInfo.get(0) +"\t\t" + "Class: " +
+						 					myChar.CharInfo.get(1)+"\t\t" + "Level: " + myChar.CharInfo.get(2) + "\t\t" +"Experience: " +
+						 					myChar.CharInfo.get(3));
+				
 				
 
-				CharStats.setText("Stamina: " + myChar.CharInfo.get(5) + "\t" + "Charisma: " + myChar.CharInfo.get(6)
-						+ "\t" + "Strength: " + myChar.CharInfo.get(7) + "\t" + "Intelligence: "
+				CharStats.setText("Stamina: " + myChar.CharInfo.get(5) + "\t\t" + "Charisma: " + myChar.CharInfo.get(6)
+						+ "\t\t" + "Strength: " + myChar.CharInfo.get(7) + "\t\t" + "Intelligence: "
 						+ myChar.CharInfo.get(8) + "\t" + "Wisdom: " + myChar.CharInfo.get(9) + "\t" + "Agility: "
 						+ myChar.CharInfo.get(10));
 
@@ -189,12 +195,10 @@ public class ARTDMenu extends JPanel {
 		helpMenu.setMnemonic(KeyEvent.VK_H);
 
 		// ****************************************************************************************
-		// ----------------------------Adding Menu
-		// Items-------------------------------------------
+		// ----------------------------Adding Menu Items-------------------------------------------
 		// ****************************************************************************************
 		// ****************************************************************************************
-		// ----------------------------Load, Save and
-		// Exit------------------------------------
+		// ----------------------------Load, Save and Exit------------------------------------
 		// ****************************************************************************************
 
 		newGameMenuItem = new JMenuItem("New Game");

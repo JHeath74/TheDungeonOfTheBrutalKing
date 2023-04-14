@@ -15,7 +15,7 @@ public class ARTDGameMenuItems
 {
 
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
-	ARDTGamePreferences myGamePreferences = new ARDTGamePreferences();
+	ARDTGameSettings myGamePreferences = new ARDTGameSettings();
 	
 	public void Stats()
 	{
