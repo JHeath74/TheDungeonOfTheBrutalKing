@@ -31,6 +31,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
@@ -62,6 +63,7 @@ public class ARTDMenu extends JFrame {
 				aboutMenuItem, helpMenuItem, mapFloor1MenuItem, mapFloor2MenuItem,
 				mapFloor3MenuItem, mapFloor4MenuItem = null;
 	JLabel picLabel = null;
+	JSplitPane PicturesAndTextUpdates = null;
 	Dimension screenSize = null;
 	int width, height = 0;
 	Timer timer = null;
@@ -76,7 +78,7 @@ public class ARTDMenu extends JFrame {
 		frame.setLayout(new BorderLayout());
 		frame.setForeground(myPreferences.colorBrown);
 		frame.setUndecorated(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	
 		
 		// getScreenSize() returns the size
@@ -88,10 +90,7 @@ public class ARTDMenu extends JFrame {
         
         // height will store the height of the screen
         height = (int)size.getHeight();
-        
-        System.out.println("Width: " + width
-				+"\nHeight: " + height);
-        
+            
 		frame.pack();
 		frame.setSize(width, height);
 
@@ -122,9 +121,7 @@ public class ARTDMenu extends JFrame {
 		CharStats = new JTextField();
 		CharStats.setFont(myPreferences.fontTimesNewRoman);
 		CharStats.setBackground(myPreferences.colorLightYellow);
-		CharStats.setEditable(false);
-		CharStats.setColumns(6);
-		
+		CharStats.setEditable(false);		
 
 		CharXPHPGold = new JTextField();
 		CharXPHPGold.setFont(myPreferences.fontTimesNewRoman);
@@ -143,7 +140,7 @@ public class ARTDMenu extends JFrame {
 
 				CharStats.setText("Stamina: " + myChar.CharInfo.get(5) + "\t\t" + "Charisma: " + myChar.CharInfo.get(6)
 						+ "\t\t" + "Strength: " + myChar.CharInfo.get(7) + "\t\t" + "Intelligence: "
-						+ myChar.CharInfo.get(8) + "\t" + "Wisdom: " + myChar.CharInfo.get(9) + "\t" + "Agility: "
+						+ myChar.CharInfo.get(8) + "\t\t" + "Wisdom: " + myChar.CharInfo.get(9) + "\t\t" + "Agility: "
 						+ myChar.CharInfo.get(10));
 
 				CharXPHPGold.setText("Hit Points: " + myChar.CharInfo.get(4) + "\t\t" + "Gold: "
@@ -554,17 +551,35 @@ public class ARTDMenu extends JFrame {
 		mapMenu.add(mapFloor2MenuItem);
 		mapMenu.add(mapFloor3MenuItem);
 		mapMenu.add(mapFloor4MenuItem);
-
+		
+		// **************************************************************************************
+		// ----------------------------Setting Up JSplitPane ------------------------------------
+		// *************************************************************************************
+				
+		JTextArea messagearea = new JTextArea("JTextArea AMessageArea - Video and Pictures");
+		JTextArea amessagearea = new JTextArea("JTextArea AMessageArea - Game Updates"); 
+		
+		PicturesAndTextUpdates = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		PicturesAndTextUpdates.setVisible(true);
+		PicturesAndTextUpdates.setResizeWeight(.2d);
+		PicturesAndTextUpdates.setDividerLocation(.25);
+		PicturesAndTextUpdates.setLeftComponent(messagearea);
+		PicturesAndTextUpdates.setRightComponent(amessagearea);
+		PicturesAndTextUpdates.setVisible(true);
+				
+		
 		// ****************************************************************
 		// ----------------------------Adding Menu Bar to the JFrame ------
 		// ****************************************************************
 		frame.setJMenuBar(menuBar);
 
-		// ****************************************************************************************
-		// ----------------------------Setting Up Menubar and JFrame
-		// ------------------------------
-		// ****************************************************************************************
+		// ***************************************************************
+		// -------------------Setting Up Menubar and JFrame --------------
+		// ****************************************************************
 
+		
+		
+		frame.add(PicturesAndTextUpdates, BorderLayout.CENTER);
 		frame.add(p1, BorderLayout.NORTH);
 		p1.add(p2, BorderLayout.NORTH);
 		p1.add(p3, BorderLayout.CENTER);
@@ -572,28 +587,31 @@ public class ARTDMenu extends JFrame {
 		p2.add(CharNameClassLevel);
 		p3.add(CharStats);
 		p4.add(CharXPHPGold);
+		
+		
+		
 
 		// ---------------------------------------------------------------------------------
 		// Text Area at the bottom of the play window
 
 		
-		  JTextArea messagearea = new JTextArea("JTextArea AMessageArea - Center");
-		  messagearea.setLineWrap(true);
-		  messagearea.setWrapStyleWord(true);
-		  messagearea.setEditable(false);
-		  messagearea.setFont(myPreferences.fontAvatar);
-		  messagearea.setSize(250, 250);
-		  messagearea.setText("JTextArea AMessageArea - Center");
-		  frame.add(messagearea, BorderLayout.CENTER);
+	//	  JTextArea messagearea = new JTextArea("JTextArea AMessageArea - Center");
+	//	  messagearea.setLineWrap(true);
+	//	  messagearea.setWrapStyleWord(true);
+	//	  messagearea.setEditable(false);
+	//	  messagearea.setFont(myPreferences.fontAvatar);
+	//	  messagearea.setSize(250, 250);
+	//	  messagearea.setText("JTextArea AMessageArea - Center");
+	//	  frame.add(messagearea, BorderLayout.CENTER);
 		  
-		  JTextArea amessagearea = new JTextArea(); 
-		  amessagearea.setLineWrap(true);
-		  amessagearea.setWrapStyleWord(true); 
-		  amessagearea.setEditable(false);
-		  amessagearea.setFont(myPreferences.fontTimesNewRoman);
-		  amessagearea.setSize(250, 250);
-		  amessagearea.setText("JTextArea MessageArea - South");
-		  frame.add(amessagearea, BorderLayout.SOUTH);
+	//	  JTextArea amessagearea = new JTextArea(); 
+	//	  amessagearea.setLineWrap(true);
+	//	  amessagearea.setWrapStyleWord(true); 
+	//	  amessagearea.setEditable(false);
+	//	  amessagearea.setFont(myPreferences.fontTimesNewRoman);
+	//	  amessagearea.setSize(250, 250);
+	//	  amessagearea.setText("JTextArea MessageArea - South");
+	//	  frame.add(amessagearea, BorderLayout.SOUTH);
 
 		frame.setVisible(true);
 	}

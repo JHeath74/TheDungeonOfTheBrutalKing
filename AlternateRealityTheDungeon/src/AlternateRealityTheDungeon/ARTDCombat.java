@@ -94,9 +94,6 @@ public class ARTDCombat extends JFrame{
 	        
 	        // height will store the height of the screen
 	        height = (int)size.getHeight();
-			
-	        System.out.println("Width: " + width
-	        					+"Height: " + height);
 	        
 			CombatFrame.setSize(width, height);
 		
@@ -152,8 +149,8 @@ public class ARTDCombat extends JFrame{
 
 		imageSize = new Dimension();
 		imageSize.setSize(768, 1024); // Double Width, Double Height
-		picLabel.setPreferredSize(imageSize);
-
+		picLabel.setPreferredSize(imageSize);		
+				
 		// Adding the image to the JPanel for the monster image
 		CombatPanelImage.add(picLabel);
 
@@ -173,6 +170,8 @@ public class ARTDCombat extends JFrame{
 		// added Jtextarea to JPanel used to Display Combat outcomes
 		CombatPanelCombatArea.add(CombatCombatTextArea);
 		CombatNameAndHPPanel.add(CombatNameAndHPfield);
+		
+		CombatPanelCombatUpdateInfo.add(CombatPanelCombatArea); // Display Out Come of each attack, Item Usage or spell
 
 		CombatImageAndCombatUpdatesStats.setLeftComponent(CombatPanelImage);
 		CombatImageAndCombatUpdatesStats.setRightComponent(CombatCombatUpdatesAndStats);
@@ -192,6 +191,8 @@ public class ARTDCombat extends JFrame{
 		CombatNameAndHPfield.setSize(CombatNameAndHPPanel.getSize());
 		
 		CombatNameAndHPPanel.setBackground(myGamePreferences.colorCoral);
+		
+		
 		
 
 		ActionListener task = new ActionListener() {
@@ -292,16 +293,27 @@ public class ARTDCombat extends JFrame{
 				
 				if(randomCombatChance <= 50)
 				{
-					JOptionPane.showMessageDialog( null, "Sorry,  You Didn't Escape", "Result", JOptionPane.PLAIN_MESSAGE ) ;
+					CombatCombatTextArea.append("Sorry,  You Didn't Escape!\n");
+					
 				}else{
 					
-					JOptionPane.showMessageDialog( null, "You Got Away!", "Result", JOptionPane.PLAIN_MESSAGE ) ;
+					CombatCombatTextArea.append("You Escaped from the Battle!");
+					
+					try {
+						Thread.sleep(3000);
+					} catch (InterruptedException e1) {
+						
+						e1.printStackTrace();
+					}
 					
 					CombatFrame.dispose();
 				}
 				
 			}});
 		CombatFrame.setVisible(true);
+		
+		
+		
 	}
 	
 	
