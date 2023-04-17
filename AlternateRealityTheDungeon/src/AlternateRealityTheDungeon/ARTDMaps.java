@@ -3,8 +3,10 @@ package AlternateRealityTheDungeon;
 public class ARTDMaps {
 	
 	
-	
-	
-	int[][] MapFloor4 = new int[16][16];
+	protected int[][] MapFloor1;
+	protected int[][] MapFloor2;
+	protected int[][] MapFloor3;
+	protected int[][] MapFloor4;
+
 
 }

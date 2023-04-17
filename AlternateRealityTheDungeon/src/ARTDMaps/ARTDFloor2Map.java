@@ -6,7 +6,7 @@ public class ARTDFloor2Map extends ARTDMaps
 {
 
 	
-	int[][] MapFloor2;
+	
 	
 	
 	public ARTDFloor2Map() 

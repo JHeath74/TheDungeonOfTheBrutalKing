@@ -4,7 +4,7 @@ import AlternateRealityTheDungeon.ARTDMaps;
 
 public class ARTDFloor4Map extends ARTDMaps {
 
-	int[][] MapFloor4;
+
 	
 	public ARTDFloor4Map()
 	{

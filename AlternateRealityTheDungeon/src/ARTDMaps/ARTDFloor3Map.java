@@ -1,9 +1,11 @@
 package ARTDMaps;
 
-public class ARTDFloor3Map
+import AlternateRealityTheDungeon.ARTDMaps;
+
+public class ARTDFloor3Map extends ARTDMaps
 {
 
-	int[][] MapFloor3;
+	
 	
 	public ARTDFloor3Map() 
 	{
