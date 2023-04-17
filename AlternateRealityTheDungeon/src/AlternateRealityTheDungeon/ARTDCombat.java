@@ -1,12 +1,9 @@
 package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +23,6 @@ import javax.swing.JComboBox;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
@@ -36,19 +32,18 @@ import ARTDEnemies.ARTDRats;
 import ARTDEnemies.ARTDSkeletons;
 import ARTDEnemies.ARTDSpiders;
 
-public class ARTDCombat extends JFrame{
+public class ARTDCombat extends JFrame {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 
 	// https://stackoverflow.com/questions/38288522/how-to-get-a-random-item-from-a-class-in-java
 	// https://stackoverflow.com/questions/18435992/java-call-object-methods-through-arraylist
 
+	
 	ARTDSingleton myCharSingleton = new ARTDSingleton();
 	ARDTGameSettings myGamePreferences = new ARDTGameSettings();
+	ARTDMenu myMenu = null;
+	
 
 
 	String HeroHPArrayList = "";
@@ -67,10 +62,12 @@ public class ARTDCombat extends JFrame{
 	public Timer timer = null;
 	public String[] spellList = null;
 
-	public ARTDCombat() {
+	public ARTDCombat() throws IOException {
 
 		HeroHPArrayList = ARTDSingleton.myCharSingleton().CharInfo.get(4);
 		HeroHP = Integer.parseInt(HeroHPArrayList);		
+		
+		 myMenu = new ARTDMenu();
 
 	}
 
@@ -101,8 +98,8 @@ public class ARTDCombat extends JFrame{
 		//-------------------Adding and Setting Up JPanels-------------
 		//*************************************************************
 				
-		
-		CombatPanel = new JPanel(new BorderLayout());
+		CombatPanel = myMenu.GameImagesAndCombat;
+		//CombatPanel = new JPanel(new BorderLayout());
 		CombatPanelImage = new JPanel(); // Display Image of Enemy
 		CombatPanelButtons = new JPanel(new FlowLayout()); // Display Buttons for Combat
 		CombatPanelCombatArea = new JPanel(); // Display Combat Updates such as sucessful or not-successful
@@ -152,7 +149,7 @@ public class ARTDCombat extends JFrame{
 		picLabel.setPreferredSize(imageSize);		
 				
 		// Adding the image to the JPanel for the monster image
-		CombatPanelImage.add(picLabel);
+	//	CombatPanelImage.add(picLabel);
 
 		// Adding Panel for buttons to Master Panel
 		CombatPanel.add(CombatPanelButtons, BorderLayout.SOUTH); // Place the "Attack", "Select Spell" and "Run Away"
@@ -197,11 +194,14 @@ public class ARTDCombat extends JFrame{
 
 		ActionListener task = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
-
-				CombatNameAndHPfield.setText("Name: " + ARTDSingleton.myCharSingleton().CharInfo.get(0)
+				
+				myMenu.CombatMessageArea.append("Name: " + ARTDSingleton.myCharSingleton().CharInfo.get(0)
 						 + "\nYour HP: " + ARTDSingleton.myCharSingleton().CharInfo.get(4) + "\n\nEnemy Name: " + ARTDSingleton.myMonsters().get(rnd).name.toString()
 						 + "\nEnemy HP: " + ARTDSingleton.myMonsters().get(rnd).MonsterHP);
-
+				/*CombatNameAndHPfield.setText("Name: " + ARTDSingleton.myCharSingleton().CharInfo.get(0)
+						 + "\nYour HP: " + ARTDSingleton.myCharSingleton().CharInfo.get(4) + "\n\nEnemy Name: " + ARTDSingleton.myMonsters().get(rnd).name.toString()
+						 + "\nEnemy HP: " + ARTDSingleton.myMonsters().get(rnd).MonsterHP);
+				 */
 			}
 		};
 		timer = new Timer(1000, task); // Execute task each 1000 miliseconds
@@ -293,11 +293,12 @@ public class ARTDCombat extends JFrame{
 				
 				if(randomCombatChance <= 50)
 				{
-					CombatCombatTextArea.append("Sorry,  You Didn't Escape!\n");
+					myMenu.CombatMessageArea.append("Sorry,  You Didn't Escape!\n");
+					 
 					
 				}else{
+					myMenu.CombatMessageArea.append("You Escaped from the Battle!\n");
 					
-					CombatCombatTextArea.append("You Escaped from the Battle!");
 					
 					try {
 						Thread.sleep(3000);
@@ -310,6 +311,9 @@ public class ARTDCombat extends JFrame{
 				}
 				
 			}});
+		
+		
+		
 		CombatFrame.setVisible(true);
 		
 		

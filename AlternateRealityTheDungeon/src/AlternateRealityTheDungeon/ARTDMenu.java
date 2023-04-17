@@ -47,13 +47,14 @@ public class ARTDMenu extends JFrame {
 	private static final long serialVersionUID = 1L;
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
 	ARDTGameSettings myPreferences = new ARDTGameSettings();
-	ARTDCombat myCombat = new ARTDCombat();
+	//ARTDCombat myCombat = new ARTDCombat();
 	ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
 	ARTDGameMenuItems myGameMenuItems = new ARTDGameMenuItems();
 	
 	
-	JFrame frame = null;
-	JPanel p1, p2, p3, p4 = null;
+	JFrame artdmenuframe = null;
+	JPanel p1, p2, p3, p4, GameImagesAndCombat = null;
+	JTextArea CombatMessageArea;
 	JTextField CharNameClassLevel, CharStats, CharXPHPGold = null;
 	JMenuBar menuBar = null;
 	JMenu gameMenu, charecterMenu, settingsMenu, helpMenu = null;
@@ -64,6 +65,7 @@ public class ARTDMenu extends JFrame {
 				mapFloor3MenuItem, mapFloor4MenuItem = null;
 	JLabel picLabel = null;
 	JSplitPane PicturesAndTextUpdates = null;
+	
 	Dimension screenSize = null;
 	int width, height = 0;
 	Timer timer = null;
@@ -72,13 +74,13 @@ public class ARTDMenu extends JFrame {
 	ARTDMenu() throws IOException {
 
 		//Creating Frame
-		frame = new JFrame("Alternate Reality: The Dungeon");
+		artdmenuframe = new JFrame("Alternate Reality: The Dungeon");
 		
 		//Adding Frame Preferences and Settings
-		frame.setLayout(new BorderLayout());
-		frame.setForeground(myPreferences.colorBrown);
-		frame.setUndecorated(true);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		artdmenuframe.setLayout(new BorderLayout());
+		artdmenuframe.setForeground(myPreferences.colorBrown);
+		artdmenuframe.setUndecorated(true);
+		artdmenuframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	
 		
 		// getScreenSize() returns the size
@@ -91,14 +93,15 @@ public class ARTDMenu extends JFrame {
         // height will store the height of the screen
         height = (int)size.getHeight();
             
-		frame.pack();
-		frame.setSize(width, height);
+        artdmenuframe.pack();
+        artdmenuframe.setSize(width, height);
 
 
 		p1 = new JPanel(new BorderLayout());
 		p2 = new JPanel(new BorderLayout());
 		p3 = new JPanel(new BorderLayout());
 		p4 = new JPanel(new BorderLayout());
+		GameImagesAndCombat = new JPanel(new BorderLayout());
 
 		try {
 			mygamestate.StartGameLoadCharecter();
@@ -169,7 +172,7 @@ public class ARTDMenu extends JFrame {
 		menuBar.add(picLabel);
 		
 		// Build the menu.
-		frame.addWindowListener(new WindowAdapter() {
+		artdmenuframe.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent windowEvent) {
 				System.exit(0);
@@ -206,11 +209,11 @@ public class ARTDMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				int result = JOptionPane.showConfirmDialog(frame,
+				int result = JOptionPane.showConfirmDialog(artdmenuframe,
 						"Are you sure you wish to delete your current game and start a new one?", "Start New Game?",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if (result == JOptionPane.YES_OPTION) {
-					frame.dispose();
+					artdmenuframe.dispose();
 					try {
 						BufferedWriter writer = Files.newBufferedWriter(Paths
 								.get("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
@@ -236,7 +239,7 @@ public class ARTDMenu extends JFrame {
 						e1.printStackTrace();
 					}
 
-					frame.dispose();
+					artdmenuframe.dispose();
 
 				} else if (result == JOptionPane.NO_OPTION) {
 
@@ -368,14 +371,14 @@ public class ARTDMenu extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+/*
 				try {
 					myCombat.CombatEncouter();
 				} catch (IOException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
-
+*/
 				JFrame frame = new JFrame("Help Information");
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -557,21 +560,20 @@ public class ARTDMenu extends JFrame {
 		// *************************************************************************************
 				
 		JTextArea messagearea = new JTextArea("JTextArea AMessageArea - Video and Pictures");
-		JTextArea amessagearea = new JTextArea("JTextArea AMessageArea - Game Updates"); 
+		CombatMessageArea= new JTextArea("JTextArea AMessageArea - Game Updates"); 
 		
 		PicturesAndTextUpdates = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		PicturesAndTextUpdates.setVisible(true);
-		PicturesAndTextUpdates.setResizeWeight(.2d);
-		PicturesAndTextUpdates.setDividerLocation(.25);
-		PicturesAndTextUpdates.setLeftComponent(messagearea);
-		PicturesAndTextUpdates.setRightComponent(amessagearea);
+		PicturesAndTextUpdates.setResizeWeight(.90d);
+		PicturesAndTextUpdates.setLeftComponent(GameImagesAndCombat);
+		PicturesAndTextUpdates.setRightComponent(CombatMessageArea);
 		PicturesAndTextUpdates.setVisible(true);
 				
 		
 		// ****************************************************************
 		// ----------------------------Adding Menu Bar to the JFrame ------
 		// ****************************************************************
-		frame.setJMenuBar(menuBar);
+		artdmenuframe.setJMenuBar(menuBar);
 
 		// ***************************************************************
 		// -------------------Setting Up Menubar and JFrame --------------
@@ -579,41 +581,18 @@ public class ARTDMenu extends JFrame {
 
 		
 		
-		frame.add(PicturesAndTextUpdates, BorderLayout.CENTER);
-		frame.add(p1, BorderLayout.NORTH);
+		artdmenuframe.add(PicturesAndTextUpdates, BorderLayout.CENTER);
+		artdmenuframe.add(p1, BorderLayout.NORTH);
 		p1.add(p2, BorderLayout.NORTH);
 		p1.add(p3, BorderLayout.CENTER);
 		p1.add(p4, BorderLayout.SOUTH);
 		p2.add(CharNameClassLevel);
 		p3.add(CharStats);
 		p4.add(CharXPHPGold);
-		
-		
-		
+		GameImagesAndCombat.add(messagearea);
+	
 
-		// ---------------------------------------------------------------------------------
-		// Text Area at the bottom of the play window
-
-		
-	//	  JTextArea messagearea = new JTextArea("JTextArea AMessageArea - Center");
-	//	  messagearea.setLineWrap(true);
-	//	  messagearea.setWrapStyleWord(true);
-	//	  messagearea.setEditable(false);
-	//	  messagearea.setFont(myPreferences.fontAvatar);
-	//	  messagearea.setSize(250, 250);
-	//	  messagearea.setText("JTextArea AMessageArea - Center");
-	//	  frame.add(messagearea, BorderLayout.CENTER);
-		  
-	//	  JTextArea amessagearea = new JTextArea(); 
-	//	  amessagearea.setLineWrap(true);
-	//	  amessagearea.setWrapStyleWord(true); 
-	//	  amessagearea.setEditable(false);
-	//	  amessagearea.setFont(myPreferences.fontTimesNewRoman);
-	//	  amessagearea.setSize(250, 250);
-	//	  amessagearea.setText("JTextArea MessageArea - South");
-	//	  frame.add(amessagearea, BorderLayout.SOUTH);
-
-		frame.setVisible(true);
+		artdmenuframe.setVisible(true);
 	}
 
 }
