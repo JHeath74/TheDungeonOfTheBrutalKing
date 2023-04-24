@@ -2,9 +2,9 @@ package ARTDNPC;
 
 import AlternateRealityTheDungeon.ARTDNPC;
 
-public class ARTDTheInn extends ARTDNPC{
+public class ARTDDerRathskellerBarAndGrille extends ARTDNPC{
 
-	public ARTDTheInn() {
+	public ARTDDerRathskellerBarAndGrille() {
 		// TODO Auto-generated constructor stub
 	}
 

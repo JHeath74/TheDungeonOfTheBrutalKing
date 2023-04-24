@@ -44,8 +44,6 @@ public class ARTDCombat extends JFrame {
 	ARDTGameSettings myGamePreferences = new ARDTGameSettings();
 	ARTDMenu myMenu = null;
 	
-
-
 	String HeroHPArrayList = "";
 	
 	public JFrame CombatFrame, spellsFrame;
@@ -138,10 +136,11 @@ public class ARTDCombat extends JFrame {
 		// Adding Parent JPanel to JFrame
 		   CombatFrame.add(CombatPanel, BorderLayout.CENTER);
 
-		// Adding Image to JPanel
+		// Getting Image to display from it's location in the project
 		myPicture = ImageIO.read(new File(
 				myGamePreferences.MonsterImagePath + ARTDSingleton.myMonsters().get(rnd).MonsterImage));
 		
+		//Adding image to JLabel
 		picLabel = new JLabel(new ImageIcon(myPicture));		
 
 		imageSize = new Dimension();

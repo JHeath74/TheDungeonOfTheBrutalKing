@@ -25,7 +25,7 @@ public class ARTDEnemies
 	public String MonsterImage;
 	public double basedamage;
 	public double basedefense;
-
+	public double gold;
 
 
 	public static ARTDEnemies Singleton()

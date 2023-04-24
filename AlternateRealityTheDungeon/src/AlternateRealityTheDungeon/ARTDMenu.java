@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,7 +72,7 @@ public class ARTDMenu extends JFrame {
 	Timer timer = null;
 	
 
-	ARTDMenu() throws IOException {
+	public ARTDMenu() throws IOException {
 
 		//Creating Frame
 		artdmenuframe = new JFrame("Alternate Reality: The Dungeon");
@@ -117,37 +118,48 @@ public class ARTDMenu extends JFrame {
 		
 		CharNameClassLevel = new JTextField();
 		CharNameClassLevel.setFont(myPreferences.fontTimesNewRoman);
-		CharNameClassLevel.setBackground(myPreferences.colorLightBrown);
-		CharNameClassLevel.setEditable(false);
+		CharNameClassLevel.setBackground(myPreferences.colorGreen);
+		CharNameClassLevel.setForeground(myPreferences.colorWhite);
 		CharNameClassLevel.setColumns(4);
+		CharNameClassLevel.setEditable(false);
+
 
 		CharStats = new JTextField();
 		CharStats.setFont(myPreferences.fontTimesNewRoman);
-		CharStats.setBackground(myPreferences.colorLightYellow);
+		CharStats.setBackground(myPreferences.colorBlue);
+		CharStats.setForeground(myPreferences.colorWhite);
+		CharStats.setColumns(6);
 		CharStats.setEditable(false);		
 
 		CharXPHPGold = new JTextField();
 		CharXPHPGold.setFont(myPreferences.fontTimesNewRoman);
+		CharXPHPGold.setBackground(myPreferences.colorPurple);
+		CharXPHPGold.setForeground(myPreferences.colorWhite);
+		CharXPHPGold.setColumns(3);
 		CharXPHPGold.setEditable(false);
-		CharXPHPGold.setBackground(myPreferences.colorLightBrown);
 		
 
 		ActionListener task = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				
-				 CharNameClassLevel.setText("Name: " + myChar.CharInfo.get(0) +"\t\t" + "Class: " +
-						 					myChar.CharInfo.get(1)+"\t\t" + "Level: " + myChar.CharInfo.get(2) + "\t\t" +"Experience: " +
-						 					myChar.CharInfo.get(3));
+				 CharNameClassLevel.setText("Name: " + myChar.CharInfo.get(0) + "\t\t"
+						 					+ "Class: " + myChar.CharInfo.get(1)+ "\t\t" 
+						 					+ "Level: " + myChar.CharInfo.get(2) + "\t\t"
+						 					+ "Experience: " + myChar.CharInfo.get(3));
 				
 				
 
-				CharStats.setText("Stamina: " + myChar.CharInfo.get(5) + "\t\t" + "Charisma: " + myChar.CharInfo.get(6)
-						+ "\t\t" + "Strength: " + myChar.CharInfo.get(7) + "\t\t" + "Intelligence: "
-						+ myChar.CharInfo.get(8) + "\t\t" + "Wisdom: " + myChar.CharInfo.get(9) + "\t\t" + "Agility: "
-						+ myChar.CharInfo.get(10));
+				CharStats.setText("Stamina: " + myChar.CharInfo.get(5) + "\t\t"
+								+ "Charisma: " + myChar.CharInfo.get(6) + "\t\t" 
+								+ "Strength: " + myChar.CharInfo.get(7) + "\t\t" 
+								+ "Intelligence: " + myChar.CharInfo.get(8) + "\t\t"
+								+ "Wisdom: " + myChar.CharInfo.get(9) + "\t\t" 
+								+ "Agility: " + myChar.CharInfo.get(10));
 
-				CharXPHPGold.setText("Hit Points: " + myChar.CharInfo.get(4) + "\t\t" + "Gold: "
-						+ myChar.CharInfo.get(11) + "\t\t" + "Gems: " + myChar.CharInfo.get(12));
+				CharXPHPGold.setText("Hit Points: " + myChar.CharInfo.get(4) + "\t\t"
+									+ "Gold: " + myChar.CharInfo.get(11) + "\t\t"
+									+ "Gems: " + myChar.CharInfo.get(12) + "\t\t"
+									+ "Dungeon Level:");
 			}
 		};
 		timer = new Timer(100, task); // Execute task each 100 miliseconds
@@ -164,8 +176,8 @@ public class ARTDMenu extends JFrame {
 		//Menu Bar Preferences
 		
 		menuBar.setPreferredSize(new Dimension(25,35));
-		menuBar.setFont(new Font("sans-serif", Font.PLAIN, 14));
-		menuBar.setBackground(myPreferences.colorDarkKhaki);
+		menuBar.setFont(new Font("sans-serif", Font.ROMAN_BASELINE, 22));
+		menuBar.setBackground(myPreferences.colorPlum);
 		
 		picLabel = new JLabel(new ImageIcon(myPreferences.myJMenuBarPicture));
 		picLabel.setSize(25, 25);
@@ -559,8 +571,8 @@ public class ARTDMenu extends JFrame {
 		// ----------------------------Setting Up JSplitPane ------------------------------------
 		// *************************************************************************************
 				
-		JTextArea messagearea = new JTextArea("JTextArea AMessageArea - Video and Pictures");
-		CombatMessageArea= new JTextArea("JTextArea AMessageArea - Game Updates"); 
+		JTextArea messagearea = new JTextArea("JTextArea AMessageArea - Navigation, Combat, Interaction");
+		CombatMessageArea= new JTextArea("JTextArea AMessageArea - Game Text Updates"); 
 		
 		PicturesAndTextUpdates = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		PicturesAndTextUpdates.setVisible(true);

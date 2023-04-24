@@ -16,7 +16,7 @@ public class ARDTGameSettings
 				 colorLightGreen, colorVeryLightRed, colorVeryDarkBlue, colorVeryLightBlue, colorMagenta,
 				 colorAqua, colorOlive, colorTeal, colorLightSalmon, colorFireBrick, colorMaroon,
 				 colorCoral, colorIndianRed, colorDarkGoldenRod, colorGoldenRod, colorPaleGoldenRod,
-				 colorDarkKhaki, colorMediumBlue = null;
+				 colorDarkKhaki, colorMediumBlue, colorBlue, colorPurple, colorGreen, colorPlum = null;
 	
 	
 	Font fontTimesNewRoman, fontAvatar = null;
@@ -60,6 +60,10 @@ public class ARDTGameSettings
 		colorPaleGoldenRod = new Color(238,232,170);
 		colorDarkKhaki = new Color(189,183,107);
 		colorMediumBlue = new Color(0,0,205);
+		colorBlue = new Color(0,128,255);
+		colorPurple = new Color(153,51,255);
+		colorGreen = new Color(0,204,102);
+		colorPlum = new Color(221,160,221);
 		
 		
 		//*********************************************************************************
