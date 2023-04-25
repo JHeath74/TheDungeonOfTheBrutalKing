@@ -11,7 +11,6 @@ import javax.imageio.ImageIO;
 
 public class ARDTGameSettings
 {
-	String FontPath = "//src//AlternateRealityTheDungeon//Fonts";
 	Color colorBrown, colorLightBrown, colorLightYellow, colorBlack, colorWhite,
 				 colorLightGreen, colorVeryLightRed, colorVeryDarkBlue, colorVeryLightBlue, colorMagenta,
 				 colorAqua, colorOlive, colorTeal, colorLightSalmon, colorFireBrick, colorMaroon,
@@ -19,17 +18,18 @@ public class ARDTGameSettings
 				 colorDarkKhaki, colorMediumBlue, colorBlue, colorPurple, colorGreen, colorPlum = null;
 	
 	
-	Font fontTimesNewRoman, fontAvatar = null;
+	Font fontTimesNewRoman, fontAvatar, fontLomoCopyLTStdMidi = null;
 	
 	BufferedImage myJMenuBarPicture = null;
 	
-	String ProgramImagePath, MonsterImagePath;
+	String ProgramImagePath, MonsterImagePath, FontPath;
 	
 	
 	public ARDTGameSettings()
 	{
 		ProgramImagePath = "src\\AlternateRealityTheDungeon\\Images\\Program\\";
 		MonsterImagePath = "src\\AlternateRealityTheDungeon\\Images\\Monsters\\";
+		FontPath = "src\\AlternateRealityTheDungeon\\Fonts\\";
 		
 		//https://www.rapidtables.com/web/color/RGB_Color.html
 		
@@ -70,8 +70,10 @@ public class ARDTGameSettings
 		//--------------------------- Fonts ----------------------------------------------
 		//*********************************************************************************
 		
-		fontTimesNewRoman = new Font("Times New Roman", Font.BOLD, 20);
-		fontAvatar = new Font(FontPath + "avatar.ttf", Font.BOLD, 20);
+		fontTimesNewRoman = new Font("Times New Roman", Font.PLAIN, 20);
+		fontAvatar = new Font(FontPath + "avatar.ttf", Font.PLAIN, 20);
+		fontLomoCopyLTStdMidi = new Font(FontPath+"LomoCopyLTSdMidi.ttf", Font.PLAIN, 20);
+		
 		
 		
 		//*********************************************************************************
@@ -80,7 +82,7 @@ public class ARDTGameSettings
 		try {
 			myJMenuBarPicture = ImageIO.read(new File(ProgramImagePath + "AlternateReality - MenuBar.jpg"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

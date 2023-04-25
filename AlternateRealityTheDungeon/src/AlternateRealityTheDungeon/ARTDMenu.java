@@ -49,14 +49,13 @@ public class ARTDMenu extends JFrame {
 	private static final long serialVersionUID = 1L;
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
 	ARDTGameSettings myPreferences = new ARDTGameSettings();
-	//ARTDCombat myCombat = new ARTDCombat();
 	ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
 	ARTDGameMenuItems myGameMenuItems = new ARTDGameMenuItems();
 	
 	
 	JFrame artdmenuframe = null;
 	JPanel p1, p2, p3, p4, GameImagesAndCombat = null;
-	JTextArea CombatMessageArea;
+	JTextArea CombatMessageArea, messagearea = null;
 	JTextField CharNameClassLevel, CharStats, CharStats2, CharXPHPGold = null;
 	JMenuBar menuBar = null;
 	JMenu gameMenu, charecterMenu, settingsMenu, helpMenu = null;
@@ -594,8 +593,10 @@ public class ARTDMenu extends JFrame {
 		// ----------------------------Setting Up JSplitPane ------------------------------------
 		// *************************************************************************************
 				
-		JTextArea messagearea = new JTextArea("JTextArea AMessageArea - Navigation, Combat, Interaction");
+		messagearea = new JTextArea("JTextArea AMessageArea - Navigation, Combat, Interaction");
 		CombatMessageArea= new JTextArea("JTextArea AMessageArea - Game Text Updates"); 
+		
+		
 		
 		PicturesAndTextUpdates = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		PicturesAndTextUpdates.setVisible(true);
@@ -603,6 +604,8 @@ public class ARTDMenu extends JFrame {
 		PicturesAndTextUpdates.setLeftComponent(GameImagesAndCombat);
 		PicturesAndTextUpdates.setRightComponent(CombatMessageArea);
 		PicturesAndTextUpdates.setVisible(true);
+		
+		CombatMessageArea.setFont(myPreferences.fontLomoCopyLTStdMidi);
 				
 		
 		// ****************************************************************
