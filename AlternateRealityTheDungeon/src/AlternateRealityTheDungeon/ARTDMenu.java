@@ -2,6 +2,7 @@ package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -56,7 +57,7 @@ public class ARTDMenu extends JFrame {
 	JFrame artdmenuframe = null;
 	JPanel p1, p2, p3, p4, GameImagesAndCombat = null;
 	JTextArea CombatMessageArea;
-	JTextField CharNameClassLevel, CharStats, CharXPHPGold = null;
+	JTextField CharNameClassLevel, CharStats, CharStats2, CharXPHPGold = null;
 	JMenuBar menuBar = null;
 	JMenu gameMenu, charecterMenu, settingsMenu, helpMenu = null;
 	JMenuItem newGameMenuItem, LoadSavedGameMenuItem, saveMenuItem,
@@ -116,22 +117,37 @@ public class ARTDMenu extends JFrame {
 		//------------ Name and Stats for toon
 		//***********************************************************
 		
+		int JFrameWidth = artdmenuframe.getWidth();
+		JFrameWidth = JFrameWidth - 10;
+		
+		Dimension width = new Dimension(10, JFrameWidth);
+		
+		
 		CharNameClassLevel = new JTextField();
 		CharNameClassLevel.setFont(myPreferences.fontTimesNewRoman);
 		CharNameClassLevel.setBackground(myPreferences.colorGreen);
 		CharNameClassLevel.setForeground(myPreferences.colorWhite);
-		CharNameClassLevel.setColumns(4);
+		CharNameClassLevel.setColumns(3);
 		CharNameClassLevel.setEditable(false);
 
 
 		CharStats = new JTextField();
+		CharStats.setLayout(new FlowLayout());
 		CharStats.setFont(myPreferences.fontTimesNewRoman);
 		CharStats.setBackground(myPreferences.colorBlue);
 		CharStats.setForeground(myPreferences.colorWhite);
-		CharStats.setColumns(6);
-		CharStats.setEditable(false);		
+		CharStats.setEditable(false);	
+		
+		CharStats2 = new JTextField();
+		CharStats2.setLayout(new FlowLayout());
+		CharStats2.setFont(myPreferences.fontTimesNewRoman);
+		CharStats2.setBackground(myPreferences.colorBlue);
+		CharStats2.setForeground(myPreferences.colorWhite);
+		CharStats2.setEditable(false);
+
 
 		CharXPHPGold = new JTextField();
+		CharXPHPGold.setLayout(getLayout());
 		CharXPHPGold.setFont(myPreferences.fontTimesNewRoman);
 		CharXPHPGold.setBackground(myPreferences.colorPurple);
 		CharXPHPGold.setForeground(myPreferences.colorWhite);
@@ -143,18 +159,25 @@ public class ARTDMenu extends JFrame {
 			public void actionPerformed(ActionEvent evt) {
 				
 				 CharNameClassLevel.setText("Name: " + myChar.CharInfo.get(0) + "\t\t"
-						 					+ "Class: " + myChar.CharInfo.get(1)+ "\t\t" 
 						 					+ "Level: " + myChar.CharInfo.get(2) + "\t\t"
 						 					+ "Experience: " + myChar.CharInfo.get(3));
 				
 				
 
-				CharStats.setText("Stamina: " + myChar.CharInfo.get(5) + "\t\t"
-								+ "Charisma: " + myChar.CharInfo.get(6) + "\t\t" 
-								+ "Strength: " + myChar.CharInfo.get(7) + "\t\t" 
-								+ "Intelligence: " + myChar.CharInfo.get(8) + "\t\t"
-								+ "Wisdom: " + myChar.CharInfo.get(9) + "\t\t" 
-								+ "Agility: " + myChar.CharInfo.get(10));
+				CharStats.setText("Stamina:\t" 
+								+ "Charisma: \t"
+								+ "Strength: \t"
+								+ "Intelligence:\t "
+								+ "Wisdom: \t"
+								+ "Agility: \t");
+				
+				CharStats2.setText(myChar.CharInfo.get(5) + "\t" + 
+								   myChar.CharInfo.get(6) + "\t" +
+								   myChar.CharInfo.get(7) + "\t" +
+								   myChar.CharInfo.get(8) + "\t" + 
+								   myChar.CharInfo.get(9) + "\t" + 
+								   myChar.CharInfo.get(10));
+				
 
 				CharXPHPGold.setText("Hit Points: " + myChar.CharInfo.get(4) + "\t\t"
 									+ "Gold: " + myChar.CharInfo.get(11) + "\t\t"
@@ -599,7 +622,8 @@ public class ARTDMenu extends JFrame {
 		p1.add(p3, BorderLayout.CENTER);
 		p1.add(p4, BorderLayout.SOUTH);
 		p2.add(CharNameClassLevel);
-		p3.add(CharStats);
+		p3.add(CharStats, BorderLayout.NORTH);
+		p3.add(CharStats2, BorderLayout.SOUTH);
 		p4.add(CharXPHPGold);
 		GameImagesAndCombat.add(messagearea);
 	
