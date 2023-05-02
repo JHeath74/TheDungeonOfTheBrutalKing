@@ -28,10 +28,6 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.Timer;
 
-import ARTDEnemies.ARTDRats;
-import ARTDEnemies.ARTDSkeletons;
-import ARTDEnemies.ARTDSpiders;
-
 public class ARTDCombat extends JFrame {
 
 
