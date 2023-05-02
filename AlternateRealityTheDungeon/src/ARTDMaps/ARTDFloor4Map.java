@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import java.util.Random;
+
 import AlternateRealityTheDungeon.ARTDMaps;
 import AlternateRealityTheDungeon.ARTDMenu;
 
@@ -29,6 +31,10 @@ public class ARTDFloor4Map extends ARTDMaps implements KeyListener {
 
     private static final int TILE_FLOOR = 0;
     private static final int TILE_WALL = 1;
+    
+    private static int attempts = 0;
+    
+    
 
     int[][] MapFloor4 = {{1,1,1,1,1,1,1,1},
 	     				 {1,4,0,0,0,0,0,1},
@@ -140,4 +146,19 @@ public class ARTDFloor4Map extends ARTDMaps implements KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {}
+    
+
+       
+
+    public static boolean chance() {
+            Random rand = new Random();
+            attempts++;
+
+            if (attempts > 20) {
+                attempts = 0;
+                return true;
+            }
+
+            return rand.nextDouble() < 0.05;
+        }
 }
