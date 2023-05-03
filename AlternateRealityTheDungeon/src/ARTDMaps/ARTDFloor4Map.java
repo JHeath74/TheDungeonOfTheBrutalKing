@@ -1,63 +1,69 @@
 package ARTDMaps;
 
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.Path2D;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-
 import java.util.Random;
+import java.awt.Component.*;
+import javax.imageio.ImageIO;
+import javax.swing.*;
 
+
+import AlternateRealityTheDungeon.ARTDCombat;
 import AlternateRealityTheDungeon.ARTDMaps;
-import AlternateRealityTheDungeon.ARTDMenu;
 
 //1 for a wall, 2 for the floor, 3 for doors, 4 for stairs
 
 public class ARTDFloor4Map extends ARTDMaps implements KeyListener {
 
-    private static final int TILE_WIDTH = 64;
-    private static final int TILE_HEIGHT = 32;
+	public ARTDFloor4Map()
+	{
+		TILE_WIDTH = 64;
+	    TILE_HEIGHT = 32;
 
-    private static final int DUNGEON_WIDTH = 10;
-    private static final int DUNGEON_HEIGHT = 10;
+	    DUNGEON_WIDTH = 10;
+	    DUNGEON_HEIGHT = 10;
 
-    private static final int TILE_FLOOR = 0;
-    private static final int TILE_WALL = 1;
+	    TILE_FLOOR = 0;
+	    TILE_WALL = 1;
+	    
+	    attempts = 0;
+	   
+	   
+	    MapFloor4 = new int[][]{{1,1,1,1,1,1,1,1},
+		     				 {1,4,0,0,0,0,0,1},
+		     				 {1,0,1,1,1,1,0,1},
+		     				 {1,0,1,0,0,1,0,1},
+		     				 {1,0,1,0,0,1,0,1},
+		     				 {1,0,1,1,3,1,0,1},
+		     				 {1,0,0,0,0,0,0,1},
+		     				 {1,1,1,1,1,1,1,1}};
+	}
+	
     
-    private static int attempts = 0;
-    
-    
-
-    int[][] MapFloor4 = {{1,1,1,1,1,1,1,1},
-	     				 {1,4,0,0,0,0,0,1},
-	     				 {1,0,1,1,1,1,0,1},
-	     				 {1,0,1,0,0,1,0,1},
-	     				 {1,0,1,0,0,1,0,1},
-	     				 {1,0,1,1,3,1,0,1},
-	     				 {1,0,0,0,0,0,0,1},
-	     				 {1,1,1,1,1,1,1,1}};
 
     private int playerX = 1;
     private int playerY = 1;
 
-    private List<Enemy> enemies = new ArrayList<>();
+ //   private List<Enemy> enemies = new ArrayList<>();
 
-    public void IsometricView() {
-        addKeyListener(this);
-        setFocusable(true);
+  //  public void IsometricView() {
+  //      addKeyListener(this);
+  //      setFocusable(true);
 
         // Add some enemies to the dungeon
-        enemies.add(new Enemy(3, 3, 10));
-        enemies.add(new Enemy(7, 5, 15));
-    }
+    //    enemies.add(new Enemy(3, 3, 10));
+     //   enemies.add(new Enemy(7, 5, 15));
+   // }
 
     @Override
     public void paintComponent(Graphics g) {
@@ -80,12 +86,13 @@ public class ARTDFloor4Map extends ARTDMaps implements KeyListener {
         }
 
         // Draw the enemies
-        for (Enemy enemy : enemies) {
-            drawIsometricTile(g2d, enemy.getX(), enemy.getY(), "path/to/enemy.png");
-        }
-
-        // Draw the player
-        drawIsometricTile(g2d, playerX, playerY, "path/to/player.png");
+		/*
+		 * for (Enemy enemy : enemies) { drawIsometricTile(g2d, enemy.getX(),
+		 * enemy.getY(), "path/to/enemy.png"); }
+		 * 
+		 * // Draw the player drawIsometricTile(g2d, playerX, playerY,
+		 * "path/to/player.png");
+		 */
     }
 
     private void movePlayer(int dx, int dy) {
@@ -99,26 +106,16 @@ public class ARTDFloor4Map extends ARTDMaps implements KeyListener {
                 playerX = newX;
                 playerY = newY;
 
-                // Check for combat with enemies
-                for (Enemy enemy : enemies) {
-                    if (enemy.getX() == playerX && enemy.getY() == playerY) {
-                        // Player attacks enemy
-                        enemy.takeDamage(5);
-                        if (enemy.isDead()) {
-                            enemies.remove(enemy);
-                        }
-
-                        // Enemy attacks player
-                        int playerHealth = 10;
-                        playerHealth -= 3;
-                        if (playerHealth <= 0) {
-                            // Game over
-                        }
-                    }
+                if(combatChance() == true)
+                {
+                	myCombat.CombatEncouter();
+                }
+                
+               
                 }
 
                 repaint();
-            }
+            
         }
     }
 
@@ -150,7 +147,7 @@ public class ARTDFloor4Map extends ARTDMaps implements KeyListener {
 
        
 
-    public static boolean chance() {
+    public static boolean combatChance() {
             Random rand = new Random();
             attempts++;
 
@@ -161,4 +158,39 @@ public class ARTDFloor4Map extends ARTDMaps implements KeyListener {
 
             return rand.nextDouble() < 0.05;
         }
+    
+
+private void drawIsometricTile(Graphics2D g2d, int x, int y, String imagePath) {
+    double screenX = (x - y) * TILE_WIDTH / 2;
+    double screenY = (x + y) * TILE_HEIGHT / 2;
+
+    Path2D.Double tileShape = new Path2D.Double();
+    tileShape.moveTo(screenX, screenY + TILE_HEIGHT / 2);
+    tileShape.lineTo(screenX + TILE_WIDTH / 2, screenY);
+    tileShape.lineTo(screenX + TILE_WIDTH, screenY + TILE_HEIGHT / 2);
+    tileShape.lineTo(screenX + TILE_WIDTH / 2, screenY + TILE_HEIGHT);
+    tileShape.closePath();
+
+    // Load the image from a file
+    BufferedImage image = null;
+    try {
+        image = ImageIO.read(new File(imagePath));
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    // Draw the image onto the tile
+    if (image != null) {
+        AffineTransform transform = new AffineTransform();
+        transform.translate(screenX, screenY);
+        g2d.drawImage(image, transform, null);
+    } else {
+        g2d.setColor(Color.GREEN);
+        g2d.fill(tileShape);
+    }
+
+    g2d.setColor(Color.BLACK);
+    g2d.draw(tileShape);
+}
+
 }

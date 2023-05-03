@@ -36,6 +36,10 @@ public class ARTDCombat extends JFrame {
 	// https://stackoverflow.com/questions/18435992/java-call-object-methods-through-arraylist
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	ARTDSingleton myCharSingleton = new ARTDSingleton();
 	ARDTGameSettings myGamePreferences = new ARDTGameSettings();
 	ARTDMenu myMenu = null;
