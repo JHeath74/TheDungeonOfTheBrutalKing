@@ -43,7 +43,7 @@ public class ARTDMenu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
-	ARDTGameSettings myPreferences = new ARDTGameSettings();
+	ARTDGameSettings myPreferences = new ARTDGameSettings();
 	ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
 	ARTDGameMenuItems myGameMenuItems = new ARTDGameMenuItems();
 	

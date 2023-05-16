@@ -9,30 +9,31 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 
-public class ARDTGameSettings
+public class ARTDGameSettings
 {
 	Color colorBrown, colorLightBrown, colorLightYellow, colorBlack, colorWhite,
 				 colorLightGreen, colorVeryLightRed, colorVeryDarkBlue, colorVeryLightBlue, colorMagenta,
 				 colorAqua, colorOlive, colorTeal, colorLightSalmon, colorFireBrick, colorMaroon,
 				 colorCoral, colorIndianRed, colorDarkGoldenRod, colorGoldenRod, colorPaleGoldenRod,
-				 colorDarkKhaki, colorMediumBlue, colorBlue, colorPurple, colorGreen, colorPlum = null;
+				 colorDarkKhaki, colorMediumBlue, colorBlue, colorPurple, colorGreen, colorPlum, colorGrey
+				 = null;
 	
 	
 	Font fontTimesNewRoman, fontAvatar, fontLomoCopyLTStdMidi = null;
 	
 	BufferedImage myJMenuBarPicture = null;
 	
-	String ProgramImagePath, MonsterImagePath, FontPath, DungeonFloorPath, DungeonWallPath;
+	String ProgramImagePath, MonsterImagePath, FontPath, DungeonFloorTexture, DungeonWallTexture;
 	
 	
-	public ARDTGameSettings()
+	public ARTDGameSettings()
 	{
 		ProgramImagePath = "src\\AlternateRealityTheDungeon\\Images\\Program\\";
 		MonsterImagePath = "src\\AlternateRealityTheDungeon\\Images\\Monsters\\";
 		FontPath = "src\\AlternateRealityTheDungeon\\Fonts\\";
-		DungeonFloorPath =  "src\\AlternateRealityTheDungeon\\Images\\Level\\Floor\\";
-		DungeonWallPath = "src\\AlternateRealityTheDungeon\\Images\\Level\\Door\\"
-;		
+		DungeonFloorTexture =  "src\\AlternateRealityTheDungeon\\Images\\Level\\Floor\\";
+		DungeonWallTexture = "src\\AlternateRealityTheDungeon\\Images\\Level\\Door\\";
+		
 		//https://www.rapidtables.com/web/color/RGB_Color.html
 		
 		//*********************************************************************************
@@ -66,6 +67,7 @@ public class ARDTGameSettings
 		colorPurple = new Color(153,51,255);
 		colorGreen = new Color(0,204,102);
 		colorPlum = new Color(221,160,221);
+		colorGrey = new Color(128,128,128);
 		
 		
 		//*********************************************************************************

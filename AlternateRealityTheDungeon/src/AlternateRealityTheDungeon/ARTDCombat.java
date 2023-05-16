@@ -41,7 +41,7 @@ public class ARTDCombat extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	ARTDSingleton myCharSingleton = new ARTDSingleton();
-	ARDTGameSettings myGamePreferences = new ARDTGameSettings();
+	ARTDGameSettings myGamePreferences = new ARTDGameSettings();
 	ARTDMenu myMenu = null;
 	
 	String HeroHPArrayList = "";
