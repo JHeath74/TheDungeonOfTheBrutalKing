@@ -27,12 +27,13 @@ public class ARTDMaps extends JFrame{
 
     protected int DUNGEON_WIDTH = 0 ;
     protected int DUNGEON_HEIGHT = 0;
+    protected int DUNGEON_LEVEL = 0;
 
     protected int TILE_FLOOR = 0;
     protected int TILE_WALL = 0;
     
     protected static int attempts = 0;
-    int DungeonLevel = 0;
+   
     
     private int playerX = 1;
     private int playerY = 1;
@@ -44,11 +45,7 @@ public class ARTDMaps extends JFrame{
 	
 	
 	
-	public ARTDMaps(){
-		
-		
-		
-	}
+
 	
 	 private int[][][] DungeonMap = {
 		        {
@@ -73,6 +70,12 @@ public class ARTDMaps extends JFrame{
 		            {1, 1, 1, 1, 1}
 		        }
 		    };
+	 
+	 public ARTDMaps() {
+	       // addKeyListener(this);
+	        setFocusable(true);
+	    }
+
 
 	 public void paintComponent(Graphics g) {
 	        super.paintComponents(g);
@@ -83,13 +86,13 @@ public class ARTDMaps extends JFrame{
 	        g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 	        
 	        // Draw the dungeon level
-	       for (int z = 0; z > DungeonLevel; z++)
+	       for (int z = 0; z > DUNGEON_LEVEL; z++)
 	        for (int x = 0; x < DUNGEON_WIDTH; x++) {
 	            for (int y = 0; y < DUNGEON_HEIGHT; y++) {
 	                if (DungeonMap[z][y][x] == TILE_FLOOR) {
-	                    drawIsometricTile(g2d, x, y, myGameSettings.DungeonFloorTexture);
+	                    drawIsometricTile(g2d, x, y, myGameSettings.DungeonFloorTexturePath + "DungeonFloorTexture.jpg");
 	                } else if (DungeonMap[z][y][x] == TILE_WALL) {
-	                    drawIsometricTile(g2d, x, y, myGameSettings.DungeonWallTexture);
+	                    drawIsometricTile(g2d, x, y, myGameSettings.DungeonWallTexturePath + "DungeonWallTexture.avif");
 	                }
 	            }
 	        }
@@ -104,7 +107,7 @@ public class ARTDMaps extends JFrame{
 	        // Check if the new position is within the bounds of the dungeon
 	        if (newX >= 0 && newX < DUNGEON_WIDTH && newY >= 0 && newY < DUNGEON_HEIGHT) {
 	            // Check if the new position is a floor tile
-	            if (DungeonMap[DungeonLevel][newY][newX] == TILE_FLOOR) {
+	            if (DungeonMap[DUNGEON_LEVEL][newY][newX] == TILE_FLOOR) {
 	                playerX = newX;
 	                playerY = newY;
 

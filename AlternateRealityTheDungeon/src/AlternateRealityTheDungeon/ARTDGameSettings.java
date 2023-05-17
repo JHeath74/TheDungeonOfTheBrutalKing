@@ -23,7 +23,7 @@ public class ARTDGameSettings
 	
 	BufferedImage myJMenuBarPicture = null;
 	
-	String ProgramImagePath, MonsterImagePath, FontPath, DungeonFloorTexture, DungeonWallTexture;
+	String ProgramImagePath, MonsterImagePath, FontPath, DungeonFloorTexturePath, DungeonWallTexturePath;
 	
 	
 	public ARTDGameSettings()
@@ -31,8 +31,8 @@ public class ARTDGameSettings
 		ProgramImagePath = "src\\AlternateRealityTheDungeon\\Images\\Program\\";
 		MonsterImagePath = "src\\AlternateRealityTheDungeon\\Images\\Monsters\\";
 		FontPath = "src\\AlternateRealityTheDungeon\\Fonts\\";
-		DungeonFloorTexture =  "src\\AlternateRealityTheDungeon\\Images\\Level\\Floor\\";
-		DungeonWallTexture = "src\\AlternateRealityTheDungeon\\Images\\Level\\Door\\";
+		DungeonFloorTexturePath =  "src\\AlternateRealityTheDungeon\\Images\\Level\\Floor\\";
+		DungeonWallTexturePath = "src\\AlternateRealityTheDungeon\\Images\\Level\\Door\\";
 		
 		//https://www.rapidtables.com/web/color/RGB_Color.html
 		

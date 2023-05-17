@@ -285,6 +285,7 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 			try {
 				ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 				myGameState.StartGameLoadCharecter();
+				ARTDMenu.GameImagesAndCombat.add(new ARTDMaps());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

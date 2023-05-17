@@ -39,17 +39,19 @@ import javax.swing.Timer;
  * Games Menu Items
  * 
  */
-public class ARTDMenu extends JFrame {
+public class ARTDMenu extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
 	ARTDGameSettings myPreferences = new ARTDGameSettings();
 	ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
 	ARTDGameMenuItems myGameMenuItems = new ARTDGameMenuItems();
+	ARTDMaps myMaps = new ARTDMaps();
 	
 	
 	JFrame artdmenuframe = null;
-	JPanel p1, p2, p3, p4, GameImagesAndCombat = null;
+	JPanel p1, p2, p3, p4;
+	static JPanel GameImagesAndCombat = null;
 	JTextArea CombatMessageArea, messagearea = null;
 	JTextField CharNameClassLevel, CharStats, CharStats2, CharXPHPGold = null;
 	JMenuBar menuBar = null;
@@ -114,7 +116,7 @@ public class ARTDMenu extends JFrame {
 		int JFrameWidth = artdmenuframe.getWidth();
 		JFrameWidth = JFrameWidth - 10;
 		
-		Dimension width = new Dimension(10, JFrameWidth);
+		//Dimension width = new Dimension(10, JFrameWidth);
 		
 		
 		CharNameClassLevel = new JTextField();
@@ -623,10 +625,10 @@ public class ARTDMenu extends JFrame {
 		p3.add(CharStats, BorderLayout.NORTH);
 		p3.add(CharStats2, BorderLayout.SOUTH);
 		p4.add(CharXPHPGold);
-		GameImagesAndCombat.add(messagearea);
-	
-
+		//GameImagesAndCombat.add(messagearea);
+		//GameImagesAndCombat.add(new ARTDMaps());
 		artdmenuframe.setVisible(true);
+		
 	}
 
 }
