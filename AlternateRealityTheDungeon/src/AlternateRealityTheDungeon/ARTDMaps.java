@@ -22,15 +22,16 @@ public class ARTDMaps extends JFrame{
 //	protected static int[][][] MapFloor3;
 //	protected static int[][][] MapFloor4; 
 	
-    protected int TILE_WIDTH = 0;
-    protected int TILE_HEIGHT = 0;
+    private static final int TILE_WIDTH = 64;
+    private static final int TILE_HEIGHT = 32;
 
-    protected int DUNGEON_WIDTH = 0 ;
-    protected int DUNGEON_HEIGHT = 0;
-    protected int DUNGEON_LEVEL = 0;
+    private static final int DUNGEON_WIDTH = 10;
+    private static final int DUNGEON_HEIGHT = 10;
+    private static final int DUNGEON_LEVEL = 0;
 
-    protected int TILE_FLOOR = 0;
-    protected int TILE_WALL = 0;
+    private static final int TILE_FLOOR = 0;
+    private static final int TILE_WALL = 1;
+
     
     protected static int attempts = 0;
    
@@ -85,7 +86,8 @@ public class ARTDMaps extends JFrame{
 	        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 	        g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
 	        
-	        // Draw the dungeon level
+	        
+		// Draw the dungeon level
 	       for (int z = 0; z > DUNGEON_LEVEL; z++)
 	        for (int x = 0; x < DUNGEON_WIDTH; x++) {
 	            for (int y = 0; y < DUNGEON_HEIGHT; y++) {
