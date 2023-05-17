@@ -49,9 +49,8 @@ public class ARTDMenu extends JPanel {
 	ARTDMaps myMaps = new ARTDMaps();
 	
 	
-	JFrame artdmenuframe = null;
-	JPanel p1, p2, p3, p4;
-	static JPanel GameImagesAndCombat = null;
+	JFrame artdmenuframe, GameImagesAndCombatFrame = null;
+	JPanel p1, p2, p3, p4, GameImagesAndCombat = null;
 	JTextArea CombatMessageArea, messagearea = null;
 	JTextField CharNameClassLevel, CharStats, CharStats2, CharXPHPGold = null;
 	JMenuBar menuBar = null;
@@ -625,8 +624,9 @@ public class ARTDMenu extends JPanel {
 		p3.add(CharStats, BorderLayout.NORTH);
 		p3.add(CharStats2, BorderLayout.SOUTH);
 		p4.add(CharXPHPGold);
+	//	GameImagesAndCombat.add(GameImagesAndCombatFrame);
+		//GameImagesAndCombatFrame.add(new ARTDMaps());
 		//GameImagesAndCombat.add(messagearea);
-		//GameImagesAndCombat.add(new ARTDMaps());
 		artdmenuframe.setVisible(true);
 		
 	}
