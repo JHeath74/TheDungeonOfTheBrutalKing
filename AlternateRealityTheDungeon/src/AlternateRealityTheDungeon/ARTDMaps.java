@@ -25,9 +25,9 @@ public class ARTDMaps extends JFrame{
     private static final int TILE_WIDTH = 64;
     private static final int TILE_HEIGHT = 32;
 
-    private static final int DUNGEON_WIDTH = 10;
-    private static final int DUNGEON_HEIGHT = 10;
-    private static final int DUNGEON_LEVEL = 0;
+    private static final int DUNGEON_WIDTH = 5;
+    private static final int DUNGEON_HEIGHT = 5;
+    private static final int DUNGEON_LEVEL = 3;
 
     private static final int TILE_FLOOR = 0;
     private static final int TILE_WALL = 1;
@@ -43,10 +43,6 @@ public class ARTDMaps extends JFrame{
 	ARTDMenu myMenu = null;
 	ARTDGameSettings myGameSettings = null;
 	
-	
-	
-	
-
 	
 	 private int[][][] DungeonMap = {
 		        {

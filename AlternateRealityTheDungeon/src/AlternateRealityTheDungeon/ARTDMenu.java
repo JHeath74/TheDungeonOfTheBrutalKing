@@ -49,8 +49,8 @@ public class ARTDMenu extends JPanel {
 	ARTDMaps myMaps = new ARTDMaps();
 	
 	
-	JFrame artdmenuframe, GameImagesAndCombatFrame = null;
-	JPanel p1, p2, p3, p4, GameImagesAndCombat = null;
+	JFrame artdmenuframe = null;
+	JPanel p1, p2, p3, p4, GameImagesAndCombatPanel = null;
 	JTextArea CombatMessageArea, messagearea = null;
 	JTextField CharNameClassLevel, CharStats, CharStats2, CharXPHPGold = null;
 	JMenuBar menuBar = null;
@@ -72,6 +72,7 @@ public class ARTDMenu extends JPanel {
 
 		//Creating Frame
 		artdmenuframe = new JFrame("Alternate Reality: The Dungeon");
+		
 		
 		//Adding Frame Preferences and Settings
 		artdmenuframe.setLayout(new BorderLayout());
@@ -98,7 +99,7 @@ public class ARTDMenu extends JPanel {
 		p2 = new JPanel(new BorderLayout());
 		p3 = new JPanel(new BorderLayout());
 		p4 = new JPanel(new BorderLayout());
-		GameImagesAndCombat = new JPanel(new BorderLayout());
+		GameImagesAndCombatPanel = new JPanel(new BorderLayout());
 
 		try {
 			mygamestate.StartGameLoadCharecter();
@@ -313,7 +314,7 @@ public class ARTDMenu extends JPanel {
 
 					mygamestate.SaveGame();
 				} catch (IOException | ParseException e1) {
-					// TODO Auto-generated catch block
+					
 					e1.printStackTrace();
 				}
 			}
@@ -405,7 +406,7 @@ public class ARTDMenu extends JPanel {
 				try {
 					myCombat.CombatEncouter();
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
+					
 					e2.printStackTrace();
 				}
 */
@@ -544,7 +545,7 @@ public class ARTDMenu extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				 
 
 			}
 		});
@@ -555,7 +556,7 @@ public class ARTDMenu extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				 
 
 			}
 		});
@@ -566,7 +567,7 @@ public class ARTDMenu extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
 
 			}
 		});
@@ -576,7 +577,7 @@ public class ARTDMenu extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				
 
 			}
 		});
@@ -597,7 +598,7 @@ public class ARTDMenu extends JPanel {
 		PicturesAndTextUpdates = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		PicturesAndTextUpdates.setVisible(true);
 		PicturesAndTextUpdates.setResizeWeight(.90d);
-		PicturesAndTextUpdates.setLeftComponent(GameImagesAndCombat);
+		PicturesAndTextUpdates.setLeftComponent(GameImagesAndCombatPanel);
 		PicturesAndTextUpdates.setRightComponent(CombatMessageArea);
 		PicturesAndTextUpdates.setVisible(true);
 		
@@ -624,10 +625,12 @@ public class ARTDMenu extends JPanel {
 		p3.add(CharStats, BorderLayout.NORTH);
 		p3.add(CharStats2, BorderLayout.SOUTH);
 		p4.add(CharXPHPGold);
-	//	GameImagesAndCombat.add(GameImagesAndCombatFrame);
-		//GameImagesAndCombatFrame.add(new ARTDMaps());
-		//GameImagesAndCombat.add(messagearea);
+		
+
+
+		GameImagesAndCombatPanel.add(messagearea);
 		artdmenuframe.setVisible(true);
+		
 		
 	}
 

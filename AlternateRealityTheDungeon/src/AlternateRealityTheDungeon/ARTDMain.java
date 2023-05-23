@@ -287,7 +287,7 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 				myGameState.StartGameLoadCharecter();
 				
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+				
 				e.printStackTrace();
 			}
 

@@ -96,8 +96,8 @@ public class ARTDCombat extends JFrame {
 		//-------------------Adding and Setting Up JPanels-------------
 		//*************************************************************
 				
-		CombatPanel = myMenu.GameImagesAndCombat;
-		//CombatPanel = new JPanel(new BorderLayout());
+		//CombatPanel = myMenu.GameImagesAndCombatPanel;
+		CombatPanel = new JPanel(new BorderLayout());
 		CombatPanelImage = new JPanel(); // Display Image of Enemy
 		CombatPanelButtons = new JPanel(new FlowLayout()); // Display Buttons for Combat
 		CombatPanelCombatArea = new JPanel(); // Display Combat Updates such as sucessful or not-successful

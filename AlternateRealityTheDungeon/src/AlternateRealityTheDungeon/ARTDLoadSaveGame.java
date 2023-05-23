@@ -23,18 +23,18 @@ import javax.swing.JPanel;
 public class ARTDLoadSaveGame {
 
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
-	String SavedGameDirectory = ("src\\AlternateRealityTheDungeon\\TextFiles\\SaveGame\\");
+	ARTDGameSettings myGameSettings = new ARTDGameSettings();
 
 	public void StartGameLoadCharecter() throws IOException {
 
 		ArrayList<String> SaveLoadChar = new ArrayList<String>();
-		File chosenFile = getLastModified(SavedGameDirectory);
-
+		File chosenFile = getLastModified(myGameSettings.SavedGameDirectory);  //Why is it getting the file twice
+		
 		BufferedReader bufReader = new BufferedReader(new FileReader(chosenFile));
-
+		
 		String line = bufReader.readLine();
 		while (line != null) {
-
+			
 			SaveLoadChar.add(line);
 
 			line = bufReader.readLine();
@@ -42,8 +42,9 @@ public class ARTDLoadSaveGame {
 		}
 
 		myChar.CharInfo.addAll(SaveLoadChar);
-
+	
 		
+	
 		
 		bufReader.close();
 
@@ -60,7 +61,7 @@ public class ARTDLoadSaveGame {
 		String SavedGameName = "SavedGame" + datetime;
 
 		if (SavedGameName != "IntialCharecterSave.txt") {
-			String GameSaveDateTime = SavedGameDirectory + datetime + ".txt";
+			String GameSaveDateTime = myGameSettings.SavedGameDirectory + datetime + ".txt";
 
 			FileWriter writer = new FileWriter(GameSaveDateTime);
 
@@ -87,7 +88,7 @@ public class ARTDLoadSaveGame {
 		JButton load = new JButton("Load Game");
 		JComboBox<String> loadGameSelection = new JComboBox<String>();
 
-		File loadgamefiles = new File(SavedGameDirectory);
+		File loadgamefiles = new File(myGameSettings.SavedGameDirectory);
 
 		File[] listOfFiles = loadgamefiles.listFiles();
 
@@ -117,7 +118,7 @@ public class ARTDLoadSaveGame {
 							if (response == JOptionPane.YES_OPTION) {
 								try {
 									BufferedReader bufReader = new BufferedReader(
-											new FileReader(SavedGameDirectory + gameInfo));
+											new FileReader(myGameSettings.SavedGameDirectory + gameInfo));
 									String line = bufReader.readLine();
 									while (line != null) {
 										LoadChar.add(line);
@@ -139,7 +140,7 @@ public class ARTDLoadSaveGame {
 
 							try {
 								BufferedReader bufReader = new BufferedReader(
-										new FileReader(SavedGameDirectory + gameInfo));
+										new FileReader(myGameSettings.SavedGameDirectory + gameInfo));
 								String line = bufReader.readLine();
 								while (line != null) {
 									LoadChar.add(line);
@@ -183,7 +184,7 @@ public class ARTDLoadSaveGame {
 		String SavedGameName = "AutoGameSave.Txt";
 
 		if (SavedGameName != "IntialCharecterSave.txt") {
-			String AutoSaveGameName = SavedGameDirectory + SavedGameName;
+			String AutoSaveGameName = myGameSettings.SavedGameDirectory + SavedGameName;
 
 			FileWriter writer = new FileWriter(AutoSaveGameName);
 
