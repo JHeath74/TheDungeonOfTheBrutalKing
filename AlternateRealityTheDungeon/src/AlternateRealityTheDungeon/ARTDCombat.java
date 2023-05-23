@@ -35,10 +35,6 @@ public class ARTDCombat extends JFrame {
 	// https://stackoverflow.com/questions/38288522/how-to-get-a-random-item-from-a-class-in-java
 	// https://stackoverflow.com/questions/18435992/java-call-object-methods-through-arraylist
 
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	ARTDSingleton myCharSingleton = new ARTDSingleton();
 	ARTDGameSettings myGamePreferences = new ARTDGameSettings();
