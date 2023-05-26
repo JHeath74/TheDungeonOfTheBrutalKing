@@ -52,7 +52,7 @@ public class ARTDSingleton
 	private static List<ARTDArmour> armourList = addArmour();
 	private static List<ARTDEnemies> monsterList = addEnemies();
 	private static List<ARTDWeapons> weaponList = addWeapon();
-	//private static List<ARTDSpells> spellList = addSpells();
+	private static List<ARTDSpells> spellList = addSpells();
 	private static List<ARTDShields> shieldList = addShields();
 	
 	//Singletons
@@ -141,10 +141,11 @@ public class ARTDSingleton
 		return monsterList;
 	}
 	
-	/*
-	 * private static List<ARTDSpells> addSpells() { spellList = new
-	 * ArrayList<ARTDSpells>();
-	 * 
+	
+	  private static List<ARTDSpells> addSpells()
+	  { 
+		  spellList = new ArrayList<ARTDSpells>();
+	 /* 
 	 * spellList.add(new ARTDCold_Blast()); spellList.add(new ARTDConjure_Food());
 	 * spellList.add(new ARTDFireball()); spellList.add(new ARTDHeal());
 	 * spellList.add(new ARTDLight()); spellList.add(new ARTDLocation());
@@ -152,11 +153,11 @@ public class ARTDSingleton
 	 * spellList.add(new ARTDPort());
 	 * 
 	 * 
-	 * 
-	 * return spellList;
-	 * 
-	 * }
 	 */
+	  return spellList;
+	 
+	  }
+	 
 	
 	private static List<ARTDWeapons> addWeapon()
 	{
@@ -222,9 +223,9 @@ public class ARTDSingleton
 		return myWeapon;
 	}
 	
-	/*
-	 * public static List<ARTDSpells> spellList() { return spellList; }
-	 */
+	
+	  public static List<ARTDSpells> spellList() { return spellList; }
+	 
 	
 	public static List<ARTDWeapons> weaponsList()
 	{
