@@ -10,7 +10,7 @@ public class ARTDCharecter {
 
 	public ArrayList<String> SpellsLearned = new ArrayList<String>();
 	
-	int combatSpells = 21;
+	//int combatSpells = 21;
 	
 	//Add Magic Points 
 	

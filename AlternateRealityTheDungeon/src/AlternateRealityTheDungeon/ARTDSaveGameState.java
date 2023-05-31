@@ -11,7 +11,7 @@ class ARTDSaveGameState implements Serializable {
 	private static final long serialVersionUID = 8850304030791166709L;
 	String name;
 	
-	public ARTDSaveGameState(String name) {
+	public ARTDSaveGameState(ArrayList<String> charInfo) {
 		this.name = name;
 	}
 
