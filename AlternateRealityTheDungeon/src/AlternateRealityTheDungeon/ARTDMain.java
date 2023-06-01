@@ -30,15 +30,18 @@ import ARTDCharecterClass.ARTDRogue;
 import ARTDCharecterClass.ARTDWarrior;
 
 public class ARTDMain {
-	
-ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
+
+	static ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
+	//static ARTDGameSettings myGameSettings = new ARTDGameSettings();
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 
-		//When a new game is started,  this is the file where the initial charecter information is stored		
+		// When a new game is started, this is the file where the initial charecter
+		// information is stored
 		String InitialCharecterSave = "src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt";
 
-		//Checking to see if the file is there, and if it isn't then a blank file is generated.
+		// Checking to see if the InitialCharecterSave.txt file is there,
+		// and if it isn't then a blank InitialCharecterSave.txt file is generated.
 		File charSave = new File(InitialCharecterSave);
 		if (!charSave.createNewFile()) {
 
@@ -49,7 +52,7 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 
 		Scanner saveFile = new Scanner(charSave);
 
-		//If the file is blank,  then start creating a new charecter
+		// If the file is blank, then start creating a new charecter
 		if (!saveFile.hasNext()) {
 			JFrame frame = new JFrame("Create New Charecter");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,7 +65,6 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					tooncreation.setText("");
-
 				}
 
 				@Override
@@ -83,6 +85,12 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 
 			});
 
+			//
+
+			// ************************************************************************
+			// *** Rerolling Charecter Stats if you don't like what you got. **********
+			// ************************************************************************
+
 			Integer[] stat = rollstats();
 
 			JTextArea toonstats = new JTextArea();
@@ -99,8 +107,12 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 
 			toonstats.setEditable(false);
 
-			String[] toonclass = ARTDClass.toonclass;
+			// *********************************************************
+			// ******** Selecting your Charecter Class *****************
+			// *********************************************************
 
+			String[] toonclass = ARTDClass.toonclass;
+			
 			JComboBox<String> charectorClass = new JComboBox<String>(toonclass);
 
 			JTextArea toonclassDescription = new JTextArea("Choose Your Class from the Dropdown box above."); //
@@ -111,6 +123,7 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 				@Override
 				public void itemStateChanged(ItemEvent e) {
 					String toonClass = charectorClass.getSelectedItem().toString();
+					System.out.println("toonclass: " + toonClass);
 
 					if (toonClass == toonclass[0]) {
 						toonclassDescription.setText(ARTDPaladin.PaladinClassDescription);
@@ -121,6 +134,7 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 					if (toonClass == toonclass[2]) {
 						toonclassDescription.setText(ARTDRogue.RogueClassDescription);
 					}
+
 					if (toonClass == toonclass[3]) {
 						toonclassDescription.setText(ARTDHunter.HunterClassDescription);
 					}
@@ -170,12 +184,13 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 
 						FileWriter writer = new FileWriter(
 								"src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt");
+
 						ArrayList<String> newChar = new ArrayList<String>();
 
 						ArrayList<String> newChar2 = new ArrayList<String>();
 						String charName = String.valueOf(tooncreation.getText());
 
-						//Validating if the Charecter Name is blank or not
+						// Validating if the Charecter Name is blank or not
 						toonName(tooncreation, charName, newChar);
 
 						do {
@@ -253,11 +268,6 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 			ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 			myGameState.StartGameLoadCharecter();
 
-
-
-
-
-
 			JPanel panel = new JPanel();
 			JPanel panel2 = new JPanel(new FlowLayout());
 			JPanel panel3 = new JPanel(new BorderLayout());
@@ -283,14 +293,13 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 		} else {
 
 			try {
-				ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
+				// ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 				myGameState.StartGameLoadCharecter();
-				
+
 			} catch (Exception e) {
-				
+
 				e.printStackTrace();
 			}
-
 
 			new ARTDMenu();
 		}
@@ -308,20 +317,17 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 
 			} else {
 
-				
-				if(charName.matches("^[A-Za-z]\\w{3,29}$"))
-				{
+				if (charName.matches("^[A-Za-z]\\w{3,29}$")) {
 					tooncreation.setText(charName);
 					inputAccepted = true;
 					newChar.add(charName);
-					
-				}else {
-					JOptionPane.showMessageDialog(null, "Username must be 4 to 30 charecters long and consist of Numbers and Letters", "Invalid UserName",
-					        JOptionPane.INFORMATION_MESSAGE);
+
+				} else {
+					JOptionPane.showMessageDialog(null,
+							"Username must be 4 to 30 charecters long and consist of Numbers and Letters",
+							"Invalid UserName", JOptionPane.INFORMATION_MESSAGE);
 					toonName(tooncreation, charName, newChar);
 				}
-				
-
 
 			}
 
@@ -342,7 +348,5 @@ ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 
 		return stats;
 	}
-
-
 
 }

@@ -27,8 +27,12 @@ public class ARTDLoadSaveGame {
 
 	public void StartGameLoadCharecter() throws IOException {
 
+	
+		
 		ArrayList<String> SaveLoadChar = new ArrayList<String>();
 		File chosenFile = getLastModified(myGameSettings.SavedGameDirectory);  //Why is it getting the file twice
+		
+		//System.out.println("Initial chosenFile: " + chosenFile);
 		
 		BufferedReader bufReader = new BufferedReader(new FileReader(chosenFile));
 		
@@ -42,9 +46,6 @@ public class ARTDLoadSaveGame {
 		}
 
 		myChar.CharInfo.addAll(SaveLoadChar);
-	
-		
-	
 		
 		bufReader.close();
 
@@ -185,7 +186,7 @@ public class ARTDLoadSaveGame {
 
 		if (SavedGameName != "IntialCharecterSave.txt") {
 			String AutoSaveGameName = myGameSettings.SavedGameDirectory + SavedGameName;
-
+			
 			FileWriter writer = new FileWriter(AutoSaveGameName);
 
 			for (String Charinfo : myChar.CharInfo) {
@@ -211,6 +212,7 @@ public class ARTDLoadSaveGame {
 			for (File file : files) {
 				if (file.lastModified() > lastModifiedTime) {
 					chosenFile = file;
+				//	System.out.println("ChosenFile " + chosenFile);
 					lastModifiedTime = file.lastModified();
 				}
 			}

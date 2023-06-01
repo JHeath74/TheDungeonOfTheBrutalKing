@@ -116,7 +116,7 @@ public class ARTDMenu extends JPanel {
 		int JFrameWidth = artdmenuframe.getWidth();
 		JFrameWidth = JFrameWidth - 10;
 		
-		//Dimension width = new Dimension(10, JFrameWidth);
+		Dimension width = new Dimension(10, JFrameWidth);
 		
 		
 		CharNameClassLevel = new JTextField();
