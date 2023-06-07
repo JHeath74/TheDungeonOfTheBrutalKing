@@ -8,12 +8,12 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
+
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JButton;
@@ -27,7 +27,6 @@ public class ARTDSaveLoadGameData {
 	ARTDSingleton myChar = null;
 	ARTDSingleton mySpellList = null;
 	ARTDGameSettings myGameSettings = new ARTDGameSettings();
-	//ArrayList<ARTDSaveGameState> GameState = null;
 	
 	ArrayList<ArrayList<?>> GameState = new ArrayList<>();
 

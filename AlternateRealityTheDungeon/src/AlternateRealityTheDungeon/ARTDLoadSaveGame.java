@@ -27,7 +27,6 @@ public class ARTDLoadSaveGame {
 
 	public void StartGameLoadCharecter() throws IOException {
 
-	
 		
 		ArrayList<String> SaveLoadChar = new ArrayList<String>();
 		File chosenFile = getLastModified(myGameSettings.SavedGameDirectory);  //Why is it getting the file twice
@@ -44,6 +43,7 @@ public class ARTDLoadSaveGame {
 			line = bufReader.readLine();
 
 		}
+
 
 		myChar.CharInfo.addAll(SaveLoadChar);
 		

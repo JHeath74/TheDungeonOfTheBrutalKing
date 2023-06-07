@@ -32,7 +32,7 @@ import ARTDCharecterClass.ARTDWarrior;
 public class ARTDMain {
 
 	static ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
-	//static ARTDGameSettings myGameSettings = new ARTDGameSettings();
+	static ARTDGameSettings myGameSettings = new ARTDGameSettings();
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 
@@ -43,11 +43,11 @@ public class ARTDMain {
 		// Checking to see if the InitialCharecterSave.txt file is there,
 		// and if it isn't then a blank InitialCharecterSave.txt file is generated.
 		File charSave = new File(InitialCharecterSave);
+		
 		if (!charSave.createNewFile()) {
 
 		} else {
 			ARTDMessages.WelcomeMessage();
-
 		}
 
 		Scanner saveFile = new Scanner(charSave);
@@ -123,7 +123,6 @@ public class ARTDMain {
 				@Override
 				public void itemStateChanged(ItemEvent e) {
 					String toonClass = charectorClass.getSelectedItem().toString();
-					System.out.println("toonclass: " + toonClass);
 
 					if (toonClass == toonclass[0]) {
 						toonclassDescription.setText(ARTDPaladin.PaladinClassDescription);
@@ -265,7 +264,7 @@ public class ARTDMain {
 
 				}
 			});
-			ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
+			
 			myGameState.StartGameLoadCharecter();
 
 			JPanel panel = new JPanel();
@@ -291,17 +290,18 @@ public class ARTDMain {
 			frame.requestFocus();
 
 		} else {
-
+			new ARTDMenu();
 			try {
-				// ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
-				myGameState.StartGameLoadCharecter();
+			 myGameState.StartGameLoadCharecter();
+			 
 
 			} catch (Exception e) {
 
 				e.printStackTrace();
 			}
-
-			new ARTDMenu();
+			
+				
+			//new ARTDMenu();
 		}
 
 	}

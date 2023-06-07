@@ -39,14 +39,16 @@ import javax.swing.Timer;
  * Games Menu Items
  * 
  */
-public class ARTDMenu extends JPanel {
+public class ARTDMenu extends JFrame {
 
+	//SavedGameDirectory
 	private static final long serialVersionUID = 1L;
 	ARTDCharecter myChar = ARTDCharecter.Singleton();
-	ARTDGameSettings myPreferences = new ARTDGameSettings();
-	ARTDLoadSaveGame mygamestate = new ARTDLoadSaveGame();
+	ARTDGameSettings myGameSettings = new ARTDGameSettings();
+	ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 	ARTDGameMenuItems myGameMenuItems = new ARTDGameMenuItems();
-	ARTDMaps myMaps = new ARTDMaps();
+	//ARTDMaps myMaps = new ARTDMaps();
+	
 	
 	
 	JFrame artdmenuframe = null;
@@ -70,13 +72,15 @@ public class ARTDMenu extends JPanel {
 
 	public ARTDMenu() throws IOException {
 
+
+		
 		//Creating Frame
 		artdmenuframe = new JFrame("Alternate Reality: The Dungeon");
 		
 		
 		//Adding Frame Preferences and Settings
 		artdmenuframe.setLayout(new BorderLayout());
-		artdmenuframe.setForeground(myPreferences.colorBrown);
+		artdmenuframe.setForeground(myGameSettings.colorBrown);
 		artdmenuframe.setUndecorated(true);
 		artdmenuframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 	
@@ -91,7 +95,7 @@ public class ARTDMenu extends JPanel {
         // height will store the height of the screen
         height = (int)size.getHeight();
             
-        artdmenuframe.pack();
+        //artdmenuframe.pack();
         artdmenuframe.setSize(width, height);
 
 
@@ -102,7 +106,7 @@ public class ARTDMenu extends JPanel {
 		GameImagesAndCombatPanel = new JPanel(new BorderLayout());
 
 		try {
-			mygamestate.StartGameLoadCharecter();
+			myGameState.StartGameLoadCharecter();
 		} catch (IOException e2) {
 
 			e2.printStackTrace();
@@ -113,40 +117,34 @@ public class ARTDMenu extends JPanel {
 		//------------ Name and Stats for toon
 		//***********************************************************
 		
-		int JFrameWidth = artdmenuframe.getWidth();
-		JFrameWidth = JFrameWidth - 10;
-		
-		Dimension width = new Dimension(10, JFrameWidth);
-		
-		
 		CharNameClassLevel = new JTextField();
-		CharNameClassLevel.setFont(myPreferences.fontTimesNewRoman);
-		CharNameClassLevel.setBackground(myPreferences.colorGreen);
-		CharNameClassLevel.setForeground(myPreferences.colorWhite);
+		CharNameClassLevel.setFont(myGameSettings.fontTimesNewRoman);
+		CharNameClassLevel.setBackground(myGameSettings.colorGreen);
+		CharNameClassLevel.setForeground(myGameSettings.colorWhite);
 		CharNameClassLevel.setColumns(3);
 		CharNameClassLevel.setEditable(false);
 
 
 		CharStats = new JTextField();
 		CharStats.setLayout(new FlowLayout());
-		CharStats.setFont(myPreferences.fontTimesNewRoman);
-		CharStats.setBackground(myPreferences.colorBlue);
-		CharStats.setForeground(myPreferences.colorWhite);
+		CharStats.setFont(myGameSettings.fontTimesNewRoman);
+		CharStats.setBackground(myGameSettings.colorBlue);
+		CharStats.setForeground(myGameSettings.colorWhite);
 		CharStats.setEditable(false);	
 		
 		CharStats2 = new JTextField();
 		CharStats2.setLayout(new FlowLayout());
-		CharStats2.setFont(myPreferences.fontTimesNewRoman);
-		CharStats2.setBackground(myPreferences.colorBlue);
-		CharStats2.setForeground(myPreferences.colorWhite);
+		CharStats2.setFont(myGameSettings.fontTimesNewRoman);
+		CharStats2.setBackground(myGameSettings.colorBlue);
+		CharStats2.setForeground(myGameSettings.colorWhite);
 		CharStats2.setEditable(false);
 
 
 		CharXPHPGold = new JTextField();
 		CharXPHPGold.setLayout(getLayout());
-		CharXPHPGold.setFont(myPreferences.fontTimesNewRoman);
-		CharXPHPGold.setBackground(myPreferences.colorPurple);
-		CharXPHPGold.setForeground(myPreferences.colorWhite);
+		CharXPHPGold.setFont(myGameSettings.fontTimesNewRoman);
+		CharXPHPGold.setBackground(myGameSettings.colorPurple);
+		CharXPHPGold.setForeground(myGameSettings.colorWhite);
 		CharXPHPGold.setColumns(3);
 		CharXPHPGold.setEditable(false);
 		
@@ -196,9 +194,9 @@ public class ARTDMenu extends JPanel {
 		
 		menuBar.setPreferredSize(new Dimension(25,35));
 		menuBar.setFont(new Font("sans-serif", Font.ROMAN_BASELINE, 22));
-		menuBar.setBackground(myPreferences.colorPlum);
+		menuBar.setBackground(myGameSettings.colorPlum);
 		
-		picLabel = new JLabel(new ImageIcon(myPreferences.myJMenuBarPicture));
+		picLabel = new JLabel(new ImageIcon(myGameSettings.myJMenuBarPicture));
 		picLabel.setSize(25, 25);
 		menuBar.add(picLabel);
 		
@@ -255,7 +253,7 @@ public class ARTDMenu extends JPanel {
 						e1.printStackTrace();
 					}
 
-					File d = new File("src//AlternateRealityTheDungeon//TextFiles//SaveGame//");
+					File d = new File(myGameSettings.SavedGameDirectory);
 
 					for (File file : d.listFiles())
 						if (!file.isDirectory())
@@ -293,7 +291,7 @@ public class ARTDMenu extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				mygamestate.LoadGame();
+				myGameState.LoadGame();
 
 			}
 		});
@@ -312,7 +310,7 @@ public class ARTDMenu extends JPanel {
 
 				try {
 
-					mygamestate.SaveGame();
+					myGameState.SaveGame();
 				} catch (IOException | ParseException e1) {
 					
 					e1.printStackTrace();
@@ -602,7 +600,7 @@ public class ARTDMenu extends JPanel {
 		PicturesAndTextUpdates.setRightComponent(CombatMessageArea);
 		PicturesAndTextUpdates.setVisible(true);
 		
-		CombatMessageArea.setFont(myPreferences.fontLomoCopyLTStdMidi);
+		CombatMessageArea.setFont(myGameSettings.fontLomoCopyLTStdMidi);
 				
 		
 		// ****************************************************************
@@ -626,7 +624,7 @@ public class ARTDMenu extends JPanel {
 		p3.add(CharStats2, BorderLayout.SOUTH);
 		p4.add(CharXPHPGold);
 		
-
+		System.out.println("Step 3: Finishing ARTDMenu");
 
 		GameImagesAndCombatPanel.add(messagearea);
 		artdmenuframe.setVisible(true);
