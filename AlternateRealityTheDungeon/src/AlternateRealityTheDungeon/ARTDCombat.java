@@ -144,7 +144,7 @@ public class ARTDCombat extends JFrame {
 		picLabel.setPreferredSize(imageSize);		
 				
 		// Adding the image to the JPanel for the monster image
-	//	CombatPanelImage.add(picLabel);
+	   //	CombatPanelImage.add(picLabel);
 
 		// Adding Panel for buttons to Master Panel
 		CombatPanel.add(CombatPanelButtons, BorderLayout.SOUTH); // Place the "Attack", "Select Spell" and "Run Away"

@@ -47,6 +47,7 @@ public class ARTDMain {
 		if (!charSave.createNewFile()) {
 
 		} else {
+			
 			ARTDMessages.WelcomeMessage();
 		}
 

@@ -47,7 +47,6 @@ public class ARTDMenu extends JFrame {
 	ARTDGameSettings myGameSettings = new ARTDGameSettings();
 	ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 	ARTDGameMenuItems myGameMenuItems = new ARTDGameMenuItems();
-	//ARTDMaps myMaps = new ARTDMaps();
 	
 	
 	
@@ -71,7 +70,6 @@ public class ARTDMenu extends JFrame {
 	
 
 	public ARTDMenu() throws IOException {
-
 
 		
 		//Creating Frame
