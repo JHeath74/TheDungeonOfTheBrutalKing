@@ -21,7 +21,7 @@ import javax.swing.JTextArea;
 public class ARTDMessages extends JFrame {
 
 	static JFrame StoryMessageFrame;
-	static JPanel StoryMessagePanel, StoryImagePanel = null;
+	static JPanel StoryMessagePanel, StoryImagePanel, StoryButtonPanel, StorySplitPanePanel = null;
 	static JButton ConfirmButton = null;
 	static JTextArea StoryMessageTextArea = null;
 	static int width, height = 0;
@@ -38,37 +38,70 @@ public class ARTDMessages extends JFrame {
 	
 	public static void WelcomeMessage() throws InterruptedException, IOException {
 
+		//********************************************************************************
+		//*************  Setting up JFrame ***********************************************
+		//********************************************************************************
 		StoryMessageFrame = new JFrame("Your Adventure Awaits");
 		StoryMessageFrame.setLayout(new BorderLayout());
 		StoryMessageFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//********************************************************************************
+		//*************  Creating JPanels ************************************************
+		//********************************************************************************
+		
 		StoryImagePanel = new JPanel();
 		StoryMessagePanel = new JPanel();
+		StoryButtonPanel = new JPanel();
+		StorySplitPanePanel = new JPanel();
+		
+		//********************************************************************************
+		//************* Creating JButton *************************************************
+		//********************************************************************************
 		
 		ConfirmButton = new JButton("Press Click to Continue");
+		
+		//********************************************************************************
+		//************* Setting up JTextArea *********************************************
+		//********************************************************************************
+				
 		StoryMessageTextArea = new JTextArea();
+		
+		//********************************************************************************
+		//************* Adding JPanels to JFrame for JSplitPane***************************
+		//********************************************************************************
+		
 		StoryImageSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		StorySplitPanePanel.add(StoryImageSplitPane);
+		StoryMessageFrame.add(StorySplitPanePanel, BorderLayout.CENTER);
 		
-		StoryImageSplitPane.setResizeWeight(.2d);
+		//********************************************************************************
+		//************* Setting up JSplitPane ********************************************
+		//********************************************************************************
+		
+		StoryImageSplitPane.setResizeWeight(.5d);
 		StoryImageSplitPane.setDividerLocation(0.5);
+			
+		//********************************************************************************
+		//************* Adding TextArea and Image to Respective JPanel *******************
+		//********************************************************************************
 		
-		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
-		StoryImageSplitPane.setRightComponent(StoryMessagePanel);
 		
-		StoryImagePanel.add(ConfirmButton);
+		//StoryImagePanel.add(StoryImageLabel);
 		StoryMessagePanel.add(StoryMessageTextArea);
-		StoryMessagePanel.add(ConfirmButton);
 		
+		//********************************************************************************
+		//************* Adding JPanels to JSplitPane**************************************
+		//********************************************************************************
 		
 
+		//StoryImageSplitPane.setLeftComponent(StoryImagePanel);
+		StoryImageSplitPane.setRightComponent(StoryMessagePanel);
 		
-//		StoryMessageFrame.add(StoryImagePanel, BorderLayout.NORTH);
-	//	StoryMessageFrame.add(StoryMessagePanel, BorderLayout.CENTER);
-	//	StoryMessageFrame.add(ConfirmButton, BorderLayout.SOUTH);
+		//********************************************************************************
+		//************* Setting Screen Size **********************************************
+		//********************************************************************************		
 		
-		
-		
-		// getScreenSize() returns the size
-        // of the screen in pixels
+		// getScreenSize() returns the size of the screen in pixels
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
         
         // width will store the width of the screen
@@ -76,26 +109,8 @@ public class ARTDMessages extends JFrame {
         
         // height will store the height of the screen
         height = (int)size.getHeight();
-            
-
-        StoryMessageFrame.setSize(width, height);
-        StoryMessageFrame.setUndecorated(true);
 		
-        
-        
-          // Getting Image to display from it's location in the project
-       // StoryImagePicture = ImageIO.read(new File("title")); //I need location of the images
-     				
-      //Adding image to JLabel
-      //  StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));	
-     		
-     		//Adding image to JLabel
-          // StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));		
-
-     	//	imageSize = new Dimension();
-     	//	imageSize.setSize(768, 1024); // Double Width, Double Height
-     	//	StoryImageLabel.setPreferredSize(imageSize);
-        
+		
         
 		ConfirmButton.addMouseListener(new MouseListener() {
 
@@ -122,18 +137,14 @@ public class ARTDMessages extends JFrame {
 
 			});
 
-			StoryMessageTextArea.setBounds(10, 30, 400, 400);
-			ConfirmButton.setSize(25, 75);
-			StoryMessageTextArea.setLineWrap(true);
-			StoryMessageTextArea.setWrapStyleWord(true);
-			StoryMessageTextArea.setEditable(false);
-
-			
+		
+        	
 			StoryMessageFrame.setSize(width, height);
-			StoryMessageFrame.setLocationRelativeTo(null);
+		//	StoryMessageFrame.setLocationRelativeTo(null);
+		    StoryMessageFrame.setUndecorated(false);
 			StoryMessageFrame.setVisible(true);
-			StoryMessageFrame.toFront();
-			StoryMessageFrame.requestFocus();
+		//	StoryMessageFrame.toFront();
+		//	StoryMessageFrame.requestFocus();
 
 			StoryMessageTextArea.setText("");
 
