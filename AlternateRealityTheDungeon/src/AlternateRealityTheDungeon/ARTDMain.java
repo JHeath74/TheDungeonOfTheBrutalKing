@@ -38,7 +38,7 @@ public class ARTDMain {
 
 		// When a new game is started, this is the file where the initial charecter
 		// information is stored
-		String InitialCharecterSave = "src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt";
+		String InitialCharecterSave = "src//AlternateRealityTheDungeon//SaveGame//InitialCharecterSave.txt";
 
 		// Checking to see if the InitialCharecterSave.txt file is there,
 		// and if it isn't then a blank InitialCharecterSave.txt file is generated.

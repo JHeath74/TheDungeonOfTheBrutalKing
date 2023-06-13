@@ -19,12 +19,12 @@ public class ARTDGameSettings
 				 = null;
 	
 	
-	Font fontTimesNewRoman, fontAvatar, fontLomoCopyLTStdMidi = null;
+	Font fontTimesNewRoman, fontAvatar, fontLomoCopyLTStdMidi, fontWelcomeMessage = null;
 	
 	BufferedImage myJMenuBarPicture = null;
 	
 	String ProgramImagePath, MonsterImagePath, FontPath, DungeonFloorTexturePath, DungeonWallTexturePath,
-	SavedGameDirectory;
+	SavedGameDirectory, WelcomeImagePath;
 	
 	
 	public ARTDGameSettings()
@@ -34,7 +34,8 @@ public class ARTDGameSettings
 		FontPath = "src\\AlternateRealityTheDungeon\\Fonts\\";
 		DungeonFloorTexturePath =  "src\\AlternateRealityTheDungeon\\Images\\Level\\Floor\\";
 		DungeonWallTexturePath = "src\\AlternateRealityTheDungeon\\Images\\Level\\Door\\";
-		SavedGameDirectory = ("src\\AlternateRealityTheDungeon\\TextFiles\\SaveGame\\");
+		SavedGameDirectory = ("src\\AlternateRealityTheDungeon\\SaveGame\\");
+		WelcomeImagePath = ("src\\AlternateRealityTheDungeon\\Images\\Messages\\WelcomeMessage\\");
 		
 		//https://www.rapidtables.com/web/color/RGB_Color.html
 		
@@ -79,6 +80,7 @@ public class ARTDGameSettings
 		fontTimesNewRoman = new Font("Times New Roman", Font.PLAIN, 20);
 		fontAvatar = new Font(FontPath + "avatar.ttf", Font.PLAIN, 20);
 		fontLomoCopyLTStdMidi = new Font(FontPath+"LomoCopyLTSdMidi.ttf", Font.PLAIN, 20);
+		fontWelcomeMessage = new Font("Segoe Script", Font.BOLD, 20);
 		
 		
 		

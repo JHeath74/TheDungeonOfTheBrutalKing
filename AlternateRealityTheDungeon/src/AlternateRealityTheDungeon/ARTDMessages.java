@@ -2,6 +2,7 @@ package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -30,14 +31,20 @@ public class ARTDMessages extends JFrame {
 	public static BufferedImage StoryImagePicture = null;
 	public static Dimension imageSize = null;
 	
+	
+	
 	public ARTDMessages()
 	{
 		
 		
 	}
 	
+	
+	
 	public static void WelcomeMessage() throws InterruptedException, IOException {
 
+		ARTDGameSettings myGameSettings = new ARTDGameSettings();
+		
 		//********************************************************************************
 		//*************  Setting up JFrame ***********************************************
 		//********************************************************************************
@@ -63,8 +70,10 @@ public class ARTDMessages extends JFrame {
 		//********************************************************************************
 		//************* Setting up JTextArea *********************************************
 		//********************************************************************************
-				
-		StoryMessageTextArea = new JTextArea();
+		
+		StoryMessageTextArea = new JTextArea(60,50); // Row, Column
+		StoryMessageTextArea.setLineWrap(true);
+		StoryMessageTextArea.setFont(myGameSettings.fontWelcomeMessage);
 		
 		//********************************************************************************
 		//************* Adding JPanels to JFrame for JSplitPane***************************
@@ -80,13 +89,24 @@ public class ARTDMessages extends JFrame {
 		
 		StoryImageSplitPane.setResizeWeight(.5d);
 		StoryImageSplitPane.setDividerLocation(0.5);
+		
 			
 		//********************************************************************************
 		//************* Adding TextArea and Image to Respective JPanel *******************
 		//********************************************************************************
+		// Getting Image to display from it's location in the project
+		StoryImagePicture = ImageIO.read(new File(myGameSettings.WelcomeImagePath + "Image8.png"));
+				
+		//Adding image to JLabel
+		StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));		
+
+		imageSize = new Dimension();
+		imageSize.setSize(768, 1024); // Double Width, Double Height
+		StoryImageLabel.setPreferredSize(imageSize);		
+						
+		// Adding the image to the JPanel for the monster image
 		
-		
-		//StoryImagePanel.add(StoryImageLabel);
+		StoryImagePanel.add(StoryImageLabel);
 		StoryMessagePanel.add(StoryMessageTextArea);
 		
 		//********************************************************************************
@@ -94,7 +114,7 @@ public class ARTDMessages extends JFrame {
 		//********************************************************************************
 		
 
-		//StoryImageSplitPane.setLeftComponent(StoryImagePanel);
+		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
 		StoryImageSplitPane.setRightComponent(StoryMessagePanel);
 		
 		//********************************************************************************

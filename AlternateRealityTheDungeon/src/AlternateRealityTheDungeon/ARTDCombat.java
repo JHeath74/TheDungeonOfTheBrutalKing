@@ -37,7 +37,7 @@ public class ARTDCombat extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	ARTDSingleton myCharSingleton = new ARTDSingleton();
-	ARTDGameSettings myGamePreferences = new ARTDGameSettings();
+	ARTDGameSettings myGameSettings = new ARTDGameSettings();
 	ARTDMenu myMenu = null;
 	
 	String HeroHPArrayList = "";
@@ -134,7 +134,7 @@ public class ARTDCombat extends JFrame {
 
 		// Getting Image to display from it's location in the project
 		myPicture = ImageIO.read(new File(
-				myGamePreferences.MonsterImagePath + ARTDSingleton.myMonsters().get(rnd).MonsterImage));
+				myGameSettings.MonsterImagePath + ARTDSingleton.myMonsters().get(rnd).MonsterImage));
 		
 		//Adding image to JLabel
 		picLabel = new JLabel(new ImageIcon(myPicture));		
@@ -179,10 +179,10 @@ public class ARTDCombat extends JFrame {
 		
 		CombatNameAndHPfield.setLineWrap(false);
 		CombatNameAndHPfield.setEditable(false);
-		CombatNameAndHPfield.setBackground(myGamePreferences.colorLightYellow);
+		CombatNameAndHPfield.setBackground(myGameSettings.colorLightYellow);
 		CombatNameAndHPfield.setSize(CombatNameAndHPPanel.getSize());
 		
-		CombatNameAndHPPanel.setBackground(myGamePreferences.colorCoral);
+		CombatNameAndHPPanel.setBackground(myGameSettings.colorCoral);
 		
 		
 		
