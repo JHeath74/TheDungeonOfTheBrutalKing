@@ -19,7 +19,7 @@ public class ARTDGameSettings
 				 = null;
 	
 	
-	Font fontTimesNewRoman, fontAvatar, fontLomoCopyLTStdMidi, fontWelcomeMessage = null;
+	Font fontTimesNewRoman, fontAvatar, fontLomoCopyLTStdMidi, fontWelcomeMessage, fontWelcomeMessage2 = null;
 	
 	BufferedImage myJMenuBarPicture = null;
 	
@@ -81,6 +81,7 @@ public class ARTDGameSettings
 		fontAvatar = new Font(FontPath + "avatar.ttf", Font.PLAIN, 20);
 		fontLomoCopyLTStdMidi = new Font(FontPath+"LomoCopyLTSdMidi.ttf", Font.PLAIN, 20);
 		fontWelcomeMessage = new Font("Segoe Script", Font.BOLD, 20);
+		fontWelcomeMessage2 = new Font(FontPath + "DragonHunter-9Ynxj.otf", Font.PLAIN, 20);
 		
 		
 		

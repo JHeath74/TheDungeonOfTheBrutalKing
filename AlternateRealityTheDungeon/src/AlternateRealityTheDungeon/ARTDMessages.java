@@ -3,6 +3,7 @@ package AlternateRealityTheDungeon;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -36,7 +37,7 @@ public class ARTDMessages extends JFrame {
 	public ARTDMessages()
 	{
 		
-		
+		StoryImageLabel = new JLabel();
 	}
 	
 	
@@ -72,8 +73,9 @@ public class ARTDMessages extends JFrame {
 		//********************************************************************************
 		
 		StoryMessageTextArea = new JTextArea(60,50); // Row, Column
+		StoryMessageTextArea.setWrapStyleWord(true);
 		StoryMessageTextArea.setLineWrap(true);
-		StoryMessageTextArea.setFont(myGameSettings.fontWelcomeMessage);
+		StoryMessageTextArea.setFont(myGameSettings.fontWelcomeMessage2);
 		
 		//********************************************************************************
 		//************* Adding JPanels to JFrame for JSplitPane***************************
@@ -94,26 +96,24 @@ public class ARTDMessages extends JFrame {
 		//********************************************************************************
 		//************* Adding TextArea and Image to Respective JPanel *******************
 		//********************************************************************************
-		// Getting Image to display from it's location in the project
-		StoryImagePicture = ImageIO.read(new File(myGameSettings.WelcomeImagePath + "Image8.png"));
-				
-		//Adding image to JLabel
-		StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));		
-
-		imageSize = new Dimension();
-		imageSize.setSize(768, 1024); // Double Width, Double Height
-		StoryImageLabel.setPreferredSize(imageSize);		
+		
+	
+		
+	
+		//************************************
+		//*******Adding image to JLabel*******
+		//************************************
+		
+	
+		
 						
 		// Adding the image to the JPanel for the monster image
-		
-		StoryImagePanel.add(StoryImageLabel);
 		StoryMessagePanel.add(StoryMessageTextArea);
-		
+
 		//********************************************************************************
 		//************* Adding JPanels to JSplitPane**************************************
 		//********************************************************************************
-		
-
+	
 		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
 		StoryImageSplitPane.setRightComponent(StoryMessagePanel);
 		
@@ -160,33 +160,80 @@ public class ARTDMessages extends JFrame {
 		
         	
 			StoryMessageFrame.setSize(width, height);
-		//	StoryMessageFrame.setLocationRelativeTo(null);
 		    StoryMessageFrame.setUndecorated(false);
 			StoryMessageFrame.setVisible(true);
-		//	StoryMessageFrame.toFront();
-		//	StoryMessageFrame.requestFocus();
+
 
 			StoryMessageTextArea.setText("");
-
+			
+			/*
+			 * File folder = new File(myGameSettings.WelcomeImagePath); File[] listOfFiles =
+			 * folder.listFiles(); for (int i = 0 ; i < listOfFiles.length; i++) { if
+			 * (listOfFiles[i].equals(null)) {
+			 * 
+			 * }
+			 */
+			 
+	          
 			StoryMessageTextArea.setText("On your way home from your last adventure you are set upon on my an unknown group of people.\n\n");
-			wait(2);
+			StoryImagePicture = ImageIO.read(new File(myGameSettings.WelcomeImagePath + "1.png")); // Buffered Image
+			StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));
+			StoryImagePanel.add(StoryImageLabel);
+
+        	
+        	wait(2);
+        	StoryImagePanel.remove(StoryImageLabel);
+        	
 			StoryMessageTextArea.append("You feel yourself being carried for a while and then dropped on something hard.\n\n");
+			StoryImagePicture = ImageIO.read(new File(myGameSettings.WelcomeImagePath + "2.png")); // Buffered Image
+			StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));
+			StoryImagePanel.add(StoryImageLabel);
+			
 			wait(2);
+			StoryImagePanel.remove(StoryImageLabel);
+			
 			StoryMessageTextArea.append("You hear a sound like a door shutting then you start to move.  Slowly at first,  then very quickly.  Then you passout.\n\n");
+			StoryImagePicture = ImageIO.read(new File(myGameSettings.WelcomeImagePath + "3.png")); // Buffered Image
+			StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));
+			StoryImagePanel.add(StoryImageLabel);
+			
 			wait(2);
+			StoryImagePanel.remove(StoryImageLabel);			
+			
 			StoryMessageTextArea.append("You wake up an unknown time later, with minimal weapons and armor with someone standing over.  They look at you for a moment, than ask you if you are ok?\n\n");
+			StoryImagePicture = ImageIO.read(new File(myGameSettings.WelcomeImagePath + "4.png")); // Buffered Image
+			StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));
+			StoryImagePanel.add(StoryImageLabel);
+			
 			wait(2);
+			StoryImagePanel.remove(StoryImageLabel);
+			
 			StoryMessageTextArea.append("And they want to know a few things about you, to prepare you for adventure.\n\n");
+			StoryImagePicture = ImageIO.read(new File(myGameSettings.WelcomeImagePath + "5.png")); // Buffered Image
+			StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));
+			StoryImagePanel.add(StoryImageLabel);
+			
 			wait(2);
+			StoryImagePanel.remove(StoryImageLabel);
+			
 			StoryMessageTextArea.append("Who I am is not important,  but I need your help.  What you see before you is the enterance to the dungeon.  Many of entered, but none of returned.\n\n");
+			StoryImagePicture = ImageIO.read(new File(myGameSettings.WelcomeImagePath + "6.png")); // Buffered Image
+			StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));
+			StoryImagePanel.add(StoryImageLabel);
+			
 			wait(2);
+			StoryImagePanel.remove(StoryImageLabel);
+			
 			StoryMessageTextArea.append("At the center of the dungeon is a treasure that is important to me.  Please retrieve it and you'll be greatly rewarded.\n\n");
+			StoryImagePicture = ImageIO.read(new File(myGameSettings.WelcomeImagePath + "7.png")); // Buffered Image
+			StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));
+			StoryImagePanel.add(StoryImageLabel);
+			
 			wait(4);
 			StoryMessageFrame.dispose();
-
-
-
-	}
+			
+	 } 
+		
 
 	private static void wait(int seconds) {
 		long start = System.nanoTime();
