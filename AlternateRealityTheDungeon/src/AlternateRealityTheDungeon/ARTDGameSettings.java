@@ -24,7 +24,10 @@ public class ARTDGameSettings
 	BufferedImage myJMenuBarPicture = null;
 	
 	String ProgramImagePath, MonsterImagePath, FontPath, DungeonFloorTexturePath, DungeonWallTexturePath,
-	SavedGameDirectory, WelcomeImagePath;
+	SavedGameDirectory;
+
+
+	static String WelcomeImagePath;
 	
 	
 	public ARTDGameSettings()

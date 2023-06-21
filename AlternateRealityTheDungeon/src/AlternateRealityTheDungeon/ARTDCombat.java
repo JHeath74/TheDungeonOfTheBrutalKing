@@ -43,16 +43,16 @@ public class ARTDCombat extends JFrame {
 	String HeroHPArrayList = "";
 	
 	public JFrame CombatFrame, spellsFrame;
-	public JPanel CombatPanel, CombatPanelImage, CombatPanelButtons, 
-		   CombatPanelCombatArea, CombatPanelCombatUpdateInfo,
+	public JPanel CombatPanel, CombatImagePanel, CombatPanelButtons, 
+		   CombatPanelCombatAreaPanel, CombatUpdateInfoPanel,
 		   CombatNameAndHPPanel, spelllistbox = null;
-	public JSplitPane CombatImageAndCombatUpdatesStats, CombatCombatUpdatesAndStats  = null;
+	public JSplitPane CombatImageAndCombatUpdatesStatsSplitPane, CombatCombatUpdatesAndStatsSplitPane = null;
 	public JTextArea CombatCombatTextArea, CombatNameAndHPfield  = null;
-	public JButton CombatAttack, CastSelectedSpell, CombatSpell, CombatRun, SelectSpellToCast  = null;
+	public JButton CombatAttackButton, CastSelectedSpellButton, CombatSpellButton, CombatRunButton, SelectSpellToCast  = null;
 	public JLabel picLabel  = null;
 	public int width, height, HP, HeroHP, randomCombatChance = 0;
 	public Dimension imageSize = null;
-	public BufferedImage myPicture = null;
+	public BufferedImage myPictureBufferedImage = null;
 	public Timer timer = null;
 	public String[] spellList = null;
 
@@ -94,11 +94,11 @@ public class ARTDCombat extends JFrame {
 				
 		//CombatPanel = myMenu.GameImagesAndCombatPanel;
 		CombatPanel = new JPanel(new BorderLayout());
-		CombatPanelImage = new JPanel(); // Display Image of Enemy
+		CombatImagePanel = new JPanel(); // Display Image of Enemy
 		CombatPanelButtons = new JPanel(new FlowLayout()); // Display Buttons for Combat
-		CombatPanelCombatArea = new JPanel(); // Display Combat Updates such as sucessful or not-successful
+		CombatPanelCombatAreaPanel = new JPanel(); // Display Combat Updates such as sucessful or not-successful
 														// attacks or HP lost
-		CombatPanelCombatUpdateInfo = new JPanel(); // Your Stats
+		CombatUpdateInfoPanel = new JPanel(); // Your Stats
 		CombatNameAndHPPanel = new JPanel(new FlowLayout());
 
 		//*************************************************************
@@ -106,8 +106,8 @@ public class ARTDCombat extends JFrame {
 		//*************************************************************
 		
 		
-		CombatImageAndCombatUpdatesStats = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		CombatCombatUpdatesAndStats = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		CombatImageAndCombatUpdatesStatsSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		CombatCombatUpdatesAndStatsSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		
 		//*************************************************************
 		//-------------------Adding and Setting Up JTextArea-----------
@@ -124,20 +124,20 @@ public class ARTDCombat extends JFrame {
 		//*************************************************************
 
 		// Creating Buttons for Combat
-		CombatAttack = new JButton("Attack");
-		CastSelectedSpell = new JButton("Cast Selected Spell");
-		CombatSpell = new JButton("Select Spell to Cast");
-		CombatRun = new JButton("Run Away!");
+		CombatAttackButton = new JButton("Attack");
+		CastSelectedSpellButton = new JButton("Cast Selected Spell");
+		CombatSpellButton = new JButton("Select Spell to Cast");
+		CombatRunButton = new JButton("Run Away!");
 
 		// Adding Parent JPanel to JFrame
 		   CombatFrame.add(CombatPanel, BorderLayout.CENTER);
 
 		// Getting Image to display from it's location in the project
-		myPicture = ImageIO.read(new File(
+		   myPictureBufferedImage = ImageIO.read(new File(
 				myGameSettings.MonsterImagePath + ARTDSingleton.myMonsters().get(rnd).MonsterImage));
 		
 		//Adding image to JLabel
-		picLabel = new JLabel(new ImageIcon(myPicture));		
+		picLabel = new JLabel(new ImageIcon(myPictureBufferedImage));		
 
 		imageSize = new Dimension();
 		imageSize.setSize(768, 1024); // Double Width, Double Height
@@ -151,30 +151,30 @@ public class ARTDCombat extends JFrame {
 																	// Buttons
 
 		// Adding Child JPanels to Parent JPanel
-		CombatPanel.add(CombatImageAndCombatUpdatesStats, BorderLayout.CENTER);
+		CombatPanel.add(CombatImageAndCombatUpdatesStatsSplitPane, BorderLayout.CENTER);
 
 		// Adding Buttons to CombatPanelButtons JPanel
-		CombatPanelButtons.add(CombatAttack);
-		CombatPanelButtons.add(CastSelectedSpell);
-		CombatPanelButtons.add(CombatSpell);
-		CombatPanelButtons.add(CombatRun);
+		CombatPanelButtons.add(CombatAttackButton);
+		CombatPanelButtons.add(CastSelectedSpellButton);
+		CombatPanelButtons.add(CombatSpellButton);
+		CombatPanelButtons.add(CombatRunButton);
 
 		// added Jtextarea to JPanel used to Display Combat outcomes
-		CombatPanelCombatArea.add(CombatCombatTextArea);
+		CombatPanelCombatAreaPanel.add(CombatCombatTextArea);
 		CombatNameAndHPPanel.add(CombatNameAndHPfield);
 		
-		CombatPanelCombatUpdateInfo.add(CombatPanelCombatArea); // Display Out Come of each attack, Item Usage or spell
+		CombatUpdateInfoPanel.add(CombatPanelCombatAreaPanel); // Display Out Come of each attack, Item Usage or spell
 
-		CombatImageAndCombatUpdatesStats.setLeftComponent(CombatPanelImage);
-		CombatImageAndCombatUpdatesStats.setRightComponent(CombatCombatUpdatesAndStats);
-		CombatCombatUpdatesAndStats.setTopComponent(CombatNameAndHPPanel);
-		CombatCombatUpdatesAndStats.setBottomComponent(CombatPanelCombatUpdateInfo);
+		CombatImageAndCombatUpdatesStatsSplitPane.setLeftComponent(CombatImagePanel);
+		CombatImageAndCombatUpdatesStatsSplitPane.setRightComponent(CombatCombatUpdatesAndStatsSplitPane);
+		CombatCombatUpdatesAndStatsSplitPane.setTopComponent(CombatNameAndHPPanel);
+		CombatCombatUpdatesAndStatsSplitPane.setBottomComponent(CombatUpdateInfoPanel);
 
-		CombatImageAndCombatUpdatesStats.setVisible(true);
-		CombatCombatUpdatesAndStats.setVisible(true);
-		CombatCombatUpdatesAndStats.setResizeWeight(.2d);
-		CombatImageAndCombatUpdatesStats.setDividerLocation(0.5); // Places the Split in the middle of the pane
-		CombatCombatUpdatesAndStats.setDividerLocation(0.25); // Sets the divider 3/4 of the way up the pane
+		CombatImageAndCombatUpdatesStatsSplitPane.setVisible(true);
+		CombatCombatUpdatesAndStatsSplitPane.setVisible(true);
+		CombatCombatUpdatesAndStatsSplitPane.setResizeWeight(.2d);
+		CombatImageAndCombatUpdatesStatsSplitPane.setDividerLocation(0.5); // Places the Split in the middle of the pane
+		CombatCombatUpdatesAndStatsSplitPane.setDividerLocation(0.25); // Sets the divider 3/4 of the way up the pane
 
 		
 		CombatNameAndHPfield.setLineWrap(false);
@@ -204,7 +204,7 @@ public class ARTDCombat extends JFrame {
 		timer.start();
 
 		// Attack Button in Combat
-		CombatAttack.addActionListener(new ActionListener() {
+		CombatAttackButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -217,7 +217,7 @@ public class ARTDCombat extends JFrame {
 		});
 
 		// CastSpell Button in Combat
-		CastSelectedSpell.addActionListener(new ActionListener() {
+		CastSelectedSpellButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -226,7 +226,7 @@ public class ARTDCombat extends JFrame {
 		});
 
 		// Select Spell to Cast
-		CombatSpell.addActionListener(new ActionListener() {
+		CombatSpellButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -266,7 +266,7 @@ public class ARTDCombat extends JFrame {
 
 				spellsFrame.add(spelllistbox);
 				spelllistbox.add(spells, BorderLayout.CENTER);
-				spelllistbox.add(CastSelectedSpell, BorderLayout.SOUTH);
+				spelllistbox.add(CastSelectedSpellButton, BorderLayout.SOUTH);
 				spelllistbox.add(SelectSpellToCast, BorderLayout.SOUTH);
 
 				spellsFrame.setSize(400, 200);
@@ -278,7 +278,7 @@ public class ARTDCombat extends JFrame {
 
 		});
 
-		CombatRun.addActionListener(new ActionListener() {
+		CombatRunButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
