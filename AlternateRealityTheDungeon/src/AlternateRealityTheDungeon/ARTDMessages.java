@@ -143,10 +143,6 @@ public class ARTDMessages extends JFrame {
 		StoryImageSplitPane.setRightComponent(StoryMessagePanel);
 		
 		
-
-		
-		
-		
 		StoryMessageFrame.setUndecorated(false);
 		StoryMessageFrame.setVisible(true);
 			
