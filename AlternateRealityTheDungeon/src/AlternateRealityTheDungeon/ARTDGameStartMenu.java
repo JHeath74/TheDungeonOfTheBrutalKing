@@ -3,17 +3,26 @@ package AlternateRealityTheDungeon;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class ARTDGameStartMenu extends JFrame {
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		ARTDGameSettings myGameSettings = new ARTDGameSettings();
 		
@@ -23,9 +32,10 @@ public class ARTDGameStartMenu extends JFrame {
 		//***********************************************
 				
 		JFrame StartMenuFrame = null;
-		JPanel StartTextAreaPanel, StartButtonPanel = null;
+		JPanel StartImagePanel, StartButtonPanel = null;
 		JButton StartNewGameButton, LoadExistingGameButton, ExitGameButton = null;
-		JTextArea GameTitleTextArea = null;
+		BufferedImage StartGameImage = null;
+		JLabel StartImageLabel = null;
 		int width, height = 0;
 		
 		//***************************************************
@@ -33,12 +43,11 @@ public class ARTDGameStartMenu extends JFrame {
 		//***************************************************
 		
 		StartMenuFrame = new JFrame("Alternate Reality: The Dungeon");
-		StartTextAreaPanel = new JPanel();
+		StartImagePanel = new JPanel();
 		StartButtonPanel = new JPanel();
 		StartNewGameButton = new JButton("Start New Game");
 		LoadExistingGameButton = new JButton("Load Exisiting Game");
 		ExitGameButton = new JButton("Exit Game");
-		GameTitleTextArea = new JTextArea();
 		
 		
 		//***************************************************
@@ -61,45 +70,62 @@ public class ARTDGameStartMenu extends JFrame {
         StartMenuFrame.setLayout(new BorderLayout());
         StartMenuFrame.setSize(width, height);
         StartMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        StartMenuFrame.setUndecorated(false);
+        StartMenuFrame.setUndecorated(true);
         
         
       //***************************************************
       //**** Setting Up and adding JPanel to JFrame********
       //***************************************************
         
-        StartTextAreaPanel.setLayout(new BorderLayout());
-        StartButtonPanel.setLayout(new BorderLayout());
-        StartMenuFrame.add(StartTextAreaPanel);
-        StartMenuFrame.add(StartButtonPanel);
+        StartImagePanel.setLayout(new BorderLayout());
+        StartButtonPanel.setLayout(new FlowLayout());
+        
+        StartImagePanel.setMaximumSize(new Dimension(450, 200));
+        StartButtonPanel.setMaximumSize(new Dimension(250, 350));
+        
+        StartMenuFrame.add(StartImagePanel, BorderLayout.CENTER);
+        StartMenuFrame.add(StartButtonPanel, BorderLayout.SOUTH);
+        
+        StartImagePanel.setBackground(myGameSettings.colorBlack);
+        StartButtonPanel.setBackground(myGameSettings.colorGrey);
         
       //***************************************************
       //********** Adding Fields to JPanel ****************
       //***************************************************
+
+        StartButtonPanel.add(StartNewGameButton, FlowLayout.LEFT);
+        StartButtonPanel.add(LoadExistingGameButton, FlowLayout.CENTER);
+        StartButtonPanel.add(ExitGameButton, FlowLayout.RIGHT);
         
-        StartTextAreaPanel.add(GameTitleTextArea, BorderLayout.NORTH);
-        StartButtonPanel.add(StartNewGameButton, BorderLayout.CENTER);
-        StartButtonPanel.add(LoadExistingGameButton, BorderLayout.CENTER);
-        StartButtonPanel.add(ExitGameButton, BorderLayout.CENTER);
         
       //***************************************************
-      //********** Setting Up JTextArea *******************
-      //***************************************************  
-           
-        GameTitleTextArea.setEditable(false);
-        GameTitleTextArea.setFont(myGameSettings.fontAvatar);
-        GameTitleTextArea.setLineWrap(true);
-        GameTitleTextArea.setWrapStyleWord(true);
+      //********** Setting settings for JPanel ************
+      //***************************************************
+      
+        StartImageLabel = new JLabel(new ImageIcon(myGameSettings.myStartMenuPicture));
+		StartImagePanel.add(StartImageLabel);
+
         
       //***************************************************
       //************ Setting Up Buttons *******************
       //***************************************************  
         
-        StartNewGameButton.setPreferredSize(new Dimension(100, 50));
-        LoadExistingGameButton.setPreferredSize(new Dimension(100, 50));
-        ExitGameButton.setPreferredSize(new Dimension(100, 50));
+        StartNewGameButton.setPreferredSize(new Dimension(200, 50));
+        LoadExistingGameButton.setPreferredSize(new Dimension(200, 50));
+        ExitGameButton.setPreferredSize(new Dimension(200, 50));
+
+        
+        
         
         StartMenuFrame.setVisible(true);  
+        
+        ExitGameButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+				
+			}});
         
 	}
 

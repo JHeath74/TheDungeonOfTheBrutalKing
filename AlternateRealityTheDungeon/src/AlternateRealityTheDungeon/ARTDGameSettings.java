@@ -21,35 +21,39 @@ public class ARTDGameSettings
 	
 	Font fontTimesNewRoman, fontAvatar, fontLomoCopyLTStdMidi, fontWelcomeMessage, fontWelcomeMessage2 = null;
 	
-	BufferedImage myJMenuBarPicture = null;
+	BufferedImage myJMenuBarPicture, myStartMenuPicture = null;
 	
-	String ProgramImagePath, MonsterImagePath, FontPath, DungeonFloorTexturePath, DungeonWallTexturePath,
-	SavedGameDirectory;
+	String MenuBarImagePath, MonsterImagePath, FontPath, DungeonFloorTexturePath, DungeonWallTexturePath,
+	SavedGameDirectory, StartMenuPath;
 
 
-	static String WelcomeImagePath;
+	static String StoryIntroductionPath;
 	
 	
 	public ARTDGameSettings()
-	{
-		ProgramImagePath = "src\\AlternateRealityTheDungeon\\Images\\Program\\";
+	{	
+		MenuBarImagePath = "src\\AlternateRealityTheDungeon\\Images\\Program\\MenuBar\\";
 		MonsterImagePath = "src\\AlternateRealityTheDungeon\\Images\\Monsters\\";
 		FontPath = "src\\AlternateRealityTheDungeon\\Fonts\\";
 		DungeonFloorTexturePath =  "src\\AlternateRealityTheDungeon\\Images\\Level\\Floor\\";
 		DungeonWallTexturePath = "src\\AlternateRealityTheDungeon\\Images\\Level\\Door\\";
 		SavedGameDirectory = ("src\\AlternateRealityTheDungeon\\SaveGame\\");
-		WelcomeImagePath = ("src\\AlternateRealityTheDungeon\\Images\\Messages\\WelcomeMessage\\");
+		StoryIntroductionPath = ("src\\AlternateRealityTheDungeon\\Images\\Messages\\StoryIntroduction\\");
+		StartMenuPath = ("src\\AlternateRealityTheDungeon\\Images\\Program\\StartMenu\\");
 		
-		//https://www.rapidtables.com/web/color/RGB_Color.html
+		
 		
 		//*********************************************************************************
 		//--------------------------- Colors ----------------------------------------------
 		//*********************************************************************************
 		
+		//https://www.rapidtables.com/web/color/RGB_Color.html
+		
 		colorBrown = new Color(165, 42, 42);
 		colorLightBrown = new Color(196, 164, 132);
 		colorLightYellow = new Color( 255, 255, 224);
-		colorBlack = new Color(25, 50, 75);
+		//colorBlack = new Color(25, 50, 75);
+		colorBlack = new Color(20,20,20);
 		colorWhite = new Color(255,255,255);
 		colorLightGreen = new Color(102,255,102);
 		colorVeryLightRed = new Color(153,0,0);
@@ -89,15 +93,26 @@ public class ARTDGameSettings
 		
 		
 		//*********************************************************************************
-		//--------------------------- Pictures ----------------------------------------------
+		//--------------------------- Pictures --------------------------------------------
 		//*********************************************************************************
-		try {
-			myJMenuBarPicture = ImageIO.read(new File(ProgramImagePath + "AlternateReality - MenuBar.jpg"));
+		try { 										
+			myJMenuBarPicture = ImageIO.read(new File(MenuBarImagePath + "MenuBar.jpg"));
 		} catch (IOException e) {
 			
 			e.printStackTrace();
 		}
 		
+		try {
+			myStartMenuPicture = ImageIO.read(new File(StartMenuPath + "StartMenu.png"));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		//*********************************************************************************
+		//--------------------------- Music --------------------------------------------
+		//*********************************************************************************	
 		
 	}
 

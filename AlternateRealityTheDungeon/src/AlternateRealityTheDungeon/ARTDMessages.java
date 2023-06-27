@@ -201,7 +201,7 @@ public class ARTDMessages extends JFrame {
 	{
 
 		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
-		StoryImagePicture = ImageIO.read(new File(ARTDGameSettings.WelcomeImagePath + i + ".png")); // Buffered Image
+		StoryImagePicture = ImageIO.read(new File(ARTDGameSettings.StoryIntroductionPath + i + ".png")); // Buffered Image
 		
 		StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));
 		StoryImagePanel.add(StoryImageLabel);
