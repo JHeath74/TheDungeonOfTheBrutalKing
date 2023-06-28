@@ -126,6 +126,15 @@ public class ARTDGameStartMenu extends JFrame {
 
         
         
+        File directory = new File(myGameSettings.SavedGameDirectory);
+        if (directory.isDirectory()) {
+           String[] files = directory.list();
+           if (directory.length() > 0) {
+              LoadExistingGameButton.setVisible(true);
+           } else {
+        	  LoadExistingGameButton.setVisible(false);
+           }
+        }
         
         StartMenuFrame.setVisible(true);
         
@@ -134,7 +143,13 @@ public class ARTDGameStartMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
+				try {
+					ARTDCharacterCreation.CharacterCreation();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
 				
 			}});
         
@@ -159,8 +174,7 @@ public class ARTDGameStartMenu extends JFrame {
 				
 			}});
         
+        
 	}
-
-	
 	
 }

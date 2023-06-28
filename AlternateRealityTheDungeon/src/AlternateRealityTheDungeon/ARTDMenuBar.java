@@ -39,7 +39,7 @@ import javax.swing.Timer;
  * Games Menu Items
  * 
  */
-public class ARTDMenu extends JFrame {
+public class ARTDMenuBar extends JFrame {
 
 	//SavedGameDirectory
 	private static final long serialVersionUID = 1L;
@@ -69,7 +69,7 @@ public class ARTDMenu extends JFrame {
 	Timer timer = null;
 	
 
-	public ARTDMenu() throws IOException {
+	public ARTDMenuBar() throws IOException {
 
 		
 		//Creating Frame
@@ -259,7 +259,7 @@ public class ARTDMenu extends JFrame {
 
 					try {
 
-						ARTDMain.main(null);
+						ARTDCharacterCreation.CharacterCreation();
 
 					} catch (IOException | InterruptedException e1) {
 

@@ -29,12 +29,12 @@ import ARTDCharecterClass.ARTDPaladin;
 import ARTDCharecterClass.ARTDRogue;
 import ARTDCharecterClass.ARTDWarrior;
 
-public class ARTDMain {
+public class ARTDCharacterCreation {
 
 	static ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 	static ARTDGameSettings myGameSettings = new ARTDGameSettings();
 
-	public static void main(String[] args) throws IOException, InterruptedException {
+	public static void CharacterCreation() throws IOException, InterruptedException {
 
 		// When a new game is started, this is the file where the initial charecter
 		// information is stored
@@ -183,7 +183,7 @@ public class ARTDMain {
 					try {
 
 						FileWriter writer = new FileWriter(
-								"src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt");
+								"src//AlternateRealityTheDungeon//SaveGame//InitialCharecterSave.txt");
 
 						ArrayList<String> newChar = new ArrayList<String>();
 
@@ -254,7 +254,7 @@ public class ARTDMain {
 							JOptionPane.showMessageDialog(frame, "Charecter Created");
 							writer.close();
 							frame.dispose();
-							new ARTDMenu();
+							new ARTDMenuBar();
 
 						} while (saveToon.getModel().isPressed());
 
@@ -291,7 +291,7 @@ public class ARTDMain {
 			frame.requestFocus();
 
 		} else {
-			new ARTDMenu();
+			new ARTDMenuBar();
 			try {
 			 myGameState.StartGameLoadCharecter();
 			 

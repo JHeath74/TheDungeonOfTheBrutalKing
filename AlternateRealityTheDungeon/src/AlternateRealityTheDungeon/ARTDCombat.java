@@ -38,7 +38,7 @@ public class ARTDCombat extends JFrame {
 	private static final long serialVersionUID = 1L;
 	ARTDSingleton myCharSingleton = new ARTDSingleton();
 	ARTDGameSettings myGameSettings = new ARTDGameSettings();
-	ARTDMenu myMenu = null;
+	ARTDMenuBar myMenu = null;
 	
 	String HeroHPArrayList = "";
 	
@@ -61,7 +61,7 @@ public class ARTDCombat extends JFrame {
 		HeroHPArrayList = ARTDSingleton.myCharSingleton().CharInfo.get(4);
 		HeroHP = Integer.parseInt(HeroHPArrayList);		
 		
-		 myMenu = new ARTDMenu();
+		 myMenu = new ARTDMenuBar();
 
 	}
 

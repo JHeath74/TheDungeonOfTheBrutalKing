@@ -40,7 +40,7 @@ public class ARTDMaps extends JFrame{
     private int playerY = 1;
 	
 	protected ARTDCombat myCombat = null;
-	ARTDMenu myMenu = null;
+	ARTDMenuBar myMenu = null;
 	ARTDGameSettings myGameSettings = null;
 	
 	
