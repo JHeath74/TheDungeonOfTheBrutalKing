@@ -96,7 +96,7 @@ public class ARTDGameSettings
 		//--------------------------- Pictures --------------------------------------------
 		//*********************************************************************************
 		try { 										
-			myJMenuBarPicture = ImageIO.read(new File(MenuBarImagePath + "MenuBar.jpg"));
+			myJMenuBarPicture = ImageIO.read(new File(MenuBarImagePath + "MenuBar.png"));
 		} catch (IOException e) {
 			
 			e.printStackTrace();

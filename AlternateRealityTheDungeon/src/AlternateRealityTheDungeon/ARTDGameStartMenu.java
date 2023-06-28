@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -25,7 +26,7 @@ public class ARTDGameStartMenu extends JFrame {
 	public static void main(String[] args) throws IOException {
 		
 		ARTDGameSettings myGameSettings = new ARTDGameSettings();
-		
+		//ARTDSaveLoadGameData mySaveLoadGameData = new ARTDSaveLoadGameData();
 		
 		//***********************************************
 		//**** Creating JFrame, JPanel, and JButtons ****
@@ -87,7 +88,7 @@ public class ARTDGameStartMenu extends JFrame {
         StartMenuFrame.add(StartButtonPanel, BorderLayout.SOUTH);
         
         StartImagePanel.setBackground(myGameSettings.colorBlack);
-        StartButtonPanel.setBackground(myGameSettings.colorGrey);
+        StartButtonPanel.setBackground(myGameSettings.colorBlack);
         
       //***************************************************
       //********** Adding Fields to JPanel ****************
@@ -113,11 +114,42 @@ public class ARTDGameStartMenu extends JFrame {
         StartNewGameButton.setPreferredSize(new Dimension(200, 50));
         LoadExistingGameButton.setPreferredSize(new Dimension(200, 50));
         ExitGameButton.setPreferredSize(new Dimension(200, 50));
+        
+        StartNewGameButton.setBackground(myGameSettings.colorBlue);
+        StartNewGameButton.setForeground(myGameSettings.colorWhite);
+        
+        LoadExistingGameButton.setBackground(myGameSettings.colorBlue);
+        LoadExistingGameButton.setForeground(myGameSettings.colorWhite);
+        
+        ExitGameButton.setBackground(myGameSettings.colorBlue);
+        ExitGameButton.setForeground(myGameSettings.colorWhite);
 
         
         
         
-        StartMenuFrame.setVisible(true);  
+        StartMenuFrame.setVisible(true);
+        
+        StartNewGameButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				
+				
+			}});
+        
+        
+        LoadExistingGameButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			
+			//	mySaveLoadGameData.LoadGame();
+				
+			}
+        	
+        });
+        
         
         ExitGameButton.addActionListener(new ActionListener() {
 
