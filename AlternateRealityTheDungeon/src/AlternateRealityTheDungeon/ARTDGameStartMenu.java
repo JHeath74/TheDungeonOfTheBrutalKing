@@ -1,10 +1,12 @@
 package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -19,6 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
 public class ARTDGameStartMenu extends JFrame {
 
@@ -144,7 +147,11 @@ public class ARTDGameStartMenu extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				try {
+					
+					Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
+					window.dispose();
 					ARTDCharacterCreation.CharacterCreation();
+					
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				} catch (InterruptedException e1) {
@@ -159,6 +166,10 @@ public class ARTDGameStartMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
+				
+				Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
+				window.dispose();
+			//	StartMenuFrame.dispose();
 			//	mySaveLoadGameData.LoadGame();
 				
 			}

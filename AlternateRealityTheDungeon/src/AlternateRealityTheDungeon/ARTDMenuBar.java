@@ -621,8 +621,6 @@ public class ARTDMenuBar extends JFrame {
 		p3.add(CharStats, BorderLayout.NORTH);
 		p3.add(CharStats2, BorderLayout.SOUTH);
 		p4.add(CharXPHPGold);
-		
-		System.out.println("Step 3: Finishing ARTDMenu");
 
 		GameImagesAndCombatPanel.add(messagearea);
 		artdmenuframe.setVisible(true);

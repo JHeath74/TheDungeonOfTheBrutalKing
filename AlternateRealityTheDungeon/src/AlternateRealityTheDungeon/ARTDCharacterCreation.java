@@ -1,7 +1,9 @@
 package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -33,9 +35,24 @@ public class ARTDCharacterCreation {
 
 	static ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 	static ARTDGameSettings myGameSettings = new ARTDGameSettings();
+	
+	static int width, height = 0;
 
 	public static void CharacterCreation() throws IOException, InterruptedException {
 
+		//***************************************************
+		//******** Getting Screen Width and Height **********
+		//***************************************************
+				
+		// getScreenSize() returns the size of the screen in pixels
+		 Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+		        
+		// width will store the width of the screen
+		 width = (int)size.getWidth();
+		        
+		// height will store the height of the screen
+		 height = (int)size.getHeight();
+		
 		// When a new game is started, this is the file where the initial charecter
 		// information is stored
 		String InitialCharecterSave = "src//AlternateRealityTheDungeon//SaveGame//InitialCharecterSave.txt";
@@ -48,7 +65,7 @@ public class ARTDCharacterCreation {
 
 		} else {
 			
-			ARTDMessages.WelcomeMessage();
+		//	ARTDMessages.WelcomeMessage();
 		}
 
 		Scanner saveFile = new Scanner(charSave);
@@ -250,8 +267,9 @@ public class ARTDCharacterCreation {
 							for (String str3 : newChar2) {
 								writer.write(str3 + System.lineSeparator());
 							}
-
-							JOptionPane.showMessageDialog(frame, "Charecter Created");
+							
+							//JOptionPane.showMessageDialog(frame, "Charecter Created");
+							
 							writer.close();
 							frame.dispose();
 							new ARTDMenuBar();
@@ -284,7 +302,7 @@ public class ARTDCharacterCreation {
 			frame.add((panel2), BorderLayout.CENTER);
 			frame.add((panel3), BorderLayout.SOUTH);
 
-			frame.setSize(400, 600);
+			frame.setSize(width, height);
 			frame.setLocationRelativeTo(null);
 			frame.setVisible(true);
 			frame.toFront();
