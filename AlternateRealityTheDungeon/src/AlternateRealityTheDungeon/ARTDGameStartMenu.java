@@ -31,6 +31,10 @@ public class ARTDGameStartMenu extends JFrame {
 		ARTDGameSettings myGameSettings = new ARTDGameSettings();
 		//ARTDSaveLoadGameData mySaveLoadGameData = new ARTDSaveLoadGameData();
 		
+		ARTDMusicPlayer player = new ARTDMusicPlayer("Stones.mid");
+		Thread thread = new Thread(player);
+		thread.start();
+				
 		//***********************************************
 		//**** Creating JFrame, JPanel, and JButtons ****
 		//***********************************************
@@ -166,6 +170,15 @@ public class ARTDGameStartMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
+				// Wait for the thread to finish
+				try {
+				    thread.join();
+				} catch (InterruptedException e2) {
+				    e2.printStackTrace();
+				}
+
+				// End the thread
+				thread.interrupt();
 				
 				Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
 				window.dispose();

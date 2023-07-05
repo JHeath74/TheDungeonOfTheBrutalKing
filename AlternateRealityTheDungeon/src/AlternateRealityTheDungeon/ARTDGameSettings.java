@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.*;
 
 
 public class ARTDGameSettings
@@ -26,6 +27,8 @@ public class ARTDGameSettings
 	String MenuBarImagePath, MonsterImagePath, FontPath, DungeonFloorTexturePath, DungeonWallTexturePath,
 	SavedGameDirectory, StartMenuPath;
 
+
+	
 
 	static String StoryIntroductionPath;
 	
@@ -115,6 +118,8 @@ public class ARTDGameSettings
 		//*********************************************************************************	
 		
 	}
+	
+	
 
 
 }
