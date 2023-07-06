@@ -21,6 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -36,7 +37,22 @@ public class ARTDCharacterCreation {
 	static ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 	static ARTDGameSettings myGameSettings = new ARTDGameSettings();
 	
+	static String InitialCharecterSave, toonClass = "";
 	static int width, height = 0;
+	static Dimension size;
+	static File charSave;
+	static Scanner saveFile;
+	
+	static JFrame charecterCreationFrame;
+	static JPanel NameAndStats, ClassAndClassInfo, panel3;
+	static JTextArea toonstats, toonclassDescription;
+	static JTextField tooncreation;
+	static JScrollPane toonstatsPane;
+	static JButton reRollStats, saveToon;
+	static JSplitPane CharecterCreationPane;
+	static JComboBox<String> charectorClass;
+	static String[] toonclass;
+
 
 	public static void CharacterCreation() throws IOException, InterruptedException {
 
@@ -45,7 +61,7 @@ public class ARTDCharacterCreation {
 		//***************************************************
 				
 		// getScreenSize() returns the size of the screen in pixels
-		 Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+		 size = Toolkit.getDefaultToolkit().getScreenSize();
 		        
 		// width will store the width of the screen
 		 width = (int)size.getWidth();
@@ -53,13 +69,62 @@ public class ARTDCharacterCreation {
 		// height will store the height of the screen
 		 height = (int)size.getHeight();
 		
+		//*******************************************************************
+		//******** Setting up JFrame  ***************************************
+		//*******************************************************************
+		 
+		charecterCreationFrame = new JFrame("Create New Charecter");
+		charecterCreationFrame.setSize(width, height);
+		charecterCreationFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		charecterCreationFrame.setBackground(myGameSettings.colorBrown);
+		charecterCreationFrame.setUndecorated(false);
+		
+		//******************************************************************
+		//******** Setting up JSplitPane  *********************************
+		//******************************************************************
+		CharecterCreationPane = new JSplitPane(CharecterCreationPane.HORIZONTAL_SPLIT);
+		charecterCreationFrame.add(CharecterCreationPane);
+		
+		CharecterCreationPane.setDividerLocation(.5);
+		CharecterCreationPane.setResizeWeight(.2d);
+		//*****************************************************************
+		//******** Setting up Other Needed Fields**************************
+		//*****************************************************************
+		
+		toonstats = new JTextArea();
+		toonclassDescription = new JTextArea();
+		tooncreation = new JTextField();
+		toonstatsPane = new JScrollPane();
+		
+		
+		
+		//******************************************************************
+		//******** Setting up JPanel and adding them to the JSplitPane *****
+		//******************************************************************
+		 NameAndStats = new JPanel(new BorderLayout());
+		 ClassAndClassInfo = new JPanel(new BorderLayout());
+		 
+		CharecterCreationPane.setLeftComponent(NameAndStats);
+		CharecterCreationPane.setRightComponent(ClassAndClassInfo);
+		 
+		//******************************************************************
+		//******** Setting up Buttons **************************************
+		//******************************************************************
+		
+		reRollStats = new JButton();
+		saveToon = new JButton();
+		
+		//*******************************************************************
+		//******** Checking for and Creating Inital Game Save File **********
+		//*******************************************************************
+		 
 		// When a new game is started, this is the file where the initial charecter
 		// information is stored
-		String InitialCharecterSave = "src//AlternateRealityTheDungeon//SaveGame//InitialCharecterSave.txt";
+		InitialCharecterSave = "src//AlternateRealityTheDungeon//SaveGame//InitialCharecterSave.txt";
 
 		// Checking to see if the InitialCharecterSave.txt file is there,
 		// and if it isn't then a blank InitialCharecterSave.txt file is generated.
-		File charSave = new File(InitialCharecterSave);
+		charSave = new File(InitialCharecterSave);
 		
 		if (!charSave.createNewFile()) {
 
@@ -68,16 +133,15 @@ public class ARTDCharacterCreation {
 		//	ARTDMessages.WelcomeMessage();
 		}
 
-		Scanner saveFile = new Scanner(charSave);
+		saveFile = new Scanner(charSave);
 
 		// If the file is blank, then start creating a new charecter
 		if (!saveFile.hasNext()) {
-			JFrame frame = new JFrame("Create New Charecter");
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
 			saveFile.close();
 
 			// Tooncreation, allows user to make up their name
-			JTextField tooncreation = new JTextField("Please Enter a User Name.");
+			tooncreation = new JTextField("Please Enter a User Name.");
 			tooncreation.addMouseListener(new MouseListener() {
 
 				@Override
@@ -86,24 +150,20 @@ public class ARTDCharacterCreation {
 				}
 
 				@Override
-				public void mousePressed(MouseEvent e) {
-				}
+				public void mousePressed(MouseEvent e) {}
 
 				@Override
-				public void mouseReleased(MouseEvent e) {
-				}
+				public void mouseReleased(MouseEvent e) {}
 
 				@Override
-				public void mouseEntered(MouseEvent e) {
-				}
+				public void mouseEntered(MouseEvent e) {}
 
 				@Override
-				public void mouseExited(MouseEvent e) {
-				}
+				public void mouseExited(MouseEvent e) {	}
 
 			});
 
-			//
+			
 
 			// ************************************************************************
 			// *** Rerolling Charecter Stats if you don't like what you got. **********
@@ -111,8 +171,8 @@ public class ARTDCharacterCreation {
 
 			Integer[] stat = rollstats();
 
-			JTextArea toonstats = new JTextArea();
-			JScrollPane toonstatsPane = new JScrollPane(toonstats);
+			toonstats = new JTextArea();
+			toonstatsPane = new JScrollPane(toonstats);
 
 			toonstats.setText("Charecter Stats\n");
 
@@ -129,18 +189,18 @@ public class ARTDCharacterCreation {
 			// ******** Selecting your Charecter Class *****************
 			// *********************************************************
 
-			String[] toonclass = ARTDClass.toonclass;
+			toonclass = ARTDClass.toonclass;
 			
-			JComboBox<String> charectorClass = new JComboBox<String>(toonclass);
-
-			JTextArea toonclassDescription = new JTextArea("Choose Your Class from the Dropdown box above."); //
+			
+			charectorClass = new JComboBox<String>(toonclass);
+			toonclassDescription = new JTextArea("Choose Your Class from the Dropdown box above."); //
 			toonclassDescription.setLineWrap(true);
 
 			charectorClass.addItemListener(new ItemListener() {
 
 				@Override
 				public void itemStateChanged(ItemEvent e) {
-					String toonClass = charectorClass.getSelectedItem().toString();
+					toonClass = charectorClass.getSelectedItem().toString();
 
 					if (toonClass == toonclass[0]) {
 						toonclassDescription.setText(ARTDPaladin.PaladinClassDescription);
@@ -165,8 +225,8 @@ public class ARTDCharacterCreation {
 				}
 			});
 
-			String toonClass = charectorClass.getSelectedItem().toString();
-			JButton reRollStats = new JButton("Reroll Stats");
+			toonClass = charectorClass.getSelectedItem().toString();
+			reRollStats = new JButton("Reroll Stats");
 			reRollStats.addActionListener(new ActionListener() {
 
 				@Override
@@ -192,7 +252,7 @@ public class ARTDCharacterCreation {
 
 			});
 
-			JButton saveToon = new JButton("Save Charecter"); // Save Button for Charecter creation
+			saveToon = new JButton("Save Charecter"); // Save Button for Charecter creation
 			saveToon.addActionListener(new ActionListener() {
 
 				@Override
@@ -271,7 +331,7 @@ public class ARTDCharacterCreation {
 							//JOptionPane.showMessageDialog(frame, "Charecter Created");
 							
 							writer.close();
-							frame.dispose();
+							charecterCreationFrame.dispose();
 							new ARTDMenuBar();
 
 						} while (saveToon.getModel().isPressed());
@@ -286,27 +346,23 @@ public class ARTDCharacterCreation {
 			
 			myGameState.StartGameLoadCharecter();
 
-			JPanel panel = new JPanel();
-			JPanel panel2 = new JPanel(new FlowLayout());
-			JPanel panel3 = new JPanel(new BorderLayout());
-
-			panel.add(saveToon);
-
-			panel2.add((charectorClass)); // Select Charector Class
-			panel2.add((toonstatsPane)); // Display Randomly Generated Charector Stats
-			panel3.add((toonclassDescription), BorderLayout.NORTH);
-			panel3.add(reRollStats, BorderLayout.CENTER);
-			panel3.add(saveToon, BorderLayout.SOUTH);
-
-			frame.add((tooncreation), BorderLayout.NORTH);
-			frame.add((panel2), BorderLayout.CENTER);
-			frame.add((panel3), BorderLayout.SOUTH);
-
-			frame.setSize(width, height);
-			frame.setLocationRelativeTo(null);
-			frame.setVisible(true);
-			frame.toFront();
-			frame.requestFocus();
+			//******************************************************************
+			//******** Adding to the JPanels  **********************************
+			//******************************************************************
+			
+			NameAndStats.add(tooncreation, BorderLayout.NORTH);
+			NameAndStats.add(toonstats, BorderLayout.CENTER);
+			NameAndStats.add(reRollStats, BorderLayout.SOUTH);
+			
+			ClassAndClassInfo.add(charectorClass, BorderLayout.NORTH);
+			ClassAndClassInfo.add(toonclassDescription, BorderLayout.CENTER);
+			ClassAndClassInfo.add(saveToon, BorderLayout.SOUTH);
+			
+			charecterCreationFrame.setLocationRelativeTo(null);
+			charecterCreationFrame.toFront();
+			charecterCreationFrame.requestFocus();
+			charecterCreationFrame.setVisible(true);
+			
 
 		} else {
 			new ARTDMenuBar();
