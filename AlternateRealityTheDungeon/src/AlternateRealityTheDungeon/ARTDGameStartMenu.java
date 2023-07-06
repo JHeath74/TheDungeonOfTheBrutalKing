@@ -31,6 +31,9 @@ public class ARTDGameStartMenu extends JFrame {
 		ARTDGameSettings myGameSettings = new ARTDGameSettings();
 		//ARTDSaveLoadGameData mySaveLoadGameData = new ARTDSaveLoadGameData();
 		
+		// to stop the thread
+	    boolean exit;
+	    
 		ARTDMusicPlayer player = new ARTDMusicPlayer("Stones.mid");
 		Thread thread = new Thread(player);
 		thread.start();
@@ -150,11 +153,18 @@ public class ARTDGameStartMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
+				
+				
+				
 				try {
 					
 					Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
 					window.dispose();
+					ARTDMusicPlayer.stopMusic();
+					thread.interrupt();
 					ARTDCharacterCreation.CharacterCreation();
+					
+			
 					
 				} catch (IOException e1) {
 					e1.printStackTrace();
@@ -170,19 +180,13 @@ public class ARTDGameStartMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
-				// Wait for the thread to finish
-				try {
-				    thread.join();
-				} catch (InterruptedException e2) {
-				    e2.printStackTrace();
-				}
-
+		
+				ARTDMusicPlayer.stopMusic();
 				// End the thread
 				thread.interrupt();
 				
 				Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
 				window.dispose();
-			//	StartMenuFrame.dispose();
 			//	mySaveLoadGameData.LoadGame();
 				
 			}
@@ -199,6 +203,9 @@ public class ARTDGameStartMenu extends JFrame {
 			}});
         
         
+        
 	}
+	
+
 	
 }
