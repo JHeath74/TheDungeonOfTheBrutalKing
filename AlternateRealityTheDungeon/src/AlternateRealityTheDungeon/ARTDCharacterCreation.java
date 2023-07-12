@@ -94,6 +94,8 @@ public class ARTDCharacterCreation {
 		toonstats = new JTextArea();
 		toonclassDescription = new JTextArea();
 		tooncreation = new JTextField();
+		tooncreation.setEditable(false);
+		tooncreation.setText("Name: " + ARTDMessages.toonName);
 		toonstatsPane = new JScrollPane();
 		
 		
@@ -114,54 +116,7 @@ public class ARTDCharacterCreation {
 		reRollStats = new JButton();
 		saveToon = new JButton();
 		
-		//*******************************************************************
-		//******** Checking for and Creating Inital Game Save File **********
-		//*******************************************************************
-		 
-		// When a new game is started, this is the file where the initial charecter
-		// information is stored
-		InitialCharecterSave = "src//AlternateRealityTheDungeon//SaveGame//InitialCharecterSave.txt";
-
-		// Checking to see if the InitialCharecterSave.txt file is there,
-		// and if it isn't then a blank InitialCharecterSave.txt file is generated.
-		charSave = new File(InitialCharecterSave);
 		
-		if (!charSave.createNewFile()) {
-
-		} else {
-			
-		//	ARTDMessages.WelcomeMessage();
-		}
-
-		saveFile = new Scanner(charSave);
-
-		// If the file is blank, then start creating a new charecter
-		if (!saveFile.hasNext()) {
-			
-			saveFile.close();
-
-			// Tooncreation, allows user to make up their name
-			tooncreation = new JTextField("Please Enter a User Name.");
-			tooncreation.addMouseListener(new MouseListener() {
-
-				@Override
-				public void mouseClicked(MouseEvent e) {
-					tooncreation.setText("");
-				}
-
-				@Override
-				public void mousePressed(MouseEvent e) {}
-
-				@Override
-				public void mouseReleased(MouseEvent e) {}
-
-				@Override
-				public void mouseEntered(MouseEvent e) {}
-
-				@Override
-				public void mouseExited(MouseEvent e) {	}
-
-			});
 
 			
 
@@ -265,7 +220,7 @@ public class ARTDCharacterCreation {
 						ArrayList<String> newChar = new ArrayList<String>();
 
 						ArrayList<String> newChar2 = new ArrayList<String>();
-						String charName = String.valueOf(tooncreation.getText());
+						String charName = ARTDMessages.toonName;
 
 						// Validating if the Charecter Name is blank or not
 						toonName(tooncreation, charName, newChar);
@@ -364,20 +319,7 @@ public class ARTDCharacterCreation {
 			charecterCreationFrame.setVisible(true);
 			
 
-		} else {
-			new ARTDMenuBar();
-			try {
-			 myGameState.StartGameLoadCharecter();
-			 
-
-			} catch (Exception e) {
-
-				e.printStackTrace();
-			}
-			
-				
-			//new ARTDMenu();
-		}
+			new ARTDGameMenuItems();
 
 	}
 
@@ -394,6 +336,7 @@ public class ARTDCharacterCreation {
 
 				if (charName.matches("^[A-Za-z]\\w{3,29}$")) {
 					tooncreation.setText(charName);
+					
 					inputAccepted = true;
 					newChar.add(charName);
 

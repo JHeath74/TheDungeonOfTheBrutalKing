@@ -3,6 +3,7 @@ package AlternateRealityTheDungeon;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
@@ -16,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
@@ -31,7 +33,7 @@ public class ARTDMessages extends JFrame {
 	public static JLabel StoryImageLabel = null;
 	public static BufferedImage StoryImagePicture = null;
 	public static Dimension imageSize = null;
-	
+	public static String toonName = "";
 	
 	
 	public ARTDMessages()
@@ -39,8 +41,10 @@ public class ARTDMessages extends JFrame {
 		
 		StoryImageLabel = new JLabel();
 	}
+	
+	
 
-	public static void WelcomeMessage() throws InterruptedException, IOException {
+	public static void StartGameMessage() throws InterruptedException, IOException, HeadlessException {
 
 		ARTDGameSettings myGameSettings = new ARTDGameSettings();
 		
@@ -75,7 +79,7 @@ public class ARTDMessages extends JFrame {
 		StorySplitPanePanel = new JPanel();
 		
 		//********************************************************************************
-		//************* Creating and Setting up JButton *************************************************
+		//************* Creating and Setting up JButton **********************************
 		//********************************************************************************
 		
 		ConfirmButton = new JButton("Press Click to Continue");
@@ -145,55 +149,65 @@ public class ARTDMessages extends JFrame {
 		
 		StoryMessageFrame.setUndecorated(false);
 		StoryMessageFrame.setVisible(true);
-			
 		
 		//********************************************************************************
-		//************* Writing Welcome Message to JTextArea *****************************
-		//********************************************************************************			
+		//************* Getting a Charecter Name *****************************************
+		//********************************************************************************
 			
-		StoryMessageTextArea.setText("");
-	          
-		StoryMessageTextArea.setText("On your way home from your last adventure you are set upon on my an unknown group of people.\n\n");
+		//StoryMessageTextArea.setText("");
+        
+		StoryMessageTextArea.setText("You wake up very slowly and your not feeling very well. "
+				+ "As you come to your senses,  you notice a stranger sitting by a fire.\n\n");
 		welcomeImages(1);
-
-        wait(2);
+		
+		wait(2);
         StoryImagePanel.remove(StoryImageLabel);
-        	
-		StoryMessageTextArea.append("You feel yourself being carried for a while and then dropped on something hard.\n\n");
+        
+        StoryMessageTextArea.append("As you awaken,  the stranger comes over and hands you a drink, "
+				+ "then asks you for your name.\n\n");
 		welcomeImages(2);
 			
 		wait(2);
 		StoryImagePanel.remove(StoryImageLabel);
 			
-		StoryMessageTextArea.append("You hear a sound like a door shutting then you start to move.  Slowly at first,  then very quickly.  Then you passout.\n\n");
-		welcomeImages(3);
+		toonName = JOptionPane.showInputDialog("Stranger asks 'What is your name?");
 			
+		StoryMessageTextArea.append("Welcome, " + toonName + " it's best to move slowly at first,"
+				+ "But not too slow,  people don't tend to last too long here.\n\n");
+		welcomeImages(3);
+
 		wait(2);
 		StoryImagePanel.remove(StoryImageLabel);			
 			
-		StoryMessageTextArea.append("You wake up an unknown time later, with minimal weapons and armor with someone standing over.  They look at you for a moment, than ask you if you are ok?\n\n");
+		StoryMessageTextArea.append("You ask the stranger where you are,  he says 'You are in a dungeon, and if you wish"
+				+ "to go home,  you'll have to go through it to get out\n\n");
 		welcomeImages(4);
 			
 		wait(2);
 		StoryImagePanel.remove(StoryImageLabel);
 			
-		StoryMessageTextArea.append("And they want to know a few things about you, to prepare you for adventure.\n\n");
+		StoryMessageTextArea.append("The stranger continues 'I wish you luck,  many have come this way but none"
+				+ "have ever left.\n\n");
 		welcomeImages(5);
 			
 		wait(2);
 		StoryImagePanel.remove(StoryImageLabel);
 			
-		StoryMessageTextArea.append("Who I am is not important,  but I need your help.  What you see before you is the enterance to the dungeon.  Many of entered, but none of returned.\n\n");
+		StoryMessageTextArea.append("If you do get out " + toonName + ",  let other's know I'm here. I've been here a long time"
+				+ "and I would like to leave\n\n");
 		welcomeImages(6);
 			
 		wait(2);
 		StoryImagePanel.remove(StoryImageLabel);
 			
-		StoryMessageTextArea.append("At the center of the dungeon is a treasure that is important to me.  Please retrieve it and you'll be greatly rewarded.\n\n");
+		StoryMessageTextArea.append("You look at the stranger and say 'Thanks'.  As you walk away you look back"
+				+ "and only see the first, but there is no sign of the stranger\n\n");
 		welcomeImages(7);
 			
 		wait(4);
 		StoryMessageFrame.dispose();
+		
+		ARTDCharacterCreation.CharacterCreation();
 			
 	 } 
 	

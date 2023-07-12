@@ -152,17 +152,15 @@ public class ARTDGameStartMenu extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				
-				
-				
+	
 				try {
 					
 					Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
 					window.dispose();
 					ARTDMusicPlayer.stopMusic();
 					thread.interrupt();
-					ARTDCharacterCreation.CharacterCreation();
+
+					ARTDMessages.StartGameMessage();
 					
 			
 					
