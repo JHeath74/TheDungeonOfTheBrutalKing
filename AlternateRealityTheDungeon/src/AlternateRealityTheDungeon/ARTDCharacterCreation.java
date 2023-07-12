@@ -3,6 +3,7 @@ package AlternateRealityTheDungeon;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,6 +57,9 @@ public class ARTDCharacterCreation {
 
 	public static void CharacterCreation() throws IOException, InterruptedException {
 
+		ARTDGameSettings myGameSettings = new ARTDGameSettings();
+		
+		
 		//***************************************************
 		//******** Getting Screen Width and Height **********
 		//***************************************************
@@ -146,17 +150,31 @@ public class ARTDCharacterCreation {
 
 			toonclass = ARTDClass.toonclass;
 			
+			for(int i = 0; i < toonclass.length; i++)
+			{
+				System.out.println("toonClass: " + i);
+				
+			}
+			
 			
 			charectorClass = new JComboBox<String>(toonclass);
-			toonclassDescription = new JTextArea("Choose Your Class from the Dropdown box above."); //
+			toonclassDescription = new JTextArea("Choose Your Class from the Dropdown box above.");
 			toonclassDescription.setLineWrap(true);
+			
+			toonclassDescription.setFont(myGameSettings.fontAvatar);
 
 			charectorClass.addItemListener(new ItemListener() {
 
 				@Override
 				public void itemStateChanged(ItemEvent e) {
 					toonClass = charectorClass.getSelectedItem().toString();
-
+					
+					for(int i = 0; i < toonClass.length(); i++)
+					{
+						System.out.println("toonClass2: " + i);
+						System.out.println(" ");
+					}
+					
 					if (toonClass == toonclass[0]) {
 						toonclassDescription.setText(ARTDPaladin.PaladinClassDescription);
 					}
@@ -299,7 +317,7 @@ public class ARTDCharacterCreation {
 				}
 			});
 			
-			myGameState.StartGameLoadCharecter();
+			//myGameState.StartGameLoadCharecter();
 
 			//******************************************************************
 			//******** Adding to the JPanels  **********************************

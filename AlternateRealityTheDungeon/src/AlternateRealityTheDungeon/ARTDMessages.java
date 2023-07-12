@@ -64,9 +64,11 @@ public class ARTDMessages extends JFrame {
 		//********************************************************************************
 		//*************  Setting up JFrame ***********************************************
 		//********************************************************************************
-		StoryMessageFrame = new JFrame("Your Adventure Awaits");
+		StoryMessageFrame = new JFrame("Starting Your Adventure");
 		StoryMessageFrame.setLayout(new BorderLayout());
 		StoryMessageFrame.setSize(width, height);
+		StoryMessageFrame.setUndecorated(true);
+		StoryMessageFrame.getContentPane().setBackground(myGameSettings.colorLightBrown);
 		StoryMessageFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//********************************************************************************
@@ -117,7 +119,11 @@ public class ARTDMessages extends JFrame {
 		StoryMessageTextArea = new JTextArea(60,50); // Row, Column
 		StoryMessageTextArea.setWrapStyleWord(true);
 		StoryMessageTextArea.setLineWrap(true);
-		StoryMessageTextArea.setFont(myGameSettings.fontWelcomeMessage2);
+		
+		StoryMessageTextArea.setBackground(myGameSettings.colorLightBrown);
+		StoryMessageTextArea.setForeground(myGameSettings.colorDarkGoldenRod);
+		StoryMessageTextArea.setFont(new Font("Arial", Font.PLAIN, 30));
+		
 		StoryMessagePanel.add(StoryMessageTextArea);
 		
 		//********************************************************************************
@@ -131,9 +137,7 @@ public class ARTDMessages extends JFrame {
 		//********************************************************************************
 		//************* Setting JPanel Size ********************************************
 		//********************************************************************************
-				
-		//StoryImagePanel.setSize(640,480);
-		//StoryImageLabel.setSize(640,480);
+	
 
 		
 		//********************************************************************************
@@ -154,14 +158,14 @@ public class ARTDMessages extends JFrame {
 		//************* Getting a Charecter Name *****************************************
 		//********************************************************************************
 			
-		//StoryMessageTextArea.setText("");
+		StoryMessageTextArea.setText("");
         
 		StoryMessageTextArea.setText("You wake up very slowly and your not feeling very well. "
 				+ "As you come to your senses,  you notice a stranger sitting by a fire.\n\n");
 		welcomeImages(1);
 		
 		wait(2);
-        StoryImagePanel.remove(StoryImageLabel);
+      //  StoryImagePanel.remove(StoryImageLabel);
         
         StoryMessageTextArea.append("As you awaken,  the stranger comes over and hands you a drink, "
 				+ "then asks you for your name.\n\n");
