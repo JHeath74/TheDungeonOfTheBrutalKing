@@ -52,7 +52,7 @@ public class ARTDCharacterCreation {
 	static JButton reRollStats, saveToon;
 	static JSplitPane CharecterCreationPane;
 	static JComboBox<String> charectorClass;
-	static String[] toonclass;
+	static String[] toonclasslist;
 
 
 	public static void CharacterCreation() throws IOException, InterruptedException {
@@ -148,16 +148,10 @@ public class ARTDCharacterCreation {
 			// ******** Selecting your Charecter Class *****************
 			// *********************************************************
 
-			toonclass = ARTDClass.toonclass;
-			
-			for(int i = 0; i < toonclass.length; i++)
-			{
-				System.out.println("toonClass: " + i);
-				
-			}
+			toonclasslist = ARTDClass.toonclassarray;
 			
 			
-			charectorClass = new JComboBox<String>(toonclass);
+			charectorClass = new JComboBox<String>(toonclasslist);
 			toonclassDescription = new JTextArea("Choose Your Class from the Dropdown box above.");
 			toonclassDescription.setLineWrap(true);
 			
@@ -167,38 +161,33 @@ public class ARTDCharacterCreation {
 
 				@Override
 				public void itemStateChanged(ItemEvent e) {
+					System.out.println(toonClass);
 					toonClass = charectorClass.getSelectedItem().toString();
-					
-					for(int i = 0; i < toonClass.length(); i++)
-					{
-						System.out.println("toonClass2: " + i);
-						System.out.println(" ");
-					}
-					
-					if (toonClass == toonclass[0]) {
+
+					if (toonClass == toonclasslist[0]) {
 						toonclassDescription.setText(ARTDPaladin.PaladinClassDescription);
 					}
-					if (toonClass == toonclass[1]) {
+					if (toonClass == toonclasslist[1]) {
 						toonclassDescription.setText(ARTDCleric.ClericClassDescription);
 					}
-					if (toonClass == toonclass[2]) {
+					if (toonClass == toonclasslist[2]) {
 						toonclassDescription.setText(ARTDRogue.RogueClassDescription);
 					}
 
-					if (toonClass == toonclass[3]) {
+					if (toonClass == toonclasslist[3]) {
 						toonclassDescription.setText(ARTDHunter.HunterClassDescription);
 					}
-					if (toonClass == toonclass[4]) {
+					if (toonClass == toonclasslist[4]) {
 						toonclassDescription.setText(ARTDWarrior.WarriorClassDescription);
 					}
-					if (toonClass == toonclass[5]) {
+					if (toonClass == toonclasslist[5]) {
 						toonclassDescription.setText(ARTDBard.BardClassDescription);
 					}
 
 				}
 			});
 
-			toonClass = charectorClass.getSelectedItem().toString();
+		//	toonClass = charectorClass.getSelectedItem().toString();
 			reRollStats = new JButton("Reroll Stats");
 			reRollStats.addActionListener(new ActionListener() {
 

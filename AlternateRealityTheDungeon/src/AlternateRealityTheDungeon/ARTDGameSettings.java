@@ -24,14 +24,13 @@ public class ARTDGameSettings
 	
 	BufferedImage myJMenuBarPicture, myStartMenuPicture = null;
 	
-	String MenuBarImagePath, MonsterImagePath, FontPath, DungeonFloorTexturePath, DungeonWallTexturePath,
-	SavedGameDirectory, StartMenuPath;
+	static String MenuBarImagePath, MonsterImagePath, FontPath, DungeonFloorTexturePath, DungeonWallTexturePath,
+	SavedGameDirectory, StartMenuPath, StoryIntroductionPath;
 
 
 	
 
-	static String StoryIntroductionPath;
-	
+
 	
 	public ARTDGameSettings()
 	{	
@@ -55,7 +54,6 @@ public class ARTDGameSettings
 		colorBrown = new Color(165, 42, 42);
 		colorLightBrown = new Color(196, 164, 132);
 		colorLightYellow = new Color( 255, 255, 224);
-		//colorBlack = new Color(25, 50, 75);
 		colorBlack = new Color(20,20,20);
 		colorWhite = new Color(255,255,255);
 		colorLightGreen = new Color(102,255,102);

@@ -159,13 +159,12 @@ public class ARTDMessages extends JFrame {
 		//********************************************************************************
 			
 		StoryMessageTextArea.setText("");
-        
 		StoryMessageTextArea.setText("You wake up very slowly and your not feeling very well. "
 				+ "As you come to your senses,  you notice a stranger sitting by a fire.\n\n");
 		welcomeImages(1);
 		
 		wait(2);
-      //  StoryImagePanel.remove(StoryImageLabel);
+        StoryImagePanel.remove(StoryImageLabel);
         
         StoryMessageTextArea.append("As you awaken,  the stranger comes over and hands you a drink, "
 				+ "then asks you for your name.\n\n");
@@ -220,6 +219,8 @@ public class ARTDMessages extends JFrame {
 
 		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
 		StoryImagePicture = ImageIO.read(new File(ARTDGameSettings.StoryIntroductionPath + i + ".png")); // Buffered Image
+		
+		System.out.println("Image: "+StoryImagePicture);
 		
 		StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));
 		StoryImagePanel.add(StoryImageLabel);
