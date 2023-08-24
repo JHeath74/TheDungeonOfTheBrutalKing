@@ -39,18 +39,10 @@ public class ARTDGameStartMenu extends JFrame {
 		// to stop the thread
 	    boolean exit;
 	    
-	//	ARTDMusicPlayer player = new ARTDMusicPlayer("Stones.mid");
-	//	Thread thread = new Thread(player);
-	//	thread.start();
-		
-		Thread t1 = new Thread(new Runnable() {
-		    @Override
-		    public void run() {
-		    	ARTDMusicPlayer player = new ARTDMusicPlayer("Stones.mid");
-		    }
-		});  
-		t1.start();
-		
+		ARTDMusicPlayer player = new ARTDMusicPlayer("Stones.mid");
+		Thread thread = new Thread(player);
+		thread.start();
+
 				
 		//***********************************************
 		//**** Creating JFrame, JPanel, and JButtons ****
@@ -196,7 +188,7 @@ public class ARTDGameStartMenu extends JFrame {
 		
 				ARTDMusicPlayer.stopMusic();
 				// End the thread
-			//	thread.interrupt();
+				thread.stop();
 				
 				Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
 				window.dispose();

@@ -155,6 +155,10 @@ public class ARTDMessages extends JFrame {
 		//************* Getting a Charecter Name *****************************************
 		//********************************************************************************
 		
+		ARTDMusicPlayer player = new ARTDMusicPlayer("Campfire.mp3");
+		Thread thread = new Thread(player);
+		thread.start();
+		
 		StoryMessageTextArea.setText("");
 		StoryMessageTextArea.setText("You wake up very slowly and your not feeling very well. "
 				+ "As you come to your senses,  you notice a stranger sitting by a fire.\n\n");
@@ -206,6 +210,8 @@ public class ARTDMessages extends JFrame {
 			
 		wait(4);
 		StoryMessageFrame.dispose();
+		
+		thread.stop();
 		
 		ARTDCharacterCreation.CharacterCreation();
 			
