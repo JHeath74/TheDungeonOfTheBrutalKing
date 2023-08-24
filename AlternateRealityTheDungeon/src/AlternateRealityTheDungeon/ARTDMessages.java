@@ -4,14 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.HeadlessException;
-import java.awt.Image;
+
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -134,12 +133,7 @@ public class ARTDMessages extends JFrame {
 		StoryImageSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		StorySplitPanePanel.add(StoryImageSplitPane);
 		
-		//********************************************************************************
-		//************* Setting JPanel Size ********************************************
-		//********************************************************************************
-	
-
-		
+			
 		//********************************************************************************
 		//************* Setting up JSplitPane ********************************************
 		//********************************************************************************
@@ -150,6 +144,9 @@ public class ARTDMessages extends JFrame {
 		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
 		StoryImageSplitPane.setRightComponent(StoryMessagePanel);
 		
+		//********************************************************************************
+		//************* Setting JPanel Size ********************************************
+		//********************************************************************************
 		
 		StoryMessageFrame.setUndecorated(false);
 		StoryMessageFrame.setVisible(true);
@@ -157,7 +154,7 @@ public class ARTDMessages extends JFrame {
 		//********************************************************************************
 		//************* Getting a Charecter Name *****************************************
 		//********************************************************************************
-			
+		
 		StoryMessageTextArea.setText("");
 		StoryMessageTextArea.setText("You wake up very slowly and your not feeling very well. "
 				+ "As you come to your senses,  you notice a stranger sitting by a fire.\n\n");
@@ -220,10 +217,9 @@ public class ARTDMessages extends JFrame {
 		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
 		StoryImagePicture = ImageIO.read(new File(ARTDGameSettings.StoryIntroductionPath + i + ".png")); // Buffered Image
 		
-		System.out.println("Image: "+StoryImagePicture);
-		
 		StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));
 		StoryImagePanel.add(StoryImageLabel);
+		
 
 	}
 		

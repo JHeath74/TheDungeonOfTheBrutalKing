@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Image;
+
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -12,19 +12,24 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
 
-import javax.imageio.ImageIO;
+
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
+
 import javax.swing.SwingUtilities;
 
 public class ARTDGameStartMenu extends JFrame {
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public static void main(String[] args) throws IOException {
 		
@@ -34,9 +39,18 @@ public class ARTDGameStartMenu extends JFrame {
 		// to stop the thread
 	    boolean exit;
 	    
-		ARTDMusicPlayer player = new ARTDMusicPlayer("Stones.mid");
-		Thread thread = new Thread(player);
-		thread.start();
+	//	ARTDMusicPlayer player = new ARTDMusicPlayer("Stones.mid");
+	//	Thread thread = new Thread(player);
+	//	thread.start();
+		
+		Thread t1 = new Thread(new Runnable() {
+		    @Override
+		    public void run() {
+		    	ARTDMusicPlayer player = new ARTDMusicPlayer("Stones.mid");
+		    }
+		});  
+		t1.start();
+		
 				
 		//***********************************************
 		//**** Creating JFrame, JPanel, and JButtons ****
@@ -156,9 +170,10 @@ public class ARTDGameStartMenu extends JFrame {
 				try {
 					
 					Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
-					window.dispose();
 					ARTDMusicPlayer.stopMusic();
-					thread.interrupt();
+			//		thread.interrupt();
+					window.dispose();
+					
 
 					ARTDMessages.StartGameMessage();
 					
@@ -181,7 +196,7 @@ public class ARTDGameStartMenu extends JFrame {
 		
 				ARTDMusicPlayer.stopMusic();
 				// End the thread
-				thread.interrupt();
+			//	thread.interrupt();
 				
 				Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
 				window.dispose();

@@ -87,7 +87,7 @@ public class ARTDCharacterCreation {
 		//******************************************************************
 		//******** Setting up JSplitPane  *********************************
 		//******************************************************************
-		CharecterCreationPane = new JSplitPane(CharecterCreationPane.HORIZONTAL_SPLIT);
+		CharecterCreationPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		charecterCreationFrame.add(CharecterCreationPane);
 		
 		CharecterCreationPane.setDividerLocation(.5);

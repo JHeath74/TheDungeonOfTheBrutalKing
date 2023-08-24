@@ -4,10 +4,11 @@ import java.io.File;
 
 import javax.sound.sampled.*;
 
+
 public class ARTDMusicPlayer implements Runnable{
     private static Clip clip = null;
     File file = null;
-    private String musicType;
+    private String musicType = null;
     static String MusicFilePath = "src\\AlternateRealityTheDungeon\\Music\\" ;
 
     public ARTDMusicPlayer(String musicType) {
