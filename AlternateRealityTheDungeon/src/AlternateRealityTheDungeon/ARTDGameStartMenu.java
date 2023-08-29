@@ -37,7 +37,7 @@ public class ARTDGameStartMenu extends JFrame {
 		//ARTDSaveLoadGameData mySaveLoadGameData = new ARTDSaveLoadGameData();
 		
 		// to stop the thread
-	    boolean exit;
+		boolean exit;
 	    
 		ARTDMusicPlayer player = new ARTDMusicPlayer("Stones.mid");
 		Thread thread = new Thread(player);
@@ -87,7 +87,7 @@ public class ARTDGameStartMenu extends JFrame {
         StartMenuFrame.setLayout(new BorderLayout());
         StartMenuFrame.setSize(width, height);
         StartMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        StartMenuFrame.setUndecorated(true);
+        StartMenuFrame.setUndecorated(false);
         
         
       //***************************************************
@@ -163,7 +163,7 @@ public class ARTDGameStartMenu extends JFrame {
 					
 					Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
 					ARTDMusicPlayer.stopMusic();
-			//		thread.interrupt();
+					thread.interrupt();
 					window.dispose();
 					
 

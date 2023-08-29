@@ -6,13 +6,16 @@ import javax.sound.sampled.*;
 
 
 public class ARTDMusicPlayer implements Runnable{
-    private static Clip clip = null;
+   
+	//https://www.geeksforgeeks.org/play-audio-file-using-java/
+	
+	private static Clip clip = null;
     File file = null;
-    private String musicType = null;
-    static String SoundEffectsFilePath = "src\\AlternateRealityTheDungeon\\SoundEffects\\";
+    private String soundType = null;
+    static String SoundFilePath = "src\\AlternateRealityTheDungeon\\SoundEffects\\";
     
-    public ARTDMusicPlayer(String musicType) {
-        this.musicType = musicType;
+    public ARTDMusicPlayer(String soundType) {
+        this.soundType = soundType;
     }
 
 	@Override
@@ -20,7 +23,7 @@ public class ARTDMusicPlayer implements Runnable{
 		 try {
 	        	
 	        	AudioInputStream musicInputStream = AudioSystem.getAudioInputStream(
-	        			  new File(SoundEffectsFilePath + musicType));
+	        			  new File(SoundFilePath + soundType));
 	            
 	            clip = AudioSystem.getClip();
 	            clip.open(musicInputStream);
@@ -32,7 +35,8 @@ public class ARTDMusicPlayer implements Runnable{
 
 	    public static void stopMusic() {
 	        if (clip != null && clip.isRunning()) {
-	            clip.stop();
+	           // clip.stop();
+	        	clip.close();
 	        }
 		
 	}

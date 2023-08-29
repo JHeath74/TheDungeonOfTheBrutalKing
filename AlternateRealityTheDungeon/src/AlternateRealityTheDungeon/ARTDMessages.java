@@ -155,23 +155,23 @@ public class ARTDMessages extends JFrame {
 		//************* Getting a Charecter Name *****************************************
 		//********************************************************************************
 		
-		ARTDMusicPlayer player = new ARTDMusicPlayer("Campfire.mp3");
-		Thread thread = new Thread(player);
-		thread.start();
+	//	ARTDMusicPlayer player = new ARTDMusicPlayer("Campfire.mp3");
+	//	Thread thread = new Thread(player);
+	//	thread.start();
 		
 		StoryMessageTextArea.setText("");
 		StoryMessageTextArea.setText("You wake up very slowly and your not feeling very well. "
 				+ "As you come to your senses,  you notice a stranger sitting by a fire.\n\n");
 		welcomeImages(1);
 		
-		wait(2);
+	//	wait(2);
         StoryImagePanel.remove(StoryImageLabel);
         
         StoryMessageTextArea.append("As you awaken,  the stranger comes over and hands you a drink, "
 				+ "then asks you for your name.\n\n");
 		welcomeImages(2);
 			
-		wait(2);
+	//	wait(2);
 		StoryImagePanel.remove(StoryImageLabel);
 			
 		toonName = JOptionPane.showInputDialog("Stranger asks 'What is your name?");
@@ -180,38 +180,38 @@ public class ARTDMessages extends JFrame {
 				+ "But not too slow,  people don't tend to last too long here.\n\n");
 		welcomeImages(3);
 
-		wait(2);
+	//	wait(2);
 		StoryImagePanel.remove(StoryImageLabel);			
 			
 		StoryMessageTextArea.append("You ask the stranger where you are,  he says 'You are in a dungeon, and if you wish"
 				+ "to go home,  you'll have to go through it to get out\n\n");
 		welcomeImages(4);
 			
-		wait(2);
+	//	wait(2);
 		StoryImagePanel.remove(StoryImageLabel);
 			
 		StoryMessageTextArea.append("The stranger continues 'I wish you luck,  many have come this way but none"
 				+ "have ever left.\n\n");
 		welcomeImages(5);
 			
-		wait(2);
+	//	wait(2);
 		StoryImagePanel.remove(StoryImageLabel);
 			
 		StoryMessageTextArea.append("If you do get out " + toonName + ",  let other's know I'm here. I've been here a long time"
 				+ "and I would like to leave\n\n");
 		welcomeImages(6);
 			
-		wait(2);
+	//	wait(2);
 		StoryImagePanel.remove(StoryImageLabel);
 			
 		StoryMessageTextArea.append("You look at the stranger and say 'Thanks'.  As you walk away you look back"
 				+ "and only see the first, but there is no sign of the stranger\n\n");
 		welcomeImages(7);
 			
-		wait(4);
+	//	wait(4);
 		StoryMessageFrame.dispose();
 		
-		thread.stop();
+//		thread.stop();
 		
 		ARTDCharacterCreation.CharacterCreation();
 			

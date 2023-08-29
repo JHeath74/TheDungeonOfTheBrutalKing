@@ -100,7 +100,7 @@ public class ARTDCharacterCreation {
 		toonclassDescription = new JTextArea();
 		tooncreation = new JTextField();
 		tooncreation.setEditable(false);
-		tooncreation.setText("Name: " + ARTDMessages.toonName);
+		tooncreation.setText("Name: " + ARTDMessages3.toonName);
 		toonstatsPane = new JScrollPane();
 		
 		
@@ -235,7 +235,7 @@ public class ARTDCharacterCreation {
 						ArrayList<String> newChar = new ArrayList<String>();
 
 						ArrayList<String> newChar2 = new ArrayList<String>();
-						String charName = ARTDMessages.toonName;
+						String charName = ARTDMessages3.toonName;
 
 						// Validating if the Charecter Name is blank or not
 						toonName(tooncreation, charName, newChar);
