@@ -159,16 +159,8 @@ public class ARTDCharacterCreation {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					
-				
-					
-			
-					
+						
 					toonClass = charectorClass.getSelectedItem().toString();
-
-					
-					System.out.println("toonclass: " + toonClass);
 					
 					if (toonClass == toonclasslist[0]) {
 						toonclassDescription.setText(ARTDPaladin.PaladinClassDescription);

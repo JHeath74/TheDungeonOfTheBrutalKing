@@ -122,6 +122,7 @@ public class ARTDMessages extends JFrame {
 		StoryMessageTextArea.setBackground(myGameSettings.colorLightBrown);
 		StoryMessageTextArea.setForeground(myGameSettings.colorDarkGoldenRod);
 		StoryMessageTextArea.setFont(new Font("Arial", Font.PLAIN, 30));
+		StoryMessageTextArea.setSize(480, 320);
 		
 		StoryMessagePanel.add(StoryMessageTextArea);
 		
@@ -164,51 +165,53 @@ public class ARTDMessages extends JFrame {
 				+ "As you come to your senses,  you notice a stranger sitting by a fire.\n\n");
 		welcomeImages(1);
 		
-	//	wait(2);
-        StoryImagePanel.remove(StoryImageLabel);
+		wait(2);
+    //    StoryImagePanel.remove(StoryImageLabel);
         
         StoryMessageTextArea.append("As you awaken,  the stranger comes over and hands you a drink, "
 				+ "then asks you for your name.\n\n");
 		welcomeImages(2);
 			
-	//	wait(2);
-		StoryImagePanel.remove(StoryImageLabel);
+		wait(2);
+	//	StoryImagePanel.remove(StoryImageLabel);
 			
 		toonName = JOptionPane.showInputDialog("Stranger asks 'What is your name?");
-			
+
 		StoryMessageTextArea.append("Welcome, " + toonName + " it's best to move slowly at first,"
 				+ "But not too slow,  people don't tend to last too long here.\n\n");
 		welcomeImages(3);
 
-	//	wait(2);
-		StoryImagePanel.remove(StoryImageLabel);			
+		wait(2);
+	//	StoryImagePanel.remove(StoryImageLabel);			
 			
 		StoryMessageTextArea.append("You ask the stranger where you are,  he says 'You are in a dungeon, and if you wish"
 				+ "to go home,  you'll have to go through it to get out\n\n");
 		welcomeImages(4);
 			
-	//	wait(2);
-		StoryImagePanel.remove(StoryImageLabel);
+		wait(2);
+	//	StoryImagePanel.remove(StoryImageLabel);
 			
 		StoryMessageTextArea.append("The stranger continues 'I wish you luck,  many have come this way but none"
 				+ "have ever left.\n\n");
 		welcomeImages(5);
-			
-	//	wait(2);
-		StoryImagePanel.remove(StoryImageLabel);
+
+		wait(2);
+	//	StoryImagePanel.remove(StoryImageLabel);
 			
 		StoryMessageTextArea.append("If you do get out " + toonName + ",  let other's know I'm here. I've been here a long time"
 				+ "and I would like to leave\n\n");
 		welcomeImages(6);
-			
-	//	wait(2);
-		StoryImagePanel.remove(StoryImageLabel);
+	
+		wait(2);
+	//	StoryImagePanel.remove(StoryImageLabel);
 			
 		StoryMessageTextArea.append("You look at the stranger and say 'Thanks'.  As you walk away you look back"
 				+ "and only see the first, but there is no sign of the stranger\n\n");
 		welcomeImages(7);
-			
-	//	wait(2);
+		
+
+		wait(2);
+		
 		StoryMessageFrame.dispose();
 		
 		//thread.stop();
@@ -222,9 +225,16 @@ public class ARTDMessages extends JFrame {
 
 		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
 		StoryImagePicture = ImageIO.read(new File(ARTDGameSettings.StoryIntroductionPath + i + ".png")); // Buffered Image
+
 		
 		StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));
+
+
 		StoryImagePanel.add(StoryImageLabel);
+		
+		
+		
+
 		
 
 	}
