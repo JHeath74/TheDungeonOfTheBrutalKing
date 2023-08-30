@@ -208,10 +208,10 @@ public class ARTDMessages extends JFrame {
 				+ "and only see the first, but there is no sign of the stranger\n\n");
 		welcomeImages(7);
 			
-	//	wait(4);
+	//	wait(2);
 		StoryMessageFrame.dispose();
 		
-//		thread.stop();
+		//thread.stop();
 		
 		ARTDCharacterCreation.CharacterCreation();
 			

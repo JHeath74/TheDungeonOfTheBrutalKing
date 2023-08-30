@@ -38,8 +38,8 @@ public class ARTDCharacterCreation {
 	static ARTDLoadSaveGame myGameState = new ARTDLoadSaveGame();
 	static ARTDGameSettings myGameSettings = new ARTDGameSettings();
 	
-	static String InitialCharecterSave = "";
-	static String toonClass = "Rogue";
+	static String InitialCharecterSave = " ";
+	static String toonClass = " ";
 	static int width, height = 0;
 	static Dimension size;
 	static File charSave;
@@ -151,28 +151,26 @@ public class ARTDCharacterCreation {
 
 			toonclasslist = ARTDClass.toonclassarray;
 			
-			
 			charectorClass = new JComboBox<String>(toonclasslist);
 			toonclassDescription = new JTextArea("Choose Your Class from the Dropdown box above.");
 			toonclassDescription.setLineWrap(true);
-			
-			//toonclassDescription.setFont(myGameSettings.fontAvatar);
 
-			charectorClass.addItemListener(new ItemListener() {
+			charectorClass.addActionListener(new ActionListener() {
 
 				@Override
-				public void itemStateChanged(ItemEvent e) {
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
 					
+				
+					
+			
 					
 					toonClass = charectorClass.getSelectedItem().toString();
 
-					for(String x: toonclasslist)
-					{
-						System.out.println("toonClass: " + toonClass +" "+" toonclasslist: " + x);
-					}
-					toonclassDescription.setText("Hello");
 					
-					if (toonClass.equals(toonclasslist[0])) {
+					System.out.println("toonclass: " + toonClass);
+					
+					if (toonClass == toonclasslist[0]) {
 						toonclassDescription.setText(ARTDPaladin.PaladinClassDescription);
 					}
 					if (toonClass == toonclasslist[1]) {
@@ -193,6 +191,8 @@ public class ARTDCharacterCreation {
 					}
 
 				}
+
+				
 			});
 
 		
