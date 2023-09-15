@@ -156,7 +156,9 @@ public class ARTDCharacterCreation {
 			toonclassDescription.setLineWrap(true);
 			
 
-		
+			// *********************************************************
+			// ***** Selecting your Charecter Class Description ********
+			// *********************************************************
 
 			charectorClass.addActionListener(new ActionListener() {
 
@@ -164,9 +166,10 @@ public class ARTDCharacterCreation {
 				public void actionPerformed(ActionEvent e) {
 						
 					toonClass = charectorClass.getSelectedItem().toString();
+			
+					//The Description are returning a null
 					
 					if (toonClass == toonclasslist[0]) {
-						toonclassDescription.setText("Hello");
 						toonclassDescription.setText(ARTDPaladin.PaladinClassDescription);
 					}
 					if (toonClass == toonclasslist[1]) {
@@ -175,9 +178,10 @@ public class ARTDCharacterCreation {
 					if (toonClass == toonclasslist[2]) {
 						toonclassDescription.setText(ARTDRogue.RogueClassDescription);
 					}
-
-					if (toonClass == toonclasslist[3]) {
+					if (toonClass.equals(toonclasslist[3])) {
 						toonclassDescription.setText(ARTDHunter.HunterClassDescription);
+						
+						System.out.println("Null: " + ARTDHunter.HunterClassDescription);
 					}
 					if (toonClass == toonclasslist[4]) {
 						toonclassDescription.setText(ARTDWarrior.WarriorClassDescription);

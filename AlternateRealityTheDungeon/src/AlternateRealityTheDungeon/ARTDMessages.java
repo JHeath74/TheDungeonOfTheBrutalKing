@@ -45,7 +45,7 @@ public class ARTDMessages extends JFrame {
 	
 	
 
-	public static void StartGameMessage() throws InterruptedException, IOException, HeadlessException {
+	public static void StartGameMessage() throws InterruptedException, IOException, HeadlessException, UnsupportedAudioFileException, LineUnavailableException {
 
 		ARTDGameSettings myGameSettings = new ARTDGameSettings();
 		
@@ -158,7 +158,8 @@ public class ARTDMessages extends JFrame {
 		//************* Getting a Charecter Name *****************************************
 		//********************************************************************************
 		
-
+	//	ARTDMusicPlayer Player = new ARTDMusicPlayer();
+	//	Player.mp3Player("Campfire.mp3");
 
 		
 		

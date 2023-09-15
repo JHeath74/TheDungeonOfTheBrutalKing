@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -171,11 +171,22 @@ public class ARTDGameStartMenu extends JFrame {
 					Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
 					soundplayer.stopMidi();
 				
-				//	thread.interrupt();
+
 					window.dispose();
 					
 
-					ARTDMessages.StartGameMessage();
+					try {
+						ARTDMessages.StartGameMessage();
+					} catch (HeadlessException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					
 			
 					
