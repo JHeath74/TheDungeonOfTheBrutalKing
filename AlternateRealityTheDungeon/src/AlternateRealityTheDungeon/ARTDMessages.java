@@ -12,6 +12,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -156,14 +158,18 @@ public class ARTDMessages extends JFrame {
 		//************* Getting a Charecter Name *****************************************
 		//********************************************************************************
 		
-	//	ARTDMusicPlayer player = new ARTDMusicPlayer("Campfire.mp3");
-	//	Thread thread = new Thread(player);
-	//	thread.start();
+
+
+		
+		
 		
 		StoryMessageTextArea.setText("");
-		StoryMessageTextArea.setText("You wake up very slowly and your not feeling very well. "
-				+ "As you come to your senses,  you notice a stranger sitting by a fire.\n\n");
+		StoryMessageTextArea.setText("You wake up very slowly and your "
+				+ "not feeling very well. As you come to your senses, "
+				+ " you notice a stranger sitting by a fire.\n\n");
 		welcomeImages(1);
+		
+
 		
 		wait(2);
     //    StoryImagePanel.remove(StoryImageLabel);
@@ -228,15 +234,10 @@ public class ARTDMessages extends JFrame {
 
 		
 		StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));
-
-
 		StoryImagePanel.add(StoryImageLabel);
 		
-		
-		
-
-		
-
+		StoryImageLabel.repaint();
+		StoryImageLabel.revalidate();
 	}
 		
 

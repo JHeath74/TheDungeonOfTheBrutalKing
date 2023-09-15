@@ -82,7 +82,7 @@ public class ARTDCharacterCreation {
 		charecterCreationFrame.setSize(width, height);
 		charecterCreationFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		charecterCreationFrame.setBackground(myGameSettings.colorBrown);
-		charecterCreationFrame.setUndecorated(false);
+		charecterCreationFrame.setUndecorated(true);
 		
 		//******************************************************************
 		//******** Setting up JSplitPane  *********************************
@@ -100,7 +100,7 @@ public class ARTDCharacterCreation {
 		toonclassDescription = new JTextArea();
 		tooncreation = new JTextField();
 		tooncreation.setEditable(false);
-		tooncreation.setText("Name: " + ARTDMessages3.toonName);
+		tooncreation.setText("Name: " + ARTDMessages.toonName);
 		toonstatsPane = new JScrollPane();
 		
 		
@@ -154,6 +154,9 @@ public class ARTDCharacterCreation {
 			charectorClass = new JComboBox<String>(toonclasslist);
 			toonclassDescription = new JTextArea("Choose Your Class from the Dropdown box above.");
 			toonclassDescription.setLineWrap(true);
+			
+
+		
 
 			charectorClass.addActionListener(new ActionListener() {
 
@@ -163,6 +166,7 @@ public class ARTDCharacterCreation {
 					toonClass = charectorClass.getSelectedItem().toString();
 					
 					if (toonClass == toonclasslist[0]) {
+						toonclassDescription.setText("Hello");
 						toonclassDescription.setText(ARTDPaladin.PaladinClassDescription);
 					}
 					if (toonClass == toonclasslist[1]) {
@@ -227,7 +231,7 @@ public class ARTDCharacterCreation {
 						ArrayList<String> newChar = new ArrayList<String>();
 
 						ArrayList<String> newChar2 = new ArrayList<String>();
-						String charName = ARTDMessages3.toonName;
+						String charName = ARTDMessages.toonName;
 
 						// Validating if the Charecter Name is blank or not
 						toonName(tooncreation, charName, newChar);

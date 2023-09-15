@@ -13,8 +13,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-
-
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,10 +25,6 @@ import javax.swing.SwingUtilities;
 
 public class ARTDGameStartMenu extends JFrame {
 
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public static void main(String[] args) throws IOException {
@@ -39,9 +35,20 @@ public class ARTDGameStartMenu extends JFrame {
 		// to stop the thread
 		boolean exit;
 	    
-	//	ARTDMusicPlayer player = new ARTDMusicPlayer("Stones.mid");
-	//	Thread thread = new Thread(player);
-	//	thread.start();
+	
+		ARTDMusicPlayer soundplayer = new ARTDMusicPlayer();
+		try {
+			soundplayer.midiPlayer("Stones.mid");
+		} catch (UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 				
 		//***********************************************
@@ -87,7 +94,7 @@ public class ARTDGameStartMenu extends JFrame {
         StartMenuFrame.setLayout(new BorderLayout());
         StartMenuFrame.setSize(width, height);
         StartMenuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        StartMenuFrame.setUndecorated(false);
+        StartMenuFrame.setUndecorated(true);
         
         
       //***************************************************
@@ -162,7 +169,8 @@ public class ARTDGameStartMenu extends JFrame {
 				try {
 					
 					Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
-				////	ARTDMusicPlayer.stopMusic();
+					soundplayer.stopMidi();
+				
 				//	thread.interrupt();
 					window.dispose();
 					
@@ -185,10 +193,8 @@ public class ARTDGameStartMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 			
-		
-			//	ARTDMusicPlayer.stopMusic();
-				// End the thread
-			//	thread.stop();
+				soundplayer.stopMidi();
+
 				
 				Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
 				window.dispose();
