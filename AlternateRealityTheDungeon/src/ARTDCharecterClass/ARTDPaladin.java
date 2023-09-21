@@ -18,17 +18,22 @@ public class ARTDPaladin extends ARTDClass
 	
 	public static String charClass = "Paladin";
 	
-	public static String PaladinClassDescription;
+	public static String ClassDescription;
+	
 	public ARTDPaladin()
 	{
 		Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
 		
 		charClass = "Paladin";
 		
-		PaladinClassDescription = "Compared with other classes the " + ARTDPaladin.charClass + " class has one of the most/n restrictive codes"
+		
+
+	}
+	public static String ClassDescription()
+	{
+		return ClassDescription = "Compared with other classes the " + ARTDPaladin.charClass + " class has one of the most/n restrictive codes"
 				+ " of conduct and paladin characters are expected to/n demonstrate and embody goodness. \n\n"
 				+ "Wisdom (WIS) followed by Strength is most important stats for a " + ARTDPaladin.charClass;
-
 	}
 	
 }

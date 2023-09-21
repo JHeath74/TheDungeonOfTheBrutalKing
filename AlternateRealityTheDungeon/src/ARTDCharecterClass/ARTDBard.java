@@ -15,9 +15,9 @@ public class ARTDBard extends ARTDClass{
 	int wis; //Wisdom
 	int agi; //Agility
 	
-	public static String charClass;
+	public static String charClass = "Bard";
 	
-	public static String BardClassDescription;
+	public static String ClassDescription;
 
 	public ARTDBard()
 	{
@@ -26,12 +26,17 @@ public class ARTDBard extends ARTDClass{
 		
 		charClass = "Bard";
 		
-		BardClassDescription = "A "  + ARTDBard.charClass 	+ " is traditionally defined as a poet, especially one who writes \n"
+		
+
+		
+	}
+	
+	public static String ClassDescription()
+	{
+		return ClassDescription = "A "  + ARTDBard.charClass 	+ " is traditionally defined as a poet, especially one who writes \n"
 				+ " impassioned, lyrical, or epic verse. " + ARTDBard.charClass + " are a playable \n"
 				+ " class centered on the idea of accessing magic through some form of artistic expression.\n"
 				+ "\n Charisma (CHA) is an important skill for a " + ARTDBard.charClass;
-
-		
 	}
 
 	}

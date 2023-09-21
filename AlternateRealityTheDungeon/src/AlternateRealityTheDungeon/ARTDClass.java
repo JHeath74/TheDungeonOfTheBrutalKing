@@ -15,4 +15,16 @@ public abstract class ARTDClass {
 	 * public abstract double RandomStat(); //Increases a random Stat for a short time 
 	 * public abstract double Port(); // Port to the Dungeon Entrance
 	 */	
+	
+	public static String ClassDescription;
+	int HeroLevel;
+	String charClass;
+	
+	public ARTDClass()
+	{
+		String ClassDescription;
+		HeroLevel = 0;
+		charClass = "";
+	
+	}
 }

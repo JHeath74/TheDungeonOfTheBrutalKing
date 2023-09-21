@@ -2,19 +2,16 @@ package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
+
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -148,10 +145,11 @@ public class ARTDCharacterCreation {
 			// *********************************************************
 			// ******** Selecting your Charecter Class *****************
 			// *********************************************************
-
+			
 			toonclasslist = ARTDClass.toonclassarray;
 			
 			charectorClass = new JComboBox<String>(toonclasslist);
+			
 			toonclassDescription = new JTextArea("Choose Your Class from the Dropdown box above.");
 			toonclassDescription.setLineWrap(true);
 			
@@ -166,28 +164,28 @@ public class ARTDCharacterCreation {
 				public void actionPerformed(ActionEvent e) {
 						
 					toonClass = charectorClass.getSelectedItem().toString();
-			
+	
 					//The Description are returning a null
+				
 					
 					if (toonClass == toonclasslist[0]) {
-						toonclassDescription.setText(ARTDPaladin.PaladinClassDescription);
+						toonclassDescription.setText(ARTDPaladin.ClassDescription());	
+						
 					}
 					if (toonClass == toonclasslist[1]) {
-						toonclassDescription.setText(ARTDCleric.ClericClassDescription);
+						toonclassDescription.setText(ARTDCleric.ClassDescription());
 					}
 					if (toonClass == toonclasslist[2]) {
-						toonclassDescription.setText(ARTDRogue.RogueClassDescription);
+						toonclassDescription.setText(ARTDRogue.ClassDescription());
 					}
 					if (toonClass.equals(toonclasslist[3])) {
-						toonclassDescription.setText(ARTDHunter.HunterClassDescription);
-						
-						System.out.println("Null: " + ARTDHunter.HunterClassDescription);
+						toonclassDescription.setText(ARTDHunter.ClassDescription());
 					}
 					if (toonClass == toonclasslist[4]) {
-						toonclassDescription.setText(ARTDWarrior.WarriorClassDescription);
+						toonclassDescription.setText(ARTDWarrior.ClassDescription());
 					}
 					if (toonClass == toonclasslist[5]) {
-						toonclassDescription.setText(ARTDBard.BardClassDescription);
+						toonclassDescription.setText(ARTDBard.ClassDescription());
 					}
 
 				}

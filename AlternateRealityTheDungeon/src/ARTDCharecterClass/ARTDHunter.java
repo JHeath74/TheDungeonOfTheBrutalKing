@@ -17,9 +17,9 @@ public class ARTDHunter extends ARTDClass
 	
 	int Herolevel;
 	
-	public static String charClass;
+	public static String charClass = "Hunter";
 	
-	public static String HunterClassDescription;
+	public static String ClassDescription;
 	
 	public ARTDHunter()
 	{
@@ -27,12 +27,17 @@ public class ARTDHunter extends ARTDClass
 		
 		charClass = "Hunter";
 		
-		HunterClassDescription = ARTDHunter.charClass + "finds its place as a bulwark between civilization and the terrors of the wilderness.\n"
+		
+
+		
+	}
+	
+	public static String ClassDescription()
+	{
+		return ClassDescription = ARTDHunter.charClass + "finds its place as a bulwark between civilization and the terrors of the wilderness.\n"
 				+ "Despite its namesake, tracking mere game is only a minor task in the hunter's repertoire of expertise. \n"
 				+ "Its specialized battle techniques can fell rampaging ogres to hordes of orcs."
 				+ "\n\nStamina (STA) is an important skill for a " + ARTDHunter.charClass;
-
-		
 	}
 
 	//Spells
