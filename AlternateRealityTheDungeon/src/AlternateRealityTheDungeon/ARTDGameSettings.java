@@ -24,7 +24,7 @@ public class ARTDGameSettings
 	BufferedImage myJMenuBarPicture, myStartMenuPicture = null;
 	
 	static String MenuBarImagePath, MonsterImagePath, FontPath, DungeonFloorTexturePath, DungeonWallTexturePath,
-	SavedGameDirectory, StartMenuPath, StoryIntroductionPath;
+	SavedGameDirectory, StartMenuPath, StoryIntroductionPath, ClassImagesPath;
 
 
 	
@@ -41,7 +41,7 @@ public class ARTDGameSettings
 		SavedGameDirectory = ("src\\AlternateRealityTheDungeon\\SaveGame\\");
 		StoryIntroductionPath = ("src\\AlternateRealityTheDungeon\\Images\\Messages\\StoryIntroduction\\");
 		StartMenuPath = ("src\\AlternateRealityTheDungeon\\Images\\Program\\StartMenu\\");
-		
+		ClassImagesPath = ("src\\AlternateRealityTheDungeon\\Images\\Classes\\");
 		
 		
 		//*********************************************************************************

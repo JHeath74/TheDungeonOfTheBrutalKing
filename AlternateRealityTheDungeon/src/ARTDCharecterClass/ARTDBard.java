@@ -1,5 +1,7 @@
 package ARTDCharecterClass;
 
+import javax.swing.ImageIcon;
+
 import AlternateRealityTheDungeon.ARTDCharecter;
 import AlternateRealityTheDungeon.ARTDClass;
 
@@ -18,6 +20,7 @@ public class ARTDBard extends ARTDClass{
 	public static String charClass = "Bard";
 	
 	public static String ClassDescription;
+	public static String BardImage;
 
 	public ARTDBard()
 	{
@@ -26,7 +29,7 @@ public class ARTDBard extends ARTDClass{
 		
 		charClass = "Bard";
 		
-		
+		BardImage = "Bard.webp";
 
 		
 	}

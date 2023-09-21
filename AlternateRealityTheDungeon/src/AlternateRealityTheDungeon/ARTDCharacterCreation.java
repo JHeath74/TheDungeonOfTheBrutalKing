@@ -2,27 +2,26 @@ package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import java.util.Scanner;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
 import ARTDCharecterClass.ARTDBard;
 import ARTDCharecterClass.ARTDCleric;
 import ARTDCharecterClass.ARTDHunter;
@@ -43,14 +42,16 @@ public class ARTDCharacterCreation {
 	static Scanner saveFile;
 	
 	static JFrame charecterCreationFrame;
-	static JPanel NameAndStats, ClassAndClassInfo;
+	static JPanel NameAndStats, ClassAndClassInfo, ClassInfoAndImage;
 	static JTextArea toonstats, toonclassDescription;
 	static JTextField tooncreation;
 	static JScrollPane toonstatsPane;
-	static JButton reRollStats, saveToon;
+	static JButton reRollStats, saveToon, exitToStartMenu;
 	static JSplitPane CharecterCreationPane;
 	static JComboBox<String> charectorClass;
 	static String[] toonclasslist;
+	static JLabel classImage;
+	static BufferedImage image;
 
 
 	public static void CharacterCreation() throws IOException, InterruptedException {
@@ -107,6 +108,7 @@ public class ARTDCharacterCreation {
 		//******************************************************************
 		 NameAndStats = new JPanel(new BorderLayout());
 		 ClassAndClassInfo = new JPanel(new BorderLayout());
+		 ClassInfoAndImage = new JPanel(new BorderLayout());
 		 
 		CharecterCreationPane.setLeftComponent(NameAndStats);
 		CharecterCreationPane.setRightComponent(ClassAndClassInfo);
@@ -115,9 +117,7 @@ public class ARTDCharacterCreation {
 		//******** Setting up Buttons **************************************
 		//******************************************************************
 		
-		reRollStats = new JButton();
-		saveToon = new JButton();
-		
+		exitToStartMenu = new JButton();
 		
 
 			
@@ -164,13 +164,21 @@ public class ARTDCharacterCreation {
 				public void actionPerformed(ActionEvent e) {
 						
 					toonClass = charectorClass.getSelectedItem().toString();
-	
-					//The Description are returning a null
-				
 					
 					if (toonClass == toonclasslist[0]) {
 						toonclassDescription.setText(ARTDPaladin.ClassDescription());	
+						try {
+							image = ImageIO.read(new File(ARTDGameSettings.ClassImagesPath + ARTDBard.BardImage));
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 						
+					//	 ImageIcon imageIcon = new ImageIcon(image);
+						 
+
+					        
+
 					}
 					if (toonClass == toonclasslist[1]) {
 						toonclassDescription.setText(ARTDCleric.ClassDescription());
@@ -312,19 +320,37 @@ public class ARTDCharacterCreation {
 				}
 			});
 			
+			exitToStartMenu = new JButton("Return to Start Menu");
+			exitToStartMenu.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					charecterCreationFrame.dispose();
+					new ARTDGameStartMenu();
+					
+				}});
+			
 			//myGameState.StartGameLoadCharecter();
 
 			//******************************************************************
 			//******** Adding to the JPanels  **********************************
 			//******************************************************************
 			
+			JLabel classImage = new JLabel();
+			
 			NameAndStats.add(tooncreation, BorderLayout.NORTH);
 			NameAndStats.add(toonstats, BorderLayout.CENTER);
 			NameAndStats.add(reRollStats, BorderLayout.SOUTH);
 			
 			ClassAndClassInfo.add(charectorClass, BorderLayout.NORTH);
-			ClassAndClassInfo.add(toonclassDescription, BorderLayout.CENTER);
+			//ClassAndClassInfo.add(toonclassDescription, BorderLayout.CENTER);
+			
+			//ClassAndClassInfo.add(classImage,BorderLayout.CENTER);
+			ClassAndClassInfo.add(ClassInfoAndImage, BorderLayout.CENTER);
+			ClassInfoAndImage.add(toonclassDescription, BorderLayout.NORTH);
+			ClassInfoAndImage.add(classImage, BorderLayout.SOUTH);
 			ClassAndClassInfo.add(saveToon, BorderLayout.SOUTH);
+			//ClassAndClassInfo.add(exitToStartMenu, BorderLayout.SOUTH);
 			
 			charecterCreationFrame.setLocationRelativeTo(null);
 			charecterCreationFrame.toFront();
@@ -379,5 +405,7 @@ public class ARTDCharacterCreation {
 
 		return stats;
 	}
+	
+	
 
 }
