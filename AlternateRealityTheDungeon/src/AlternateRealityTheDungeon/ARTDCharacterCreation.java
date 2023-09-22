@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -50,8 +51,8 @@ public class ARTDCharacterCreation {
 	static JSplitPane CharecterCreationPane;
 	static JComboBox<String> charectorClass;
 	static String[] toonclasslist;
-	static JLabel classImage;
-	static BufferedImage image;
+	static JLabel classImageLabel;
+	static BufferedImage ClassImagePicture; 
 
 
 	public static void CharacterCreation() throws IOException, InterruptedException {
@@ -167,14 +168,13 @@ public class ARTDCharacterCreation {
 					
 					if (toonClass == toonclasslist[0]) {
 						toonclassDescription.setText(ARTDPaladin.ClassDescription());	
+						
 						try {
-							image = ImageIO.read(new File(ARTDGameSettings.ClassImagesPath + ARTDBard.BardImage));
+							classImage("Paladin");
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-						
-					//	 ImageIcon imageIcon = new ImageIcon(image);
 						 
 
 					        
@@ -182,18 +182,48 @@ public class ARTDCharacterCreation {
 					}
 					if (toonClass == toonclasslist[1]) {
 						toonclassDescription.setText(ARTDCleric.ClassDescription());
+						try {
+							classImage("Cleric");
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					}
 					if (toonClass == toonclasslist[2]) {
 						toonclassDescription.setText(ARTDRogue.ClassDescription());
+						try {
+							classImage("Rogue");
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					}
 					if (toonClass.equals(toonclasslist[3])) {
 						toonclassDescription.setText(ARTDHunter.ClassDescription());
+						try {
+							classImage("Hunter");
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					}
 					if (toonClass == toonclasslist[4]) {
 						toonclassDescription.setText(ARTDWarrior.ClassDescription());
+						try {
+							classImage("Warrior");
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					}
 					if (toonClass == toonclasslist[5]) {
 						toonclassDescription.setText(ARTDBard.ClassDescription());
+						try {
+							classImage("Bard");
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					}
 
 				}
@@ -406,6 +436,22 @@ public class ARTDCharacterCreation {
 		return stats;
 	}
 	
-	
+	private static void classImage(String classImage) throws IOException
+	{
+
+		
+		ClassImagePicture = ImageIO.read(new File(ARTDGameSettings.ClassImagesPath + classImage + ".png")); // Buffered Image
+
+
+			//classImageLabel.setIcon(null);
+			classImageLabel = new JLabel(new ImageIcon(ClassImagePicture));
+			ClassInfoAndImage.add(classImageLabel);
+			
+			classImageLabel.repaint();
+			classImageLabel.revalidate();
+		
+		
+
+	}
 
 }
