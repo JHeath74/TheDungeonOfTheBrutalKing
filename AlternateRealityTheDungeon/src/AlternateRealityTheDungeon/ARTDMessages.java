@@ -31,7 +31,7 @@ public class ARTDMessages extends JFrame {
 	static JTextArea StoryMessageTextArea = null;
 	static int width, height = 0;
 	static JSplitPane StoryImageSplitPane = null;
-	public static JLabel StoryImageLabel = null;
+	public static JLabel StoryImageLabel;
 	public static BufferedImage StoryImagePicture = null;
 	public static Dimension imageSize = null;
 	public static String toonName = "";

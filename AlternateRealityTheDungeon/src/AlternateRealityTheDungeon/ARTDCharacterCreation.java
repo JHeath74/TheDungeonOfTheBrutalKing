@@ -2,6 +2,7 @@ package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -57,6 +58,7 @@ public class ARTDCharacterCreation {
 
 	public static void CharacterCreation() throws IOException, InterruptedException {
 
+		
 		ARTDGameSettings myGameSettings = new ARTDGameSettings();
 		
 		
@@ -170,6 +172,7 @@ public class ARTDCharacterCreation {
 						toonclassDescription.setText(ARTDPaladin.ClassDescription());	
 						
 						try {
+							
 							classImage("Paladin");
 						} catch (IOException e1) {
 							// TODO Auto-generated catch block
@@ -439,16 +442,33 @@ public class ARTDCharacterCreation {
 	private static void classImage(String classImage) throws IOException
 	{
 
+		if(classImageLabel != null)
+		{
+			ClassInfoAndImage.remove(classImageLabel);
+		}
 		
 		ClassImagePicture = ImageIO.read(new File(ARTDGameSettings.ClassImagesPath + classImage + ".png")); // Buffered Image
-
-
-			//classImageLabel.setIcon(null);
-			classImageLabel = new JLabel(new ImageIcon(ClassImagePicture));
-			ClassInfoAndImage.add(classImageLabel);
+		
+		classImageLabel = new JLabel();
+		
+		classImageLabel.setSize(320, 640);
+		
+		Image newClassImagePicture = ClassImagePicture.getScaledInstance(classImageLabel.getWidth(), classImageLabel.getHeight(),
+		        Image.SCALE_SMOOTH);
+		
+		
+		ImageIcon img = new ImageIcon(newClassImagePicture);
+		
+		
+		classImageLabel.setIcon(img);
+		
+		ClassInfoAndImage.add(classImageLabel);
 			
-			classImageLabel.repaint();
-			classImageLabel.revalidate();
+		
+		//classImageLabel.repaint();
+		classImageLabel.revalidate();
+		
+			
 		
 		
 
