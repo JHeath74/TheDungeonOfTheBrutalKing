@@ -32,12 +32,14 @@ public class ARTDWarrior extends ARTDClass {
 
 	public static String ClassDescription()
 	{
-		return ClassDescription = ARTDWarrior.charClass + " share an unparalleled mastery with weapons and armor, and a thorough knowledge \"\r\n"
-				+ "					 of the skills of combat. They are well acquainted with death, both meting it out and staring it defiantly \"\r\n"
-				+ "					 in the face. " + ARTDWarrior.charClass
-				+ "					  share an unparalleled mastery with weapons and armor, and a thorough knowledge of the \"\r\n"
-				+ "					 skills of combat. They are well acquainted with death, both meting it out and staring it defiantly in the face.\\n\\n\"\r\n"
-				+ "					 Strength (STR) is an important skill for a " + ARTDWarrior.charClass;
+		return ClassDescription = ARTDWarrior.charClass + " share an unparalleled mastery with weapons and armor, and a thorough knowledge \n"
+				+ "	of the skills of combat. They are well acquainted with death, both meting it out and staring it defiantly \n"
+				+ "	in the face. " + ARTDWarrior.charClass + " share an unparalleled mastery with weapons and armor,"
+				+ " and a thorough knowledge of the \n"
+				+ "	skills of combat. They are well acquainted with death, both meting it out and staring"
+				+ " it defiantly in the face. \n"
+				+ "\n"
+				+ "	Strength (STR) is an important skill for a " + ARTDWarrior.charClass;
 
 	}
 	

@@ -2,6 +2,7 @@ package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -101,6 +102,11 @@ public class ARTDCharacterCreation {
 		toonclassDescription = new JTextArea();
 		tooncreation = new JTextField();
 		tooncreation.setEditable(false);
+		
+		
+		Font toonClassDescriptionFont = new Font("Verdana",Font.BOLD,30);
+		toonclassDescription.setFont(toonClassDescriptionFont);
+		
 		tooncreation.setText("Name: " + ARTDMessages.toonName);
 		toonstatsPane = new JScrollPane();
 		
@@ -441,7 +447,7 @@ public class ARTDCharacterCreation {
 	
 	private static void classImage(String classImage) throws IOException
 	{
-
+		
 		if(classImageLabel != null)
 		{
 			ClassInfoAndImage.remove(classImageLabel);
@@ -459,13 +465,10 @@ public class ARTDCharacterCreation {
 		
 		ImageIcon img = new ImageIcon(newClassImagePicture);
 		
-		
 		classImageLabel.setIcon(img);
 		
 		ClassInfoAndImage.add(classImageLabel);
-			
-		
-		//classImageLabel.repaint();
+
 		classImageLabel.revalidate();
 		
 			
