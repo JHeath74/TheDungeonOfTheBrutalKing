@@ -457,7 +457,8 @@ public class ARTDCharacterCreation {
 		
 		classImageLabel = new JLabel();
 		
-		classImageLabel.setSize(320, 640);
+		//classImageLabel.setSize(320, 640);
+		classImageLabel.setSize(ClassInfoAndImage.getWidth(), ClassInfoAndImage.getHeight());
 		
 		Image newClassImagePicture = ClassImagePicture.getScaledInstance(classImageLabel.getWidth(), classImageLabel.getHeight(),
 		        Image.SCALE_SMOOTH);
