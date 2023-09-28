@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.HeadlessException;
-
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -141,11 +141,12 @@ public class ARTDMessages extends JFrame {
 		//************* Setting up JSplitPane ********************************************
 		//********************************************************************************
 				
-		StoryImageSplitPane.setResizeWeight(.2d);
 		StoryImageSplitPane.setDividerLocation(0.5);
+		StoryImageSplitPane.setResizeWeight(1.0);
+		
 		StoryImageSplitPane.setSize(width, height);
-		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
 		StoryImageSplitPane.setRightComponent(StoryMessagePanel);
+		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
 		
 		//********************************************************************************
 		//************* Setting JPanel Size ********************************************
@@ -158,71 +159,61 @@ public class ARTDMessages extends JFrame {
 		//************* Getting a Charecter Name *****************************************
 		//********************************************************************************
 		
-	//	ARTDMusicPlayer Player = new ARTDMusicPlayer();
-	//	Player.mp3Player("Campfire.mp3");
-
-		
-		
-		
 		StoryMessageTextArea.setText("");
 		StoryMessageTextArea.setText("You wake up very slowly and your "
 				+ "not feeling very well. As you come to your senses, "
 				+ " you notice a stranger sitting by a fire.\n\n");
+		
 		welcomeImages(1);
-		
+		wait(2);
 
-		
-		wait(2);
-    //    StoryImagePanel.remove(StoryImageLabel);
         
-        StoryMessageTextArea.append("As you awaken,  the stranger comes over and hands you a drink, "
-				+ "then asks you for your name.\n\n");
-		welcomeImages(2);
-			
+        StoryMessageTextArea.append("As you awaken,  the stranger comes"
+        		+ " over and hands you a drink, then asks you for your name.\n\n");
+		
+        welcomeImages(2);
 		wait(2);
-	//	StoryImagePanel.remove(StoryImageLabel);
+
 			
-		toonName = JOptionPane.showInputDialog("Stranger asks 'What is your name?");
+		toonName = JOptionPane.showInputDialog(null, "Stranger asks 'What is your name?","Please Enter Name.", JOptionPane.INFORMATION_MESSAGE);
 
 		StoryMessageTextArea.append("Welcome, " + toonName + " it's best to move slowly at first,"
 				+ "But not too slow,  people don't tend to last too long here.\n\n");
-		welcomeImages(3);
 
+		welcomeImages(3);
 		wait(2);
-	//	StoryImagePanel.remove(StoryImageLabel);			
+				
 			
 		StoryMessageTextArea.append("You ask the stranger where you are,  he says 'You are in a dungeon, and if you wish"
 				+ "to go home,  you'll have to go through it to get out\n\n");
+		
 		welcomeImages(4);
-			
 		wait(2);
-	//	StoryImagePanel.remove(StoryImageLabel);
+
 			
 		StoryMessageTextArea.append("The stranger continues 'I wish you luck,  many have come this way but none"
 				+ "have ever left.\n\n");
-		welcomeImages(5);
 
+		welcomeImages(5);
 		wait(2);
-	//	StoryImagePanel.remove(StoryImageLabel);
+
 			
 		StoryMessageTextArea.append("If you do get out " + toonName + ",  let other's know I'm here. I've been here a long time"
 				+ "and I would like to leave\n\n");
+		
 		welcomeImages(6);
-	
 		wait(2);
-	//	StoryImagePanel.remove(StoryImageLabel);
+
 			
 		StoryMessageTextArea.append("You look at the stranger and say 'Thanks'.  As you walk away you look back"
 				+ "and only see the first, but there is no sign of the stranger\n\n");
-		welcomeImages(7);
 		
-
+		welcomeImages(7);
 		wait(2);
 		
 		StoryMessageFrame.dispose();
 		
-		//thread.stop();
-		
+
 		ARTDCharacterCreation.CharacterCreation();
 			
 	 } 
@@ -230,15 +221,31 @@ public class ARTDMessages extends JFrame {
 	private static void welcomeImages(int i) throws IOException
 	{
 
-		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
+		//StoryImageSplitPane.setLeftComponent(StoryImagePanel);
+		
+		 if(StoryImageLabel != null)
+		  { 
+			  StoryImagePanel.remove(StoryImageLabel); 
+		  }
 		StoryImagePicture = ImageIO.read(new File(ARTDGameSettings.StoryIntroductionPath + i + ".png")); // Buffered Image
 
 		
-		StoryImageLabel = new JLabel(new ImageIcon(StoryImagePicture));
+		StoryImageLabel = new JLabel();
+		
+		StoryImageLabel.setSize(StoryImagePanel.getWidth(), StoryImagePanel.getHeight());
+		
+		
+		Image newStoryImagePicture = StoryImagePicture.getScaledInstance(StoryImageLabel.getWidth(), StoryImageLabel.getHeight(),
+		        Image.SCALE_SMOOTH);
+		
+		ImageIcon img = new ImageIcon(newStoryImagePicture);
+		
+		StoryImageLabel.setIcon(img);
+		
 		StoryImagePanel.add(StoryImageLabel);
 		
-		StoryImageLabel.repaint();
 		StoryImageLabel.revalidate();
+	
 	}
 		
 

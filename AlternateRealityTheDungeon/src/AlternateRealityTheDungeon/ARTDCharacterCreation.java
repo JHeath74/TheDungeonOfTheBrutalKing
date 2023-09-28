@@ -454,10 +454,7 @@ public class ARTDCharacterCreation {
 		}
 		
 		ClassImagePicture = ImageIO.read(new File(ARTDGameSettings.ClassImagesPath + classImage + ".png")); // Buffered Image
-		
 		classImageLabel = new JLabel();
-		
-		//classImageLabel.setSize(320, 640);
 		classImageLabel.setSize(ClassInfoAndImage.getWidth(), ClassInfoAndImage.getHeight());
 		
 		Image newClassImagePicture = ClassImagePicture.getScaledInstance(classImageLabel.getWidth(), classImageLabel.getHeight(),
