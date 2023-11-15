@@ -45,12 +45,12 @@ public class ARTDCharacterCreation {
 	static Scanner saveFile;
 	
 	static JFrame charecterCreationFrame;
-	static JPanel NameAndStats, ClassAndClassInfo, ClassInfoAndImage;
-	static JTextArea toonstats, toonclassDescription;
-	static JTextField tooncreation;
-	static JScrollPane toonstatsPane;
-	static JButton reRollStats, saveToon, exitToStartMenu;
-	static JSplitPane CharecterCreationPane;
+	static JPanel NameAndStatsPanel, ClassAndClassInfoPanel, ClassInfoAndImagePanel;
+	static JTextArea toonstatsTextArea, toonclassDescriptionTextArea;
+	static JTextField tooncreationTextField;
+	static JScrollPane toonstatsScrollPane;
+	static JButton reRollStatsButton, saveToonButton, exitToStartMenuButton;
+	static JSplitPane CharecterCreationSplitPane;
 	static JComboBox<String> charectorClass;
 	static String[] toonclasslist;
 	static JLabel classImageLabel;
@@ -89,44 +89,44 @@ public class ARTDCharacterCreation {
 		//******************************************************************
 		//******** Setting up JSplitPane  *********************************
 		//******************************************************************
-		CharecterCreationPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		charecterCreationFrame.add(CharecterCreationPane);
+		CharecterCreationSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		charecterCreationFrame.add(CharecterCreationSplitPane);
 		
-		CharecterCreationPane.setDividerLocation(.5);
-		CharecterCreationPane.setResizeWeight(.2d);
+		CharecterCreationSplitPane.setDividerLocation(.5);
+		CharecterCreationSplitPane.setResizeWeight(.2d);
 		//*****************************************************************
 		//******** Setting up Other Needed Fields**************************
 		//*****************************************************************
 		
-		toonstats = new JTextArea();
-		toonclassDescription = new JTextArea();
-		tooncreation = new JTextField();
-		tooncreation.setEditable(false);
+		toonstatsTextArea = new JTextArea();
+		toonclassDescriptionTextArea = new JTextArea();
+		tooncreationTextField = new JTextField();
+		tooncreationTextField.setEditable(false);
 		
 		
 		Font toonClassDescriptionFont = new Font("Verdana",Font.BOLD,30);
-		toonclassDescription.setFont(toonClassDescriptionFont);
+		toonclassDescriptionTextArea.setFont(toonClassDescriptionFont);
 		
-		tooncreation.setText("Name: " + ARTDMessages.toonName);
-		toonstatsPane = new JScrollPane();
+		tooncreationTextField.setText("Name: " + ARTDMessages.toonName);
+		toonstatsScrollPane = new JScrollPane();
 		
 		
 		
 		//******************************************************************
 		//******** Setting up JPanel and adding them to the JSplitPane *****
 		//******************************************************************
-		 NameAndStats = new JPanel(new BorderLayout());
-		 ClassAndClassInfo = new JPanel(new BorderLayout());
-		 ClassInfoAndImage = new JPanel(new BorderLayout());
+		NameAndStatsPanel = new JPanel(new BorderLayout());
+		ClassAndClassInfoPanel = new JPanel(new BorderLayout());
+		ClassInfoAndImagePanel = new JPanel(new BorderLayout());
 		 
-		CharecterCreationPane.setLeftComponent(NameAndStats);
-		CharecterCreationPane.setRightComponent(ClassAndClassInfo);
+		CharecterCreationSplitPane.setLeftComponent(NameAndStatsPanel);
+		CharecterCreationSplitPane.setRightComponent(ClassAndClassInfoPanel);
 		 
 		//******************************************************************
 		//******** Setting up Buttons **************************************
 		//******************************************************************
 		
-		exitToStartMenu = new JButton();
+		exitToStartMenuButton = new JButton();
 		
 
 			
@@ -137,19 +137,19 @@ public class ARTDCharacterCreation {
 
 			Integer[] stat = rollstats();
 
-			toonstats = new JTextArea();
-			toonstatsPane = new JScrollPane(toonstats);
+			toonstatsTextArea = new JTextArea();
+			toonstatsScrollPane = new JScrollPane(toonstatsTextArea);
 
-			toonstats.setText("Charecter Stats\n");
+			toonstatsTextArea.setText("Charecter Stats\n");
 
-			toonstats.append("\nSTAMINA: \t\t" + stat[0]);
-			toonstats.append("\nCHARISMA: \t\t" + stat[1]);
-			toonstats.append("\nSTRENGTH: \t\t" + stat[2]);
-			toonstats.append("\nINTELLIGENCE: \t" + stat[3]);
-			toonstats.append("\nWISDOM: \t\t" + stat[4]);
-			toonstats.append("\nAGILITY: \t\t" + stat[5]);
+			toonstatsTextArea.append("\nSTAMINA: \t\t" + stat[0]);
+			toonstatsTextArea.append("\nCHARISMA: \t\t" + stat[1]);
+			toonstatsTextArea.append("\nSTRENGTH: \t\t" + stat[2]);
+			toonstatsTextArea.append("\nINTELLIGENCE: \t" + stat[3]);
+			toonstatsTextArea.append("\nWISDOM: \t\t" + stat[4]);
+			toonstatsTextArea.append("\nAGILITY: \t\t" + stat[5]);
 
-			toonstats.setEditable(false);
+			toonstatsTextArea.setEditable(false);
 
 			// *********************************************************
 			// ******** Selecting your Charecter Class *****************
@@ -159,8 +159,8 @@ public class ARTDCharacterCreation {
 			
 			charectorClass = new JComboBox<String>(toonclasslist);
 			
-			toonclassDescription = new JTextArea("Choose Your Class from the Dropdown box above.");
-			toonclassDescription.setLineWrap(true);
+			toonclassDescriptionTextArea = new JTextArea("Choose Your Class from the Dropdown box above.");
+			toonclassDescriptionTextArea.setLineWrap(true);
 			
 
 			// *********************************************************
@@ -175,7 +175,7 @@ public class ARTDCharacterCreation {
 					toonClass = charectorClass.getSelectedItem().toString();
 					
 					if (toonClass == toonclasslist[0]) {
-						toonclassDescription.setText(ARTDPaladin.ClassDescription());	
+						toonclassDescriptionTextArea.setText(ARTDPaladin.ClassDescription());	
 						
 						try {
 							
@@ -190,7 +190,7 @@ public class ARTDCharacterCreation {
 
 					}
 					if (toonClass == toonclasslist[1]) {
-						toonclassDescription.setText(ARTDCleric.ClassDescription());
+						toonclassDescriptionTextArea.setText(ARTDCleric.ClassDescription());
 						try {
 							classImage("Cleric");
 						} catch (IOException e1) {
@@ -199,7 +199,7 @@ public class ARTDCharacterCreation {
 						}
 					}
 					if (toonClass == toonclasslist[2]) {
-						toonclassDescription.setText(ARTDRogue.ClassDescription());
+						toonclassDescriptionTextArea.setText(ARTDRogue.ClassDescription());
 						try {
 							classImage("Rogue");
 						} catch (IOException e1) {
@@ -208,7 +208,7 @@ public class ARTDCharacterCreation {
 						}
 					}
 					if (toonClass.equals(toonclasslist[3])) {
-						toonclassDescription.setText(ARTDHunter.ClassDescription());
+						toonclassDescriptionTextArea.setText(ARTDHunter.ClassDescription());
 						try {
 							classImage("Hunter");
 						} catch (IOException e1) {
@@ -217,7 +217,7 @@ public class ARTDCharacterCreation {
 						}
 					}
 					if (toonClass == toonclasslist[4]) {
-						toonclassDescription.setText(ARTDWarrior.ClassDescription());
+						toonclassDescriptionTextArea.setText(ARTDWarrior.ClassDescription());
 						try {
 							classImage("Warrior");
 						} catch (IOException e1) {
@@ -226,7 +226,7 @@ public class ARTDCharacterCreation {
 						}
 					}
 					if (toonClass == toonclasslist[5]) {
-						toonclassDescription.setText(ARTDBard.ClassDescription());
+						toonclassDescriptionTextArea.setText(ARTDBard.ClassDescription());
 						try {
 							classImage("Bard");
 						} catch (IOException e1) {
@@ -241,34 +241,34 @@ public class ARTDCharacterCreation {
 			});
 
 		
-			reRollStats = new JButton("Reroll Stats");
-			reRollStats.addActionListener(new ActionListener() {
+			reRollStatsButton = new JButton("Reroll Stats");
+			reRollStatsButton.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					rollstats();
 					Integer[] stat = rollstats();
-					toonstats.setText(" ");
+					toonstatsTextArea.setText(" ");
 
 					for (int i = 0; i < stat.length; i++) {
 
-						toonstats.setText("Charecter Stats\n");
+						toonstatsTextArea.setText("Charecter Stats\n");
 
-						toonstats.append("\nSTAMINA: \t\t" + stat[0]);
-						toonstats.append("\nCHARISMA: \t\t" + stat[1]);
-						toonstats.append("\nSTRENGTH: \t\t" + stat[2]);
-						toonstats.append("\nINTELLIGENCE: \t" + stat[3]);
-						toonstats.append("\nWISDOM: \t\t" + stat[4]);
-						toonstats.append("\nAGILITY: \t\t" + stat[5]);
-						toonstats.validate();
+						toonstatsTextArea.append("\nSTAMINA: \t\t" + stat[0]);
+						toonstatsTextArea.append("\nCHARISMA: \t\t" + stat[1]);
+						toonstatsTextArea.append("\nSTRENGTH: \t\t" + stat[2]);
+						toonstatsTextArea.append("\nINTELLIGENCE: \t" + stat[3]);
+						toonstatsTextArea.append("\nWISDOM: \t\t" + stat[4]);
+						toonstatsTextArea.append("\nAGILITY: \t\t" + stat[5]);
+						toonstatsTextArea.validate();
 					}
 
 				}
 
 			});
 
-			saveToon = new JButton("Save Charecter"); // Save Button for Charecter creation
-			saveToon.addActionListener(new ActionListener() {
+			saveToonButton = new JButton("Save Charecter"); // Save Button for Charecter creation
+			saveToonButton.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -283,7 +283,7 @@ public class ARTDCharacterCreation {
 						String charName = ARTDMessages.toonName;
 
 						// Validating if the Charecter Name is blank or not
-						toonName(tooncreation, charName, newChar);
+						toonName(tooncreationTextField, charName, newChar);
 
 						do {
 
@@ -349,7 +349,7 @@ public class ARTDCharacterCreation {
 							charecterCreationFrame.dispose();
 							new ARTDMenuBar();
 
-						} while (saveToon.getModel().isPressed());
+						} while (saveToonButton.getModel().isPressed());
 
 					} catch (IOException e1) {
 						JOptionPane.showMessageDialog(null, "Error:\n " + e1);
@@ -359,8 +359,8 @@ public class ARTDCharacterCreation {
 				}
 			});
 			
-			exitToStartMenu = new JButton("Return to Start Menu");
-			exitToStartMenu.addActionListener(new ActionListener() {
+			exitToStartMenuButton = new JButton("Return to Start Menu");
+			exitToStartMenuButton.addActionListener(new ActionListener() {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -377,18 +377,18 @@ public class ARTDCharacterCreation {
 			
 			JLabel classImage = new JLabel();
 			
-			NameAndStats.add(tooncreation, BorderLayout.NORTH);
-			NameAndStats.add(toonstats, BorderLayout.CENTER);
-			NameAndStats.add(reRollStats, BorderLayout.SOUTH);
+			NameAndStatsPanel.add(tooncreationTextField, BorderLayout.NORTH);
+			NameAndStatsPanel.add(toonstatsTextArea, BorderLayout.CENTER);
+			NameAndStatsPanel.add(reRollStatsButton, BorderLayout.SOUTH);
 			
-			ClassAndClassInfo.add(charectorClass, BorderLayout.NORTH);
+			ClassAndClassInfoPanel.add(charectorClass, BorderLayout.NORTH);
 			//ClassAndClassInfo.add(toonclassDescription, BorderLayout.CENTER);
 			
 			//ClassAndClassInfo.add(classImage,BorderLayout.CENTER);
-			ClassAndClassInfo.add(ClassInfoAndImage, BorderLayout.CENTER);
-			ClassInfoAndImage.add(toonclassDescription, BorderLayout.NORTH);
-			ClassInfoAndImage.add(classImage, BorderLayout.SOUTH);
-			ClassAndClassInfo.add(saveToon, BorderLayout.SOUTH);
+			ClassAndClassInfoPanel.add(ClassInfoAndImagePanel, BorderLayout.CENTER);
+			ClassInfoAndImagePanel.add(toonclassDescriptionTextArea, BorderLayout.NORTH);
+			ClassInfoAndImagePanel.add(classImage, BorderLayout.SOUTH);
+			ClassAndClassInfoPanel.add(saveToonButton, BorderLayout.SOUTH);
 			//ClassAndClassInfo.add(exitToStartMenu, BorderLayout.SOUTH);
 			
 			charecterCreationFrame.setLocationRelativeTo(null);
@@ -450,12 +450,12 @@ public class ARTDCharacterCreation {
 		
 		if(classImageLabel != null)
 		{
-			ClassInfoAndImage.remove(classImageLabel);
+			ClassInfoAndImagePanel.remove(classImageLabel);
 		}
 		
 		ClassImagePicture = ImageIO.read(new File(ARTDGameSettings.ClassImagesPath + classImage + ".png")); // Buffered Image
 		classImageLabel = new JLabel();
-		classImageLabel.setSize(ClassInfoAndImage.getWidth(), ClassInfoAndImage.getHeight());
+		classImageLabel.setSize(ClassInfoAndImagePanel.getWidth(), ClassInfoAndImagePanel.getHeight());
 		
 		Image newClassImagePicture = ClassImagePicture.getScaledInstance(classImageLabel.getWidth(), classImageLabel.getHeight(),
 		        Image.SCALE_SMOOTH);
@@ -465,13 +465,9 @@ public class ARTDCharacterCreation {
 		
 		classImageLabel.setIcon(img);
 		
-		ClassInfoAndImage.add(classImageLabel);
+		ClassInfoAndImagePanel.add(classImageLabel);
 
 		classImageLabel.revalidate();
-		
-			
-		
-		
 
 	}
 

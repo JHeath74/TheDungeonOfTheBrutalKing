@@ -33,15 +33,9 @@ public class ARTDMessages extends JFrame {
 	static JSplitPane StoryImageSplitPane = null;
 	public static JLabel StoryImageLabel;
 	public static BufferedImage StoryImagePicture = null;
-	public static Dimension imageSize = null;
+	public static Dimension imageSize, size = null;
 	public static String toonName = "";
 	
-	
-	public ARTDMessages()
-	{
-		
-		StoryImageLabel = new JLabel();
-	}
 	
 	
 
@@ -54,7 +48,7 @@ public class ARTDMessages extends JFrame {
 		//********************************************************************************		
 		
 		// getScreenSize() returns the size of the screen in pixels
-        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+        size = Toolkit.getDefaultToolkit().getScreenSize();
         
         // width will store the width of the screen
         width = (int)size.getWidth();
@@ -66,21 +60,51 @@ public class ARTDMessages extends JFrame {
 		//*************  Setting up JFrame ***********************************************
 		//********************************************************************************
 		StoryMessageFrame = new JFrame("Starting Your Adventure");
-		StoryMessageFrame.setLayout(new BorderLayout());
 		StoryMessageFrame.setSize(width, height);
-		StoryMessageFrame.setUndecorated(true);
-		StoryMessageFrame.getContentPane().setBackground(myGameSettings.colorLightBrown);
 		StoryMessageFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		StoryMessageFrame.setBackground(myGameSettings.colorLightBrown);
+		StoryMessageFrame.setUndecorated(true);
+		StoryMessageFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		
+		//********************************************************************************
+		//************* Setting up JSplitPane ********************************************
+		//********************************************************************************
+				
+		StoryImageSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);	
+		StoryMessageFrame.add(StoryImageSplitPane);
+		
+		StoryImageSplitPane.setDividerLocation(0.5);
+		StoryImageSplitPane.setResizeWeight(.02d);
+	
 		//********************************************************************************
 		//*************  Creating JPanels ************************************************
 		//********************************************************************************
-		
+				
 		StoryImagePanel = new JPanel();
 		StoryMessagePanel = new JPanel();
 		StoryButtonPanel = new JPanel();
 		StorySplitPanePanel = new JPanel();
+				
+		StoryImageSplitPane.setRightComponent(StoryMessagePanel);
+		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
+				
 		
+		
+		//********************************************************************************
+		//************* Setting up Other Needed Fields ***********************************
+		//********************************************************************************
+				
+		StoryMessageTextArea = new JTextArea(60,50); // Row, Column
+		StoryMessageTextArea.setWrapStyleWord(true);
+		StoryMessageTextArea.setLineWrap(true);
+				
+		StoryMessageTextArea.setBackground(myGameSettings.colorLightBrown);
+		StoryMessageTextArea.setForeground(myGameSettings.colorDarkGoldenRod);
+		StoryMessageTextArea.setFont(new Font("Arial", Font.PLAIN, 30));			
+		StoryMessageTextArea.setSize(480, 320);
+		StoryMessagePanel.add(StoryMessageTextArea);
+				
+
 		//********************************************************************************
 		//************* Creating and Setting up JButton **********************************
 		//********************************************************************************
@@ -112,47 +136,17 @@ public class ARTDMessages extends JFrame {
 
 		});
 
-		
-		//********************************************************************************
-		//************* Setting up JTextArea *********************************************
-		//********************************************************************************
-		
-		StoryMessageTextArea = new JTextArea(60,50); // Row, Column
-		StoryMessageTextArea.setWrapStyleWord(true);
-		StoryMessageTextArea.setLineWrap(true);
-		
-		StoryMessageTextArea.setBackground(myGameSettings.colorLightBrown);
-		StoryMessageTextArea.setForeground(myGameSettings.colorDarkGoldenRod);
-		StoryMessageTextArea.setFont(new Font("Arial", Font.PLAIN, 30));
-		StoryMessageTextArea.setSize(480, 320);
-		
-		StoryMessagePanel.add(StoryMessageTextArea);
-		
-		//********************************************************************************
-		//************* Adding JPanels to JFrame for JSplitPane***************************
-		//********************************************************************************
-		
-		StoryMessageFrame.add(StorySplitPanePanel, BorderLayout.CENTER);
-		StoryImageSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		StorySplitPanePanel.add(StoryImageSplitPane);
-		
-			
-		//********************************************************************************
-		//************* Setting up JSplitPane ********************************************
-		//********************************************************************************
-				
-		StoryImageSplitPane.setDividerLocation(0.5);
-		StoryImageSplitPane.setResizeWeight(1.0);
-		
+
 		StoryImageSplitPane.setSize(width, height);
-		StoryImageSplitPane.setRightComponent(StoryMessagePanel);
-		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
+
 		
 		//********************************************************************************
-		//************* Setting JPanel Size ********************************************
+		//************* Setting JFrame Visibility ********************************************
 		//********************************************************************************
 		
-		StoryMessageFrame.setUndecorated(false);
+		StoryMessageFrame.setLocationRelativeTo(null);
+		StoryMessageFrame.toFront();
+		StoryMessageFrame.requestFocus();
 		StoryMessageFrame.setVisible(true);
 		
 		//********************************************************************************
@@ -221,8 +215,6 @@ public class ARTDMessages extends JFrame {
 	private static void welcomeImages(int i) throws IOException
 	{
 
-		//StoryImageSplitPane.setLeftComponent(StoryImagePanel);
-		
 		 if(StoryImageLabel != null)
 		  { 
 			  StoryImagePanel.remove(StoryImageLabel); 
@@ -232,8 +224,8 @@ public class ARTDMessages extends JFrame {
 		
 		StoryImageLabel = new JLabel();
 		
-		StoryImageLabel.setSize(StoryImagePanel.getWidth(), StoryImagePanel.getHeight());
-		
+		//StoryImageLabel.setSize(StoryImagePanel.getWidth(), StoryImagePanel.getHeight());
+		StoryImageLabel.setSize(480, 320);
 		
 		Image newStoryImagePicture = StoryImagePicture.getScaledInstance(StoryImageLabel.getWidth(), StoryImageLabel.getHeight(),
 		        Image.SCALE_SMOOTH);
@@ -247,8 +239,8 @@ public class ARTDMessages extends JFrame {
 		StoryImageLabel.revalidate();
 	
 	}
-		
-
+	
+	
 	private static void wait(int seconds) {
 		long start = System.nanoTime();
 		while ((long) (System.nanoTime() - start) / (long) (1_000_000_000) < seconds) {
