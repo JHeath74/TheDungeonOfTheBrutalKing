@@ -1,6 +1,7 @@
 package AlternateRealityTheDungeon;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -19,9 +20,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 public class ARTDGameStartMenu extends JFrame {
 
@@ -165,7 +168,44 @@ public class ARTDGameStartMenu extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				 
 	
+				if (JOptionPane.showConfirmDialog(null, "Do you wish to delete your game to start a new one", "WARNING",
+				        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+						
+					 UIManager UI=new UIManager();
+					  UI.put("JOptionPane.background", Color.BLACK);
+					
+					 for(File file: directory.listFiles()) 
+		        		    if (!file.isDirectory()) 
+		        		        file.delete();
+					
+				} else {
+					try {
+						ARTDMessages.StartGameMessage();
+					} catch (HeadlessException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (UnsupportedAudioFileException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (LineUnavailableException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				
+				
+				
+				
+				
 				try {
 					
 					Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
