@@ -3,6 +3,8 @@ package AlternateRealityTheDungeon;
 import java.io.*;
 import java.util.ArrayList;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -27,13 +29,14 @@ public class ARTDSaveLoadGameData {
 	ARTDSingleton myChar = null;
 	ARTDSingleton mySpellList = null;
 	ARTDGameSettings myGameSettings = new ARTDGameSettings();
+	int width, height = 0;
 	
 	ArrayList<ArrayList<?>> GameState = new ArrayList<>();
 
 	public ARTDSaveLoadGameData() 
 	{
-		myChar = new ARTDSingleton();
-		mySpellList = new ARTDSingleton();
+	//	myChar = new ARTDSingleton();
+	//	mySpellList = new ARTDSingleton();
 		
 		
 	}
@@ -41,8 +44,8 @@ public class ARTDSaveLoadGameData {
 	// Add objects to the collection
 	public void addToArray()
 	{
-		GameState.add(myChar.myCharSingleton().CharInfo);
-		GameState.add((ArrayList<?>) mySpellList.spellList()); 
+		// GameState.add(myChar.myCharSingleton().CharInfo);
+		//GameState.add(mySpellList.spellList()); 
 	}
 
 	public void StartGameLoadCharecter() throws IOException {
@@ -106,7 +109,22 @@ public class ARTDSaveLoadGameData {
 
 		ArrayList<String> LoadChar = new ArrayList<String>();
 
+		//***************************************************
+				//******** Getting Screen Width and Height **********
+				//***************************************************
+				
+				// getScreenSize() returns the size of the screen in pixels
+		        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+		        
+		        // width will store the width of the screen
+		        width = (int)size.getWidth();
+		        
+		        // height will store the height of the screen
+		        height = (int)size.getHeight();
+		
 		JFrame loadGame = new JFrame("Load Game");
+		loadGame.setSize(width, height);
+		
 		JPanel lg = new JPanel(new BorderLayout());
 		JButton load = new JButton("Load Game");
 		JComboBox<String> loadGameSelection = new JComboBox<String>();

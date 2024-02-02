@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 
-public class ARTDMessages extends JFrame {
+public class ARTDStartingStory extends JFrame {
 
 	static JFrame StoryMessageFrame;
 	static JPanel StoryMessagePanel, StoryImagePanel, StoryButtonPanel, StorySplitPanePanel = null;

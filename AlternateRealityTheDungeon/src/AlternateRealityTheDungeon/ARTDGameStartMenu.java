@@ -33,10 +33,7 @@ public class ARTDGameStartMenu extends JFrame {
 	public static void main(String[] args) throws IOException {
 		
 		ARTDGameSettings myGameSettings = new ARTDGameSettings();
-		//ARTDSaveLoadGameData mySaveLoadGameData = new ARTDSaveLoadGameData();
-		
-		// to stop the thread
-		boolean exit;
+		ARTDSaveLoadGameData mySaveLoadGameData = new ARTDSaveLoadGameData();
 	    
 	
 		ARTDMusicPlayer soundplayer = new ARTDMusicPlayer();
@@ -152,10 +149,10 @@ public class ARTDGameStartMenu extends JFrame {
 
         
         
-        File directory = new File(myGameSettings.SavedGameDirectory);
+        File directory = new File(ARTDGameSettings.SavedGameDirectory);
         if (directory.isDirectory()) {
            String[] files = directory.list();
-           if (directory.length() > 0) {
+           if (files.length > 0) {
               LoadExistingGameButton.setVisible(true);
            } else {
         	  LoadExistingGameButton.setVisible(false);
@@ -169,13 +166,8 @@ public class ARTDGameStartMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				 
-	
-				if (JOptionPane.showConfirmDialog(null, "Do you wish to delete your game to start a new one", "WARNING",
+				 if (JOptionPane.showConfirmDialog(null, "Do you wish to delete your game to start a new one", "WARNING",
 				        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-						
-					 UIManager UI=new UIManager();
-					  UI.put("JOptionPane.background", Color.BLACK);
 					
 					 for(File file: directory.listFiles()) 
 		        		    if (!file.isDirectory()) 
@@ -183,7 +175,7 @@ public class ARTDGameStartMenu extends JFrame {
 					
 				} else {
 					try {
-						ARTDMessages.StartGameMessage();
+						ARTDStartingStory.StartGameMessage();
 					} catch (HeadlessException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -216,7 +208,7 @@ public class ARTDGameStartMenu extends JFrame {
 					
 
 					try {
-						ARTDMessages.StartGameMessage();
+						ARTDStartingStory.StartGameMessage();
 					} catch (HeadlessException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -248,9 +240,8 @@ public class ARTDGameStartMenu extends JFrame {
 
 				
 				Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
+				mySaveLoadGameData.LoadGame();
 				window.dispose();
-			//	mySaveLoadGameData.LoadGame();
-				
 			}
         	
         });

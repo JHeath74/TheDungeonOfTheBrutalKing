@@ -107,7 +107,7 @@ public class ARTDCharacterCreation {
 		Font toonClassDescriptionFont = new Font("Verdana",Font.BOLD,30);
 		toonclassDescriptionTextArea.setFont(toonClassDescriptionFont);
 		
-		tooncreationTextField.setText("Name: " + ARTDMessages.toonName);
+		tooncreationTextField.setText("Name: " + ARTDStartingStory.toonName);
 		toonstatsScrollPane = new JScrollPane();
 		
 		
@@ -280,7 +280,7 @@ public class ARTDCharacterCreation {
 						ArrayList<String> newChar = new ArrayList<String>();
 
 						ArrayList<String> newChar2 = new ArrayList<String>();
-						String charName = ARTDMessages.toonName;
+						String charName = ARTDStartingStory.toonName;
 
 						// Validating if the Charecter Name is blank or not
 						toonName(tooncreationTextField, charName, newChar);
