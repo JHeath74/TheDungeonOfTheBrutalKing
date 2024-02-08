@@ -74,8 +74,12 @@ public class ARTDStartingStory extends JFrame {
 		StoryMessageFrame.add(StoryImageSplitPane);
 		
 		StoryImageSplitPane.setDividerLocation(0.5);
-		StoryImageSplitPane.setResizeWeight(.02d);
+		StoryImageSplitPane.setResizeWeight(.5d);
+		
+		//StoryImageSplitPane.setPrefereSize(width, height);
 	
+		//StoryImageSplitPane.setPreferredSize(new Dimension(480, 240));
+		
 		//********************************************************************************
 		//*************  Creating JPanels ************************************************
 		//********************************************************************************
@@ -84,17 +88,22 @@ public class ARTDStartingStory extends JFrame {
 		StoryMessagePanel = new JPanel();
 		StoryButtonPanel = new JPanel();
 		StorySplitPanePanel = new JPanel();
-				
+					
+		
+		StoryMessagePanel.setPreferredSize(new Dimension(StoryImageSplitPane.getWidth()/2, StoryImageSplitPane.getHeight()));
+		StoryImagePanel.setPreferredSize(new Dimension(StoryImageSplitPane.getWidth()/2, StoryImageSplitPane.getHeight()));
+		
+		
 		StoryImageSplitPane.setRightComponent(StoryMessagePanel);
 		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
-				
 		
+	
 		
 		//********************************************************************************
 		//************* Setting up Other Needed Fields ***********************************
 		//********************************************************************************
 				
-		StoryMessageTextArea = new JTextArea(60,50); // Row, Column
+		StoryMessageTextArea = new JTextArea(50,50); // Row, Column
 		StoryMessageTextArea.setWrapStyleWord(true);
 		StoryMessageTextArea.setLineWrap(true);
 				
@@ -102,6 +111,8 @@ public class ARTDStartingStory extends JFrame {
 		StoryMessageTextArea.setForeground(myGameSettings.colorDarkGoldenRod);
 		StoryMessageTextArea.setFont(new Font("Arial", Font.PLAIN, 30));			
 		StoryMessageTextArea.setSize(480, 320);
+		
+
 		StoryMessagePanel.add(StoryMessageTextArea);
 				
 
@@ -137,7 +148,7 @@ public class ARTDStartingStory extends JFrame {
 		});
 
 
-		StoryImageSplitPane.setSize(width, height);
+		
 
 		
 		//********************************************************************************
