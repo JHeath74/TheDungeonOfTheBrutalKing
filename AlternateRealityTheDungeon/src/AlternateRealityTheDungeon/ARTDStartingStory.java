@@ -103,14 +103,17 @@ public class ARTDStartingStory extends JFrame {
 		//************* Setting up Other Needed Fields ***********************************
 		//********************************************************************************
 				
-		StoryMessageTextArea = new JTextArea(50,50); // Row, Column
+		StoryMessageTextArea = new JTextArea(25,25); // Row, Column
 		StoryMessageTextArea.setWrapStyleWord(true);
 		StoryMessageTextArea.setLineWrap(true);
 				
 		StoryMessageTextArea.setBackground(myGameSettings.colorLightBrown);
 		StoryMessageTextArea.setForeground(myGameSettings.colorDarkGoldenRod);
-		StoryMessageTextArea.setFont(new Font("Arial", Font.PLAIN, 30));			
-		StoryMessageTextArea.setSize(480, 320);
+		StoryMessageTextArea.setFont(new Font("Arial", Font.PLAIN, 30));		
+		
+		
+		
+		//StoryMessageTextArea.setPreferredSize(new Dimension(StoryMessagePanel.getWidth(), StoryMessagePanel.getHeight()));
 		
 
 		StoryMessagePanel.add(StoryMessageTextArea);
@@ -179,8 +182,12 @@ public class ARTDStartingStory extends JFrame {
         welcomeImages(2);
 		wait(2);
 
+		do
+		{
+			toonName = JOptionPane.showInputDialog(null, "Stranger asks 'What is your name?","Please Enter Name.", JOptionPane.INFORMATION_MESSAGE);
+		}while (toonName == null);
 			
-		toonName = JOptionPane.showInputDialog(null, "Stranger asks 'What is your name?","Please Enter Name.", JOptionPane.INFORMATION_MESSAGE);
+		
 
 		StoryMessageTextArea.append("Welcome, " + toonName + " it's best to move slowly at first,"
 				+ "But not too slow,  people don't tend to last too long here.\n\n");
