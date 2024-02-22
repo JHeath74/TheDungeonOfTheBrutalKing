@@ -1,12 +1,12 @@
 package Enemies;
 
-import AlternateRealityTheDungeon.Enemies;
+import DungeonoftheBrutalKing.Enemies;
 
 public class Rats extends Enemies {
-	
 
-	
-	
+
+
+
 	public Rats()
 	{
 		name = "Rat";
@@ -18,25 +18,25 @@ public class Rats extends Enemies {
 		agi = 1;
 		MonsterHP = 3;
 		MonsterImage = "GiantRat.jpg";
-		
-		
+
+
 	}
-	
+
 	public double attackdamage(double str)
 	{
-		
+
 		double attackdamage = str * 1.1;
-		
+
 		return attackdamage;
 	}
-	
+
 	public double defenseToDamage(double agi)
 	{
-		
+
 		double defenseToDamage = agi * 1.4;
-		
+
 		return defenseToDamage;
 	}
-	
-	
+
+
 }

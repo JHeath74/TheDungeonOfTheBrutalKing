@@ -1,7 +1,7 @@
 package Weapons;
 
-import AlternateRealityTheDungeon.Singleton;
-import AlternateRealityTheDungeon.Weapons;
+import DungeonoftheBrutalKing.Singleton;
+import DungeonoftheBrutalKing.Weapons;
 
 public class ARTDBattleHammer extends Weapons {
 

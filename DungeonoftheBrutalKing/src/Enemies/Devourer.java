@@ -1,11 +1,11 @@
 package Enemies;
 
-import AlternateRealityTheDungeon.Enemies;
+import DungeonoftheBrutalKing.Enemies;
 
 public class Devourer extends Enemies{
 
 	public Devourer() {
-		
+
 		name = "Devourer";
 		sta = 1;
 		chr = 1;

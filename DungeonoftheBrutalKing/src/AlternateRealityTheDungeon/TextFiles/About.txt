@@ -1,4 +1,0 @@
-Hello and Welcome to Alternate Reality:  The Dungeon.
-I'd like this game to be very much like the Atari 800XL
-
-Started programming this game while at work starting June \ July 2022.  It started off as intending to be like the game I played on Atari 800XL,  but it didn't end up that way.

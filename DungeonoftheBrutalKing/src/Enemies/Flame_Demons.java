@@ -1,6 +1,6 @@
 package Enemies;
 
-import AlternateRealityTheDungeon.Enemies;
+import DungeonoftheBrutalKing.Enemies;
 
 public class Flame_Demons extends Enemies {
 

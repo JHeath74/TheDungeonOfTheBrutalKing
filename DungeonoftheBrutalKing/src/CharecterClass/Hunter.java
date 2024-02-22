@@ -1,37 +1,37 @@
 package CharecterClass;
 
-import AlternateRealityTheDungeon.Charecter;
-import AlternateRealityTheDungeon.Class;
+import DungeonoftheBrutalKing.Charecter;
+import DungeonoftheBrutalKing.Class;
 
 public class Hunter extends Class
 {
 
 	Charecter myChar = new Charecter();
-	
+
 	int sta; //Stamina
 	int chr; //Charisma
 	int str; //Strength
 	int inti; //Intelligence
 	int wis; //Wisdom
 	int agi; //Agility
-	
+
 	int Herolevel;
-	
+
 	public static String charClass = "Hunter";
-	
+
 	public static String ClassDescription;
-	
+
 	public Hunter()
 	{
 		Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
-		
-		charClass = "Hunter";
-		
-		
 
-		
+		charClass = "Hunter";
+
+
+
+
 	}
-	
+
 	public static String ClassDescription()
 	{
 		return ClassDescription = Hunter.charClass + "finds its place as a bulwark between civilization and the terrors of the wilderness.\n"
@@ -41,6 +41,6 @@ public class Hunter extends Class
 	}
 
 	//Spells
-	
-	
+
+
 }

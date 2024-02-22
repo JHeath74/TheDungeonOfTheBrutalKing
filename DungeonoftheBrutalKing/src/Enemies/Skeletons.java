@@ -1,6 +1,6 @@
 package Enemies;
 
-import AlternateRealityTheDungeon.Enemies;
+import DungeonoftheBrutalKing.Enemies;
 
 public class Skeletons extends Enemies {
 
@@ -14,24 +14,24 @@ public class Skeletons extends Enemies {
 		wis =1;
 		agi =2;
 		MonsterHP = 7;
-		
+
 		MonsterImage = "Skeleton.jpg";
-		
+
 	}
-	
+
 	public double attackdamage(double str)
 	{
-		
+
 		double attackdamage = str * 1.7;
-		
+
 		return attackdamage;
 	}
-	
+
 	public double defenseToDamage(double agi)
 	{
-		
+
 		double defenseToDamage = agi * 1.7;
-		
+
 		return defenseToDamage;
 	}
 

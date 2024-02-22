@@ -1,33 +1,33 @@
 package CharecterClass;
 
-import AlternateRealityTheDungeon.Charecter;
-import AlternateRealityTheDungeon.Class;
+import DungeonoftheBrutalKing.Charecter;
+import DungeonoftheBrutalKing.Class;
 
 public class Warrior extends Class {
 
 	Charecter myChar = new Charecter();
-	
+
 	int sta; //Stamina
 	int chr; //Charisma
 	int str; //Strength
 	int inti; //Intelligence
 	int wis; //Wisdom
 	int agi; //Agility
-	
+
 	int Herolevel;
-	
+
 	public static String charClass = "Warrior";
-	
+
 	public static String ClassDescription;
-	
+
 	public Warrior()
 	{
 		Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
-		
+
 		charClass = "Warrior";
-		
-		
-		
+
+
+
 	}
 
 	public static String ClassDescription()
@@ -42,5 +42,5 @@ public class Warrior extends Class {
 				+ "	Strength (STR) is an important skill for a " + Warrior.charClass;
 
 	}
-	
+
 }

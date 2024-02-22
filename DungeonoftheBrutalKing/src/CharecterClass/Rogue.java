@@ -1,7 +1,7 @@
 package CharecterClass;
 
-import AlternateRealityTheDungeon.Charecter;
-import AlternateRealityTheDungeon.Class;
+import DungeonoftheBrutalKing.Charecter;
+import DungeonoftheBrutalKing.Class;
 
 public class Rogue extends Class
 {
@@ -13,20 +13,20 @@ public class Rogue extends Class
 	int inti; //Intelligence
 	int wis; //Wisdom
 	int agi; //Agility
-	
+
 	int Herolevel;
-	
+
 	public static String charClass = "Rogue";
 	public static String ClassDescription;
-	
+
 	public Rogue()
 	{
-		
+
 		Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
-		
+
 		charClass = "Rogue";
-		
-		
+
+
 
 	}
 
@@ -38,7 +38,7 @@ public class Rogue extends Class
 				+ "ancient ruins and hidden crypts in search of treasure. \n\n"
 				+ "AGILITY (AGI) followed by Intelligence are important stats for a " + Rogue.charClass;
 	}
-	
-	
-	
+
+
+
 }

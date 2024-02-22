@@ -1,15 +1,15 @@
 package Armour;
 
-import AlternateRealityTheDungeon.Armour;
+import DungeonoftheBrutalKing.Armour;
 
 public class Chainmail extends Armour {
 
 
-	
-	public Chainmail() 
+
+	public Chainmail()
 	{
 		name = "Chain";
-		armourDefense = 12;	
+		armourDefense = 12;
 		requiredStrength = 30;
 		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
 	}

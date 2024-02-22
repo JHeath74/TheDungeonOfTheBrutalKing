@@ -1,9 +1,9 @@
 package Weapons;
 
-import AlternateRealityTheDungeon.Weapons;
+import DungeonoftheBrutalKing.Weapons;
 
 public class ARTDHand extends Weapons {
-	
+
 	public ARTDHand() {
 		name = "Hand";
 		requiredStrength = 35;

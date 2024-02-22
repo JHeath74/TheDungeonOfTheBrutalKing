@@ -1,6 +1,6 @@
 package Maps;
 
-import AlternateRealityTheDungeon.Maps;
+import DungeonoftheBrutalKing.Maps;
 
 public class DungeonLevel2 extends Maps {
 

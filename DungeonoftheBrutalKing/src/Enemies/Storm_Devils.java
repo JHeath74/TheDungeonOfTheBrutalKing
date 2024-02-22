@@ -1,6 +1,6 @@
 package Enemies;
 
-import AlternateRealityTheDungeon.Enemies;
+import DungeonoftheBrutalKing.Enemies;
 
 public class Storm_Devils extends Enemies {
 

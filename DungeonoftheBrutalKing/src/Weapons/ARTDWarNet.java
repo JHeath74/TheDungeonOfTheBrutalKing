@@ -1,6 +1,6 @@
 package Weapons;
 
-import AlternateRealityTheDungeon.Weapons;
+import DungeonoftheBrutalKing.Weapons;
 
 public class ARTDWarNet extends Weapons {
 

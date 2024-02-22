@@ -1,24 +1,22 @@
 package CharecterClass;
 
-import javax.swing.ImageIcon;
-
-import AlternateRealityTheDungeon.Charecter;
-import AlternateRealityTheDungeon.Class;
+import DungeonoftheBrutalKing.Charecter;
+import DungeonoftheBrutalKing.Class;
 
 public class Bard extends Class{
-	
-	
+
+
 	Charecter myChar = new Charecter();
-	
+
 	int sta; //Stamina
 	int chr; //Charisma
 	int str; //Strength
 	int inti; //Intelligence
 	int wis; //Wisdom
 	int agi; //Agility
-	
+
 	public static String charClass = "Bard";
-	
+
 	public static String ClassDescription;
 	public static String BardImage;
 
@@ -26,14 +24,14 @@ public class Bard extends Class{
 	{
 
 		int Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
-		
+
 		charClass = "Bard";
-		
+
 		BardImage = "Bard.webp";
 
-		
+
 	}
-	
+
 	public static String ClassDescription()
 	{
 		return ClassDescription = "A "  + Bard.charClass 	+ " is traditionally defined as a poet, especially one who writes \n"

@@ -1,9 +1,9 @@
 package CharecterClass;
 
-import AlternateRealityTheDungeon.Charecter;
-import AlternateRealityTheDungeon.Class;
+import DungeonoftheBrutalKing.Charecter;
+import DungeonoftheBrutalKing.Class;
 
-public class Paladin extends Class 
+public class Paladin extends Class
 {
 	int sta; //Stamina
 	int chr; //Charisma
@@ -11,22 +11,22 @@ public class Paladin extends Class
 	int inti; //Intelligence
 	int wis; //Wisdom
 	int agi; //Agility
-	
+
 	int Herolevel;
 
 	Charecter myChar = new Charecter();
-	
+
 	public static String charClass = "Paladin";
-	
+
 	public static String ClassDescription;
-	
+
 	public Paladin()
 	{
 		Herolevel = myChar.CharInfo.indexOf(myChar.CharInfo.get(2));
-		
+
 		charClass = "Paladin";
-		
-		
+
+
 
 	}
 	public static String ClassDescription()
@@ -35,5 +35,5 @@ public class Paladin extends Class
 				+ " of conduct and paladin characters are expected to/n demonstrate and embody goodness. \n\n"
 				+ "Wisdom (WIS) followed by Strength is most important stats for a " + Paladin.charClass;
 	}
-	
+
 }

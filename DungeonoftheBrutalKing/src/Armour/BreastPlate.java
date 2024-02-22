@@ -1,16 +1,16 @@
 package Armour;
 
-import AlternateRealityTheDungeon.Armour;
+import DungeonoftheBrutalKing.Armour;
 
 public class BreastPlate extends Armour {
 
-	
+
 	public BreastPlate()
 	{
 		name = "Breast Plate";
-		armourDefense = 15;	
+		armourDefense = 15;
 		requiredStrength = 35;
-		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
+		charStrength = DungeonoftheBrutalKing.Singleton.myCharSingleton().CharInfo.get(7).toString();
 
 	}
 

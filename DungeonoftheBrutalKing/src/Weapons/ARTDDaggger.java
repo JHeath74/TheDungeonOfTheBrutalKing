@@ -1,8 +1,8 @@
 package Weapons;
 
-import AlternateRealityTheDungeon.Weapons;
+import DungeonoftheBrutalKing.Weapons;
 
-public class ARTDDaggger extends Weapons 
+public class ARTDDaggger extends Weapons
 {
 
 	public ARTDDaggger()
@@ -11,7 +11,7 @@ public class ARTDDaggger extends Weapons
 		requiredStrength = 35;
 		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
 	}
-	
-	
-	
+
+
+
 }

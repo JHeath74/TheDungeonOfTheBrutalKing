@@ -1,13 +1,13 @@
 package Weapons;
 
-import AlternateRealityTheDungeon.Weapons;
+import DungeonoftheBrutalKing.Weapons;
 
 public class ARTDClub extends Weapons {
 
 	public ARTDClub() {
 		name = "Club";
 		requiredStrength = 35;
-		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
+		charStrength = DungeonoftheBrutalKing.Singleton.myCharSingleton().CharInfo.get(7).toString();
 	}
 
 }

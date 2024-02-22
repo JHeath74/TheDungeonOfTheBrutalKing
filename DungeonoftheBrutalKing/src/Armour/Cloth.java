@@ -1,18 +1,18 @@
 package Armour;
 
-import AlternateRealityTheDungeon.Armour;
+import DungeonoftheBrutalKing.Armour;
 
 public class Cloth extends Armour {
 
-	
 
-	
+
+
 	public Cloth()
 	{
 		name = "Cloth";
-		armourDefense = 5;	
+		armourDefense = 5;
 		requiredStrength = 10;
-		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
+		charStrength = DungeonoftheBrutalKing.Singleton.myCharSingleton().CharInfo.get(7).toString();
 	}
 
 
