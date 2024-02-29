@@ -1,5 +1,6 @@
 package DungeonoftheBrutalKing;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
@@ -17,12 +18,14 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 public class StartingStory extends JFrame{
@@ -33,6 +36,7 @@ public class StartingStory extends JFrame{
 	static JTextArea StoryMessageTextArea = null;
 	static int width, height = 0;
 	static JSplitPane StoryImageSplitPane = null;
+	static JOptionPane toonNamePane = null;
 	public static JLabel StoryImageLabel;
 	public static BufferedImage StoryImagePicture = null;
 	public static Dimension imageSize, size = null;
@@ -73,6 +77,7 @@ public class StartingStory extends JFrame{
 		//********************************************************************************
 
 		StoryImageSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	//	StoryImageSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		StoryMessageFrame.add(StoryImageSplitPane);
 
 		StoryImageSplitPane.setDividerLocation(0.5);
@@ -94,18 +99,19 @@ public class StartingStory extends JFrame{
 
 		StoryMessagePanel.setPreferredSize(new Dimension(StoryImageSplitPane.getWidth()/2, StoryImageSplitPane.getHeight()));
 		StoryImagePanel.setPreferredSize(new Dimension(StoryImageSplitPane.getWidth()/2, StoryImageSplitPane.getHeight()));
-
-
-		StoryImageSplitPane.setRightComponent(StoryMessagePanel);
-		StoryImageSplitPane.setLeftComponent(StoryImagePanel);
-
+		
+		StoryImagePanel.setBackground(myGameSettings.colorLightSalmon);
+		StoryMessagePanel.setBackground(myGameSettings.colorLightBrown);
+		
+		StoryImageSplitPane.setTopComponent(StoryImagePanel);
+		StoryImageSplitPane.setBottomComponent(StoryMessagePanel);
 
 
 		//********************************************************************************
 		//************* Setting up Other Needed Fields ***********************************
 		//********************************************************************************
 
-		StoryMessageTextArea = new JTextArea(25,25); // Row, Column
+		StoryMessageTextArea = new JTextArea(20,20); // Row, Column
 		StoryMessageTextArea.setWrapStyleWord(true);
 		StoryMessageTextArea.setLineWrap(true);
 
@@ -170,80 +176,161 @@ public class StartingStory extends JFrame{
 		//********************************************************************************
 
 		StoryMessageTextArea.setText("");
+		//Thread.sleep(2000);
+	
+		SwingUtilities.invokeLater(new Runnable() {
+		    public void run() {
+		      
+		    	StoryMessageTextArea.setText("You wake up very slowly and your "
+						+ "not feeling very well. As you come to your senses, "
+						+ " you notice a stranger sitting by a fire.\n\n");
+
+		    	StoryMessageFrame.repaint();
+		    	StoryMessageFrame.validate();
+		    	
+				//	welcomeImages(1);
+		    	
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
+				
+			
+				
+			//	StoryMessageTextArea.append("You wake up very slowly and your "
+			//			+ "not feeling very well. As you come to your senses, "
+			//			+ " you notice a stranger sitting by a fire.\n\n");
+
+			
+			//		welcomeImages(1);
+		
+
+//
+			//	try {
+			//		Thread.sleep(2000);
+			//	} catch (InterruptedException e) {
+			//		// TODO Auto-generated catch block
+			//		e.printStackTrace();
+			//	}
+			
+
+		        StoryMessageTextArea.append("As you awaken,  the stranger comes"
+		       		+ " over and hands you a drink, then asks you for your name.\n\n");
+		       
+		        StoryMessageFrame.repaint();
+		    	StoryMessageFrame.validate();
+		        
+			//		welcomeImages(2);
+			
 
 
-	//	welcomeStory(0);
-		StoryMessageTextArea.setText("You wake up very slowly and your "
-				+ "not feeling very well. As you come to your senses, "
-				+ " you notice a stranger sitting by a fire.\n\n");
+		        try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
-		welcomeImages(1);
-	//	wait(2);
-
-		Thread.sleep(2000);
-	//	welcomeStory(1);
-
-        StoryMessageTextArea.append("As you awaken,  the stranger comes"
-       		+ " over and hands you a drink, then asks you for your name.\n\n");
-
-        welcomeImages(2);
-		//wait(2);
-
-        Thread.sleep(2000);
-
-			do
-			{
-				toonName = JOptionPane.showInputDialog(null, "Stranger asks 'What is your name?","Please Enter Name.", JOptionPane.INFORMATION_MESSAGE);
-			}while (toonName == null);
+					do
+					{
+						toonName = JOptionPane.showInputDialog(null, "Stranger asks 'What is your name?","Please Enter Name.", JOptionPane.INFORMATION_MESSAGE);
+						
+					}while (toonName == null);
 
 
 
-		StoryMessageTextArea.append("Welcome, " + toonName + " it's best to move slowly at first,"
-				+ "But not too slow,  people don't tend to last too long here.\n\n");
+				StoryMessageTextArea.append("Welcome, " + toonName + " it's best to move slowly at first,"
+						+ "But not too slow,  people don't tend to last too long here.\n\n");
 
-		welcomeImages(3);
-	//	wait(2);
+				
+				//	welcomeImages(3);
+			
 
-		Thread.sleep(2000);
-
-
-			StoryMessageTextArea.append("You ask the stranger where you are,  he says 'You are in a dungeon, and if you wish"
-				+ "to go home,  you'll have to go through it to get out\n\n");
-
-		welcomeImages(4);
-	//	wait(2);
-
-
-		Thread.sleep(2000);
-
-		StoryMessageTextArea.append("The stranger continues 'I wish you luck,  many have come this way but none"
-				+ "have ever left.\n\n");
-
-		welcomeImages(5);
-	//wait(2);
-
-		Thread.sleep(2000);
-
-		StoryMessageTextArea.append("If you do get out " + toonName + ",  let other's know I'm here. I've been here a long time"
-				+ "and I would like to leave\n\n");
-
-		welcomeImages(6);
-	//	wait(2);
-
-		Thread.sleep(2000);
-
-		StoryMessageTextArea.append("You look at the stranger and say 'Thanks'.  As you walk away you look back"
-				+ "and only see the first, but there is no sign of the stranger\n\n");
-
-		welcomeImages(7);
-	//	wait(2);
-
-		Thread.sleep(2000);
-
-		StoryMessageFrame.dispose();
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 
-		CharacterCreation.CharacterCreation();
+					StoryMessageTextArea.append("You ask the stranger where you are,  he says 'You are in a dungeon, and if you wish"
+						+ "to go home,  you'll have to go through it to get out\n\n");
+
+				
+				//	welcomeImages(4);
+			
+
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				StoryMessageTextArea.append("The stranger continues 'I wish you luck,  many have come this way but none"
+						+ "have ever left.\n\n");
+
+			//	welcomeImages(5);
+
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				StoryMessageTextArea.append("If you do get out " + toonName + ",  let other's know I'm here. I've been here a long time"
+						+ "and I would like to leave\n\n");
+
+				
+			//		welcomeImages(6);
+			
+
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				StoryMessageTextArea.append("You look at the stranger and say 'Thanks'.  As you walk away you look back"
+						+ "and only see the first, but there is no sign of the stranger\n\n");
+
+				
+				//	welcomeImages(7);
+				
+
+				
+					try {
+						Thread.sleep(2000);
+						
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+		
+
+				StoryMessageFrame.dispose();
+
+
+				try {
+					CharacterCreation.CharacterCreation();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		    }
+		});
+		
+		
+		
 
 	 }
 
@@ -255,13 +342,13 @@ public class StartingStory extends JFrame{
 			  StoryImagePanel.remove(StoryImageLabel);
 		  }
 		StoryImagePicture = ImageIO.read(new File(GameSettings.StoryIntroductionPath + m + ".png")); // Buffered Image
-
+		
 
 		StoryImageLabel = new JLabel();
 
 		//StoryImageLabel.setSize(StoryImagePanel.getWidth(), StoryImagePanel.getHeight());
 		StoryImageLabel.setSize(480, 320);
-
+		
 		Image newStoryImagePicture = StoryImagePicture.getScaledInstance(StoryImageLabel.getWidth(), StoryImageLabel.getHeight(),
 		        Image.SCALE_SMOOTH);
 

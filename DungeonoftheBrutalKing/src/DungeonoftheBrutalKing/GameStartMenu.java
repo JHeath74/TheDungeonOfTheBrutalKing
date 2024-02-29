@@ -26,6 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
@@ -201,9 +202,14 @@ public class GameStartMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				 if (JOptionPane.showConfirmDialog(null, "Do you wish to delete your game to start a new one", "WARNING",
+				 if (JOptionPane.showConfirmDialog(null, "Do you wish to delete your game to start a new one", "Restart Game",
 				        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+					    
+					 UIManager UI=new UIManager();
+					 UI.put("OptionPane.background", myGameSettings.colorLightBrown);
+					// UI.put("Panel.background", myGameSettings.colorLightBrown);
 
+				
 					 for(File file: directory.listFiles()) {
 						if (!file.isDirectory()) {
 							file.delete();

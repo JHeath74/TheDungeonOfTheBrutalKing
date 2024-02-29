@@ -278,7 +278,7 @@ public class CharacterCreation {
 					try {
 
 						FileWriter writer = new FileWriter(
-								"src//AlternateRealityTheDungeon//SaveGame//InitialCharecterSave.txt");
+								"src//DungeonoftheBrutalKing//SaveGame//InitialCharecterSave.txt");
 
 						ArrayList<String> newChar = new ArrayList<>();
 
