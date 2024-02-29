@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.Window;
@@ -21,14 +23,20 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 public class GameStartMenu extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, FontFormatException, BadLocationException {
 
 		GameSettings myGameSettings = new GameSettings();
 		SaveLoadGameData mySaveLoadGameData = new SaveLoadGameData();
@@ -54,10 +62,12 @@ public class GameStartMenu extends JFrame {
 		//***********************************************
 
 		JFrame StartMenuFrame = null;
-		JPanel StartImagePanel, StartButtonPanel = null;
+		JPanel GameTitlePanel, StartButtonPanel = null;
 		JButton StartNewGameButton, LoadExistingGameButton, ExitGameButton = null;
 		BufferedImage StartGameImage = null;
-		JLabel StartImageLabel = null;
+		JTextArea GameTitleArea = null;
+
+		//JLabel StartImageLabel = null;
 		int width, height = 0;
 
 		//***************************************************
@@ -65,12 +75,13 @@ public class GameStartMenu extends JFrame {
 		//***************************************************
 
 		StartMenuFrame = new JFrame("Dungeon of the Brutal King");
-		StartImagePanel = new JPanel();
+		GameTitlePanel = new JPanel();
 		StartButtonPanel = new JPanel();
 		StartNewGameButton = new JButton("Start New Game");
 		LoadExistingGameButton = new JButton("Load Exisiting Game");
 		ExitGameButton = new JButton("Exit Game");
-
+		GameTitleArea = new JTextArea();
+		//GameTitleArea = new JTextPane();
 
 		//***************************************************
 		//******** Getting Screen Width and Height **********
@@ -93,7 +104,7 @@ public class GameStartMenu extends JFrame {
         StartMenuFrame.setSize(width, height);
         StartMenuFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         StartMenuFrame.setUndecorated(true);
-        StartMenuFrame.getContentPane().setBackground(myGameSettings.colorBrown);
+        StartMenuFrame.getContentPane().setBackground(myGameSettings.colorLightBrown);
         StartMenuFrame.getContentPane().setForeground(myGameSettings.colorLightBrown);
 
 
@@ -101,20 +112,20 @@ public class GameStartMenu extends JFrame {
       //**** Setting Up and adding JPanel to JFrame********
       //***************************************************
 
-        StartImagePanel.setLayout(new BorderLayout());
+        GameTitlePanel.setLayout(new BorderLayout());
         StartButtonPanel.setLayout(new FlowLayout());
 
-        StartImagePanel.setMaximumSize(new Dimension(450, 200));
+        GameTitlePanel.setMaximumSize(new Dimension(450, 200));
         StartButtonPanel.setMaximumSize(new Dimension(250, 350));
 
-        StartMenuFrame.add(StartImagePanel, BorderLayout.CENTER);
+        StartMenuFrame.add(GameTitlePanel, BorderLayout.CENTER);
         StartMenuFrame.add(StartButtonPanel, BorderLayout.SOUTH);
 
         StartButtonPanel.setBackground(myGameSettings.colorLightBrown);
         StartButtonPanel.setForeground(myGameSettings.colorLightBrown);
 
-        StartImagePanel.setBackground(myGameSettings.colorLightBrown);
-        StartImagePanel.setForeground(myGameSettings.colorLightBrown);
+        GameTitlePanel.setBackground(myGameSettings.colorLightBrown);
+        GameTitlePanel.setForeground(myGameSettings.colorLightBrown);
 
 
       //***************************************************
@@ -130,8 +141,28 @@ public class GameStartMenu extends JFrame {
       //********** Setting settings for JPanel ************
       //***************************************************
 
-        StartImageLabel = new JLabel(new ImageIcon(myGameSettings.myStartMenuPicture));
-		StartImagePanel.add(StartImageLabel);
+        //StartImageLabel = new JLabel(new ImageIcon(myGameSettings.myStartMenuPicture));
+        GameTitlePanel.add(GameTitleArea);
+        
+       // Font avatarFont = Font.createFont(Font.TRUETYPE_FONT, new File("src\\DungeonoftheBrutalKing\\Fonts\\fontAvatar.ttf"));
+       // Font fontAvatar = myGameSettings.fontAvatar;
+        Font avatarFont = new Font("src\\DungeonoftheBrutalKing\\Fonts\\fontAvatar.ttf", Font.BOLD, 100);
+
+        
+       // GameTitleArea.setText("Dungeon");
+        GameTitleArea.setEditable(false);
+
+        
+        GameTitleArea.setFont(avatarFont);
+        GameTitleArea.setForeground(myGameSettings.colorLightYellow);
+        GameTitleArea.setBackground(myGameSettings.colorLightBrown);
+        GameTitleArea.setText("\n                   Dungeon \n                      of the \n                 Brutal King");
+
+       
+        
+        
+        
+        
 
 
       //***************************************************

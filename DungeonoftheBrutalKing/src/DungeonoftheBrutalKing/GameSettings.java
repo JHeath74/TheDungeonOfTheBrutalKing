@@ -19,7 +19,9 @@ public class GameSettings
 				 = null;
 
 
-	Font fontTimesNewRoman, fontAvatar, fontLomoCopyLTStdMidi, fontWelcomeMessage, fontWelcomeMessage2 = null;
+	Font fontTimesNewRoman, fontLomoCopyLTStdMidi, fontWelcomeMessage, fontWelcomeMessage2, fontAvatar = null;
+
+
 
 	BufferedImage myJMenuBarPicture, myStartMenuPicture = null;
 
