@@ -42,6 +42,7 @@ public class GameStartMenu extends JFrame {
 		GameSettings myGameSettings = new GameSettings();
 		SaveLoadGameData mySaveLoadGameData = new SaveLoadGameData();
 
+		UIManager UI=new UIManager();
 
 		MusicPlayer soundplayer = new MusicPlayer();
 		try {
@@ -205,7 +206,7 @@ public class GameStartMenu extends JFrame {
 				 if (JOptionPane.showConfirmDialog(null, "Do you wish to delete your game to start a new one", "Restart Game",
 				        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 					    
-					 UIManager UI=new UIManager();
+					 
 					 UI.put("OptionPane.background", myGameSettings.colorLightBrown);
 					// UI.put("Panel.background", myGameSettings.colorLightBrown);
 

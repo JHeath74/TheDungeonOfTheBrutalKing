@@ -346,7 +346,7 @@ public class CharacterCreation {
 								writer.write(str3 + System.lineSeparator());
 							}
 
-							//JOptionPane.showMessageDialog(frame, "Charecter Created");
+					//		JOptionPane.showMessageDialog(charecterCreationFrame, "Charecter Created");
 
 							writer.close();
 							charecterCreationFrame.dispose();
