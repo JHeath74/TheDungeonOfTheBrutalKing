@@ -352,9 +352,10 @@ public class StartingStory extends JFrame{
 		startingStory.add("You look at the stranger and say 'Thanks'.  As you walk away you look back"
 				+ "and only see the first, but there is no sign of the stranger\n\n");
 		
+		System.out.println("Number: " + m);
+		System.out.println(m + " " + java.time.LocalTime.now());
 		StoryMessageTextArea.setText(startingStory.get(m));
-    	StoryMessageFrame.repaint();
-    	StoryMessageFrame.validate();
+    	
 		
 	}
 
@@ -367,8 +368,8 @@ public class StartingStory extends JFrame{
 		ImageIcon img = new ImageIcon(StoryImagePicture);
 
 		StoryImageLabel.setIcon(img);	
-
-		StoryImageLabel.revalidate();
+		StoryMessageFrame.repaint();
+    	//StoryMessageFrame.validate();
 
 	}
 

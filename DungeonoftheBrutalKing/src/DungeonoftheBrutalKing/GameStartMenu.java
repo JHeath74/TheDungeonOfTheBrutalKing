@@ -252,14 +252,9 @@ public class GameStartMenu extends JFrame {
 
 
 					try {
-						StartingStory.StartGameMessage();
+						//StartingStory.StartGameMessage();
+						CharacterCreation.CharacterCreation();
 					} catch (HeadlessException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (UnsupportedAudioFileException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (LineUnavailableException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
