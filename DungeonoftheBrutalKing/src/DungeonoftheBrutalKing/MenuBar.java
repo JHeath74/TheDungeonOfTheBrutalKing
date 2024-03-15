@@ -637,7 +637,8 @@ public class MenuBar extends JFrame {
 
 		
 		startingImage = new JLabel(new ImageIcon(myGameSettings.StoryIntroductionPath + "Starting_Image.png"));
-		startingImage.setPreferredSize(new Dimension(GameImagesAndCombatPanel.getWidth(), GameImagesAndCombatPanel.getHeight()));
+	//	startingImage.setPreferredSize(new Dimension(GameImagesAndCombatPanel.getWidth(), GameImagesAndCombatPanel.getHeight()));
+		startingImage.setSize(GameImagesAndCombatPanel.getWidth(), GameImagesAndCombatPanel.getHeight());
 		GameImagesAndCombatPanel.add(startingImage);
 		
 		
