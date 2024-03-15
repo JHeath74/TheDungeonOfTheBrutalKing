@@ -52,9 +52,9 @@ public class MenuBar extends JFrame {
 
 
 
-	JFrame artdmenuframe = null;
+	JFrame menuframe = null;
 	JPanel p1, p2, p3, p4, GameImagesAndCombatPanel = null;
-	JTextArea CombatMessageArea, messagearea = null;
+	JTextArea MessageArea = null;
 	JTextField CharNameClassLevel, CharStats, CharStats2, CharXPHPGold = null;
 	JMenuBar menuBar = null;
 	JMenu gameMenu, charecterMenu, settingsMenu, helpMenu = null;
@@ -63,7 +63,7 @@ public class MenuBar extends JFrame {
 				charecterinventoryMenuItem, mapMenu, gameSettingsMenuItem,
 				aboutMenuItem, helpMenuItem, mapFloor1MenuItem, mapFloor2MenuItem,
 				mapFloor3MenuItem, mapFloor4MenuItem = null;
-	JLabel picLabel = null;
+	JLabel menuBarImage, startingImage = null;
 	JSplitPane PicturesAndTextUpdates = null;
 
 	Dimension screenSize = null;
@@ -75,14 +75,14 @@ public class MenuBar extends JFrame {
 
 
 		//Creating Frame
-		artdmenuframe = new JFrame("Alternate Reality: The Dungeon");
+		menuframe = new JFrame("Alternate Reality: The Dungeon");
 
 
 		//Adding Frame Preferences and Settings
-		artdmenuframe.setLayout(new BorderLayout());
-		artdmenuframe.setForeground(myGameSettings.colorBrown);
-		artdmenuframe.setUndecorated(true);
-		artdmenuframe.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		menuframe.setLayout(new BorderLayout());
+		menuframe.setForeground(myGameSettings.colorBrown);
+		menuframe.setUndecorated(true);
+		menuframe.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
 
 		// getScreenSize() returns the size
@@ -96,7 +96,7 @@ public class MenuBar extends JFrame {
         height = (int)size.getHeight();
 
         //artdmenuframe.pack();
-        artdmenuframe.setSize(width, height);
+        menuframe.setSize(width, height);
 
 
 		p1 = new JPanel(new BorderLayout());
@@ -197,12 +197,12 @@ public class MenuBar extends JFrame {
 		menuBar.setFont(new Font("sans-serif", Font.ROMAN_BASELINE, 22));
 		menuBar.setBackground(myGameSettings.colorPlum);
 
-		picLabel = new JLabel(new ImageIcon(myGameSettings.myJMenuBarPicture));
-		picLabel.setSize(25, 25);
-		menuBar.add(picLabel);
+		menuBarImage = new JLabel(new ImageIcon(myGameSettings.myJMenuBarPicture));
+		menuBarImage.setSize(25, 25);
+		menuBar.add(menuBarImage);
 
 		// Build the menu.
-		artdmenuframe.addWindowListener(new WindowAdapter() {
+		menuframe.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent windowEvent) {
 				System.exit(0);
@@ -239,11 +239,11 @@ public class MenuBar extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				int result = JOptionPane.showConfirmDialog(artdmenuframe,
+				int result = JOptionPane.showConfirmDialog(menuframe,
 						"Are you sure you wish to delete your current game and start a new one?", "Start New Game?",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if (result == JOptionPane.YES_OPTION) {
-					artdmenuframe.dispose();
+					menuframe.dispose();
 					try {
 						BufferedWriter writer = Files.newBufferedWriter(Paths
 								.get("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
@@ -271,7 +271,7 @@ public class MenuBar extends JFrame {
 						e1.printStackTrace();
 					}
 
-					artdmenuframe.dispose();
+					menuframe.dispose();
 
 				} else if (result == JOptionPane.NO_OPTION) {
 
@@ -368,8 +368,7 @@ public class MenuBar extends JFrame {
 		mapMenu.setMnemonic(KeyEvent.VK_M);
 
 		// ****************************************************************************************
-		// ----------------------------Settings and
-		// Preferences------------------------------------
+		// ----------------------------Settings and Preferences------------------------------------
 		// ****************************************************************************************
 
 		gameSettingsMenuItem = new JMenuItem("Settings");
@@ -591,25 +590,34 @@ public class MenuBar extends JFrame {
 		// ----------------------------Setting Up JSplitPane ------------------------------------
 		// *************************************************************************************
 
-		messagearea = new JTextArea("JTextArea AMessageArea - Navigation, Combat, Interaction");
-		CombatMessageArea= new JTextArea("JTextArea AMessageArea - Game Text Updates");
-
-
+		
+		
+		
+		
+		
+		
+		MessageArea= new JTextArea("JTextArea AMessageArea - Game Text Updates");
+		MessageArea.setBackground(myGameSettings.colorLightBrown);
+		MessageArea.setForeground(myGameSettings.colorLightYellow);
+		
+		
+		MessageArea.setText("As you waking up,  you look around to see.\n"
+				+ "As you sit up, you notice a fire nearby.  You move closer for warmth");
 
 		PicturesAndTextUpdates = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		PicturesAndTextUpdates.setVisible(true);
 		PicturesAndTextUpdates.setResizeWeight(.90d);
 		PicturesAndTextUpdates.setLeftComponent(GameImagesAndCombatPanel);
-		PicturesAndTextUpdates.setRightComponent(CombatMessageArea);
+		PicturesAndTextUpdates.setRightComponent(MessageArea);
 		PicturesAndTextUpdates.setVisible(true);
 
-		CombatMessageArea.setFont(myGameSettings.fontLomoCopyLTStdMidi);
+		MessageArea.setFont(myGameSettings.fontLomoCopyLTStdMidi);
 
 
 		// ****************************************************************
 		// ----------------------------Adding Menu Bar to the JFrame ------
 		// ****************************************************************
-		artdmenuframe.setJMenuBar(menuBar);
+		menuframe.setJMenuBar(menuBar);
 
 		// ***************************************************************
 		// -------------------Setting Up Menubar and JFrame --------------
@@ -617,8 +625,8 @@ public class MenuBar extends JFrame {
 
 
 
-		artdmenuframe.add(PicturesAndTextUpdates, BorderLayout.CENTER);
-		artdmenuframe.add(p1, BorderLayout.NORTH);
+		menuframe.add(PicturesAndTextUpdates, BorderLayout.CENTER);
+		menuframe.add(p1, BorderLayout.NORTH);
 		p1.add(p2, BorderLayout.NORTH);
 		p1.add(p3, BorderLayout.CENTER);
 		p1.add(p4, BorderLayout.SOUTH);
@@ -627,8 +635,14 @@ public class MenuBar extends JFrame {
 		p3.add(CharStats2, BorderLayout.SOUTH);
 		p4.add(CharXPHPGold);
 
-		GameImagesAndCombatPanel.add(messagearea);
-		artdmenuframe.setVisible(true);
+		
+		startingImage = new JLabel(new ImageIcon(myGameSettings.StoryIntroductionPath + "Starting_Image.png"));
+		startingImage.setPreferredSize(new Dimension(GameImagesAndCombatPanel.getWidth(), GameImagesAndCombatPanel.getHeight()));
+		GameImagesAndCombatPanel.add(startingImage);
+		
+		
+		
+		menuframe.setVisible(true);
 
 
 	}

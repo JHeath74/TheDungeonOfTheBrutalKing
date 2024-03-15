@@ -25,6 +25,9 @@ public class LoadSaveGame {
 
 	Charecter myChar = Charecter.Singleton();
 	GameSettings myGameSettings = new GameSettings();
+	
+	
+	
 
 	public void StartGameLoadCharecter() throws IOException {
 
@@ -51,8 +54,20 @@ public class LoadSaveGame {
 		bufReader.close();
 
 	}
+	
+	public void ContinueGameLoadSave()
+	{
+		
+		//Load and play the most recent Game Save
+		
+		
+		
+	}
 
 	public void SaveGame() throws IOException, ParseException {
+		
+		//Save the Current Game State
+		
 		Date date = Calendar.getInstance().getTime();
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd-hh:mm:ss");
 
@@ -83,6 +98,8 @@ public class LoadSaveGame {
 
 	public void LoadGame() {
 
+		//Display a list of Game Saves,  and select one to load it.
+		
 		ArrayList<String> LoadChar = new ArrayList<>();
 
 		JFrame loadGame = new JFrame("Load Game");
@@ -180,6 +197,8 @@ public class LoadSaveGame {
 
 	}
 
+
+	
 	public void AutoSaveGame() throws IOException
 	{
 
@@ -221,5 +240,7 @@ public class LoadSaveGame {
 
 		return chosenFile;
 	}
+	
+
 
 }

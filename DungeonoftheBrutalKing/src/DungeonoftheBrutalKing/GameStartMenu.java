@@ -14,24 +14,18 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
+
 
 public class GameStartMenu extends JFrame {
 
@@ -80,6 +74,7 @@ public class GameStartMenu extends JFrame {
 		GameTitlePanel = new JPanel();
 		StartButtonPanel = new JPanel();
 		StartNewGameButton = new JButton("Start New Game");
+		
 		LoadExistingGameButton = new JButton("Load Exisiting Game");
 		ExitGameButton = new JButton("Exit Game");
 		GameTitleArea = new JTextArea();
@@ -135,6 +130,7 @@ public class GameStartMenu extends JFrame {
       //***************************************************
 
         StartButtonPanel.add(StartNewGameButton, FlowLayout.LEFT);
+       
         StartButtonPanel.add(LoadExistingGameButton, FlowLayout.CENTER);
         StartButtonPanel.add(ExitGameButton, FlowLayout.RIGHT);
 
@@ -151,7 +147,7 @@ public class GameStartMenu extends JFrame {
         Font avatarFont = new Font("src\\DungeonoftheBrutalKing\\Fonts\\fontAvatar.ttf", Font.BOLD, 100);
 
         
-       // GameTitleArea.setText("Dungeon");
+       
         GameTitleArea.setEditable(false);
 
         
@@ -159,12 +155,6 @@ public class GameStartMenu extends JFrame {
         GameTitleArea.setForeground(myGameSettings.colorLightYellow);
         GameTitleArea.setBackground(myGameSettings.colorLightBrown);
         GameTitleArea.setText("\n                   Dungeon \n                      of the \n                 Brutal King");
-
-       
-        
-        
-        
-        
 
 
       //***************************************************
@@ -177,7 +167,7 @@ public class GameStartMenu extends JFrame {
 
         StartNewGameButton.setBackground(myGameSettings.colorGrey);
         StartNewGameButton.setForeground(myGameSettings.colorWhite);
-
+        
         LoadExistingGameButton.setBackground(myGameSettings.colorGrey);
         LoadExistingGameButton.setForeground(myGameSettings.colorWhite);
 
@@ -269,6 +259,7 @@ public class GameStartMenu extends JFrame {
 
 			}});
 
+        
 
         LoadExistingGameButton.addActionListener(new ActionListener() {
 

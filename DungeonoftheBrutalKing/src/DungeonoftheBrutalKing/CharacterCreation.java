@@ -2,7 +2,6 @@ package DungeonoftheBrutalKing;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -42,16 +41,16 @@ public class CharacterCreation {
 	static GameSettings myGameSettings = new GameSettings();
 
 	static String InitialCharecterSave = " ";
-	static String toonClass = " ";
+	static String toonClass, charName = " ";
 	static int width, height = 0;
 	static Dimension size;
 	static File charSave;
 	static Scanner saveFile;
 
 	static JFrame charecterCreationFrame;
-	static JPanel NamePanel, StatsPanel, ClassInfoAndImagePanel, NameAndStatsPanel;
+	static JPanel NameAndStatsPanel, ClassAndClassInfoPanel, ClassInfoAndImagePanel;
 	static JTextArea toonstatsTextArea, toonclassDescriptionTextArea;
-	static JTextField toonNameTextField;
+	static JTextField tooncreationTextField;
 	static JScrollPane toonstatsScrollPane;
 	static JButton reRollStatsButton, saveToonButton, exitToStartMenuButton;
 	static JSplitPane CharecterCreationSplitPane;
@@ -65,7 +64,7 @@ public class CharacterCreation {
 
 
 		GameSettings myGameSettings = new GameSettings();
-
+		
 
 		//***************************************************
 		//******** Getting Screen Width and Height **********
@@ -85,89 +84,54 @@ public class CharacterCreation {
 		//*******************************************************************
 
 		charecterCreationFrame = new JFrame("Create New Charecter");
-		charecterCreationFrame.setLayout(new BorderLayout());
 		charecterCreationFrame.setSize(width, height);
 		charecterCreationFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		charecterCreationFrame.setBackground(myGameSettings.colorBrown);
 		charecterCreationFrame.setUndecorated(true);
-		
-
 
 		//******************************************************************
-		//******** Setting up JPanel  *********************************
+		//******** Setting up JSplitPane  *********************************
 		//******************************************************************
-		
-		NameAndStatsPanel = new JPanel(new FlowLayout());
-		NameAndStatsPanel.setSize(640, 480);
-		
-		
-		NamePanel = new JPanel();
-		NamePanel.setSize(180, 50);
-			
-		StatsPanel = new JPanel(new BorderLayout());
-		ClassInfoAndImagePanel = new JPanel(new BorderLayout());
-		
-		charecterCreationFrame.add(NameAndStatsPanel, BorderLayout.NORTH);
-		charecterCreationFrame.add(ClassInfoAndImagePanel, BorderLayout.CENTER);
-		
-		
+		CharecterCreationSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		charecterCreationFrame.add(CharecterCreationSplitPane);
+
+		CharecterCreationSplitPane.setDividerLocation(.5);
+		CharecterCreationSplitPane.setResizeWeight(.2d);
 		//*****************************************************************
 		//******** Setting up Other Needed Fields**************************
 		//*****************************************************************
 
 		toonstatsTextArea = new JTextArea();
 		toonclassDescriptionTextArea = new JTextArea();
-		toonNameTextField = new JTextField();
-		toonNameTextField.setEditable(false);
+		tooncreationTextField = new JTextField();
+		tooncreationTextField.setEditable(false);
 
 
 		Font toonClassDescriptionFont = new Font("Verdana",Font.BOLD,30);
 		toonclassDescriptionTextArea.setFont(toonClassDescriptionFont);
 
-		toonNameTextField.setText("Name: " + StartingStory.toonName);
+		tooncreationTextField.setText("Name: " + charName);
 		toonstatsScrollPane = new JScrollPane();
 
-		toonstatsTextArea = new JTextArea();
-		toonstatsScrollPane = new JScrollPane(toonstatsTextArea);
 
 
 		//******************************************************************
-		//******** Setting up JPanel ***********************************
+		//******** Setting up JPanel and adding them to the JSplitPane *****
 		//******************************************************************
+		NameAndStatsPanel = new JPanel(new BorderLayout());
+		ClassAndClassInfoPanel = new JPanel(new BorderLayout());
+		ClassInfoAndImagePanel = new JPanel(new BorderLayout());
 
+		CharecterCreationSplitPane.setLeftComponent(NameAndStatsPanel);
+		CharecterCreationSplitPane.setRightComponent(ClassAndClassInfoPanel);
+
+		//******************************************************************
+		//******** Setting up Buttons **************************************
+		//******************************************************************
 
 		exitToStartMenuButton = new JButton();
-		
-		//******************************************************************
-		//******** Setting up Reroll Stats ********************************
-		//******************************************************************
-		
-		
-		reRollStatsButton = new JButton("Reroll Stats");
-		reRollStatsButton.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				rollstats();
-				Integer[] stat = rollstats();
-				toonstatsTextArea.setText(" ");
 
-				for (int i = 0; i < stat.length; i++) {
-
-					toonstatsTextArea.setText("Charecter Stats\n");
-
-					toonstatsTextArea.append("\nSTAMINA: \t\t" + stat[0]);
-					toonstatsTextArea.append("\nCHARISMA: \t\t" + stat[1]);
-					toonstatsTextArea.append("\nSTRENGTH: \t\t" + stat[2]);
-					toonstatsTextArea.append("\nINTELLIGENCE: \t" + stat[3]);
-					toonstatsTextArea.append("\nWISDOM: \t\t" + stat[4]);
-					toonstatsTextArea.append("\nAGILITY: \t\t" + stat[5]);
-					toonstatsTextArea.validate();
-				}
-
-			}
-
-		});
 
 
 			// ************************************************************************
@@ -176,7 +140,8 @@ public class CharacterCreation {
 
 			Integer[] stat = rollstats();
 
-			
+			toonstatsTextArea = new JTextArea();
+			toonstatsScrollPane = new JScrollPane(toonstatsTextArea);
 
 			toonstatsTextArea.setText("Charecter Stats\n");
 
@@ -200,6 +165,8 @@ public class CharacterCreation {
 			toonclassDescriptionTextArea = new JTextArea("Choose Your Class from the Dropdown box above.");
 			toonclassDescriptionTextArea.setLineWrap(true);
 
+			
+			
 
 			// *********************************************************
 			// ***** Selecting your Charecter Class Description ********
@@ -212,6 +179,8 @@ public class CharacterCreation {
 
 					toonClass = charectorClass.getSelectedItem().toString();
 
+					toonclassDescriptionTextArea.setText(toonClass);
+					
 					if (toonClass == toonclasslist[0]) {
 						toonclassDescriptionTextArea.setText(Paladin.ClassDescription());
 
@@ -222,9 +191,6 @@ public class CharacterCreation {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-
-
-
 
 					}
 					if (toonClass == toonclasslist[1]) {
@@ -279,8 +245,34 @@ public class CharacterCreation {
 			});
 
 
-			
+			reRollStatsButton = new JButton("Reroll Stats");
+			reRollStatsButton.addActionListener(new ActionListener() {
 
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					rollstats();
+					Integer[] stat = rollstats();
+					toonstatsTextArea.setText(" ");
+
+					for (int i = 0; i < stat.length; i++) {
+
+						toonstatsTextArea.setText("Charecter Stats\n");
+
+						toonstatsTextArea.append("\nSTAMINA: \t\t" + stat[0]);
+						toonstatsTextArea.append("\nCHARISMA: \t\t" + stat[1]);
+						toonstatsTextArea.append("\nSTRENGTH: \t\t" + stat[2]);
+						toonstatsTextArea.append("\nINTELLIGENCE: \t" + stat[3]);
+						toonstatsTextArea.append("\nWISDOM: \t\t" + stat[4]);
+						toonstatsTextArea.append("\nAGILITY: \t\t" + stat[5]);
+						toonstatsTextArea.validate();
+					}
+
+				}
+
+			});
+
+			
+			
 			saveToonButton = new JButton("Save Charecter"); // Save Button for Charecter creation
 			saveToonButton.addActionListener(new ActionListener() {
 
@@ -294,10 +286,10 @@ public class CharacterCreation {
 						ArrayList<String> newChar = new ArrayList<>();
 
 						ArrayList<String> newChar2 = new ArrayList<>();
-						String charName = StartingStory.toonName;
+						
 
 						// Validating if the Charecter Name is blank or not
-						toonName(toonNameTextField, charName, newChar);
+						toonName(tooncreationTextField, charName, newChar);
 
 						do {
 
@@ -357,7 +349,7 @@ public class CharacterCreation {
 								writer.write(str3 + System.lineSeparator());
 							}
 
-					//		JOptionPane.showMessageDialog(charecterCreationFrame, "Charecter Created");
+					
 
 							writer.close();
 							charecterCreationFrame.dispose();
@@ -389,39 +381,29 @@ public class CharacterCreation {
 			//******** Adding to the JPanels  **********************************
 			//******************************************************************
 
-			
-			
 			JLabel classImage = new JLabel();
-			
-			
-			
-			NamePanel.add(toonNameTextField);
-			StatsPanel.add(toonstatsTextArea, BorderLayout.NORTH);
-			StatsPanel.add(reRollStatsButton, BorderLayout.CENTER);
-			
-		//	NameAndStatsPanel.add(NamePanel, FlowLayout.LEFT );
-		//  NameAndStatsPanel.add(StatsPanel, FlowLayout.RIGHT);
-			
-			
-			
-			
 
-		//	ClassInfoAndImagePanel.add(charectorClass, BorderLayout.NORTH);
-			
-		//	ClassInfoAndImagePanel.add(toonclassDescriptionTextArea, BorderLayout.NORTH);
-		//	ClassInfoAndImagePanel.add(classImage, BorderLayout.CENTER);
-		//	ClassInfoAndImagePanel.add(saveToonButton, BorderLayout.SOUTH);
-			
+			NameAndStatsPanel.add(tooncreationTextField, BorderLayout.NORTH);
+			NameAndStatsPanel.add(toonstatsTextArea, BorderLayout.CENTER);
+			NameAndStatsPanel.add(reRollStatsButton, BorderLayout.SOUTH);
 
-						
-			
-			
+			ClassAndClassInfoPanel.add(charectorClass, BorderLayout.NORTH);
+			//ClassAndClassInfo.add(toonclassDescription, BorderLayout.CENTER);
+
+			//ClassAndClassInfo.add(classImage,BorderLayout.CENTER);
+			ClassAndClassInfoPanel.add(ClassInfoAndImagePanel, BorderLayout.CENTER);
+			ClassInfoAndImagePanel.add(toonclassDescriptionTextArea, BorderLayout.NORTH);
+			ClassInfoAndImagePanel.add(classImage, BorderLayout.SOUTH);
+			ClassAndClassInfoPanel.add(saveToonButton, BorderLayout.SOUTH);
+			//ClassAndClassInfo.add(exitToStartMenu, BorderLayout.SOUTH);
+
 			charecterCreationFrame.setLocationRelativeTo(null);
 			charecterCreationFrame.toFront();
 			charecterCreationFrame.requestFocus();
 			charecterCreationFrame.setVisible(true);
-			
-			String charName = JOptionPane.showInputDialog("Please Enter a Name for Your Charater.");
+
+			charName = JOptionPane.showInputDialog("Please Enter a Name for Your Charater.");
+			tooncreationTextField.setText("Name: " + charName);
 
 			new GameMenuItems();
 

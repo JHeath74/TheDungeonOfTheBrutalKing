@@ -368,8 +368,8 @@ public class StartingStory extends JFrame{
 		ImageIcon img = new ImageIcon(StoryImagePicture);
 
 		StoryImageLabel.setIcon(img);	
-		StoryMessageFrame.repaint();
-    	//StoryMessageFrame.validate();
+		//StoryMessageFrame.repaint();
+    	StoryMessageFrame.validate();
 
 	}
 

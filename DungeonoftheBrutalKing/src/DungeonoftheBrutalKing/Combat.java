@@ -187,10 +187,10 @@ public class Combat extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
 
-				myMenu.CombatMessageArea.append("Name: " + Singleton.myCharSingleton().CharInfo.get(0)
+			/*	myMenu.CombatMessageArea.append("Name: " + Singleton.myCharSingleton().CharInfo.get(0)
 						 + "\nYour HP: " + Singleton.myCharSingleton().CharInfo.get(4) + "\n\nEnemy Name: " + Singleton.myMonsters().get(rnd).name.toString()
 						 + "\nEnemy HP: " + Singleton.myMonsters().get(rnd).MonsterHP);
-				/*CombatNameAndHPfield.setText("Name: " + ARTDSingleton.myCharSingleton().CharInfo.get(0)
+				CombatNameAndHPfield.setText("Name: " + ARTDSingleton.myCharSingleton().CharInfo.get(0)
 						 + "\nYour HP: " + ARTDSingleton.myCharSingleton().CharInfo.get(4) + "\n\nEnemy Name: " + ARTDSingleton.myMonsters().get(rnd).name.toString()
 						 + "\nEnemy HP: " + ARTDSingleton.myMonsters().get(rnd).MonsterHP);
 				 */
@@ -275,7 +275,7 @@ public class Combat extends JFrame {
 			}
 
 		});
-
+/*
 		CombatRunButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -305,7 +305,7 @@ public class Combat extends JFrame {
 
 			}});
 
-
+*/
 
 		CombatFrame.setVisible(true);
 
