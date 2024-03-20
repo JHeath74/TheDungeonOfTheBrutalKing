@@ -40,7 +40,7 @@ public class Maps extends JFrame{
     private int playerY = 1;
 
 	protected Combat myCombat = null;
-	MenuBar myMenu = null;
+	MainGameScreen myMenu = null;
 	GameSettings myGameSettings = null;
 
 

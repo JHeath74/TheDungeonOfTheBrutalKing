@@ -41,7 +41,7 @@ import javax.swing.WindowConstants;
  * Games Menu Items
  *
  */
-public class MenuBar extends JFrame {
+public class MainGameScreen extends JFrame {
 
 	//SavedGameDirectory
 	private static final long serialVersionUID = 1L;
@@ -52,7 +52,7 @@ public class MenuBar extends JFrame {
 
 
 
-	JFrame menuframe = null;
+	JFrame MainGameScreenFrame = null;
 	JPanel p1, p2, p3, p4, GameImagesAndCombatPanel = null;
 	JTextArea MessageArea = null;
 	JTextField CharNameClassLevel, CharStats, CharStats2, CharXPHPGold = null;
@@ -71,18 +71,18 @@ public class MenuBar extends JFrame {
 	Timer timer = null;
 
 
-	public MenuBar() throws IOException {
+	public MainGameScreen() throws IOException {
 
 
 		//Creating Frame
-		menuframe = new JFrame("Alternate Reality: The Dungeon");
+		MainGameScreenFrame = new JFrame("Dungeon of the Brutal King");
 
 
 		//Adding Frame Preferences and Settings
-		menuframe.setLayout(new BorderLayout());
-		menuframe.setForeground(myGameSettings.colorBrown);
-		menuframe.setUndecorated(true);
-		menuframe.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		MainGameScreenFrame.setLayout(new BorderLayout());
+		MainGameScreenFrame.setForeground(myGameSettings.colorBrown);
+		MainGameScreenFrame.setUndecorated(true);
+		MainGameScreenFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
 
 		// getScreenSize() returns the size
@@ -96,7 +96,7 @@ public class MenuBar extends JFrame {
         height = (int)size.getHeight();
 
         //artdmenuframe.pack();
-        menuframe.setSize(width, height);
+        MainGameScreenFrame.setSize(width, height);
 
 
 		p1 = new JPanel(new BorderLayout());
@@ -202,7 +202,7 @@ public class MenuBar extends JFrame {
 		menuBar.add(menuBarImage);
 
 		// Build the menu.
-		menuframe.addWindowListener(new WindowAdapter() {
+		MainGameScreenFrame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent windowEvent) {
 				System.exit(0);
@@ -239,11 +239,11 @@ public class MenuBar extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				int result = JOptionPane.showConfirmDialog(menuframe,
+				int result = JOptionPane.showConfirmDialog(MainGameScreenFrame,
 						"Are you sure you wish to delete your current game and start a new one?", "Start New Game?",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if (result == JOptionPane.YES_OPTION) {
-					menuframe.dispose();
+					MainGameScreenFrame.dispose();
 					try {
 						BufferedWriter writer = Files.newBufferedWriter(Paths
 								.get("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
@@ -271,7 +271,7 @@ public class MenuBar extends JFrame {
 						e1.printStackTrace();
 					}
 
-					menuframe.dispose();
+					MainGameScreenFrame.dispose();
 
 				} else if (result == JOptionPane.NO_OPTION) {
 
@@ -437,7 +437,7 @@ public class MenuBar extends JFrame {
 					// the JTextArea.
 					helptext.read(
 							new InputStreamReader(Objects.requireNonNull(
-									getClass().getResourceAsStream("/AlternateRealityTheDungeon/TextFiles/About.txt"))),
+									getClass().getResourceAsStream("/DungeonoftheBrutalKing/TextFiles/About.txt"))),
 							null);
 				} catch (IOException e1) {
 					e1.printStackTrace();
@@ -489,7 +489,7 @@ public class MenuBar extends JFrame {
 					// the JTextArea.
 					helptext.read(
 							new InputStreamReader(Objects.requireNonNull(
-									getClass().getResourceAsStream("/AlternateRealityTheDungeon/TextFiles/Help.txt"))),
+									getClass().getResourceAsStream("/DungeonoftheBrutalKing/TextFiles/Help.txt"))),
 							null);
 				} catch (IOException e1) {
 					e1.printStackTrace();
@@ -599,10 +599,6 @@ public class MenuBar extends JFrame {
 		MessageArea= new JTextArea("JTextArea AMessageArea - Game Text Updates");
 		MessageArea.setBackground(myGameSettings.colorLightBrown);
 		MessageArea.setForeground(myGameSettings.colorLightYellow);
-		
-		
-		MessageArea.setText("As you waking up,  you look around to see.\n"
-				+ "As you sit up, you notice a fire nearby.  You move closer for warmth");
 
 		PicturesAndTextUpdates = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 		PicturesAndTextUpdates.setVisible(true);
@@ -617,7 +613,7 @@ public class MenuBar extends JFrame {
 		// ****************************************************************
 		// ----------------------------Adding Menu Bar to the JFrame ------
 		// ****************************************************************
-		menuframe.setJMenuBar(menuBar);
+		MainGameScreenFrame.setJMenuBar(menuBar);
 
 		// ***************************************************************
 		// -------------------Setting Up Menubar and JFrame --------------
@@ -625,8 +621,8 @@ public class MenuBar extends JFrame {
 
 
 
-		menuframe.add(PicturesAndTextUpdates, BorderLayout.CENTER);
-		menuframe.add(p1, BorderLayout.NORTH);
+		MainGameScreenFrame.add(PicturesAndTextUpdates, BorderLayout.CENTER);
+		MainGameScreenFrame.add(p1, BorderLayout.NORTH);
 		p1.add(p2, BorderLayout.NORTH);
 		p1.add(p3, BorderLayout.CENTER);
 		p1.add(p4, BorderLayout.SOUTH);
@@ -643,7 +639,7 @@ public class MenuBar extends JFrame {
 		
 		
 		
-		menuframe.setVisible(true);
+		MainGameScreenFrame.setVisible(true);
 
 
 	}

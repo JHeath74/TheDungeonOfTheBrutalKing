@@ -34,7 +34,7 @@ public class Combat extends JFrame {
 	private static final long serialVersionUID = 1L;
 	Singleton myCharSingleton = new Singleton();
 	GameSettings myGameSettings = new GameSettings();
-	MenuBar myMenu = null;
+	MainGameScreen myMenu = null;
 
 	String HeroHPArrayList = "";
 
@@ -57,7 +57,7 @@ public class Combat extends JFrame {
 		HeroHPArrayList = Singleton.myCharSingleton().CharInfo.get(4);
 		HeroHP = Integer.parseInt(HeroHPArrayList);
 
-		 myMenu = new MenuBar();
+		 myMenu = new MainGameScreen();
 
 	}
 

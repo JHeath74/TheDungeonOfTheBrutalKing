@@ -353,7 +353,7 @@ public class CharacterCreation {
 
 							writer.close();
 							charecterCreationFrame.dispose();
-							new MenuBar();
+							new MainGameScreen();
 
 						} while (saveToonButton.getModel().isPressed());
 

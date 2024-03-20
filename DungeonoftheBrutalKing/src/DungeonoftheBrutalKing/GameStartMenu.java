@@ -34,7 +34,7 @@ public class GameStartMenu extends JFrame {
 	public static void main(String[] args) throws IOException, FontFormatException, BadLocationException {
 
 		GameSettings myGameSettings = new GameSettings();
-		SaveLoadGameData mySaveLoadGameData = new SaveLoadGameData();
+		
 		LoadSaveGame myLoadSaveGame = new LoadSaveGame();
 
 		UIManager UI=new UIManager();
@@ -294,7 +294,7 @@ public class GameStartMenu extends JFrame {
 
 
 				Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
-				mySaveLoadGameData.LoadGame();
+				myLoadSaveGame.LoadGame();
 				window.dispose();
 			}
 

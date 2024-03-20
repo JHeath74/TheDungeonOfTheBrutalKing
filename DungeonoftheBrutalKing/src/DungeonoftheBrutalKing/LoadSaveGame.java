@@ -1,13 +1,17 @@
 package DungeonoftheBrutalKing;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,43 +30,37 @@ public class LoadSaveGame {
 	Charecter myChar = Charecter.Singleton();
 	GameSettings myGameSettings = new GameSettings();
 	
-	
-	
+	ArrayList<ArrayList<?>> GameState = new ArrayList<>();
+	int width, height = 0;
 
-	public void StartGameLoadCharecter() throws IOException {
+	public void AutoSaveGame() throws IOException
+	{
 
+		String SavedGameName = "AutoGameSave.Txt";
 
-		ArrayList<String> CurrentGame = new ArrayList<>();
-		File chosenFile = getLastModified(GameSettings.SavedGameDirectory);
+		if (SavedGameName != "IntialCharecterSave.txt") {
+			String AutoSaveGameName = GameSettings.SavedGameDirectory + SavedGameName;
 
-		
+			FileWriter writer = new FileWriter(AutoSaveGameName);
 
-		BufferedReader bufReader = new BufferedReader(new FileReader(chosenFile));
+			for (String Charinfo : myChar.CharInfo) {
 
-		String line = bufReader.readLine();
-		while (line != null) {
+				writer.write(Charinfo + System.lineSeparator());
+			}
+			writer.close();
 
-			
-			System.out.println("Print: " + line);
-			CurrentGame.add(line);
-
-			line = bufReader.readLine();
-
+			JOptionPane.showMessageDialog(null, "Game Saved: " + SavedGameName);
+		} else {
+			JOptionPane.showMessageDialog(null,
+					"Unable to Save Current Game Over Saved Game called  'InitialCharecterSave.txt'\n");
 		}
-
-		myChar.CharInfo.addAll(CurrentGame);
-
-		bufReader.close();
-
 	}
 	
 	public void ContinueCurrentGame() throws IOException
 	{
-		System.out.println(myGameSettings.SavedGameDirectory);
-		ArrayList<String> SaveLoadChar = new ArrayList<>();
-		File chosenFile = getLastModified(GameSettings.SavedGameDirectory);  //Why is it getting the file twice
-
 		
+		ArrayList<String> SaveLoadChar = new ArrayList<>();
+		File chosenFile = getLastModified(GameSettings.SavedGameDirectory);
 
 		BufferedReader bufReader = new BufferedReader(new FileReader(chosenFile));
 
@@ -79,47 +77,30 @@ public class LoadSaveGame {
 		myChar.CharInfo.addAll(SaveLoadChar);
 
 		bufReader.close();
-	}
-
-	public void SaveGame() throws IOException, ParseException {
 		
-		//Save the Current Game State
-		
-		Date date = Calendar.getInstance().getTime();
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd-hh:mm:ss");
-
-		String datetime = dateFormat.format(date);
-
-		datetime = datetime.replaceAll(":", ".");
-
-		String SavedGameName = "SavedGame" + datetime;
-
-		if (SavedGameName != "IntialCharecterSave.txt") {
-			String GameSaveDateTime = GameSettings.SavedGameDirectory + datetime + ".txt";
-
-			FileWriter writer = new FileWriter(GameSaveDateTime);
-
-			for (String Charinfo : myChar.CharInfo) {
-
-				writer.write(Charinfo + System.lineSeparator());
-			}
-			writer.close();
-
-			JOptionPane.showMessageDialog(null, "Game Saved: " + SavedGameName);
-		} else {
-			JOptionPane.showMessageDialog(null,
-					"Unable to Save Current Game Over Saved Game called  'InitialCharecterSave.txt'\n");
-		}
-
+		new MainGameScreen();
 	}
-
+	
 	public void LoadGame() {
 
-		//Display a list of Game Saves,  and select one to load it.
-		
 		ArrayList<String> LoadChar = new ArrayList<>();
 
+		//***************************************************
+				//******** Getting Screen Width and Height **********
+				//***************************************************
+
+				// getScreenSize() returns the size of the screen in pixels
+		        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+
+		        // width will store the width of the screen
+		        width = (int)size.getWidth();
+
+		        // height will store the height of the screen
+		        height = (int)size.getHeight();
+
 		JFrame loadGame = new JFrame("Load Game");
+		loadGame.setSize(width, height);
+
 		JPanel lg = new JPanel(new BorderLayout());
 		JButton load = new JButton("Load Game");
 		JComboBox<String> loadGameSelection = new JComboBox<>();
@@ -144,8 +125,6 @@ public class LoadSaveGame {
 
 						String gameInfo = loadGameSelection.getSelectedItem().toString();
 
-
-
 						if (gameInfo.equals("InitialCharecterSave.txt")) {
 
 							int response = JOptionPane.showConfirmDialog(null,
@@ -162,8 +141,7 @@ public class LoadSaveGame {
 										line = bufReader.readLine();
 									}
 
-									myChar.CharInfo.addAll(LoadChar);
-
+									Singleton.myCharSingleton().CharInfo.addAll(LoadChar);
 									bufReader.close();
 
 								} catch (Exception e1) {
@@ -171,26 +149,13 @@ public class LoadSaveGame {
 								}
 							} else {
 
+								JOptionPane.showMessageDialog(null, "Please Choose a Different Saved Game File");
+
 							}
 						} else {
 
-							try {
-								BufferedReader bufReader = new BufferedReader(
-										new FileReader(GameSettings.SavedGameDirectory + gameInfo));
-								String line = bufReader.readLine();
-								while (line != null) {
-									LoadChar.add(line);
+							//I need to copy the data from the serialized file and copy the data to the correct Arraylist
 
-									line = bufReader.readLine();
-								}
-
-								myChar.CharInfo.addAll(LoadChar);
-
-								bufReader.close();
-
-							} catch (Exception e1) {
-
-							}
 
 						}
 
@@ -215,29 +180,66 @@ public class LoadSaveGame {
 	}
 
 
-	
-	public void AutoSaveGame() throws IOException
-	{
+	public void SaveGame() throws IOException, ParseException {
+		Date date = Calendar.getInstance().getTime();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd-hh:mm:ss");
 
-		String SavedGameName = "AutoGameSave.Txt";
+		String datetime = dateFormat.format(date);
+
+		datetime = datetime.replaceAll(":", ".");
+
+		String SavedGameName = "SavedGame" + datetime + ".ser";
 
 		if (SavedGameName != "IntialCharecterSave.txt") {
-			String AutoSaveGameName = GameSettings.SavedGameDirectory + SavedGameName;
 
-			FileWriter writer = new FileWriter(AutoSaveGameName);
+			// an OutputStream file "SavedGameName" is created
+		    FileOutputStream fos = new FileOutputStream(SavedGameName);
 
-			for (String Charinfo : myChar.CharInfo) {
+		    // an ObjectOutputStream object is created on the FileOutputStream object
+		    ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-				writer.write(Charinfo + System.lineSeparator());
-			}
-			writer.close();
+		    // calling the writeObject() method of the ObjectOutputStream on the OutputStream file "namesList"
+            oos.writeObject(GameState);
+
+            // close the ObjectOutputStream
+            oos.close();
+
+            // close the OutputStream file
+            fos.close();
 
 			JOptionPane.showMessageDialog(null, "Game Saved: " + SavedGameName);
 		} else {
 			JOptionPane.showMessageDialog(null,
 					"Unable to Save Current Game Over Saved Game called  'InitialCharecterSave.txt'\n");
 		}
+
 	}
+	
+	public void StartGameLoadCharecter() throws IOException {
+
+		ArrayList<String> SaveLoadChar = new ArrayList<>();
+		File chosenFile = getLastModified(GameSettings.SavedGameDirectory);  //Why is it getting the file twice
+
+		BufferedReader bufReader = new BufferedReader(new FileReader(chosenFile));
+
+		String line = bufReader.readLine();
+		while (line != null) {
+
+			SaveLoadChar.add(line);
+
+			line = bufReader.readLine();
+
+		}
+
+		Singleton.myCharSingleton().CharInfo.addAll(SaveLoadChar);
+
+		bufReader.close();
+
+	}
+	
+	
+	
+	
 
 	public static File getLastModified(String SavedGameDirectory) {
 		File directory = new File(SavedGameDirectory);
@@ -249,7 +251,6 @@ public class LoadSaveGame {
 			for (File file : files) {
 				if (file.lastModified() > lastModifiedTime) {
 					chosenFile = file;
-				//	System.out.println("ChosenFile " + chosenFile);
 					lastModifiedTime = file.lastModified();
 				}
 			}
