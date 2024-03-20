@@ -32,10 +32,37 @@ public class LoadSaveGame {
 	public void StartGameLoadCharecter() throws IOException {
 
 
+		ArrayList<String> CurrentGame = new ArrayList<>();
+		File chosenFile = getLastModified(GameSettings.SavedGameDirectory);
+
+		
+
+		BufferedReader bufReader = new BufferedReader(new FileReader(chosenFile));
+
+		String line = bufReader.readLine();
+		while (line != null) {
+
+			
+			System.out.println("Print: " + line);
+			CurrentGame.add(line);
+
+			line = bufReader.readLine();
+
+		}
+
+		myChar.CharInfo.addAll(CurrentGame);
+
+		bufReader.close();
+
+	}
+	
+	public void ContinueCurrentGame() throws IOException
+	{
+		System.out.println(myGameSettings.SavedGameDirectory);
 		ArrayList<String> SaveLoadChar = new ArrayList<>();
 		File chosenFile = getLastModified(GameSettings.SavedGameDirectory);  //Why is it getting the file twice
 
-		//System.out.println("Initial chosenFile: " + chosenFile);
+		
 
 		BufferedReader bufReader = new BufferedReader(new FileReader(chosenFile));
 
@@ -52,16 +79,6 @@ public class LoadSaveGame {
 		myChar.CharInfo.addAll(SaveLoadChar);
 
 		bufReader.close();
-
-	}
-	
-	public void ContinueGameLoadSave()
-	{
-		
-		//Load and play the most recent Game Save
-		
-		
-		
 	}
 
 	public void SaveGame() throws IOException, ParseException {

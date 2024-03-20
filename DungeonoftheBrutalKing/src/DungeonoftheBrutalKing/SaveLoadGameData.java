@@ -30,6 +30,7 @@ public class SaveLoadGameData {
 	Singleton mySpellList = null;
 	GameSettings myGameSettings = new GameSettings();
 	int width, height = 0;
+	String ChoosenFile;
 
 	ArrayList<ArrayList<?>> GameState = new ArrayList<>();
 
@@ -204,6 +205,7 @@ public class SaveLoadGameData {
 	}
 
 
+	
 
 	public static File getLastModified(String SavedGameDirectory) {
 		File directory = new File(SavedGameDirectory);

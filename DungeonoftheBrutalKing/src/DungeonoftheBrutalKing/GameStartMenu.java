@@ -35,6 +35,7 @@ public class GameStartMenu extends JFrame {
 
 		GameSettings myGameSettings = new GameSettings();
 		SaveLoadGameData mySaveLoadGameData = new SaveLoadGameData();
+		LoadSaveGame myLoadSaveGame = new LoadSaveGame();
 
 		UIManager UI=new UIManager();
 
@@ -59,7 +60,7 @@ public class GameStartMenu extends JFrame {
 
 		JFrame StartMenuFrame = null;
 		JPanel GameTitlePanel, StartButtonPanel = null;
-		JButton StartNewGameButton, LoadExistingGameButton, ExitGameButton = null;
+		JButton ContinueGameButton, StartNewGameButton, LoadExistingGameButton, ExitGameButton = null;
 		BufferedImage StartGameImage = null;
 		JTextArea GameTitleArea = null;
 
@@ -75,10 +76,10 @@ public class GameStartMenu extends JFrame {
 		StartButtonPanel = new JPanel();
 		StartNewGameButton = new JButton("Start New Game");
 		
+		ContinueGameButton = new JButton("Continue Current Game");
 		LoadExistingGameButton = new JButton("Load Exisiting Game");
 		ExitGameButton = new JButton("Exit Game");
 		GameTitleArea = new JTextArea();
-		//GameTitleArea = new JTextPane();
 
 		//***************************************************
 		//******** Getting Screen Width and Height **********
@@ -129,6 +130,7 @@ public class GameStartMenu extends JFrame {
       //********** Adding Fields to JPanel ****************
       //***************************************************
 
+        StartButtonPanel.add(ContinueGameButton, FlowLayout.LEFT);
         StartButtonPanel.add(StartNewGameButton, FlowLayout.LEFT);
        
         StartButtonPanel.add(LoadExistingGameButton, FlowLayout.CENTER);
@@ -161,10 +163,14 @@ public class GameStartMenu extends JFrame {
       //************ Setting Up Buttons *******************
       //***************************************************
 
+        ContinueGameButton.setPreferredSize(new Dimension(200,50));
         StartNewGameButton.setPreferredSize(new Dimension(200, 50));
         LoadExistingGameButton.setPreferredSize(new Dimension(200, 50));
         ExitGameButton.setPreferredSize(new Dimension(200, 50));
 
+        ContinueGameButton.setBackground(myGameSettings.colorGrey);
+        ContinueGameButton.setForeground(myGameSettings.colorWhite);
+        
         StartNewGameButton.setBackground(myGameSettings.colorGrey);
         StartNewGameButton.setForeground(myGameSettings.colorWhite);
         
@@ -181,8 +187,10 @@ public class GameStartMenu extends JFrame {
            String[] files = directory.list();
            if (files.length > 0) {
               LoadExistingGameButton.setVisible(true);
+              ContinueGameButton.setVisible(true);
            } else {
         	  LoadExistingGameButton.setVisible(false);
+        	  ContinueGameButton.setVisible(false);
            }
         }
 
@@ -259,7 +267,23 @@ public class GameStartMenu extends JFrame {
 
 			}});
 
-        
+        ContinueGameButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					myLoadSaveGame.ContinueCurrentGame();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+				
+				
+			}
+        	
+        });
 
         LoadExistingGameButton.addActionListener(new ActionListener() {
 
