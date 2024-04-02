@@ -28,8 +28,8 @@ public class Texture {
 		}
 	}
 	
-	public static Texture wood = new Texture("res/wood.png", 64);
-	public static Texture brick = new Texture("res/redbrick.png", 64);
-	public static Texture bluestone = new Texture("res/bluestone.png", 64);
-	public static Texture stone = new Texture("res/greystone.png", 64);
+	public static Texture wood = new Texture("src\\DungeonoftheBrutalKing\\Images\\Level\\Wall\\wood.png", 64);
+	public static Texture brick = new Texture("src\\DungeonoftheBrutalKing\\Images\\Level\\Wall\\redbrick.png", 64);
+	public static Texture bluestone = new Texture("src\\DungeonoftheBrutalKing\\Images\\Level\\Wall\\bluestone.png", 64);
+	public static Texture stone = new Texture("src\\DungeonoftheBrutalKing\\Images\\Level\\Wall\\greystone.png", 64);
 }
