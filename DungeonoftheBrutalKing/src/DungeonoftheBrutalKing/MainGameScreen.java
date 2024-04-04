@@ -95,6 +95,7 @@ public class MainGameScreen extends JFrame implements Runnable {
 	JPanel p1, p2, p3, p4, GameImagesAndCombatPanel = null;
 	JTextArea MessageArea = null;
 	JTextField CharNameClassLevel, CharStats, CharStats2, CharXPHPGold = null;
+	JLabel DisplayGameAreaLabel = null;
 	JMenuBar menuBar = null;
 	JMenu gameMenu, charecterMenu, settingsMenu, helpMenu = null;
 	JMenuItem newGameMenuItem, LoadSavedGameMenuItem, saveMenuItem,
@@ -111,8 +112,11 @@ public class MainGameScreen extends JFrame implements Runnable {
 
 
 	public MainGameScreen() throws IOException {
-
-		thread = new Thread(this);
+		GameImagesAndCombatPanel = new JPanel();//New
+		DisplayGameAreaLabel = new JLabel();//New
+		GameImagesAndCombatPanel.add(DisplayGameAreaLabel);//New
+		//thread = new Thread(this);
+		thread = new Thread(MainGameScreenFrame);
 		image = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
 		pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 		textures = new ArrayList<Texture>();
@@ -123,13 +127,14 @@ public class MainGameScreen extends JFrame implements Runnable {
 		camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
 		screen = new Screen(map, mapWidth, mapHeight, textures, 640, 480);
 		addKeyListener(camera);
-		setSize(640, 480);
-		setResizable(false);
-		setTitle("3D Engine");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBackground(Color.black);
-		setLocationRelativeTo(null);
-		setVisible(true);
+		DisplayGameAreaLabel.add(image);
+		//setSize(640, 480);
+		//setResizable(false);
+		//setTitle("3D Engine");
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setBackground(Color.black);
+		//setLocationRelativeTo(null);
+		//setVisible(true);
 		start();
 
 		//Creating Frame
@@ -654,7 +659,7 @@ public class MainGameScreen extends JFrame implements Runnable {
 		
 		
 		
-		MessageArea= new JTextArea("JTextArea AMessageArea - Game Text Updates");
+		MessageArea = new JTextArea("JTextArea AMessageArea - Game Text Updates");
 		MessageArea.setBackground(myGameSettings.colorLightBrown);
 		MessageArea.setForeground(myGameSettings.colorLightYellow);
 
