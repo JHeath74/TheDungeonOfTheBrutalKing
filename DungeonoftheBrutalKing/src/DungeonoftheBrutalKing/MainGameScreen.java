@@ -29,7 +29,7 @@ import java.util.Objects;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -114,9 +114,9 @@ public class MainGameScreen extends JFrame implements Runnable {
 	public MainGameScreen() throws IOException {
 		GameImagesAndCombatPanel = new JPanel();//New
 		DisplayGameAreaLabel = new JLabel();//New
+		DisplayGameAreaLabel.setSize(640, 480);
 		GameImagesAndCombatPanel.add(DisplayGameAreaLabel);//New
 		//thread = new Thread(this);
-		thread = new Thread(MainGameScreenFrame);
 		image = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
 		pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 		textures = new ArrayList<Texture>();
@@ -127,7 +127,8 @@ public class MainGameScreen extends JFrame implements Runnable {
 		camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
 		screen = new Screen(map, mapWidth, mapHeight, textures, 640, 480);
 		addKeyListener(camera);
-		DisplayGameAreaLabel.add(image);
+		DisplayGameAreaLabel.setIcon(new ImageIcon(image));
+		
 		//setSize(640, 480);
 		//setResizable(false);
 		//setTitle("3D Engine");
@@ -706,7 +707,7 @@ public class MainGameScreen extends JFrame implements Runnable {
 	
 	private synchronized void start() {
 		running = true;
-		thread.start();
+	//	thread.start();
 	}
 	public synchronized void stop() {
 		running = false;
