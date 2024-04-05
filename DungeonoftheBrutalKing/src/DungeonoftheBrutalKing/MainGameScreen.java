@@ -112,11 +112,12 @@ public class MainGameScreen extends JFrame implements Runnable {
 
 
 	public MainGameScreen() throws IOException {
-		GameImagesAndCombatPanel = new JPanel();//New
+		GameImagesAndCombatPanel = new JPanel(new BorderLayout();//New
 		DisplayGameAreaLabel = new JLabel();//New
 		DisplayGameAreaLabel.setSize(640, 480);
-		GameImagesAndCombatPanel.add(DisplayGameAreaLabel);//New
+		GameImagesAndCombatPanel.add(DisplayGameAreaLabel, BorderLayout.WEST);//New
 		//thread = new Thread(this);
+		;
 		image = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
 		pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 		textures = new ArrayList<Texture>();
@@ -127,6 +128,7 @@ public class MainGameScreen extends JFrame implements Runnable {
 		camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
 		screen = new Screen(map, mapWidth, mapHeight, textures, 640, 480);
 		addKeyListener(camera);
+		DisplayGameAreaLabel.setText("Does This Work?");
 		DisplayGameAreaLabel.setIcon(new ImageIcon(image));
 		
 		//setSize(640, 480);
@@ -167,7 +169,7 @@ public class MainGameScreen extends JFrame implements Runnable {
 		p2 = new JPanel(new BorderLayout());
 		p3 = new JPanel(new BorderLayout());
 		p4 = new JPanel(new BorderLayout());
-		GameImagesAndCombatPanel = new JPanel(new BorderLayout());
+		//GameImagesAndCombatPanel = new JPanel(new BorderLayout());
 
 		try {
 			myGameState.StartGameLoadCharecter();
