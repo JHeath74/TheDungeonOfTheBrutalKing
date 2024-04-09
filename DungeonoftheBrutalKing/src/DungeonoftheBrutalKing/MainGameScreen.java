@@ -1,11 +1,10 @@
+
 package DungeonoftheBrutalKing;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,9 +12,6 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +19,6 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 import javax.swing.ImageIcon;
@@ -43,15 +38,11 @@ import javax.swing.KeyStroke;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
-import GameEngine.Camera;
-import GameEngine.Screen;
-import GameEngine.Texture;
-
 /*
  * Games Menu Items
  *
  */
-public class MainGameScreen extends JFrame implements Runnable {
+public class MainGameScreen extends JFrame {
 
 	//SavedGameDirectory
 	private static final long serialVersionUID = 1L;
@@ -59,35 +50,6 @@ public class MainGameScreen extends JFrame implements Runnable {
 	GameSettings myGameSettings = new GameSettings();
 	LoadSaveGame myGameState = new LoadSaveGame();
 	GameMenuItems myGameMenuItems = new GameMenuItems();
-	
-
-	public int mapWidth = 15;
-	public int mapHeight = 15;
-	private Thread thread;
-	private boolean running;
-	private BufferedImage image;
-	public int[] pixels;
-	public ArrayList<Texture> textures;
-	public Camera camera;
-	public Screen screen;
-	public static int[][] map = 
-		{
-			{1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
-			{1,0,0,0,0,0,0,0,2,0,0,0,0,0,2},
-			{1,0,3,3,3,3,3,0,0,0,0,0,0,0,2},
-			{1,0,3,0,0,0,3,0,2,0,0,0,0,0,2},
-			{1,0,3,0,0,0,3,0,2,2,2,0,2,2,2},
-			{1,0,3,0,0,0,3,0,2,0,0,0,0,0,2},
-			{1,0,3,3,0,3,3,0,2,0,0,0,0,0,2},
-			{1,0,0,0,0,0,0,0,2,0,0,0,0,0,2},
-			{1,1,1,1,1,1,1,1,4,4,4,0,4,4,4},
-			{1,0,0,0,0,0,1,4,0,0,0,0,0,0,4},
-			{1,0,0,0,0,0,1,4,0,0,0,0,0,0,4},
-			{1,0,0,0,0,0,1,4,0,3,3,3,3,0,4},
-			{1,0,0,0,0,0,1,4,0,3,3,3,3,0,4},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
-			{1,1,1,1,1,1,1,4,4,4,4,4,4,4,4}
-		};
 
 
 
@@ -95,7 +57,6 @@ public class MainGameScreen extends JFrame implements Runnable {
 	JPanel p1, p2, p3, p4, GameImagesAndCombatPanel = null;
 	JTextArea MessageArea = null;
 	JTextField CharNameClassLevel, CharStats, CharStats2, CharXPHPGold = null;
-	JLabel DisplayGameAreaLabel = null;
 	JMenuBar menuBar = null;
 	JMenu gameMenu, charecterMenu, settingsMenu, helpMenu = null;
 	JMenuItem newGameMenuItem, LoadSavedGameMenuItem, saveMenuItem,
@@ -103,7 +64,7 @@ public class MainGameScreen extends JFrame implements Runnable {
 				charecterinventoryMenuItem, mapMenu, gameSettingsMenuItem,
 				aboutMenuItem, helpMenuItem, mapFloor1MenuItem, mapFloor2MenuItem,
 				mapFloor3MenuItem, mapFloor4MenuItem = null;
-
+	JLabel menuBarImage, startingImage = null;
 	JSplitPane PicturesAndTextUpdates = null;
 
 	Dimension screenSize = null;
@@ -112,7 +73,7 @@ public class MainGameScreen extends JFrame implements Runnable {
 
 
 	public MainGameScreen() throws IOException {
-		
+
 
 		//Creating Frame
 		MainGameScreenFrame = new JFrame("Dungeon of the Brutal King");
@@ -143,7 +104,7 @@ public class MainGameScreen extends JFrame implements Runnable {
 		p2 = new JPanel(new BorderLayout());
 		p3 = new JPanel(new BorderLayout());
 		p4 = new JPanel(new BorderLayout());
-		//GameImagesAndCombatPanel = new JPanel(new BorderLayout());
+		GameImagesAndCombatPanel = new JPanel(new BorderLayout());
 
 		try {
 			myGameState.StartGameLoadCharecter();
@@ -236,6 +197,10 @@ public class MainGameScreen extends JFrame implements Runnable {
 		menuBar.setPreferredSize(new Dimension(25,35));
 		menuBar.setFont(new Font("sans-serif", Font.ROMAN_BASELINE, 22));
 		menuBar.setBackground(myGameSettings.colorPlum);
+
+		menuBarImage = new JLabel(new ImageIcon(myGameSettings.myJMenuBarPicture));
+		menuBarImage.setSize(25, 25);
+		menuBar.add(menuBarImage);
 
 		// Build the menu.
 		MainGameScreenFrame.addWindowListener(new WindowAdapter() {
@@ -374,7 +339,8 @@ public class MainGameScreen extends JFrame implements Runnable {
 		});
 
 		// ****************************************************************************************
-		// ----------------------------Stats, Inventory and Maps ---------------------------------
+		// ----------------------------Stats, Inventory and
+		// Maps------------------------------------
 		// ****************************************************************************************
 
 		charecterstatsMenuItem = new JMenuItem("Stats");
@@ -537,12 +503,7 @@ public class MainGameScreen extends JFrame implements Runnable {
 				p.add(helpbutton, BorderLayout.SOUTH);
 				helpbutton.setSize(120, 120);
 
-				try {
-					MainGameScreen game = new MainGameScreen();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				// frame.setLocationRelativeTo(null);
 				frame.pack();
 				frame.setVisible(true);
 
@@ -636,7 +597,7 @@ public class MainGameScreen extends JFrame implements Runnable {
 		
 		
 		
-		MessageArea = new JTextArea("JTextArea AMessageArea - Game Text Updates");
+		MessageArea= new JTextArea("JTextArea AMessageArea - Game Text Updates");
 		MessageArea.setBackground(myGameSettings.colorLightBrown);
 		MessageArea.setForeground(myGameSettings.colorLightYellow);
 
@@ -671,85 +632,17 @@ public class MainGameScreen extends JFrame implements Runnable {
 		p3.add(CharStats2, BorderLayout.SOUTH);
 		p4.add(CharXPHPGold);
 
-		GameImagesAndCombatPanel = new JPanel(new BorderLayout();
-		GameImagesAndCombatPanel.setPreferredSize(640,480)
-		DisplayGameAreaLabel = new JLabel();
-		GameImagesAndCombatPanel.add(DisplayGameAreaLabel, BorderLayout.WEST);
-		DisplayGameAreaLabel(new ImageIcon(myGameSettings + "MenuBar.png"));
 		
-	//      thread = new Thread(this);
-		
-	//	image = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
-	//	pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
-	//	textures = new ArrayList<Texture>();
-	//	textures.add(Texture.wood);
-	//	textures.add(Texture.brick);
-	//	textures.add(Texture.bluestone);
-	//	textures.add(Texture.stone);
-	//	camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
-	//	screen = new Screen(map, mapWidth, mapHeight, textures, 640, 480);
-	//	addKeyListener(camera);
-		DisplayGameAreaLabel.setText("Does This Work?");
-	//	DisplayGameAreaLabel.setIcon(new ImageIcon(image));
-		
-	//	setSize(640, 480);
-	//	setResizable(false);
-	//	setTitle("3D Engine");
-	//	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//	setBackground(Color.black);
-	//	setLocationRelativeTo(null);
-	//	setVisible(true);
-	//	start();
-		
-		
+		startingImage = new JLabel(new ImageIcon(myGameSettings.StoryIntroductionPath + "Starting_Image.png"));
+	//	startingImage.setPreferredSize(new Dimension(GameImagesAndCombatPanel.getWidth(), GameImagesAndCombatPanel.getHeight()));
+		startingImage.setSize(GameImagesAndCombatPanel.getWidth(), GameImagesAndCombatPanel.getHeight());
+		GameImagesAndCombatPanel.add(startingImage);
 		
 		
 		
 		MainGameScreenFrame.setVisible(true);
 
 
-	}
-	
-	private synchronized void start() {
-		running = true;
-	//	thread.start();
-	}
-	public synchronized void stop() {
-		running = false;
-		try {
-			thread.join();
-		} catch(InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-	public void render() {
-		BufferStrategy bs = getBufferStrategy();
-		if(bs == null) {
-			createBufferStrategy(3);
-			return;
-		}
-		Graphics g = bs.getDrawGraphics();
-		g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
-		bs.show();
-	}
-	public void run() {
-		long lastTime = System.nanoTime();
-		final double ns = 1000000000.0 / 60.0;//60 times per second
-		double delta = 0;
-		requestFocus();
-		while(running) {
-			long now = System.nanoTime();
-			delta = delta + ((now-lastTime) / ns);
-			lastTime = now;
-			while (delta >= 1)//Make sure update is only happening 60 times a second
-			{
-				//handles all of the logic restricted time
-				screen.update(camera, pixels);
-				camera.update(map);
-				delta--;
-			}
-			render();//displays to the screen unrestricted time
-		}
 	}
 
 }
