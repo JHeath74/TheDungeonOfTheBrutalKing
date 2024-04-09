@@ -675,7 +675,7 @@ public class MainGameScreen extends JFrame implements Runnable {
 		GameImagesAndCombatPanel.setPreferredSize(640,480)
 		DisplayGameAreaLabel = new JLabel();
 		GameImagesAndCombatPanel.add(DisplayGameAreaLabel, BorderLayout.WEST);
-		DisplayGameAreaLabel(new ImageIcon("MenuBar.png"));
+		DisplayGameAreaLabel(new ImageIcon(myGameSettings + "MenuBar.png"));
 		
 	//      thread = new Thread(this);
 		
