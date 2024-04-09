@@ -671,34 +671,35 @@ public class MainGameScreen extends JFrame implements Runnable {
 		p3.add(CharStats2, BorderLayout.SOUTH);
 		p4.add(CharXPHPGold);
 
-		GameImagesAndCombatPanel = new JPanel(new BorderLayout();//New
+		GameImagesAndCombatPanel = new JPanel(new BorderLayout();
 		GameImagesAndCombatPanel.setPreferredSize(640,480)
-		DisplayGameAreaLabel = new JLabel();//New
-		GameImagesAndCombatPanel.add(DisplayGameAreaLabel, BorderLayout.WEST);//New
+		DisplayGameAreaLabel = new JLabel();
+		GameImagesAndCombatPanel.add(DisplayGameAreaLabel, BorderLayout.WEST);
+		DisplayGameAreaLabel(new ImageIcon("MenuBar.png"));
 		
-		//thread = new Thread(this);
+	//      thread = new Thread(this);
 		
-		image = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
-		pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
-		textures = new ArrayList<Texture>();
-		textures.add(Texture.wood);
-		textures.add(Texture.brick);
-		textures.add(Texture.bluestone);
-		textures.add(Texture.stone);
-		camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
-		screen = new Screen(map, mapWidth, mapHeight, textures, 640, 480);
-		addKeyListener(camera);
+	//	image = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
+	//	pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+	//	textures = new ArrayList<Texture>();
+	//	textures.add(Texture.wood);
+	//	textures.add(Texture.brick);
+	//	textures.add(Texture.bluestone);
+	//	textures.add(Texture.stone);
+	//	camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
+	//	screen = new Screen(map, mapWidth, mapHeight, textures, 640, 480);
+	//	addKeyListener(camera);
 		DisplayGameAreaLabel.setText("Does This Work?");
-		DisplayGameAreaLabel.setIcon(new ImageIcon(image));
+	//	DisplayGameAreaLabel.setIcon(new ImageIcon(image));
 		
-		//setSize(640, 480);
-		//setResizable(false);
-		//setTitle("3D Engine");
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//setBackground(Color.black);
-		//setLocationRelativeTo(null);
-		//setVisible(true);
-		start();
+	//	setSize(640, 480);
+	//	setResizable(false);
+	//	setTitle("3D Engine");
+	//	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	//	setBackground(Color.black);
+	//	setLocationRelativeTo(null);
+	//	setVisible(true);
+	//	start();
 		
 		
 		
