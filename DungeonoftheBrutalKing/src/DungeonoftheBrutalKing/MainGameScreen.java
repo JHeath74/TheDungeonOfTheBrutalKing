@@ -64,7 +64,8 @@ public class MainGameScreen extends JFrame implements Runnable {
 
 
 	JFrame MainGameScreenFrame = null;
-	JPanel p1, p2, p3, p4, GameImagesAndCombatPanel = null;
+	//JPanel p1, p2, p3, p4, GameImagesAndCombatPanel = null;
+	JPanel p1,p2,p3,p4 = null;
 	JTextArea MessageArea = null;
 	JTextField CharNameClassLevel, CharStats, CharStats2, CharXPHPGold = null;
 	JMenuBar menuBar = null;
@@ -701,8 +702,9 @@ public class MainGameScreen extends JFrame implements Runnable {
 
 	//	startingImage = new JLabel();
 	//	startingImage = new JLabel(new ImageIcon(myGameSettings.StoryIntroductionPath + "Starting_Image.png"));
-		startingImage = new JLabel(new ImageIcon(image));
-		GameImagesAndCombatPanel.add(startingImage);
+	//	startingImage = new JLabel(new ImageIcon(image));
+	//	GameImagesAndCombatPanel.add(startingImage);
+		MainGameScreenFrame.add(GameImagesAndCombatPanel);
 		
 		
 	//	startingImage.setPreferredSize(new Dimension(GameImagesAndCombatPanel.getWidth(), GameImagesAndCombatPanel.getHeight()));
@@ -739,7 +741,17 @@ public class MainGameScreen extends JFrame implements Runnable {
 			return;
 		}
 		Graphics g = bs.getDrawGraphics();
-		g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
+
+		JPanel GameImagesAndCombatPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+        	g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
+            }
+        };
+
+		
+	//	g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
 		bs.show();
 	}
 	public void run() {
