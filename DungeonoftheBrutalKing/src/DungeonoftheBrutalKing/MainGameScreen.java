@@ -54,6 +54,8 @@ import GameEngine.Texture;
 public class MainGameScreen extends JFrame implements Runnable {
 
 //Do a callable or a runable?
+//https://howtodoinjava.com/java/multi-threading/java-runnable-vs-thread/
+
 	private static final long serialVersionUID = 1L;
 	Charecter myChar = Charecter.Singleton();
 	GameSettings myGameSettings = new GameSettings();
