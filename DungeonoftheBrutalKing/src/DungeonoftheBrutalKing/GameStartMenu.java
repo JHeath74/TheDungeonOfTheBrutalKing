@@ -37,7 +37,7 @@ public class GameStartMenu extends JFrame {
 		
 		LoadSaveGame myLoadSaveGame = new LoadSaveGame();
 
-		UIManager UI=new UIManager();
+
 
 		MusicPlayer soundplayer = new MusicPlayer();
 		try {
@@ -61,7 +61,6 @@ public class GameStartMenu extends JFrame {
 		JFrame StartMenuFrame = null;
 		JPanel GameTitlePanel, StartButtonPanel = null;
 		JButton ContinueGameButton, StartNewGameButton, LoadExistingGameButton, ExitGameButton = null;
-		BufferedImage StartGameImage = null;
 		JTextArea GameTitleArea = null;
 
 		//JLabel StartImageLabel = null;
@@ -205,8 +204,7 @@ public class GameStartMenu extends JFrame {
 				        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 					    
 					 
-					 UI.put("OptionPane.background", myGameSettings.colorLightBrown);
-					// UI.put("Panel.background", myGameSettings.colorLightBrown);
+					 UIManager.put("OptionPane.background", myGameSettings.colorLightBrown);
 
 				
 					 for(File file: directory.listFiles()) {

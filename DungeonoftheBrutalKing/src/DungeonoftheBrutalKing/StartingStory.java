@@ -1,11 +1,10 @@
 package DungeonoftheBrutalKing;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.HeadlessException;
-import java.awt.Image;
+
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -19,7 +18,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -32,6 +31,10 @@ import javax.swing.WindowConstants;
 
 public class StartingStory extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	static JFrame StoryMessageFrame;
 	static JPanel StoryMessagePanel, StoryImagePanel, StoryButtonPanel, StorySplitPanePanel = null;
 	static JButton ConfirmButton = null;
@@ -134,8 +137,7 @@ public class StartingStory extends JFrame{
 				StoryMessageTextArea.setForeground(myGameSettings.colorDarkGoldenRod);
 				StoryMessageTextArea.setFont(new Font("Arial", Font.PLAIN, 30));
 				
-				 UIManager um=new UIManager();
-				 um.put("OptionPane.background",myGameSettings.colorLightBrown);
+				 UIManager.put("OptionPane.background",myGameSettings.colorLightBrown);
 
 
 

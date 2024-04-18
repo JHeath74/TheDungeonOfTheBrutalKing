@@ -6,7 +6,11 @@ public class DungeonLevel2 extends Maps {
 
 	//32x32
 	
-	public static int[][][] DungeonLevel4 = {{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public static int[][][] DungeonLevel2 = {{
 		{1,1,1,1,1,1,1,1},
 		{1,0,0,0,0,0,0,1},
 		{1,0,1,1,1,1,0,1},

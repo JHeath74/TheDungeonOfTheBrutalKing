@@ -22,7 +22,11 @@ public class Maps extends JFrame{
 //	protected static int[][][] MapFloor3;
 //	protected static int[][][] MapFloor4;
 
-    private static final int TILE_WIDTH = 64;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final int TILE_WIDTH = 64;
     private static final int TILE_HEIGHT = 32;
 
     private static final int DUNGEON_WIDTH = 5;
