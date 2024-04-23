@@ -142,7 +142,7 @@ public class MainGameScreen extends JFrame implements Runnable {
 //		startingImageLabel = new JLabel(new ImageIcon(myGameSettings.StoryIntroductionPath + "Starting_Image.png"));
 //		GameImagesAndCombatPanel.add(startingImageLabel);
 		
-		thread = new Thread();
+		thread = new Thread(this);
 
 		image = new BufferedImage(1200, 800, BufferedImage.TYPE_INT_RGB);
 
@@ -155,8 +155,8 @@ public class MainGameScreen extends JFrame implements Runnable {
 		camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
 		screen = new Screen(map, mapWidth, mapHeight, textures, 640, 480);
 		addKeyListener(camera);
-		//start(); //Remove The Word Thread
-		render();
+		start(); //Remove The Word Thread
+		//render();
 		
 		
 		// getScreenSize() returns the size
