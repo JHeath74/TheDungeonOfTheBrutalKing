@@ -718,7 +718,7 @@ public class MainGameScreen extends JFrame implements Runnable {
 	public void render() {
 		BufferStrategy bs = getBufferStrategy();
 		if(bs == null) {
-			MainGameScreenFrame.createBufferStrategy(3);
+			createBufferStrategy(3);
 			return;
 		}
 		Graphics g = bs.getDrawGraphics();
