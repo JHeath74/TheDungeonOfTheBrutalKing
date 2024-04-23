@@ -47,7 +47,7 @@ public class CharacterCreation {
 	static File charSave;
 	static Scanner saveFile;
 
-	static JFrame charecterCreationFrame;
+	static JFrame CharecterCreationFrame;
 	static JPanel NameAndStatsPanel, ClassAndClassInfoPanel, ClassInfoAndImagePanel;
 	static JTextArea toonstatsTextArea, toonclassDescriptionTextArea;
 	static JTextField tooncreationTextField;
@@ -352,8 +352,9 @@ public class CharacterCreation {
 					
 
 							writer.close();
-							charecterCreationFrame.dispose();
-							new MainGameScreen();
+							CharecterCreationFrame.dispose();
+						//	new MainGameScreen();
+							MainGameScreen maingamescreen = new MainGameScreen
 							
 							
 						} while (saveToonButton.getModel().isPressed());
