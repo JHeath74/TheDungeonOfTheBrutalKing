@@ -61,7 +61,7 @@ public class MainGameScreen extends JFrame implements Runnable {
 
 
 
-	JFrame MainGameScreenFrame = null;
+//	JFrame MainGameScreenFrame = null;
 	JPanel p1Panel, p2Panel, p3Panel, p4Panel, GameImagesAndCombatPanel = null;
 	JTextArea MessageTextArea = null;
 	JTextField CharNameClassLevelField, CharStatsField, CharStats2Field, CharXPHPGoldField = null;
@@ -117,14 +117,19 @@ public class MainGameScreen extends JFrame implements Runnable {
 		 
 		
 		//Creating Frame
-		MainGameScreenFrame = new JFrame("Dungeon of the Brutal King");
-
+	//	MainGameScreenFrame = new JFrame("Dungeon of the Brutal King");
+		setTitle("Dungeon of the Brutal King");
 
 		//Adding Frame Preferences and Settings
-		MainGameScreenFrame.setLayout(new BorderLayout());
-		MainGameScreenFrame.setForeground(myGameSettings.colorBrown);
-		MainGameScreenFrame.setUndecorated(true);
-		MainGameScreenFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+	//	MainGameScreenFrame.setLayout(new BorderLayout());
+	//	MainGameScreenFrame.setForeground(myGameSettings.colorBrown);
+	//	MainGameScreenFrame.setUndecorated(true);
+	//	MainGameScreenFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+		
+		setLayout(new BorderLayout());
+		setForeground(myGameSettings.colorBrown);
+		setUndecorated(true);
+		setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
 		//Adding JPanels
 		
@@ -166,8 +171,8 @@ public class MainGameScreen extends JFrame implements Runnable {
         // height will store the height of the screen
         height = (int)size.getHeight();
 
-        MainGameScreenFrame.setSize(width, height);
-
+     //   MainGameScreenFrame.setSize(width, height);
+        setSize(width, height);
      //   MainGameScreenFrame.getContentPane().add(new JLabel(new ImageIcon(image))); // Display a blank screen on the main game window
         
 		
@@ -265,8 +270,8 @@ public class MainGameScreen extends JFrame implements Runnable {
 		// ----------------------------Adding Menu Bar to the JFrame ------
 		// ****************************************************************
 		
-		MainGameScreenFrame.setJMenuBar(menuBar);
-		
+	//	MainGameScreenFrame.setJMenuBar(menuBar);
+		setJMenuBar(menuBar);
 		//Menu Bar Preferences
 
 		menuBar.setPreferredSize(new Dimension(25,35));
@@ -278,7 +283,8 @@ public class MainGameScreen extends JFrame implements Runnable {
 		menuBar.add(menuBarImageLabel);
 
 		// Build the menu.
-		MainGameScreenFrame.addWindowListener(new WindowAdapter() {
+		//MainGameScreenFrame.addWindowListener(new WindowAdapter() {
+			addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent windowEvent) {
 				System.exit(0);
@@ -315,11 +321,14 @@ public class MainGameScreen extends JFrame implements Runnable {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				int result = JOptionPane.showConfirmDialog(MainGameScreenFrame,
+				int result = JOptionPane.showConfirmDialog(rootPane,
 						"Are you sure you wish to delete your current game and start a new one?", "Start New Game?",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				
+				
 				if (result == JOptionPane.YES_OPTION) {
-					MainGameScreenFrame.dispose();
+					//MainGameScreenFrame.dispose();
+					dispose();
 					try {
 						BufferedWriter writer = Files.newBufferedWriter(Paths
 								.get("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
@@ -348,8 +357,8 @@ public class MainGameScreen extends JFrame implements Runnable {
 						e1.printStackTrace();
 					}
 
-					MainGameScreenFrame.dispose();
-
+//					MainGameScreenFrame.dispose();
+					dispose();
 				} else if (result == JOptionPane.NO_OPTION) {
 
 				} else {
@@ -680,8 +689,12 @@ public class MainGameScreen extends JFrame implements Runnable {
 		// -------------------Adding JPanel to JFrame --------------------
 		// ****************************************************************
 
-		MainGameScreenFrame.add(PicturesAndTextUpdatesPane, BorderLayout.CENTER);
-		MainGameScreenFrame.add(p1Panel, BorderLayout.NORTH);
+	//	MainGameScreenFrame.add(PicturesAndTextUpdatesPane, BorderLayout.CENTER);
+	//	MainGameScreenFrame.add(p1Panel, BorderLayout.NORTH);
+		
+		add(PicturesAndTextUpdatesPane, BorderLayout.CENTER);
+		add(p1Panel, BorderLayout.NORTH);
+		
 		p1Panel.add(p2Panel, BorderLayout.NORTH);
 		p1Panel.add(p3Panel, BorderLayout.CENTER);
 		p1Panel.add(p4Panel, BorderLayout.SOUTH);
@@ -692,8 +705,8 @@ public class MainGameScreen extends JFrame implements Runnable {
 
 
 
-		
-		MainGameScreenFrame.setVisible(true);
+		setVisible(true);
+	//	MainGameScreenFrame.setVisible(true);
 
 
 	}

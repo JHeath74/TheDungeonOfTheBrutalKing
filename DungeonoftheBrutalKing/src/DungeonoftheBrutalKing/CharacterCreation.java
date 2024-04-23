@@ -83,17 +83,17 @@ public class CharacterCreation {
 		//******** Setting up JFrame  ***************************************
 		//*******************************************************************
 
-		charecterCreationFrame = new JFrame("Create New Charecter");
-		charecterCreationFrame.setSize(width, height);
-		charecterCreationFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		charecterCreationFrame.setBackground(myGameSettings.colorBrown);
-		charecterCreationFrame.setUndecorated(true);
+		CharecterCreationFrame = new JFrame("Create New Charecter");
+		CharecterCreationFrame.setSize(width, height);
+		CharecterCreationFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		CharecterCreationFrame.setBackground(myGameSettings.colorBrown);
+		CharecterCreationFrame.setUndecorated(true);
 
 		//******************************************************************
 		//******** Setting up JSplitPane  *********************************
 		//******************************************************************
 		CharecterCreationSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		charecterCreationFrame.add(CharecterCreationSplitPane);
+		CharecterCreationFrame.add(CharecterCreationSplitPane);
 
 		CharecterCreationSplitPane.setDividerLocation(.5);
 		CharecterCreationSplitPane.setResizeWeight(.2d);
@@ -354,7 +354,7 @@ public class CharacterCreation {
 							writer.close();
 							CharecterCreationFrame.dispose();
 						//	new MainGameScreen();
-							MainGameScreen maingamescreen = new MainGameScreen
+							MainGameScreen maingamescreen = new MainGameScreen();
 							
 							
 						} while (saveToonButton.getModel().isPressed());
@@ -399,10 +399,10 @@ public class CharacterCreation {
 			ClassAndClassInfoPanel.add(saveToonButton, BorderLayout.SOUTH);
 			//ClassAndClassInfo.add(exitToStartMenu, BorderLayout.SOUTH);
 
-			charecterCreationFrame.setLocationRelativeTo(null);
-			charecterCreationFrame.toFront();
-			charecterCreationFrame.requestFocus();
-			charecterCreationFrame.setVisible(true);
+			CharecterCreationFrame.setLocationRelativeTo(null);
+			CharecterCreationFrame.toFront();
+			CharecterCreationFrame.requestFocus();
+			CharecterCreationFrame.setVisible(true);
 
 			charName = JOptionPane.showInputDialog("Please Enter a Name for Your Charater.");
 			tooncreationTextField.setText("Name: " + charName);
