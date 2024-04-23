@@ -371,7 +371,7 @@ public class CharacterCreation {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					charecterCreationFrame.dispose();
+					CharecterCreationFrame.dispose();
 					new GameStartMenu();
 
 				}});
