@@ -34,10 +34,14 @@ public class GameStartMenu extends JFrame {
 	public static void main(String[] args) throws IOException, FontFormatException, BadLocationException {
 
 		GameSettings myGameSettings = new GameSettings();
-		
 		LoadSaveGame myLoadSaveGame = new LoadSaveGame();
+<<<<<<< Updated upstream
 
 
+=======
+		
+		UIManager UI=new UIManager();
+>>>>>>> Stashed changes
 
 		MusicPlayer soundplayer = new MusicPlayer();
 		try {
@@ -270,6 +274,9 @@ public class GameStartMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
+					Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
+					window.dispose();
+
 					myLoadSaveGame.ContinueCurrentGame();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block

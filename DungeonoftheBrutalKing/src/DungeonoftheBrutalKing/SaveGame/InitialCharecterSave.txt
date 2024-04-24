@@ -1,14 +1,23 @@
 Kyle
-Hunter
+Rogue
 0
 0
 15
+<<<<<<< Updated upstream
 14
 16
 12
 29
 16
 16
+=======
+29
+26
+11
+15
+19
+25
+>>>>>>> Stashed changes
 100
 3
 3
