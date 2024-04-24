@@ -226,11 +226,12 @@ public class LoadSaveGame {
 		while (line != null) {
 
 			SaveLoadChar.add(line);
+			
 
 			line = bufReader.readLine();
 
 		}
-
+		System.out.println("Seven:" + SaveLoadChar.get(7));
 		Singleton.myCharSingleton().CharInfo.addAll(SaveLoadChar);
 
 		bufReader.close();
