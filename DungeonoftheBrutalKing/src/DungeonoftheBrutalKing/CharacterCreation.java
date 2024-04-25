@@ -352,11 +352,21 @@ public class CharacterCreation {
 					
 
 							writer.close();
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 							CharecterCreationFrame.dispose();
-						//	new MainGameScreen();
 							MainGameScreen maingamescreen = new MainGameScreen();
 							
+<<<<<<< Updated upstream
 							
+=======
+							CharecterCreationFrame.dispose();
+							new MainGameScreen2();
+
+
+>>>>>>> Stashed changes
 						} while (saveToonButton.getModel().isPressed());
 
 					} catch (IOException e1) {
