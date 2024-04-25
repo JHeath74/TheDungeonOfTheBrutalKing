@@ -276,6 +276,8 @@ public class GameStartMenu extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				try {
+					Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
+					window.dispose();
 					myLoadSaveGame.ContinueCurrentGame();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
