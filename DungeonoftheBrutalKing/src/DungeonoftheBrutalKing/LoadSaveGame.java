@@ -82,7 +82,7 @@ public class LoadSaveGame {
 		bufReader.close();
 		
 		
-		new MainGameScreen();
+		new MainGameScreen2();
 	}
 	
 	public void LoadGame() {
@@ -235,7 +235,7 @@ public class LoadSaveGame {
 			line = bufReader.readLine();
 
 		}
-		System.out.println("Seven:" + SaveLoadChar.get(7));
+		
 		Singleton.myCharSingleton().CharInfo.addAll(SaveLoadChar);
 
 		bufReader.close();

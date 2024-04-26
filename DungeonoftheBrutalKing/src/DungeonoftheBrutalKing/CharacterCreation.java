@@ -352,21 +352,15 @@ public class CharacterCreation {
 					
 
 							writer.close();
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 							CharecterCreationFrame.dispose();
-							MainGameScreen maingamescreen = new MainGameScreen();
 							
-<<<<<<< Updated upstream
 							
-=======
+
 							CharecterCreationFrame.dispose();
-							new MainGameScreen2();
+							new MainGameScreen();
 
 
->>>>>>> Stashed changes
 						} while (saveToonButton.getModel().isPressed());
 
 					} catch (IOException e1) {
@@ -400,14 +394,10 @@ public class CharacterCreation {
 			NameAndStatsPanel.add(reRollStatsButton, BorderLayout.SOUTH);
 
 			ClassAndClassInfoPanel.add(charectorClass, BorderLayout.NORTH);
-			//ClassAndClassInfo.add(toonclassDescription, BorderLayout.CENTER);
-
-			//ClassAndClassInfo.add(classImage,BorderLayout.CENTER);
 			ClassAndClassInfoPanel.add(ClassInfoAndImagePanel, BorderLayout.CENTER);
 			ClassInfoAndImagePanel.add(toonclassDescriptionTextArea, BorderLayout.NORTH);
 			ClassInfoAndImagePanel.add(classImage, BorderLayout.SOUTH);
 			ClassAndClassInfoPanel.add(saveToonButton, BorderLayout.SOUTH);
-			//ClassAndClassInfo.add(exitToStartMenu, BorderLayout.SOUTH);
 
 			CharecterCreationFrame.setLocationRelativeTo(null);
 			CharecterCreationFrame.toFront();

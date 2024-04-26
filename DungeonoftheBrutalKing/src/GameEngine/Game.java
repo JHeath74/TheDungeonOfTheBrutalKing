@@ -1,5 +1,6 @@
 package GameEngine;
 
+import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -9,6 +10,8 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 public class Game extends JFrame implements Runnable{
+	
+	Canvas canvas = new Canvas();
 	
 	private static final long serialVersionUID = 1L;
 	public int mapWidth = 15;

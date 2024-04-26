@@ -34,15 +34,11 @@ public class GameStartMenu extends JFrame {
 	public static void main(String[] args) throws IOException, FontFormatException, BadLocationException {
 
 		GameSettings myGameSettings = new GameSettings();
-<<<<<<< Updated upstream
-		
-		LoadSaveGame myLoadSaveGame = new LoadSaveGame();
+        LoadSaveGame myLoadSaveGame = new LoadSaveGame();
 
-=======
-		LoadSaveGame myLoadSaveGame = new LoadSaveGame();
 		
 		UIManager UI=new UIManager();
->>>>>>> Stashed changes
+
 
 
 		MusicPlayer soundplayer = new MusicPlayer();
