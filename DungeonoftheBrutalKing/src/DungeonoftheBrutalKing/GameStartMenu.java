@@ -21,10 +21,14 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 
 public class GameStartMenu extends JFrame {
@@ -63,7 +67,8 @@ public class GameStartMenu extends JFrame {
 		JFrame StartMenuFrame = null;
 		JPanel GameTitlePanel, StartButtonPanel = null;
 		JButton ContinueGameButton, StartNewGameButton, LoadExistingGameButton, ExitGameButton = null;
-		JTextArea GameTitleArea = null;
+		//JTextArea GameTitleArea = null;
+		JTextPane GameTitlePane = null;
 
 		//JLabel StartImageLabel = null;
 		int width, height = 0;
@@ -80,7 +85,7 @@ public class GameStartMenu extends JFrame {
 		ContinueGameButton = new JButton("Continue Current Game");
 		LoadExistingGameButton = new JButton("Load Exisiting Game");
 		ExitGameButton = new JButton("Exit Game");
-		GameTitleArea = new JTextArea();
+		GameTitlePane = new JTextPane();
 
 		//***************************************************
 		//******** Getting Screen Width and Height **********
@@ -139,25 +144,29 @@ public class GameStartMenu extends JFrame {
 
 
       //***************************************************
-      //********** Setting settings for JPanel ************
+      //********** Setting settings for JTextPane *********
       //***************************************************
 
         //StartImageLabel = new JLabel(new ImageIcon(myGameSettings.myStartMenuPicture));
-        GameTitlePanel.add(GameTitleArea);
-        
-       // Font avatarFont = Font.createFont(Font.TRUETYPE_FONT, new File("src\\DungeonoftheBrutalKing\\Fonts\\fontAvatar.ttf"));
-       // Font fontAvatar = myGameSettings.fontAvatar;
+        GameTitlePanel.add(GameTitlePane);
+        GameTitlePane.setEditable(false);
+     
         Font avatarFont = new Font("src\\DungeonoftheBrutalKing\\Fonts\\fontAvatar.ttf", Font.BOLD, 100);
 
         
-       
-        GameTitleArea.setEditable(false);
 
+        StyledDocument doc = GameTitlePane.getStyledDocument();
+        SimpleAttributeSet attributeSet = new SimpleAttributeSet();
+        StyleConstants.setAlignment(attributeSet, StyleConstants.ALIGN_CENTER);
+        doc.setParagraphAttributes(0, doc.getLength(), attributeSet, false);
         
-        GameTitleArea.setFont(avatarFont);
-        GameTitleArea.setForeground(myGameSettings.colorLightYellow);
-        GameTitleArea.setBackground(myGameSettings.colorLightBrown);
-        GameTitleArea.setText("\n                   Dungeon \n                      of the \n                 Brutal King");
+        GameTitlePanel.setForeground(myGameSettings.colorLightYellow);
+        GameTitlePane.setBackground(myGameSettings.colorLightBrown);
+        GameTitlePane.setFont(avatarFont);
+
+        GameTitlePane.setText("\nDungeon\n of the\nBrutal King");
+        
+        GameTitlePane.setCharacterAttributes(attributeSet, true);
 
 
       //***************************************************
