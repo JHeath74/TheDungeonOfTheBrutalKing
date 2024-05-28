@@ -104,9 +104,6 @@ public class MainGameScreen extends JFrame {
         height = (int)size.getHeight();
 
         
-      
-
-		
 	
 		//Adding Frame Preferences and Settings
         MainGameScreenFrame.setSize(width, height);

@@ -4,7 +4,7 @@ import DungeonoftheBrutalKing.Maps;
 
 public class DungeonLevel2 extends Maps {
 
-	//32x32
+	//64x64
 	
 	/**
 	 * 

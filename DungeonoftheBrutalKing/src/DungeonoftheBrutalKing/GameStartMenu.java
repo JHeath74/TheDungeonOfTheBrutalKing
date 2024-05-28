@@ -43,8 +43,6 @@ public class GameStartMenu extends JFrame {
 		
 		UIManager UI=new UIManager();
 
-
-
 		MusicPlayer soundplayer = new MusicPlayer();
 		try {
 			soundplayer.midiPlayer("Stones.mid");
@@ -58,6 +56,9 @@ public class GameStartMenu extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		
 
 
 		//***********************************************
@@ -153,17 +154,16 @@ public class GameStartMenu extends JFrame {
      
         Font avatarFont = new Font("src\\DungeonoftheBrutalKing\\Fonts\\fontAvatar.ttf", Font.BOLD, 100);
 
-        
-
         StyledDocument doc = GameTitlePane.getStyledDocument();
         SimpleAttributeSet attributeSet = new SimpleAttributeSet();
         StyleConstants.setAlignment(attributeSet, StyleConstants.ALIGN_CENTER);
         doc.setParagraphAttributes(0, doc.getLength(), attributeSet, false);
+             
         
-        GameTitlePanel.setForeground(myGameSettings.colorLightYellow);
+        GameTitlePane.setForeground(myGameSettings.colorLightYellow);
         GameTitlePane.setBackground(myGameSettings.colorLightBrown);
         GameTitlePane.setFont(avatarFont);
-
+       
         GameTitlePane.setText("\nDungeon\n of the\nBrutal King");
         
         GameTitlePane.setCharacterAttributes(attributeSet, true);
@@ -323,6 +323,8 @@ public class GameStartMenu extends JFrame {
 
 
 	}
+
+	
 
 
 
