@@ -31,7 +31,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 
-public class GameStartMenu extends JFrame {
+public class GameStartMenu extends JFrame implements Runnable{
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,24 +39,13 @@ public class GameStartMenu extends JFrame {
 
 		GameSettings myGameSettings = new GameSettings();
         LoadSaveGame myLoadSaveGame = new LoadSaveGame();
+        MainGameScreen myMainGameScreen = new MainGameScreen();
 
 		
 		UIManager UI=new UIManager();
 
-		MusicPlayer soundplayer = new MusicPlayer();
-		try {
-			soundplayer.midiPlayer("Stones.mid");
-		} catch (UnsupportedAudioFileException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (LineUnavailableException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
+		new Thread(new GameStartMenu()).start();
 		
 		
 
@@ -226,20 +215,12 @@ public class GameStartMenu extends JFrame {
 
 				} else {
 					try {
-						StartingStory.StartGameMessage();
+					
+						new MainGameScreen();
 					} catch (HeadlessException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
-					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (UnsupportedAudioFileException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (LineUnavailableException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
@@ -322,6 +303,24 @@ public class GameStartMenu extends JFrame {
 
 
 
+	}
+
+	@Override
+	public void run() {
+		MusicPlayer soundplayer = new MusicPlayer();
+		try {
+			soundplayer.midiPlayer("Stones.mid");
+		} catch (UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	

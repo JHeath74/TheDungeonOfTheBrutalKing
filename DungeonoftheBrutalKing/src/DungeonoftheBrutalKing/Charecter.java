@@ -39,11 +39,13 @@ public class Charecter {
 	// CharInfo[19] = Map Location
 	// CharInfo[20] = Morality
 
+	//CharInfo[21] = LocationX
+	//CharInfo[22] = LocationY
+	//CharInfo[23] = LocationZ
+	
 	//Acquired Spells
 
-	// CharInfo[21]
-	// CharInfo[22]
-	// CharInfo[23]
+
 	// CharInfo[24]
 	// CharInfo[25]
 	// CharInfo[26]

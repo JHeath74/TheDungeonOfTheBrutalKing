@@ -158,6 +158,8 @@ public class CharacterCreation {
 			// ******** Selecting your Charecter Class *****************
 			// *********************************************************
 
+			
+			
 			toonclasslist = Class.toonclassarray;
 
 			charectorClass = new JComboBox<>(toonclasslist);
