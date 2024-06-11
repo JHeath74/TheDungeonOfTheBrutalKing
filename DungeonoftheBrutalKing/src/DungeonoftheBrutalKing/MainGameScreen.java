@@ -39,6 +39,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
@@ -63,8 +64,9 @@ public class MainGameScreen extends JFrame {
 
 	JFrame MainGameScreenFrame = null;
 	JPanel p1Panel, p2Panel, p3Panel, p4Panel, GameImagesAndCombatPanel = null;
-	JTextArea MessageTextArea = null;
+	//JTextArea MessageTextArea = null;
 	JTextField CharNameClassLevelField, CharStatsField, CharStats2Field, CharXPHPGoldField = null;
+	JTextPane MessageTextPane = null;
 	JMenuBar menuBar = null;
 	JMenu gameMenu, charecterMenu, settingsMenu, helpMenu = null;
 	JMenuItem newGameMenuItem, LoadSavedGameMenuItem, saveMenuItem,
@@ -635,10 +637,18 @@ public class MainGameScreen extends JFrame {
 		// ----------------------------Setting Up JTextArea ------------------------------------
 		// *************************************************************************************
 	
-		MessageTextArea = new JTextArea("JTextArea AMessageArea - Game Text Updates");
-		MessageTextArea.setBackground(myGameSettings.colorLightBrown);
-		MessageTextArea.setForeground(myGameSettings.colorLightYellow);
-		MessageTextArea.setFont(myGameSettings.fontLomoCopyLTStdMidi);
+//		MessageTextArea = new JTextArea("JTextArea AMessageArea - Game Text Updates");
+	//	MessageTextArea.setBackground(myGameSettings.colorLightBrown);
+	//	MessageTextArea.setForeground(myGameSettings.colorLightYellow);
+	//	MessageTextArea.setFont(myGameSettings.fontLomoCopyLTStdMidi);
+		
+		MessageTextPane = new JTextPane();
+		MessageTextPane.setText("JTextArea AMessageArea - Game Text Updates");
+		MessageTextPane.setBackground(myGameSettings.colorLightBrown);
+		MessageTextPane.setForeground(myGameSettings.colorLightYellow);
+		MessageTextPane.setFont(myGameSettings.fontLomoCopyLTStdMidi);
+		
+		
 			
 		// **************************************************************************************
 		// ----------------------------Setting Up JSplitPane ------------------------------------
@@ -648,7 +658,7 @@ public class MainGameScreen extends JFrame {
 		PicturesAndTextUpdatesPane.setVisible(true);
 		PicturesAndTextUpdatesPane.setResizeWeight(.90d);
 		PicturesAndTextUpdatesPane.setLeftComponent(GameImagesAndCombatPanel);
-		PicturesAndTextUpdatesPane.setRightComponent(MessageTextArea);
+		PicturesAndTextUpdatesPane.setRightComponent(MessageTextPane);
 		PicturesAndTextUpdatesPane.setVisible(true);
 
 		// ***************************************************************

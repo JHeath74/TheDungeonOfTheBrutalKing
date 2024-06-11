@@ -2,8 +2,6 @@
 package DungeonoftheBrutalKing;
 
 import java.awt.BorderLayout;
-import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -41,6 +39,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
@@ -60,13 +59,14 @@ public class MainGameScreen2 extends JFrame {
 	GameSettings myGameSettings = new GameSettings();
 	LoadSaveGame myGameState = new LoadSaveGame();
 	GameMenuItems myGameMenuItems = new GameMenuItems();
-	Canvas myCanvas = new Canvas();
+
 
 
 	JFrame MainGameScreenFrame = null;
 	JPanel p1Panel, p2Panel, p3Panel, p4Panel, GameImagesAndCombatPanel = null;
-	JTextArea MessageTextArea = null;
+	//JTextArea MessageTextArea = null;
 	JTextField CharNameClassLevelField, CharStatsField, CharStats2Field, CharXPHPGoldField = null;
+	JTextPane MessageTextPane = null;
 	JMenuBar menuBar = null;
 	JMenu gameMenu, charecterMenu, settingsMenu, helpMenu = null;
 	JMenuItem newGameMenuItem, LoadSavedGameMenuItem, saveMenuItem,
@@ -76,40 +76,10 @@ public class MainGameScreen2 extends JFrame {
 				mapFloor3MenuItem, mapFloor4MenuItem = null;
 	JLabel menuBarImageLabel, startingImageLabel = null;
 	JSplitPane PicturesAndTextUpdatesPane = null;
-	
-	
+
 	Dimension screenSize = null;
 	int width, height = 0;
 	Timer timer = null;
-	
-	public int mapWidth = 15;
-	public int mapHeight = 15;
-	private Thread thread;
-	private boolean running;
-	private BufferedImage image;
-	public int[] pixels;
-	public ArrayList<Texture> textures;
-	public Camera camera;
-	public Screen screen;
-	public static int[][] map = 
-		{
-			{1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
-			{1,0,0,0,0,0,0,0,2,0,0,0,0,0,2},
-			{1,0,3,3,3,3,3,0,0,0,0,0,0,0,2},
-			{1,0,3,0,0,0,3,0,2,0,0,0,0,0,2},
-			{1,0,3,0,0,0,3,0,2,2,2,0,2,2,2},
-			{1,0,3,0,0,0,3,0,2,0,0,0,0,0,2},
-			{1,0,3,3,0,3,3,0,2,0,0,0,0,0,2},
-			{1,0,0,0,0,0,0,0,2,0,0,0,0,0,2},
-			{1,1,1,1,1,1,1,1,4,4,4,0,4,4,4},
-			{1,0,0,0,0,0,1,4,0,0,0,0,0,0,4},
-			{1,0,0,0,0,0,1,4,0,0,0,0,0,0,4},
-			{1,0,0,0,0,0,1,4,0,3,3,3,3,0,4},
-			{1,0,0,0,0,0,1,4,0,3,3,3,3,0,4},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
-			{1,1,1,1,1,1,1,4,4,4,4,4,4,4,4}
-		};
-	
 	
 	
 //-----------------------------------------------------------------------------
@@ -136,9 +106,6 @@ public class MainGameScreen2 extends JFrame {
         height = (int)size.getHeight();
 
         
-      
-
-		
 	
 		//Adding Frame Preferences and Settings
         MainGameScreenFrame.setSize(width, height);
@@ -159,9 +126,8 @@ public class MainGameScreen2 extends JFrame {
 		GameImagesAndCombatPanel = new JPanel(new BorderLayout());
 		
 	
-	//	startingImageLabel = new JLabel(new ImageIcon(myGameSettings.StoryIntroductionPath + "Starting_Image.png"));
-	//	GameImagesAndCombatPanel.add(startingImageLabel);
-		GameImagesAndCombatPanel.add(myCanvas);
+		startingImageLabel = new JLabel(new ImageIcon(myGameSettings.StoryIntroductionPath + "Starting_Image.png"));
+		GameImagesAndCombatPanel.add(startingImageLabel);
 		
     
         
@@ -270,7 +236,8 @@ public class MainGameScreen2 extends JFrame {
 		// ----------------------------Adding Menu Bar to the JFrame ------
 		// ****************************************************************
 		
-		MainGameScreenFrame.setJMenuBar(menuBar);
+	//	MainGameScreenFrame.setJMenuBar(menuBar);
+		setJMenuBar(menuBar);
 		//Menu Bar Preferences
 
 		menuBar.setPreferredSize(new Dimension(25,35));
@@ -282,8 +249,8 @@ public class MainGameScreen2 extends JFrame {
 		menuBar.add(menuBarImageLabel);
 
 		// Build the menu.
-		MainGameScreenFrame.addWindowListener(new WindowAdapter() {
-		//	addWindowListener(new WindowAdapter() {
+		//MainGameScreenFrame.addWindowListener(new WindowAdapter() {
+			addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent windowEvent) {
 				System.exit(0);
@@ -670,10 +637,18 @@ public class MainGameScreen2 extends JFrame {
 		// ----------------------------Setting Up JTextArea ------------------------------------
 		// *************************************************************************************
 	
-		MessageTextArea = new JTextArea("JTextArea AMessageArea - Game Text Updates");
-		MessageTextArea.setBackground(myGameSettings.colorLightBrown);
-		MessageTextArea.setForeground(myGameSettings.colorLightYellow);
-		MessageTextArea.setFont(myGameSettings.fontLomoCopyLTStdMidi);
+//		MessageTextArea = new JTextArea("JTextArea AMessageArea - Game Text Updates");
+	//	MessageTextArea.setBackground(myGameSettings.colorLightBrown);
+	//	MessageTextArea.setForeground(myGameSettings.colorLightYellow);
+	//	MessageTextArea.setFont(myGameSettings.fontLomoCopyLTStdMidi);
+		
+		MessageTextPane = new JTextPane();
+		MessageTextPane.setText("JTextArea AMessageArea - Game Text Updates");
+		MessageTextPane.setBackground(myGameSettings.colorLightBrown);
+		MessageTextPane.setForeground(myGameSettings.colorLightYellow);
+		MessageTextPane.setFont(myGameSettings.fontLomoCopyLTStdMidi);
+		
+		
 			
 		// **************************************************************************************
 		// ----------------------------Setting Up JSplitPane ------------------------------------
@@ -683,7 +658,7 @@ public class MainGameScreen2 extends JFrame {
 		PicturesAndTextUpdatesPane.setVisible(true);
 		PicturesAndTextUpdatesPane.setResizeWeight(.90d);
 		PicturesAndTextUpdatesPane.setLeftComponent(GameImagesAndCombatPanel);
-		PicturesAndTextUpdatesPane.setRightComponent(MessageTextArea);
+		PicturesAndTextUpdatesPane.setRightComponent(MessageTextPane);
 		PicturesAndTextUpdatesPane.setVisible(true);
 
 		// ***************************************************************
@@ -694,77 +669,19 @@ public class MainGameScreen2 extends JFrame {
 		MainGameScreenFrame.add(p1Panel, BorderLayout.NORTH);
 		
 		
-		MainGameScreenFrame.add(PicturesAndTextUpdatesPane, BorderLayout.CENTER);
-		MainGameScreenFrame.add(p1Panel, BorderLayout.NORTH);
+		add(PicturesAndTextUpdatesPane, BorderLayout.CENTER);
+		add(p1Panel, BorderLayout.NORTH);
 
-		thread = new Thread();
-		image = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
-		pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
-		textures = new ArrayList<Texture>();
-		textures.add(Texture.wood);
-		textures.add(Texture.brick);
-		textures.add(Texture.bluestone);
-		textures.add(Texture.stone);
-		camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
-		screen = new Screen(map, mapWidth, mapHeight, textures, 640, 480);
-		addKeyListener(camera);
-	//	setSize(640, 480);
-	//	setResizable(false);
-	//	setTitle("3D Engine");
-	//	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	//	setBackground(Color.black);
-	//	setLocationRelativeTo(null);
-		//setVisible(true);
+
+		setVisible(true);
 		MainGameScreenFrame.setVisible(true);
-		start();
-		
-		
 
 
 	}
 	
-	private synchronized void start() {
-		running = true;
-		thread.start();
-	}
-	public synchronized void stop() {
-		running = false;
-		try {
-			thread.join();
-		} catch(InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
-	public void render() {
-		BufferStrategy bs = getBufferStrategy();
-		if(bs == null) {
-			myCanvas.createBufferStrategy(2);
-			return;
-		}
-		Graphics g = bs.getDrawGraphics();
-		g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
-		bs.show();
-	}
-	public void run() {
-		long lastTime = System.nanoTime();
-		final double ns = 1000000000.0 / 60.0;//60 times per second
-		double delta = 0;
-		requestFocus();
-		while(running) {
-			long now = System.nanoTime();
-			delta = delta + ((now-lastTime) / ns);
-			lastTime = now;
-			while (delta >= 1)//Make sure update is only happening 60 times a second
-			{
-				//handles all of the logic restricted time
-				screen.update(camera, pixels);
-				camera.update(map);
-				delta--;
-			}
-			render();//displays to the screen unrestricted time
-		}
 	
 	
-	}
+	
+
 	
 }
