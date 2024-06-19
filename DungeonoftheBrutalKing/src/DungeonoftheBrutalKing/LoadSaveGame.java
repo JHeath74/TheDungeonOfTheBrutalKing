@@ -82,7 +82,7 @@ public class LoadSaveGame {
 		bufReader.close();
 		
 		
-		new MainGameScreen2();
+		new MainGameScreen();
 	}
 	
 	public void LoadGame() {
@@ -222,7 +222,7 @@ public class LoadSaveGame {
 	public void StartGameLoadCharecter() throws IOException {
 
 		ArrayList<String> SaveLoadChar = new ArrayList<>();
-		File chosenFile = getLastModified(GameSettings.SavedGameDirectory);  //Why is it getting the file twice
+		File chosenFile = getLastModified(GameSettings.SavedGameDirectory);
 
 		BufferedReader bufReader = new BufferedReader(new FileReader(chosenFile));
 
@@ -230,7 +230,6 @@ public class LoadSaveGame {
 		while (line != null) {
 
 			SaveLoadChar.add(line);
-			
 
 			line = bufReader.readLine();
 

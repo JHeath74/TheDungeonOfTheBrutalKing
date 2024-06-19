@@ -39,7 +39,6 @@ public class GameStartMenu extends JFrame implements Runnable{
 
 		GameSettings myGameSettings = new GameSettings();
         LoadSaveGame myLoadSaveGame = new LoadSaveGame();
-        MainGameScreen myMainGameScreen = new MainGameScreen();
 
 		
 		UIManager UI=new UIManager();
@@ -216,7 +215,7 @@ public class GameStartMenu extends JFrame implements Runnable{
 				} else {
 					try {
 					
-						new MainGameScreen();
+						new MainGameScreen2();
 					} catch (HeadlessException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

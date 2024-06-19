@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
+
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,9 +13,7 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +21,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
-import java.util.ArrayList;
+
 import java.util.Objects;
 
 import javax.swing.ImageIcon;
@@ -44,9 +42,7 @@ import javax.swing.KeyStroke;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
-import GameEngine.Camera;
-import GameEngine.Screen;
-import GameEngine.Texture;
+
 
 /*
  * Games Menu Items
@@ -128,9 +124,6 @@ public class MainGameScreen extends JFrame {
 	
 		startingImageLabel = new JLabel(new ImageIcon(myGameSettings.StoryIntroductionPath + "Starting_Image.png"));
 		GameImagesAndCombatPanel.add(startingImageLabel);
-		
-    
-        
 		
 
 		try {
@@ -236,8 +229,7 @@ public class MainGameScreen extends JFrame {
 		// ----------------------------Adding Menu Bar to the JFrame ------
 		// ****************************************************************
 		
-	//	MainGameScreenFrame.setJMenuBar(menuBar);
-		setJMenuBar(menuBar);
+		MainGameScreenFrame.setJMenuBar(menuBar);
 		//Menu Bar Preferences
 
 		menuBar.setPreferredSize(new Dimension(25,35));
@@ -634,16 +626,12 @@ public class MainGameScreen extends JFrame {
 		mapMenu.add(mapFloor4MenuItem);
 
 		// **************************************************************************************
-		// ----------------------------Setting Up JTextArea ------------------------------------
+		// ----------------------------Setting Up JTextPane ------------------------------------
 		// *************************************************************************************
 	
-//		MessageTextArea = new JTextArea("JTextArea AMessageArea - Game Text Updates");
-	//	MessageTextArea.setBackground(myGameSettings.colorLightBrown);
-	//	MessageTextArea.setForeground(myGameSettings.colorLightYellow);
-	//	MessageTextArea.setFont(myGameSettings.fontLomoCopyLTStdMidi);
 		
 		MessageTextPane = new JTextPane();
-		MessageTextPane.setText("JTextArea AMessageArea - Game Text Updates");
+		MessageTextPane.setText("JTextPane MessageTextPane - Game Text Updates");
 		MessageTextPane.setBackground(myGameSettings.colorLightBrown);
 		MessageTextPane.setForeground(myGameSettings.colorLightYellow);
 		MessageTextPane.setFont(myGameSettings.fontLomoCopyLTStdMidi);
@@ -667,13 +655,10 @@ public class MainGameScreen extends JFrame {
 
 		MainGameScreenFrame.add(PicturesAndTextUpdatesPane, BorderLayout.CENTER);
 		MainGameScreenFrame.add(p1Panel, BorderLayout.NORTH);
-		
-		
-		add(PicturesAndTextUpdatesPane, BorderLayout.CENTER);
-		add(p1Panel, BorderLayout.NORTH);
 
 
-		setVisible(true);
+
+
 		MainGameScreenFrame.setVisible(true);
 
 

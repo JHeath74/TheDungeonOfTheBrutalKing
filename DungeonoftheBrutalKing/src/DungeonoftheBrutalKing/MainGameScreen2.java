@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
+
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,9 +13,7 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +21,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
-import java.util.ArrayList;
+
 import java.util.Objects;
 
 import javax.swing.ImageIcon;
@@ -44,9 +42,7 @@ import javax.swing.KeyStroke;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
-import GameEngine.Camera;
-import GameEngine.Screen;
-import GameEngine.Texture;
+
 
 /*
  * Games Menu Items
@@ -105,8 +101,6 @@ public class MainGameScreen2 extends JFrame {
         // height will store the height of the screen
         height = (int)size.getHeight();
 
-        
-	
 		//Adding Frame Preferences and Settings
         MainGameScreenFrame.setSize(width, height);
 		MainGameScreenFrame.setLayout(new BorderLayout());
@@ -236,8 +230,8 @@ public class MainGameScreen2 extends JFrame {
 		// ----------------------------Adding Menu Bar to the JFrame ------
 		// ****************************************************************
 		
-	//	MainGameScreenFrame.setJMenuBar(menuBar);
-		setJMenuBar(menuBar);
+		MainGameScreenFrame.setJMenuBar(menuBar);
+
 		//Menu Bar Preferences
 
 		menuBar.setPreferredSize(new Dimension(25,35));
@@ -669,11 +663,11 @@ public class MainGameScreen2 extends JFrame {
 		MainGameScreenFrame.add(p1Panel, BorderLayout.NORTH);
 		
 		
-		add(PicturesAndTextUpdatesPane, BorderLayout.CENTER);
-		add(p1Panel, BorderLayout.NORTH);
+	//	add(PicturesAndTextUpdatesPane, BorderLayout.CENTER);
+	//	add(p1Panel, BorderLayout.NORTH);
 
 
-		setVisible(true);
+		//setVisible(true);
 		MainGameScreenFrame.setVisible(true);
 
 
