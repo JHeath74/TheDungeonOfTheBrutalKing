@@ -24,10 +24,10 @@ import java.text.ParseException;
 
 import java.util.Objects;
 
-import javax.swing.ImageIcon;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -60,7 +60,6 @@ public class MainGameScreen extends JFrame {
 
 	JFrame MainGameScreenFrame = null;
 	JPanel p1Panel, p2Panel, p3Panel, p4Panel, GameImagesAndCombatPanel = null;
-	//JTextArea MessageTextArea = null;
 	JTextField CharNameClassLevelField, CharStatsField, CharStats2Field, CharXPHPGoldField = null;
 	JTextPane MessageTextPane = null;
 	JMenuBar menuBar = null;
@@ -70,7 +69,7 @@ public class MainGameScreen extends JFrame {
 				charecterinventoryMenuItem, mapMenu, gameSettingsMenuItem,
 				aboutMenuItem, helpMenuItem, mapFloor1MenuItem, mapFloor2MenuItem,
 				mapFloor3MenuItem, mapFloor4MenuItem = null;
-	JLabel menuBarImageLabel, startingImageLabel = null;
+//	JLabel menuBarImageLabel, startingImageLabel = null;
 	JSplitPane PicturesAndTextUpdatesPane = null;
 
 	Dimension screenSize = null;
@@ -122,8 +121,8 @@ public class MainGameScreen extends JFrame {
 		GameImagesAndCombatPanel = new JPanel(new BorderLayout());
 		
 	
-		startingImageLabel = new JLabel(new ImageIcon(myGameSettings.StoryIntroductionPath + "Starting_Image.png"));
-		GameImagesAndCombatPanel.add(startingImageLabel);
+//		startingImageLabel = new JLabel(new ImageIcon(myGameSettings.StoryIntroductionPath + "Starting_Image.png"));
+//		GameImagesAndCombatPanel.add(startingImageLabel);
 		
 
 		try {
@@ -236,9 +235,9 @@ public class MainGameScreen extends JFrame {
 		menuBar.setFont(new Font("sans-serif", Font.ROMAN_BASELINE, 22));
 		menuBar.setBackground(myGameSettings.colorPlum);
 
-		menuBarImageLabel = new JLabel(new ImageIcon(myGameSettings.myJMenuBarPicture));
-		menuBarImageLabel.setSize(25, 25);
-		menuBar.add(menuBarImageLabel);
+	//	menuBarImageLabel = new JLabel(new ImageIcon(myGameSettings.myJMenuBarPicture));
+	//	menuBarImageLabel.setSize(25, 25);
+	//	menuBar.add(menuBarImageLabel);
 
 		// Build the menu.
 		//MainGameScreenFrame.addWindowListener(new WindowAdapter() {
@@ -643,12 +642,11 @@ public class MainGameScreen extends JFrame {
 		// *************************************************************************************
 
 		PicturesAndTextUpdatesPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		PicturesAndTextUpdatesPane.setVisible(true);
+		PicturesAndTextUpdatesPane.setDividerLocation(width-200);
 		PicturesAndTextUpdatesPane.setResizeWeight(.90d);
 		PicturesAndTextUpdatesPane.setLeftComponent(GameImagesAndCombatPanel);
 		PicturesAndTextUpdatesPane.setRightComponent(MessageTextPane);
 		PicturesAndTextUpdatesPane.setVisible(true);
-
 		// ***************************************************************
 		// -------------------Adding JPanel to JFrame --------------------
 		// ****************************************************************

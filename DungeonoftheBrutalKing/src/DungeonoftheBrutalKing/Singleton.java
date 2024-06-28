@@ -61,13 +61,13 @@ public class Singleton
 	{
 		armourList = new ArrayList<>();
 
-		  armourList.add(new Skin());
-		  armourList.add(new Cloth());
-		  armourList.add(new Leather());
-		  armourList.add(new StuddedLeather());
-		  armourList.add(new Chainmail());
-		  armourList.add(new BreastPlate());
-		  armourList.add(new Plate());
+	//	  armourList.add(new Skin());
+		//  armourList.add(new Cloth());
+	//	  armourList.add(new Leather());
+	//	  armourList.add(new StuddedLeather());
+	//	  armourList.add(new Chainmail());
+	//	  armourList.add(new BreastPlate());
+	//	  armourList.add(new Plate());
 
 		return armourList;
 
@@ -77,12 +77,12 @@ public class Singleton
 
 		shieldList = new ArrayList<>();
 
-		shieldList.add(new Wooden_Shield());
-		shieldList.add(new Small_Shield());
-	    shieldList.add(new Spiked_Shield());
-		shieldList.add(new Magical_Shield());
-		shieldList.add(new Magical_Small_Shield());
-		shieldList.add(new Magical_Spiked_Shield());
+	//	shieldList.add(new Wooden_Shield());
+	//	shieldList.add(new Small_Shield());
+	//    shieldList.add(new Spiked_Shield());
+	//	shieldList.add(new Magical_Shield());
+	//	shieldList.add(new Magical_Small_Shield());
+	//	shieldList.add(new Magical_Spiked_Shield());
 
 
 		return shieldList;
@@ -163,23 +163,23 @@ public class Singleton
 	{
 		weaponList = new ArrayList<>();
 
-		weaponList.add(new ARTDHand());
-		weaponList.add(new ARTDDaggger());
-		weaponList.add(new ARTDStilleto());
-		weaponList.add(new ARTDDart());
-		weaponList.add(new ARTDSling());
-		weaponList.add(new ARTDShortSword());
-		weaponList.add(new ARTDShortbow());
-		weaponList.add(new ARTDWarNet());
-		weaponList.add(new ARTDFlail());
-		weaponList.add(new ARTDSword());
-		weaponList.add(new ARTDWhip());
-		weaponList.add(new ARTDCrossbow());
-		weaponList.add(new ARTDLongSword());
-		weaponList.add(new ARTDLongbow());
-		weaponList.add(new ARTDJavelin());
-		weaponList.add(new ARTDBattleAxe());
-		weaponList.add(new ARTDBattleHammer());
+	//	weaponList.add(new ARTDHand());
+	//	weaponList.add(new ARTDDaggger());
+	//	weaponList.add(new ARTDStilleto());
+//		weaponList.add(new ARTDDart());
+//		weaponList.add(new ARTDSling());
+//		weaponList.add(new ARTDShortSword());
+//		weaponList.add(new ARTDShortbow());
+//		weaponList.add(new ARTDWarNet());
+	//	weaponList.add(new ARTDFlail());
+	//	weaponList.add(new ARTDSword());
+	//	weaponList.add(new ARTDWhip());
+	//	weaponList.add(new ARTDCrossbow());
+	//	weaponList.add(new ARTDLongSword());
+	//	weaponList.add(new ARTDLongbow());
+	//	weaponList.add(new ARTDJavelin());
+	//	weaponList.add(new ARTDBattleAxe());
+	//	weaponList.add(new ARTDBattleHammer());
 
 
 		return weaponList;

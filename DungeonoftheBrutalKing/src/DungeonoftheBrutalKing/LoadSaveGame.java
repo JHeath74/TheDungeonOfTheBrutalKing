@@ -82,7 +82,7 @@ public class LoadSaveGame {
 		bufReader.close();
 		
 		
-		new MainGameScreen();
+		new MainGameScreen2();
 	}
 	
 	public void LoadGame() {
