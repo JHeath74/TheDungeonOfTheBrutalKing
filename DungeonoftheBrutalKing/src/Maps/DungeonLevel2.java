@@ -6,9 +6,8 @@ public class DungeonLevel2 extends Maps {
 
 	//64x64
 	
-	/**
-	 * 
-	 */
+
+	
 	private static final long serialVersionUID = 1L;
 	public static int[][][] DungeonLevel2 = {{
 		{1,1,1,1,1,1,1,1},
@@ -23,7 +22,9 @@ public class DungeonLevel2 extends Maps {
 	}};
 	
 	public DungeonLevel2() {
-		// TODO Auto-generated constructor stub
+		mapWidth = 32;
+		mapHeight = 32;
+		mapLevel = 2;
 	}
 
 }

@@ -2,16 +2,10 @@ package Maps;
 
 import DungeonoftheBrutalKing.Maps;
 
-
-
-
 public class DungeonLevel1 extends Maps{
 	
-	//128x128
+
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	public static int[][][] DungeonLevel1 = {{
 		{1,1,1,1,1,1,1,1},
@@ -26,7 +20,11 @@ public class DungeonLevel1 extends Maps{
 	}};
 
 	public DungeonLevel1() {
-		// TODO Auto-generated constructor stub
+		//128x128
+		
+		mapWidth = 64;
+		mapHeight = 64;
+		mapLevel = 1;
 	}
 
 }

@@ -758,6 +758,6 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 			render();//displays to the screen unrestricted time
 		}
 	
-
+	}
 	
 }
