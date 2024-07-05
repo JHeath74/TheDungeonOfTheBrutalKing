@@ -214,8 +214,8 @@ public class GameStartMenu extends JFrame implements Runnable{
 
 				} else {
 					try {
-					
 						new MainGameScreen2();
+
 					} catch (HeadlessException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -239,7 +239,7 @@ public class GameStartMenu extends JFrame implements Runnable{
 
 
 					try {
-						//StartingStory.StartGameMessage();
+						
 						CharacterCreation.CharacterCreation();
 					} catch (HeadlessException e1) {
 						// TODO Auto-generated catch block

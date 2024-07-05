@@ -8,7 +8,7 @@ public class DungeonLevel2 extends Maps {
 	
 
 	
-	private static final long serialVersionUID = 1L;
+
 	public static int[][][] DungeonLevel2 = {{
 		{1,1,1,1,1,1,1,1},
 		{1,0,0,0,0,0,0,1},

@@ -130,7 +130,7 @@ public class Combat extends JFrame {
 
 		// Getting Image to display from it's location in the project
 		   myPictureBufferedImage = ImageIO.read(new File(
-				myGameSettings.MonsterImagePath + Singleton.myMonsters().get(rnd).MonsterImage));
+				GameSettings.MonsterImagePath + Singleton.myMonsters().get(rnd).MonsterImage));
 
 		//Adding image to JLabel
 		picLabel = new JLabel(new ImageIcon(myPictureBufferedImage));

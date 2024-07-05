@@ -5,6 +5,7 @@ public class ThingsToWorkOn {
 	public ThingsToWorkOn() {
 		// CharacterCreation.Java 	Automatically select a class to display
 		// MovementAndLevels.Java   Need to get the levels integrated and completed.
+		// Music not ending on Start screen if you click a button to quickly.
 		
 		
 		

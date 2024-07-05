@@ -6,7 +6,7 @@ public class DungeonLevel1 extends Maps{
 	
 
 	
-	private static final long serialVersionUID = 1L;
+	
 	public static int[][][] DungeonLevel1 = {{
 		{1,1,1,1,1,1,1,1},
 		{1,0,0,0,0,0,0,1},
