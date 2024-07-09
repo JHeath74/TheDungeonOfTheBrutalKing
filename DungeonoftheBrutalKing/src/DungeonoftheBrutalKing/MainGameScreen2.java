@@ -2,6 +2,8 @@
 package DungeonoftheBrutalKing;
 
 import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -54,10 +56,8 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 	LoadSaveGame myGameState = new LoadSaveGame();
 	GameMenuItems myGameMenuItems = new GameMenuItems();
 
-
-
 	JFrame MainGameScreenFrame = null;
-	JPanel p1Panel, p2Panel, p3Panel, p4Panel;//, GameImagesAndCombatPanel = null;
+	JPanel p1Panel, p2Panel, p3Panel, p4Panel, GameImagesAndCombatPanel = null;
 
 	JTextField CharNameClassLevelField, CharStatsField, CharStats2Field, CharXPHPGoldField = null;
 	JTextPane MessageTextPane = null;
@@ -110,7 +110,21 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 	
 	public MainGameScreen2() throws IOException {
 
+		//Creating Frame
+		
+		MainGameScreenFrame = new JFrame("Dungeon of the Brutal King");
+		
+		//Adding JPanels
+		
 
+				p1Panel = new JPanel(new BorderLayout());
+				p2Panel = new JPanel(new BorderLayout());
+				p3Panel = new JPanel(new BorderLayout());
+				p4Panel = new JPanel(new BorderLayout());
+				GameImagesAndCombatPanel = new JPanel(new BorderLayout());
+		
+		
+		
 		
 		thread = new Thread(this);
 		image = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
@@ -122,13 +136,10 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		textures.add(Texture.stone);
 		camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
 		screen = new Screen(map, mapWidth, mapHeight, textures, 640, 480);
-		addKeyListener(camera);
-		//start();
-		 
+		MainGameScreenFrame.addKeyListener(camera);
 		
-		//Creating Frame
-	
-		MainGameScreenFrame = new JFrame("Dungeon of the Brutal King");
+		 		
+		
 		
 		// getScreenSize() returns the size
         // of the screen in pixels
@@ -144,25 +155,12 @@ public class MainGameScreen2 extends JFrame implements Runnable {
         MainGameScreenFrame.setSize(width, height);
         
 		MainGameScreenFrame.setLayout(new BorderLayout());
+		MainGameScreenFrame.setBackground(Color.BLACK);
 		MainGameScreenFrame.setForeground(myGameSettings.colorBrown);
 		MainGameScreenFrame.setUndecorated(true);
 		MainGameScreenFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
 
-		
-		//Adding JPanels
-		
-
-		p1Panel = new JPanel(new BorderLayout());
-		p2Panel = new JPanel(new BorderLayout());
-		p3Panel = new JPanel(new BorderLayout());
-		p4Panel = new JPanel(new BorderLayout());
-		//GameImagesAndCombatPanel = new JPanel(new BorderLayout());
-		
-
-		
-    
-        
 		
 
 		try {
@@ -683,7 +681,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		PicturesAndTextUpdatesPane.setVisible(true);
 		PicturesAndTextUpdatesPane.setDividerLocation(width-200);
 		PicturesAndTextUpdatesPane.setResizeWeight(.90d);
-	//	PicturesAndTextUpdatesPane.setLeftComponent(GameImagesAndCombatPanel);
+		PicturesAndTextUpdatesPane.setLeftComponent(GameImagesAndCombatPanel);
 		PicturesAndTextUpdatesPane.setRightComponent(MessageTextPane);
 		PicturesAndTextUpdatesPane.setVisible(true);
 
@@ -693,6 +691,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 
 		MainGameScreenFrame.add(PicturesAndTextUpdatesPane, BorderLayout.CENTER);
 		MainGameScreenFrame.add(p1Panel, BorderLayout.NORTH);
+	
 		
 
 
@@ -715,63 +714,25 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		}
 	}
 
-	/*
-	 * public void render() { 
-	 * 
-	 * BufferStrategy bs = getBufferStrategy();
-	 * 
-	 * if(bs == null) { 
-	 * 
-	 * //createBufferStrategy(3);
-	 * MainGameScreenFrame.createBufferStrategy(3);
-	 *  return;
-	 * } 
-	 *  
-	 * Graphics g = bs.getDrawGraphics();
-	 * g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null); 
-	 * bs.show();
-	 *  }
-	 */
 	
-	public void render() {
-	    BufferStrategy bs = MainGameScreenFrame.getBufferStrategy();
-	    if (bs == null) {
-	        // Create the buffer strategy if it doesn't exist
-	        MainGameScreenFrame.createBufferStrategy(3);
-
-	        // Wait for the buffer strategy to be created
-	        for (int i = 0; i < 50; i++) { // Try 50 times, adjust as needed
-	            bs = MainGameScreenFrame.getBufferStrategy();
-	            if (bs != null) {
-	                break;
-	            }
-	            try {
-	                Thread.sleep(10); // Short delay to allow buffer creation
-	            } catch (InterruptedException e) {
-	                e.printStackTrace();
-	            }
-	        }
-
-	        // If the buffer strategy is still null, exit the method
-	        if (bs == null) {
-	            System.err.println("BufferStrategy is still null after creation.");
-	            return;
-	        }
-	    }
-
-	    // Use the buffer strategy to render
-	    Graphics g = bs.getDrawGraphics();
-	    try {
-	        // Render your image
-	        g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
-	    } finally {
-	        // Dispose of the graphics object
-	        g.dispose();
-	    }
-	    
-	    // Show the buffer
-	    bs.show();
-	}
+	  public void render() { 
+	  
+	  BufferStrategy bs = MainGameScreenFrame.getBufferStrategy();
+	  
+	  if(bs == null) { 
+	  
+	  
+	  MainGameScreenFrame.createBufferStrategy(3);
+	   return;
+	  } 
+	   
+	  Graphics g = bs.getDrawGraphics();
+	  g.drawImage(image, 50, 450, image.getWidth(), image.getHeight(), null); 
+	  bs.show();
+	   }
+	 
+	
+	
 	
 	public void run() {
 		long lastTime = System.nanoTime();

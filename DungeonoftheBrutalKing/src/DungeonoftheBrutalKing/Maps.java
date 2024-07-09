@@ -21,6 +21,9 @@ public class Maps{
 	public int mapHeight;
 	public int mapLevel;
 
-
-
+	
+	public static int[][][] DungeonLevel1;
+	public static int[][][] DungeonLevel2;
+	public static int[][][] DungeonLevel3;
+	public static int[][][] DungeonLevel4;
 }
