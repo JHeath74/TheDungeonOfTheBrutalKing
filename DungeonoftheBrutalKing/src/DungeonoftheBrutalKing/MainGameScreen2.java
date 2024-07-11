@@ -55,11 +55,11 @@ public class MainGameScreen extends JFrame {
 	GameSettings myGameSettings = new GameSettings();
 	LoadSaveGame myGameState = new LoadSaveGame();
 	GameMenuItems myGameMenuItems = new GameMenuItems();
-
+	Game myGame = new Game();
 
 
 	JFrame MainGameScreenFrame = null;
-	JPanel p1Panel, p2Panel, p3Panel, p4Panel, GameImagesAndCombatPanel = null;
+	JPanel p1Panel, p2Panel, p3Panel, p4Panel = null//, GameImagesAndCombatPanel = null;
 	JTextField CharNameClassLevelField, CharStatsField, CharStats2Field, CharXPHPGoldField = null;
 	JTextPane MessageTextPane = null;
 	JMenuBar menuBar = null;
@@ -82,15 +82,11 @@ public class MainGameScreen extends JFrame {
 	
 	
 	public MainGameScreen() throws IOException {
-
 		
-		 
+	//Creating Frame
+	MainGameScreenFrame = new JFrame("Dungeon of the Brutal King");
 		
-		//Creating Frame
-	
-		MainGameScreenFrame = new JFrame("Dungeon of the Brutal King");
-		
-		// getScreenSize() returns the size
+	// getScreenSize() returns the size
         // of the screen in pixels
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -103,7 +99,7 @@ public class MainGameScreen extends JFrame {
         
 	
 		//Adding Frame Preferences and Settings
-        MainGameScreenFrame.setSize(width, height);
+    		MainGameScreenFrame.setSize(width, height);
 		MainGameScreenFrame.setLayout(new BorderLayout());
 		MainGameScreenFrame.setForeground(myGameSettings.colorBrown);
 		MainGameScreenFrame.setUndecorated(true);
@@ -121,8 +117,6 @@ public class MainGameScreen extends JFrame {
 		GameImagesAndCombatPanel = new JPanel(new BorderLayout());
 		
 	
-//		startingImageLabel = new JLabel(new ImageIcon(myGameSettings.StoryIntroductionPath + "Starting_Image.png"));
-//		GameImagesAndCombatPanel.add(startingImageLabel);
 		
 
 		try {
@@ -653,8 +647,10 @@ public class MainGameScreen extends JFrame {
 
 		MainGameScreenFrame.add(PicturesAndTextUpdatesPane, BorderLayout.CENTER);
 		MainGameScreenFrame.add(p1Panel, BorderLayout.NORTH);
+		MainGameScreenFrame.add(myGame);
 
-
+		myGame.setLocation(50,450);
+		myGame.setSize(640,480);
 
 
 		MainGameScreenFrame.setVisible(true);
