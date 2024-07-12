@@ -1,11 +1,11 @@
 
 package DungeonoftheBrutalKing;
 
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +13,6 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -21,13 +20,9 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
-
 import java.util.Objects;
-
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -43,23 +38,17 @@ import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
 
-
-/*
- * Games Menu Items
- *
- */
-public class MainGameScreen extends JFrame {
+public class MainGameScreen2 {
 
 	private static final long serialVersionUID = 1L;
 	Charecter myChar = Charecter.Singleton();
 	GameSettings myGameSettings = new GameSettings();
 	LoadSaveGame myGameState = new LoadSaveGame();
 	GameMenuItems myGameMenuItems = new GameMenuItems();
-	Game myGame = new Game();
 
 
-	JFrame MainGameScreenFrame = null;
-	JPanel p1Panel, p2Panel, p3Panel, p4Panel = null//, GameImagesAndCombatPanel = null;
+	public JFrame MainGameScreenFrame = null;
+	JPanel p1Panel, p2Panel, p3Panel, p4Panel, GameImagesAndCombatPanel = null;
 	JTextField CharNameClassLevelField, CharStatsField, CharStats2Field, CharXPHPGoldField = null;
 	JTextPane MessageTextPane = null;
 	JMenuBar menuBar = null;
@@ -69,7 +58,6 @@ public class MainGameScreen extends JFrame {
 				charecterinventoryMenuItem, mapMenu, gameSettingsMenuItem,
 				aboutMenuItem, helpMenuItem, mapFloor1MenuItem, mapFloor2MenuItem,
 				mapFloor3MenuItem, mapFloor4MenuItem = null;
-//	JLabel menuBarImageLabel, startingImageLabel = null;
 	JSplitPane PicturesAndTextUpdatesPane = null;
 
 	Dimension screenSize = null;
@@ -81,7 +69,7 @@ public class MainGameScreen extends JFrame {
 
 	
 	
-	public MainGameScreen() throws IOException {
+	public MainGameScreen2() throws IOException {
 		
 	//Creating Frame
 	MainGameScreenFrame = new JFrame("Dungeon of the Brutal King");
@@ -99,7 +87,7 @@ public class MainGameScreen extends JFrame {
         
 	
 		//Adding Frame Preferences and Settings
-    		MainGameScreenFrame.setSize(width, height);
+    	MainGameScreenFrame.setSize(width, height);
 		MainGameScreenFrame.setLayout(new BorderLayout());
 		MainGameScreenFrame.setForeground(myGameSettings.colorBrown);
 		MainGameScreenFrame.setUndecorated(true);
@@ -108,8 +96,6 @@ public class MainGameScreen extends JFrame {
 
 		
 		//Adding JPanels
-		
-
 		p1Panel = new JPanel(new BorderLayout());
 		p2Panel = new JPanel(new BorderLayout());
 		p3Panel = new JPanel(new BorderLayout());
@@ -155,7 +141,8 @@ public class MainGameScreen extends JFrame {
 
 
 		CharXPHPGoldField = new JTextField();
-		CharXPHPGoldField.setLayout(getLayout());
+		//CharXPHPGoldField.setLayout(getLayout());
+		CharXPHPGoldField.setLayout(null);
 		CharXPHPGoldField.setFont(myGameSettings.fontTimesNewRoman);
 		CharXPHPGoldField.setBackground(myGameSettings.colorPurple);
 		CharXPHPGoldField.setForeground(myGameSettings.colorWhite);
@@ -229,13 +216,10 @@ public class MainGameScreen extends JFrame {
 		menuBar.setFont(new Font("sans-serif", Font.ROMAN_BASELINE, 22));
 		menuBar.setBackground(myGameSettings.colorPlum);
 
-	//	menuBarImageLabel = new JLabel(new ImageIcon(myGameSettings.myJMenuBarPicture));
-	//	menuBarImageLabel.setSize(25, 25);
-	//	menuBar.add(menuBarImageLabel);
 
 		// Build the menu.
-		//MainGameScreenFrame.addWindowListener(new WindowAdapter() {
-			addWindowListener(new WindowAdapter() {
+		MainGameScreenFrame.addWindowListener(new WindowAdapter() {
+
 			@Override
 			public void windowClosing(WindowEvent windowEvent) {
 				System.exit(0);
@@ -272,14 +256,14 @@ public class MainGameScreen extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				int result = JOptionPane.showConfirmDialog(rootPane,
+				int result = JOptionPane.showConfirmDialog(null, // SetBack
 						"Are you sure you wish to delete your current game and start a new one?", "Start New Game?",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				
 				
 				if (result == JOptionPane.YES_OPTION) {
-					//MainGameScreenFrame.dispose();
-					dispose();
+					MainGameScreenFrame.dispose();
+					
 					try {
 						BufferedWriter writer = Files.newBufferedWriter(Paths
 								.get("src//AlternateRealityTheDungeon//TextFiles//SaveGame//InitialCharecterSave.txt"));
@@ -308,8 +292,7 @@ public class MainGameScreen extends JFrame {
 						e1.printStackTrace();
 					}
 
-//					MainGameScreenFrame.dispose();
-					dispose();
+					MainGameScreenFrame.dispose();
 				} else if (result == JOptionPane.NO_OPTION) {
 
 				} else {
@@ -624,7 +607,6 @@ public class MainGameScreen extends JFrame {
 	
 		
 		MessageTextPane = new JTextPane();
-		MessageTextPane.setText("JTextPane MessageTextPane - Game Text Updates");
 		MessageTextPane.setBackground(myGameSettings.colorLightBrown);
 		MessageTextPane.setForeground(myGameSettings.colorLightYellow);
 		MessageTextPane.setFont(myGameSettings.fontLomoCopyLTStdMidi);
@@ -647,13 +629,18 @@ public class MainGameScreen extends JFrame {
 
 		MainGameScreenFrame.add(PicturesAndTextUpdatesPane, BorderLayout.CENTER);
 		MainGameScreenFrame.add(p1Panel, BorderLayout.NORTH);
-		MainGameScreenFrame.add(myGame);
-
-		myGame.setLocation(50,450);
-		myGame.setSize(640,480);
 
 
 		MainGameScreenFrame.setVisible(true);
+		
+		
+		int filecount = LoadSaveGame.getFileCount();
+		while(filecount == 1)
+		{
+			MessageTextPane.setText("Hello");
+		}
+		
+		
 
 
 	}

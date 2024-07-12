@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -26,7 +25,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 public class LoadSaveGame {
 
@@ -263,6 +261,22 @@ public class LoadSaveGame {
 		return chosenFile;
 	}
 	
+	public static int getFileCount() {
+		File directory = new File(GameSettings.SavedGameDirectory);
+		File[] files = directory.listFiles(File::isFile);
+		int count = 0;
+
+		if (files != null) {
+			for (File file : files) {
+				count++;
+			}
+		}
+
+		return count;
+	}
+	
+	
+		
 
 
 }
