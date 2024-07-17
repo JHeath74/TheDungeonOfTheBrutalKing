@@ -31,6 +31,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 
+
 public class GameStartMenu extends JFrame implements Runnable{
 
 	private static final long serialVersionUID = 1L;
@@ -214,7 +215,7 @@ public class GameStartMenu extends JFrame implements Runnable{
 
 				} else {
 					try {
-						new MainGameScreen2();
+						new MainGameScreen();
 
 					} catch (HeadlessException e1) {
 						// TODO Auto-generated catch block

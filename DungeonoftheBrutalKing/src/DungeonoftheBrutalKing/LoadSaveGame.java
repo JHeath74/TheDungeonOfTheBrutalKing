@@ -26,6 +26,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+
 public class LoadSaveGame {
 
 	Charecter myChar = Charecter.Singleton();
@@ -80,7 +81,7 @@ public class LoadSaveGame {
 		bufReader.close();
 		
 		
-		new MainGameScreen2();
+		new MainGameScreen();
 	}
 	
 	public void LoadGame() {

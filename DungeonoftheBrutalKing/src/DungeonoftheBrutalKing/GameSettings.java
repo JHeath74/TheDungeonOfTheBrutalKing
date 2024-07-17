@@ -15,8 +15,14 @@ public class GameSettings
 				 colorLightGreen, colorVeryLightRed, colorVeryDarkBlue, colorVeryLightBlue, colorMagenta,
 				 colorAqua, colorOlive, colorTeal, colorLightSalmon, colorFireBrick, colorMaroon,
 				 colorCoral, colorIndianRed, colorDarkGoldenRod, colorGoldenRod, colorPaleGoldenRod,
-				 colorDarkKhaki, colorMediumBlue, colorBlue, colorPurple, colorGreen, colorPlum, colorGrey
-				 = null;
+				 colorDarkKhaki, colorMediumBlue, colorBlue, colorPurple, colorGreen;
+
+
+	public Color colorPlum;
+
+
+	Color colorGrey
+	 = null;
 
 
 	Font fontTimesNewRoman, fontLomoCopyLTStdMidi, fontWelcomeMessage, fontWelcomeMessage2, fontAvatar = null;
@@ -25,8 +31,19 @@ public class GameSettings
 
 	BufferedImage myJMenuBarPicture, myStartMenuPicture = null;
 
-	static String MenuBarImagePath, MonsterImagePath, FontPath, DungeonFloorTexturePath, DungeonWallTexturePath,
-	SavedGameDirectory, StartMenuPath, StoryIntroductionPath, ClassImagesPath;
+	static String MenuBarImagePath, MonsterImagePath, FontPath, DungeonFloorTexturePath, DungeonWallTexturePath;
+
+
+	public static String SavedGameDirectory;
+
+
+	static String StartMenuPath;
+
+
+	static String StoryIntroductionPath;
+
+
+	static String ClassImagesPath;
 
 
 
