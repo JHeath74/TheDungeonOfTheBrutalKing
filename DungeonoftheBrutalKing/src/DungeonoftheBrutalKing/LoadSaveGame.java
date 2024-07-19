@@ -191,29 +191,30 @@ public class LoadSaveGame {
 
 		datetime = datetime.replaceAll(":", ".");
 
-		String SavedGameName = "SavedGame" + datetime + ".ser";
+		String SavedGameName = "SavedGame" + datetime + ".txt";
 
 		if (SavedGameName != "IntialCharecterSave.txt") {
 
-			// an OutputStream file "SavedGameName" is created
-		    FileOutputStream fos = new FileOutputStream(SavedGameName);
+			String SaveGameName = GameSettings.SavedGameDirectory + SavedGameName;
 
-		    // an ObjectOutputStream object is created on the FileOutputStream object
-		    ObjectOutputStream oos = new ObjectOutputStream(fos);
+			FileWriter writer = new FileWriter(SaveGameName);
 
-		    // calling the writeObject() method of the ObjectOutputStream on the OutputStream file "namesList"
-            oos.writeObject(GameState);
+			for (String Charinfo : myChar.CharInfo) {
 
-            // close the ObjectOutputStream
-            oos.close();
-
-            // close the OutputStream file
-            fos.close();
+				writer.write(Charinfo + System.lineSeparator());
+			}
+			writer.close();
 
 			JOptionPane.showMessageDialog(null, "Game Saved: " + SavedGameName);
-		} else {
+		 
+			
+		}else {
+			
+
 			JOptionPane.showMessageDialog(null,
 					"Unable to Save Current Game Over Saved Game called  'InitialCharecterSave.txt'\n");
+		
+			
 		}
 
 	}
@@ -240,7 +241,57 @@ public class LoadSaveGame {
 
 	}
 	
-	
+	public void QuickSaveCharecter() throws IOException
+	{
+		String SavedGameName = "QuickSaveGame.Txt";
+		
+		File file
+        = new File(GameSettings.SavedGameDirectory + "QuickSaveGame.txt");
+		
+		if(file.exists()) {
+		file.delete();
+		
+
+		if (SavedGameName != "IntialCharecterSave.txt") {
+			String AutoSaveGameName = GameSettings.SavedGameDirectory + SavedGameName;
+
+			FileWriter writer = new FileWriter(AutoSaveGameName);
+
+			for (String Charinfo : myChar.CharInfo) {
+
+				writer.write(Charinfo + System.lineSeparator());
+			}
+			writer.close();
+
+			JOptionPane.showMessageDialog(null, "Game Saved: " + SavedGameName);
+		} else {
+			JOptionPane.showMessageDialog(null,
+					"Unable to Save Current Game Over Saved Game called  'InitialCharecterSave.txt'\n");
+		
+		}	
+		}else {
+			
+			if (SavedGameName != "IntialCharecterSave.txt") {
+				String AutoSaveGameName = GameSettings.SavedGameDirectory + SavedGameName;
+
+				FileWriter writer = new FileWriter(AutoSaveGameName);
+
+				for (String Charinfo : myChar.CharInfo) {
+
+					writer.write(Charinfo + System.lineSeparator());
+				}
+				writer.close();
+
+				JOptionPane.showMessageDialog(null, "Game Saved: " + SavedGameName);
+			} else {
+				JOptionPane.showMessageDialog(null,
+						"Unable to Save Current Game Over Saved Game called  'InitialCharecterSave.txt'\n");
+			
+			}	
+			
+		}
+		
+	}
 	
 	
 

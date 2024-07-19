@@ -20,7 +20,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -29,6 +28,9 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
+
+
+
 
 
 
@@ -57,10 +59,10 @@ public class GameStartMenu extends JFrame implements Runnable{
 		JFrame StartMenuFrame = null;
 		JPanel GameTitlePanel, StartButtonPanel = null;
 		JButton ContinueGameButton, StartNewGameButton, LoadExistingGameButton, ExitGameButton = null;
-		//JTextArea GameTitleArea = null;
+		
 		JTextPane GameTitlePane = null;
 
-		//JLabel StartImageLabel = null;
+		
 		int width, height = 0;
 
 		//***************************************************
@@ -215,7 +217,7 @@ public class GameStartMenu extends JFrame implements Runnable{
 
 				} else {
 					try {
-						new MainGameScreen();
+					
 
 					} catch (HeadlessException e1) {
 						// TODO Auto-generated catch block
@@ -265,6 +267,7 @@ public class GameStartMenu extends JFrame implements Runnable{
 					Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
 					window.dispose();
 					myLoadSaveGame.ContinueCurrentGame();
+					
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

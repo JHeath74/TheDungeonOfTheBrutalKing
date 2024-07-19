@@ -9,8 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 
-import DungeonoftheBrutalKing.MainGameScreen2;
-
 public class Game extends JFrame implements Runnable{
 	
 	private static final long serialVersionUID = 1L;
@@ -87,7 +85,7 @@ public class Game extends JFrame implements Runnable{
 			return;
 		}
 		Graphics g = bs.getDrawGraphics();
-		g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
+		g.drawImage(image, 50, 450, image.getWidth(), image.getHeight(), null);
 		bs.show();
 	}
 	public void run() {

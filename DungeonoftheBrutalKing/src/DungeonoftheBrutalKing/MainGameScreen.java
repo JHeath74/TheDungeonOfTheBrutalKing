@@ -235,13 +235,10 @@ public class MainGameScreen extends JFrame {
 		menuBar.setFont(new Font("sans-serif", Font.ROMAN_BASELINE, 22));
 		menuBar.setBackground(myGameSettings.colorPlum);
 
-	//	menuBarImageLabel = new JLabel(new ImageIcon(myGameSettings.myJMenuBarPicture));
-	//	menuBarImageLabel.setSize(25, 25);
-	//	menuBar.add(menuBarImageLabel);
+
 
 		// Build the menu.
-		//MainGameScreenFrame.addWindowListener(new WindowAdapter() {
-			addWindowListener(new WindowAdapter() {
+		MainGameScreenFrame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent windowEvent) {
 				System.exit(0);
