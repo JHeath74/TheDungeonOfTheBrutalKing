@@ -222,9 +222,6 @@ public class GameStartMenu extends JFrame implements Runnable{
 					} catch (HeadlessException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
 					}
 				}
 
@@ -244,6 +241,7 @@ public class GameStartMenu extends JFrame implements Runnable{
 					try {
 						
 						CharacterCreation.CharacterCreation();
+						window.dispose();
 					} catch (HeadlessException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -265,8 +263,9 @@ public class GameStartMenu extends JFrame implements Runnable{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Window window = SwingUtilities.getWindowAncestor((Component) e.getSource());
-					window.dispose();
+					
 					myLoadSaveGame.ContinueCurrentGame();
+					window.dispose();
 					
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block

@@ -17,9 +17,9 @@ import javax.swing.JFrame;
 
 public class Maps{
 
-	public int mapWidth;
-	public int mapHeight;
-	public int mapLevel;
+	public static int MapX;
+	public static int MapY;
+	public static int MapZ;
 
 	
 	public static int[][][] DungeonLevel1;

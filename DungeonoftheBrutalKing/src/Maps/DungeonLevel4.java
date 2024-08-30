@@ -4,7 +4,7 @@ import DungeonoftheBrutalKing.Maps;
 
 public class DungeonLevel4 extends Maps {
 
-	//16x16
+	//8x8
 	
 
 	
@@ -22,9 +22,9 @@ public class DungeonLevel4 extends Maps {
 	}};
 	
 	public DungeonLevel4() {
-		mapWidth = 8;
-		mapHeight= 8;
-		mapLevel = 4;
+		MapX = 8;
+		MapY = 8;
+		MapZ = 4;
 	}
 
 }

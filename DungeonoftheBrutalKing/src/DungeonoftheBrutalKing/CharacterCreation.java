@@ -163,11 +163,11 @@ public class CharacterCreation {
 			toonclasslist = Class.toonclassarray;
 
 			charectorClass = new JComboBox<>(toonclasslist);
-
+			
 			toonclassDescriptionTextArea = new JTextArea("Choose Your Class from the Dropdown box above.");
 			toonclassDescriptionTextArea.setLineWrap(true);
 
-			
+
 			
 
 			// *********************************************************
@@ -178,7 +178,7 @@ public class CharacterCreation {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-
+					
 					toonClass = charectorClass.getSelectedItem().toString();
 
 					toonclassDescriptionTextArea.setText(toonClass);

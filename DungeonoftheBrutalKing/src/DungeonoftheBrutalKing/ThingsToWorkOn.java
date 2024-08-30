@@ -11,6 +11,8 @@ public class ThingsToWorkOn {
 		
 		//https://www.instructables.com/Making-a-Basic-3D-Engine-in-Java/
 		//https://stackoverflow.com/questions/13590002/understand-bufferstrategy
+		
+		//https://monochromeeffect.org/AlternateReality/reference.html - Maps
 	}
 
 }
