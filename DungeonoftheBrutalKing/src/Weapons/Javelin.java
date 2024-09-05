@@ -2,11 +2,10 @@ package Weapons;
 
 import DungeonoftheBrutalKing.Weapons;
 
-public class ARTDStilleto extends Weapons{
+public class Javelin extends Weapons {
 
-	public ARTDStilleto()
-	{
-		name = "Stilleto";
+	public Javelin() {
+		name = "Javelin";
 		requiredStrength = 35;
 		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
 	}

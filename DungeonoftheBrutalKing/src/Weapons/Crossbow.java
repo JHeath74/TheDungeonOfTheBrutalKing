@@ -2,9 +2,9 @@ package Weapons;
 
 import DungeonoftheBrutalKing.Weapons;
 
-public class ARTDCrossbow extends Weapons {
+public class Crossbow extends Weapons {
 
-	public ARTDCrossbow() {
+	public Crossbow() {
 		name = "Cross Bow";
 		requiredStrength = 35;
 		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();

@@ -2,12 +2,16 @@ package Weapons;
 
 import DungeonoftheBrutalKing.Weapons;
 
-public class ARTDJavelin extends Weapons {
+public class Daggger extends Weapons
+{
 
-	public ARTDJavelin() {
-		name = "Javelin";
+	public Daggger()
+	{
+		name = "Dagger";
 		requiredStrength = 35;
 		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
 	}
+
+
 
 }

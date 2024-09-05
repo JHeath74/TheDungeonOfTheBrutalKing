@@ -17,9 +17,9 @@ import javax.swing.JFrame;
 
 public class Maps{
 
-	public static int MapX;
-	public static int MapY;
-	public static int MapZ;
+	public static int mapWidth;
+	public static int mapHeight;
+	public static int mapLevel;
 
 	
 	public static int[][][] DungeonLevel1;
@@ -27,3 +27,9 @@ public class Maps{
 	public static int[][][] DungeonLevel3;
 	public static int[][][] DungeonLevel4;
 }
+
+//0 = Floor
+//1 = Wall
+//2 = Door
+//3 = Arch
+//4 = Stairs

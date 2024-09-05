@@ -3,9 +3,9 @@ package Weapons;
 import DungeonoftheBrutalKing.Singleton;
 import DungeonoftheBrutalKing.Weapons;
 
-public class ARTDBattleAxe extends Weapons {
+public class BattleAxe extends Weapons {
 
-	public ARTDBattleAxe() {
+	public BattleAxe() {
 
 		super();
 

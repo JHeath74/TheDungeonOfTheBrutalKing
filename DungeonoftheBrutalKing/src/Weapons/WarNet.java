@@ -2,9 +2,9 @@ package Weapons;
 
 import DungeonoftheBrutalKing.Weapons;
 
-public class ARTDWarNet extends Weapons {
+public class WarNet extends Weapons {
 
-	public ARTDWarNet() {
+	public WarNet() {
 		name = "WarNet";
 		requiredStrength = 35;
 		charStrength = myChar.myCharSingleton().CharInfo.get(7).toString();
