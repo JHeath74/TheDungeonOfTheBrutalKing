@@ -2,10 +2,11 @@
 package DungeonoftheBrutalKing;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-
+import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +14,9 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +24,7 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
-
+import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -42,6 +45,14 @@ import javax.swing.KeyStroke;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 
+import GameEngine.Camera;
+import GameEngine.Screen;
+import GameEngine.Texture;
+import Maps.DungeonLevel1;
+import Maps.DungeonLevel2;
+import Maps.DungeonLevel3;
+import Maps.DungeonLevel4;
+
 
 
 /*
@@ -55,8 +66,38 @@ public class MainGameScreen2 extends JFrame {
 	GameSettings myGameSettings = new GameSettings();
 	LoadSaveGame myGameState = new LoadSaveGame();
 	GameMenuItems myGameMenuItems = new GameMenuItems();
+	DungeonLevel1 myDungeonLevel1 = new DungeonLevel1();
+	DungeonLevel2 myDungeonLevel2 = new DungeonLevel2();
+	DungeonLevel3 myDungeonLevel3 = new DungeonLevel3();
+	DungeonLevel4 myDungeonLevel4 = new DungeonLevel4();
 
-
+	public int mapWidth = 15;
+	public int mapHeight = 15;
+	private Thread thread;
+	private boolean running;
+	private BufferedImage image;
+	public int[] pixels;
+	public ArrayList<Texture> textures;
+	public Camera camera;
+	public Screen screen;
+	public static int[][] map = 
+		{
+			{1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
+			{1,0,0,0,0,0,0,0,2,0,0,0,0,0,2},
+			{1,0,3,3,3,3,3,0,0,0,0,0,0,0,2},
+			{1,0,3,0,0,0,3,0,2,0,0,0,0,0,2},
+			{1,0,3,0,0,0,3,0,2,2,2,0,2,2,2},
+			{1,0,3,0,0,0,3,0,2,0,0,0,0,0,2},
+			{1,0,3,3,0,3,3,0,2,0,0,0,0,0,2},
+			{1,0,0,0,0,0,0,0,2,0,0,0,0,0,2},
+			{1,1,1,1,1,1,1,1,4,4,4,0,4,4,4},
+			{1,0,0,0,0,0,1,4,0,0,0,0,0,0,4},
+			{1,0,0,0,0,0,1,4,0,0,0,0,0,0,4},
+			{1,0,0,0,0,0,1,4,0,3,3,3,3,0,4},
+			{1,0,0,0,0,0,1,4,0,3,3,3,3,0,4},
+			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
+			{1,1,1,1,1,1,1,4,4,4,4,4,4,4,4}
+		};
 
 	JFrame MainGameScreenFrame = null;
 	JPanel p1Panel, p2Panel, p3Panel, p4Panel, GameImagesAndCombatPanel = null;
@@ -73,7 +114,7 @@ public class MainGameScreen2 extends JFrame {
 	JSplitPane PicturesAndTextUpdatesPane = null;
 
 	Dimension screenSize = null;
-	int width, height = 0;
+	int width, height, mapLevel = 0;
 	Timer timer = null;
 	
 	
@@ -81,9 +122,22 @@ public class MainGameScreen2 extends JFrame {
 
 	
 	
-	public MainGameScreen2() throws IOException {
+	public void MainGameScreen2() throws IOException {
 
-		
+	//	thread = new Thread(this);
+		image = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
+		pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+		textures = new ArrayList<Texture>();
+		textures.add(Texture.wood);
+		textures.add(Texture.brick);
+		textures.add(Texture.bluestone);
+		textures.add(Texture.stone);
+		camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
+		screen = new Screen(map, mapWidth, mapHeight, textures, 640, 480);
+		addKeyListener(camera);
+
+		 
+	
 		 
 		
 		//Creating Frame
@@ -655,13 +709,94 @@ public class MainGameScreen2 extends JFrame {
 
 
 		MainGameScreenFrame.setVisible(true);
-
+		start();
 
 	}
 	
 	
-	
+	private synchronized void start() {
+		running = true;
+		thread.start();
+	}
+	public synchronized void stop() {
+		running = false;
+		try {
+			thread.join();
+		} catch(InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	public void render() {
+		BufferStrategy bs = getBufferStrategy();
+		if(bs == null) {
+			createBufferStrategy(3);
+			return;
+		}
+		Graphics g = bs.getDrawGraphics();
+		g.drawImage(image, 50, 450, image.getWidth(), image.getHeight(), null);
+		bs.show();
+	}
+	public void run() {
+		long lastTime = System.nanoTime();
+		final double ns = 1000000000.0 / 60.0;//60 times per second
+		double delta = 0;
+		requestFocus();
+		while(running) {
+			long now = System.nanoTime();
+			delta = delta + ((now-lastTime) / ns);
+			lastTime = now;
+			while (delta >= 1)//Make sure update is only happening 60 times a second
+			{
+				//handles all of the logic restricted time
+				screen.update(camera, pixels);
+				camera.update(map);
+				delta--;
+			}
+			render();//displays to the screen unrestricted time
+		}
 	
 
+	}
 	
+	public void moveLevel()
+	{
+		switch (mapLevel) {
+		  case 1:
+		    if(mapLevel == 1)
+		    	mapLevel = mapLevel--;
+		    map = myDungeonLevel2.DungeonLevel2;
+		    
+		    break;
+		  case 2:
+		    if(mapLevel == 2)
+		    {
+		    	mapLevel = mapLevel++;
+                map = myDungeonLevel1.DungeonLevel1;
+		    }
+		    else
+		    {
+		    	mapLevel = mapLevel--;
+		    	map = myDungeonLevel3.DungeonLevel3;
+		    }
+		    break;
+		  case 3:
+			    if(mapLevel == 3)
+			    {
+			    	mapLevel = mapLevel++;
+			    	map = myDungeonLevel4.DungeonLevel4;
+			    }
+			    else
+			    {
+			    	mapLevel = mapLevel--;
+			    	map = myDungeonLevel4.DungeonLevel4;
+			    }
+		    break;
+		  case 4:
+			  if(mapLevel == 4)
+			    	mapLevel = mapLevel++;
+			  map = myDungeonLevel3.DungeonLevel3;
+		    break;
+		 
+		}
+	}
 }

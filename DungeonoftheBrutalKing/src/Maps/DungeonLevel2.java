@@ -8,7 +8,7 @@ public class DungeonLevel2 extends Maps {
 	
 
 	
-	private int[][] DungeonLevel2;
+	
 
 
 
@@ -16,15 +16,7 @@ public class DungeonLevel2 extends Maps {
 	int mapHeight = 32;
 	int mapLevel = 2; 
 	
-	
-	public DungeonLevel2(int mapWidth, int mapHeight, int mapLevel, int[][] DungeonLevel2) {
-		//64x64
-		
-		this.mapWidth = mapWidth;
-		this.mapHeight = mapHeight;
-		this.mapLevel = mapLevel;
-		
-		this.DungeonLevel2 = new int[][] {
+	public int[][] DungeonLevel2 = {
 			{1,1,1,1,1,1,1,1,1,1},
 			{1,0,0,0,0,0,0,0,0,1},
 			{1,0,1,1,1,1,0,1,0,1},
@@ -35,6 +27,12 @@ public class DungeonLevel2 extends Maps {
 			{1,1,1,1,1,1,1,1,1,1}
 
 		};
+	
+	
+	public DungeonLevel2() {
+		//64x64
+		
+		
 	}
 	
 	public int[][] getDungeonLevel2() {

@@ -6,33 +6,30 @@ public class DungeonLevel4 {
 
 	//8x8
 	
-	private int[][] DungeonLevel4;
-	
+	public int[][] DungeonLevel4 = {
+		{1,1,1,1,1,1,1,1,1,1},
+		{1,0,0,0,0,0,0,0,0,1},
+		{1,0,1,1,1,1,0,1,0,1},
+		{1,0,1,0,0,1,0,1,0,1},
+		{1,0,1,0,0,1,0,1,0,1},
+		{1,0,1,1,1,1,0,1,0,1},
+		{1,0,0,0,0,0,0,0,0,1},
+		{1,1,1,1,1,1,1,1,1,1}
+
+	};
 
 
 	int mapWidth = 8;
 	int mapHeight = 8;
-	int mapLevel = 3; 
+	int mapLevel = 4; 
 	
 	
-	public DungeonLevel4(int mapWidth, int mapHeight, int mapLevel, int[][] DungeonLevel4) {
+	public DungeonLevel4() {
 		//64x64
 		
-		this.mapWidth = mapWidth;
-		this.mapHeight = mapHeight;
-		this.mapLevel = mapLevel;
 		
-		this.DungeonLevel4 = new int[][] {
-			{1,1,1,1,1,1,1,1,1,1},
-			{1,0,0,0,0,0,0,0,0,1},
-			{1,0,1,1,1,1,0,1,0,1},
-			{1,0,1,0,0,1,0,1,0,1},
-			{1,0,1,0,0,1,0,1,0,1},
-			{1,0,1,1,1,1,0,1,0,1},
-			{1,0,0,0,0,0,0,0,0,1},
-			{1,1,1,1,1,1,1,1,1,1}
-
-		};
+		
+		
 	}
 	
 	public int[][] getDungeonLevel4() {
