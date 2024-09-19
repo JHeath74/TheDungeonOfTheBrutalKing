@@ -2,7 +2,6 @@
 package DungeonoftheBrutalKing;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -26,11 +25,8 @@ import java.nio.file.Paths;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Objects;
-
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -44,7 +40,6 @@ import javax.swing.JTextPane;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
-
 import GameEngine.Camera;
 import GameEngine.Screen;
 import GameEngine.Texture;
@@ -53,13 +48,11 @@ import Maps.DungeonLevel2;
 import Maps.DungeonLevel3;
 import Maps.DungeonLevel4;
 
-
-
 /*
  * Games Menu Items
  *
  */
-public class MainGameScreen2 extends JFrame {
+public class MainGameScreen2 extends JFrame implements Runnable {
 
 	private static final long serialVersionUID = 1L;
 	Charecter myChar = Charecter.Singleton();
@@ -80,24 +73,23 @@ public class MainGameScreen2 extends JFrame {
 	public ArrayList<Texture> textures;
 	public Camera camera;
 	public Screen screen;
-	public static int[][] map = 
-		{
-			{1,1,1,1,1,1,1,1,2,2,2,2,2,2,2},
-			{1,0,0,0,0,0,0,0,2,0,0,0,0,0,2},
-			{1,0,3,3,3,3,3,0,0,0,0,0,0,0,2},
-			{1,0,3,0,0,0,3,0,2,0,0,0,0,0,2},
-			{1,0,3,0,0,0,3,0,2,2,2,0,2,2,2},
-			{1,0,3,0,0,0,3,0,2,0,0,0,0,0,2},
-			{1,0,3,3,0,3,3,0,2,0,0,0,0,0,2},
-			{1,0,0,0,0,0,0,0,2,0,0,0,0,0,2},
-			{1,1,1,1,1,1,1,1,4,4,4,0,4,4,4},
-			{1,0,0,0,0,0,1,4,0,0,0,0,0,0,4},
-			{1,0,0,0,0,0,1,4,0,0,0,0,0,0,4},
-			{1,0,0,0,0,0,1,4,0,3,3,3,3,0,4},
-			{1,0,0,0,0,0,1,4,0,3,3,3,3,0,4},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,4},
-			{1,1,1,1,1,1,1,4,4,4,4,4,4,4,4}
-		};
+	public static int[][] map = {
+			{ 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2 },
+			{ 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2 },
+			{ 1, 0, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 2 },
+			{ 1, 0, 3, 0, 0, 0, 3, 0, 2, 0, 0, 0, 0, 0, 2 },
+			{ 1, 0, 3, 0, 0, 0, 3, 0, 2, 2, 2, 0, 2, 2, 2 },
+			{ 1, 0, 3, 0, 0, 0, 3, 0, 2, 0, 0, 0, 0, 0, 2 },
+			{ 1, 0, 3, 3, 0, 3, 3, 0, 2, 0, 0, 0, 0, 0, 2 },
+			{ 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2 },
+			{ 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 0, 4, 4, 4 },
+			{ 1, 0, 0, 0, 0, 0, 1, 4, 0, 0, 0, 0, 0, 0, 4 },
+			{ 1, 0, 0, 0, 0, 0, 1, 4, 0, 0, 0, 0, 0, 0, 4 },
+			{ 1, 0, 0, 0, 0, 0, 1, 4, 0, 3, 3, 3, 3, 0, 4 },
+			{ 1, 0, 0, 0, 0, 0, 1, 4, 0, 3, 3, 3, 3, 0, 4 },
+			{ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4 },
+			{ 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4 }
+	};
 
 	JFrame MainGameScreenFrame = null;
 	JPanel p1Panel, p2Panel, p3Panel, p4Panel, GameImagesAndCombatPanel = null;
@@ -106,27 +98,24 @@ public class MainGameScreen2 extends JFrame {
 	JMenuBar menuBar = null;
 	JMenu gameMenu, charecterMenu, settingsMenu, helpMenu = null;
 	JMenuItem newGameMenuItem, LoadSavedGameMenuItem, saveMenuItem,
-				exitGameMenuItem,charecterstatsMenuItem,
-				charecterinventoryMenuItem, mapMenu, gameSettingsMenuItem,
-				aboutMenuItem, helpMenuItem, mapFloor1MenuItem, mapFloor2MenuItem,
-				mapFloor3MenuItem, mapFloor4MenuItem = null;
-//	JLabel menuBarImageLabel, startingImageLabel = null;
+			exitGameMenuItem, charecterstatsMenuItem,
+			charecterinventoryMenuItem, mapMenu, gameSettingsMenuItem,
+			aboutMenuItem, helpMenuItem, mapFloor1MenuItem, mapFloor2MenuItem,
+			mapFloor3MenuItem, mapFloor4MenuItem = null;
 	JSplitPane PicturesAndTextUpdatesPane = null;
 
 	Dimension screenSize = null;
 	int width, height, mapLevel = 0;
 	Timer timer = null;
-	
-	
-//-----------------------------------------------------------------------------
 
 	
-	
-	public void MainGameScreen2() throws IOException {
+	// -----------------------------------------------------------------------------
 
-	//	thread = new Thread(this);
+	public MainGameScreen2() throws IOException {
+
+		thread = new Thread(this);
 		image = new BufferedImage(640, 480, BufferedImage.TYPE_INT_RGB);
-		pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+		pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 		textures = new ArrayList<Texture>();
 		textures.add(Texture.wood);
 		textures.add(Texture.brick);
@@ -136,47 +125,48 @@ public class MainGameScreen2 extends JFrame {
 		screen = new Screen(map, mapWidth, mapHeight, textures, 640, 480);
 		addKeyListener(camera);
 
-		 
-	
-		 
-		
-		//Creating Frame
-	
+		// Creating Frame
+
 		MainGameScreenFrame = new JFrame("Dungeon of the Brutal King");
-		
+
 		// getScreenSize() returns the size
-        // of the screen in pixels
-        Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+		// of the screen in pixels
+		Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
 
-        // width will store the width of the screen
-        width = (int)size.getWidth();
+		// width will store the width of the screen
+		width = (int) size.getWidth();
 
-        // height will store the height of the screen
-        height = (int)size.getHeight();
+		// height will store the height of the screen
+		height = (int) size.getHeight();
 
-        
-	
-		//Adding Frame Preferences and Settings
-        MainGameScreenFrame.setSize(width, height);
+		// Adding Frame Preferences and Settings
+		MainGameScreenFrame.setSize(width, height);
 		MainGameScreenFrame.setLayout(new BorderLayout());
 		MainGameScreenFrame.setForeground(myGameSettings.colorBrown);
 		MainGameScreenFrame.setUndecorated(true);
 		MainGameScreenFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		
 
-		
-		//Adding JPanels
-		
+		// Adding JPanels
 
 		p1Panel = new JPanel(new BorderLayout());
 		p2Panel = new JPanel(new BorderLayout());
 		p3Panel = new JPanel(new BorderLayout());
 		p4Panel = new JPanel(new BorderLayout());
-		GameImagesAndCombatPanel = new JPanel(new BorderLayout());
+		 GameImagesAndCombatPanel = new JPanel(new BorderLayout()) {
+	            private static final long serialVersionUID = 1L;
+
+	            @Override
+	            protected void paintComponent(Graphics g) {
+	                super.paintComponent(g);
+	               // g.drawImage(image, 50, 450, image.getWidth(), image.getHeight(), null);
+	                if (image != null) {
+	                    g.drawImage(image, 0, 0, this.getWidth(), this.getHeight(), null);
+	                }
+	            }
+	        };
+	        GameImagesAndCombatPanel.setPreferredSize(new Dimension(640, 480));
+		 
 		
-	
-//		startingImageLabel = new JLabel(new ImageIcon(myGameSettings.StoryIntroductionPath + "Starting_Image.png"));
-//		GameImagesAndCombatPanel.add(startingImageLabel);
 		
 
 		try {
@@ -186,10 +176,10 @@ public class MainGameScreen2 extends JFrame {
 			e2.printStackTrace();
 		}
 
-		//*********************************************************
-		// -----------  Fields at top of the screen displaying
-		//------------ Name and Stats for toon
-		//***********************************************************
+		// *********************************************************
+		// ----------- Fields at top of the screen displaying
+		// ------------ Name and Stats for toon
+		// ***********************************************************
 
 		CharNameClassLevelField = new JTextField();
 		CharNameClassLevelField.setFont(myGameSettings.fontTimesNewRoman);
@@ -197,7 +187,6 @@ public class MainGameScreen2 extends JFrame {
 		CharNameClassLevelField.setForeground(myGameSettings.colorWhite);
 		CharNameClassLevelField.setColumns(3);
 		CharNameClassLevelField.setEditable(false);
-
 
 		CharStatsField = new JTextField();
 		CharStatsField.setLayout(new FlowLayout());
@@ -213,7 +202,6 @@ public class MainGameScreen2 extends JFrame {
 		CharStats2Field.setForeground(myGameSettings.colorWhite);
 		CharStats2Field.setEditable(false);
 
-
 		CharXPHPGoldField = new JTextField();
 		CharXPHPGoldField.setLayout(getLayout());
 		CharXPHPGoldField.setFont(myGameSettings.fontTimesNewRoman);
@@ -221,9 +209,7 @@ public class MainGameScreen2 extends JFrame {
 		CharXPHPGoldField.setForeground(myGameSettings.colorWhite);
 		CharXPHPGoldField.setColumns(3);
 		CharXPHPGoldField.setEditable(false);
-		
-		
-		
+
 		p1Panel.add(p2Panel, BorderLayout.NORTH);
 		p1Panel.add(p3Panel, BorderLayout.CENTER);
 		p1Panel.add(p4Panel, BorderLayout.SOUTH);
@@ -232,64 +218,56 @@ public class MainGameScreen2 extends JFrame {
 		p3Panel.add(CharStats2Field, BorderLayout.SOUTH);
 		p4Panel.add(CharXPHPGoldField);
 
-
 		ActionListener task = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
 
-				 CharNameClassLevelField.setText("Name: " + myChar.CharInfo.get(0) + "\t\t"
-						 					+ "Level: " + myChar.CharInfo.get(2) + "\t\t"
-						 					+ "Experience: " + myChar.CharInfo.get(3));
-
-
+				CharNameClassLevelField.setText("Name: " + myChar.CharInfo.get(0) + "\t\t"
+						+ "Level: " + myChar.CharInfo.get(2) + "\t\t"
+						+ "Experience: " + myChar.CharInfo.get(3));
 
 				CharStatsField.setText("Stamina:\t"
-								+ "Charisma: \t"
-								+ "Strength: \t"
-								+ "Intelligence:\t "
-								+ "Wisdom: \t"
-								+ "Agility: \t");
+						+ "Charisma: \t"
+						+ "Strength: \t"
+						+ "Intelligence:\t "
+						+ "Wisdom: \t"
+						+ "Agility: \t");
 
 				CharStats2Field.setText(myChar.CharInfo.get(5) + "\t" +
-								   myChar.CharInfo.get(6) + "\t" +
-								   myChar.CharInfo.get(7) + "\t" +
-								   myChar.CharInfo.get(8) + "\t" +
-								   myChar.CharInfo.get(9) + "\t" +
-								   myChar.CharInfo.get(10));
-
+						myChar.CharInfo.get(6) + "\t" +
+						myChar.CharInfo.get(7) + "\t" +
+						myChar.CharInfo.get(8) + "\t" +
+						myChar.CharInfo.get(9) + "\t" +
+						myChar.CharInfo.get(10));
 
 				CharXPHPGoldField.setText("Hit Points: " + myChar.CharInfo.get(4) + "\t\t"
-									+ "Gold: " + myChar.CharInfo.get(11) + "\t\t"
-									+ "Gems: " + myChar.CharInfo.get(12) + "\t\t"
-									+ "Dungeon Level:");
+						+ "Gold: " + myChar.CharInfo.get(11) + "\t\t"
+						+ "Gems: " + myChar.CharInfo.get(12) + "\t\t"
+						+ "Dungeon Level:");
 			}
 		};
 		timer = new Timer(100, task); // Execute task to display stats each 100 miliseconds
 		timer.setRepeats(true);
 		timer.start();
-		
-		
-	
 
 		// ****************************************************************************************
-		// ----------------------------Menu Bar and Menu Items------------------------------------
+		// ----------------------------Menu Bar and Menu
+		// Items------------------------------------
 		// ****************************************************************************************
 
 		// Create the menu bar.
 		menuBar = new JMenuBar();
-		
+
 		// ****************************************************************
 		// ----------------------------Adding Menu Bar to the JFrame ------
 		// ****************************************************************
-		
-		MainGameScreenFrame.setJMenuBar(menuBar);
-		//Menu Bar Preferences
 
-		menuBar.setPreferredSize(new Dimension(25,35));
+		MainGameScreenFrame.setJMenuBar(menuBar);
+		// Menu Bar Preferences
+
+		menuBar.setPreferredSize(new Dimension(25, 35));
 		menuBar.setFont(new Font("sans-serif", Font.ROMAN_BASELINE, 22));
 		menuBar.setBackground(myGameSettings.colorPlum);
-
-
 
 		// Build the menu.
 		MainGameScreenFrame.addWindowListener(new WindowAdapter() {
@@ -315,10 +293,12 @@ public class MainGameScreen2 extends JFrame {
 		helpMenu.setMnemonic(KeyEvent.VK_H);
 
 		// ****************************************************************************************
-		// ----------------------------Adding Menu Items-------------------------------------------
+		// ----------------------------Adding Menu
+		// Items-------------------------------------------
 		// ****************************************************************************************
 		// ****************************************************************************************
-		// ----------------------------Load, Save and Exit------------------------------------
+		// ----------------------------Load, Save and
+		// Exit------------------------------------
 		// ****************************************************************************************
 
 		newGameMenuItem = new JMenuItem("New Game");
@@ -332,10 +312,9 @@ public class MainGameScreen2 extends JFrame {
 				int result = JOptionPane.showConfirmDialog(rootPane,
 						"Are you sure you wish to delete your current game and start a new one?", "Start New Game?",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-				
-				
+
 				if (result == JOptionPane.YES_OPTION) {
-					//MainGameScreenFrame.dispose();
+					// MainGameScreenFrame.dispose();
 					dispose();
 					try {
 						BufferedWriter writer = Files.newBufferedWriter(Paths
@@ -365,7 +344,7 @@ public class MainGameScreen2 extends JFrame {
 						e1.printStackTrace();
 					}
 
-//					MainGameScreenFrame.dispose();
+					// MainGameScreenFrame.dispose();
 					dispose();
 				} else if (result == JOptionPane.NO_OPTION) {
 
@@ -462,7 +441,8 @@ public class MainGameScreen2 extends JFrame {
 		mapMenu.setMnemonic(KeyEvent.VK_M);
 
 		// ****************************************************************************************
-		// ----------------------------Settings and Preferences------------------------------------
+		// ----------------------------Settings and
+		// Preferences------------------------------------
 		// ****************************************************************************************
 
 		gameSettingsMenuItem = new JMenuItem("Settings");
@@ -485,7 +465,8 @@ public class MainGameScreen2 extends JFrame {
 		});
 
 		// ****************************************************************************************
-		// ---------------------------- Help and About -------------------------------------------
+		// ---------------------------- Help and About
+		// -------------------------------------------
 		// ****************************************************************************************
 
 		// Help and About Menu Items -- About the Game and any Help Information
@@ -599,11 +580,11 @@ public class MainGameScreen2 extends JFrame {
 		// **************************************************************
 		// ---------- Adding Menu Selection Items to the Menu bar--------
 		// **************************************************************
-				menuBar.add(gameMenu);
-				menuBar.add(charecterMenu);
-				menuBar.add(settingsMenu);
-				menuBar.add(helpMenu);
-		
+		menuBar.add(gameMenu);
+		menuBar.add(charecterMenu);
+		menuBar.add(settingsMenu);
+		menuBar.add(helpMenu);
+
 		// **********************************************************
 		// ---------- Adding Menu Items to the Menu Selections-------
 		// **********************************************************
@@ -622,8 +603,6 @@ public class MainGameScreen2 extends JFrame {
 		helpMenu.add(aboutMenuItem);
 		helpMenu.add(helpMenuItem);
 
-		
-
 		// ***************************************************************
 		// --------------------- Map Sub Menu Items----------------------
 		// **************************************************************
@@ -635,7 +614,6 @@ public class MainGameScreen2 extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-
 			}
 		});
 
@@ -645,7 +623,6 @@ public class MainGameScreen2 extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 
 			}
 		});
@@ -657,7 +634,6 @@ public class MainGameScreen2 extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-
 			}
 		});
 		mapFloor4MenuItem = new JMenuItem("Floor 4");
@@ -667,7 +643,6 @@ public class MainGameScreen2 extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-
 			}
 		});
 		mapMenu.add(mapFloor1MenuItem);
@@ -676,28 +651,31 @@ public class MainGameScreen2 extends JFrame {
 		mapMenu.add(mapFloor4MenuItem);
 
 		// **************************************************************************************
-		// ----------------------------Setting Up JTextPane ------------------------------------
+		// ----------------------------Setting Up JTextPane
+		// ------------------------------------
 		// *************************************************************************************
-	
-		
+
 		MessageTextPane = new JTextPane();
 		MessageTextPane.setText("JTextPane MessageTextPane - Game Text Updates");
 		MessageTextPane.setBackground(myGameSettings.colorLightBrown);
 		MessageTextPane.setForeground(myGameSettings.colorLightYellow);
 		MessageTextPane.setFont(myGameSettings.fontLomoCopyLTStdMidi);
-		
-		
-			
+
 		// **************************************************************************************
-		// ----------------------------Setting Up JSplitPane ------------------------------------
+		// ----------------------------Setting Up JSplitPane
+		// ------------------------------------
 		// *************************************************************************************
 
+		
+		
 		PicturesAndTextUpdatesPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		PicturesAndTextUpdatesPane.setDividerLocation(width-200);
+		PicturesAndTextUpdatesPane.setDividerLocation(width - 200);
 		PicturesAndTextUpdatesPane.setResizeWeight(.90d);
 		PicturesAndTextUpdatesPane.setLeftComponent(GameImagesAndCombatPanel);
 		PicturesAndTextUpdatesPane.setRightComponent(MessageTextPane);
 		PicturesAndTextUpdatesPane.setVisible(true);
+		
+		
 		// ***************************************************************
 		// -------------------Adding JPanel to JFrame --------------------
 		// ****************************************************************
@@ -705,98 +683,96 @@ public class MainGameScreen2 extends JFrame {
 		MainGameScreenFrame.add(PicturesAndTextUpdatesPane, BorderLayout.CENTER);
 		MainGameScreenFrame.add(p1Panel, BorderLayout.NORTH);
 
-
-
-
+		MainGameScreenFrame.setResizable(false);
 		MainGameScreenFrame.setVisible(true);
 		start();
 
 	}
-	
-	
+
 	private synchronized void start() {
 		running = true;
-		thread.start();
+	//	thread.start();
 	}
+
 	public synchronized void stop() {
 		running = false;
 		try {
 			thread.join();
-		} catch(InterruptedException e) {
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
+
 	public void render() {
 		BufferStrategy bs = getBufferStrategy();
-		if(bs == null) {
+		if (bs == null) {
 			createBufferStrategy(3);
 			return;
 		}
 		Graphics g = bs.getDrawGraphics();
-		g.drawImage(image, 50, 450, image.getWidth(), image.getHeight(), null);
+		
+        g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
+		GameImagesAndCombatPanel.repaint();
+		
 		bs.show();
 	}
+
 	public void run() {
 		long lastTime = System.nanoTime();
-		final double ns = 1000000000.0 / 60.0;//60 times per second
+		final double ns = 1000000000.0 / 60.0;// 60 times per second
 		double delta = 0;
 		requestFocus();
-		while(running) {
+		while (running) {
 			long now = System.nanoTime();
-			delta = delta + ((now-lastTime) / ns);
+			delta = delta + ((now - lastTime) / ns);
 			lastTime = now;
-			while (delta >= 1)//Make sure update is only happening 60 times a second
+			while (delta >= 1)// Make sure update is only happening 60 times a second
 			{
-				//handles all of the logic restricted time
+				// handles all of the logic restricted time
 				screen.update(camera, pixels);
 				camera.update(map);
 				delta--;
 			}
-			render();//displays to the screen unrestricted time
+			render();// displays to the screen unrestricted time
 		}
-	
 
 	}
-	
-	public void moveLevel()
-	{
+
+	public void changeLevel(int mapLevel) {
 		switch (mapLevel) {
-		  case 1:
-		    if(mapLevel == 1)
-		    	mapLevel = mapLevel--;
-		    map = myDungeonLevel2.DungeonLevel2;
-		    
-		    break;
-		  case 2:
-		    if(mapLevel == 2)
-		    {
-		    	mapLevel = mapLevel++;
-                map = myDungeonLevel1.DungeonLevel1;
-		    }
-		    else
-		    {
-		    	mapLevel = mapLevel--;
-		    	map = myDungeonLevel3.DungeonLevel3;
-		    }
-		    break;
-		  case 3:
-			    if(mapLevel == 3)
-			    {
-			    	mapLevel = mapLevel++;
-			    	map = myDungeonLevel4.DungeonLevel4;
-			    }
-			    else
-			    {
-			    	mapLevel = mapLevel--;
-			    	map = myDungeonLevel4.DungeonLevel4;
-			    }
-		    break;
-		  case 4:
-			  if(mapLevel == 4)
-			    	mapLevel = mapLevel++;
-			  map = myDungeonLevel3.DungeonLevel3;
-		    break;
-		 
+			case 1: // Going to Level 2
+				
+			
+				
+				if (mapLevel == 1 && myDungeonLevel1.DungeonLevel1 != null )
+					this.mapLevel = ++mapLevel;
+				map = myDungeonLevel2.DungeonLevel2;
+
+				break;
+			case 2://Going to Level 1
+				if (mapLevel == 2 && myDungeonLevel2.DungeonLevel2 != null) {
+					this.mapLevel = --mapLevel;
+					map = myDungeonLevel1.DungeonLevel1;
+				} else {
+					this.mapLevel = ++mapLevel;
+					map = myDungeonLevel3.DungeonLevel3;
+				}
+				break;
+			case 3:
+				if (mapLevel == 3 && myDungeonLevel3.DungeonLevel3 != null) {
+					this.mapLevel = ++mapLevel;
+					map = myDungeonLevel4.DungeonLevel4;
+				} else {
+					this.mapLevel = --mapLevel;
+					map = myDungeonLevel3.DungeonLevel3;
+				}
+				break;
+			case 4:
+				if (mapLevel == 4)
+					this.mapLevel = --mapLevel;
+				map = myDungeonLevel3.DungeonLevel3;
+				break;
+
 		}
 	}
 }
