@@ -1,1 +1,0 @@
-{"DungeonoftheBrutalKing":{"name":"DungeonoftheBrutalKing","packages":{"DungeonoftheBrutalKing":{"packageName":"DungeonoftheBrutalKing","isAll":false,"classes":["LDungeonoftheBrutalKing/GameStartMenu;","LDungeonoftheBrutalKing/MainGameScreen2;","LDungeonoftheBrutalKing/MainGameScreen;"]}}}}

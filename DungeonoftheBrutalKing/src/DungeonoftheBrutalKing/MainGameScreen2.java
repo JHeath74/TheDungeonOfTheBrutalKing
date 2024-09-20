@@ -123,12 +123,13 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		textures.add(Texture.stone);
 		camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
 		screen = new Screen(map, mapWidth, mapHeight, textures, 640, 480);
-		addKeyListener(camera);
+		//MainGameScreenFrame.addKeyListener(camera);
 
 		// Creating Frame
 
 		MainGameScreenFrame = new JFrame("Dungeon of the Brutal King");
-
+		MainGameScreenFrame.addKeyListener(camera);
+		
 		// getScreenSize() returns the size
 		// of the screen in pixels
 		Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
@@ -302,7 +303,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		// ****************************************************************************************
 
 		newGameMenuItem = new JMenuItem("New Game");
-		newGameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
+		newGameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_DOWN_MASK));
 		newGameMenuItem.getAccessibleContext().setAccessibleDescription("New Game");
 		newGameMenuItem.addActionListener(new ActionListener() {
 
@@ -360,7 +361,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		// ***************************************************************************
 
 		LoadSavedGameMenuItem = new JMenuItem("Load Saved Game");
-		LoadSavedGameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.CTRL_MASK));
+		LoadSavedGameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.CTRL_DOWN_MASK));
 		LoadSavedGameMenuItem.getAccessibleContext().setAccessibleDescription("Load Saved Game");
 		LoadSavedGameMenuItem.addActionListener(new ActionListener() {
 
@@ -377,7 +378,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		// ***************************************************************************
 
 		saveMenuItem = new JMenuItem("Save Current Game");
-		saveMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
+		saveMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_DOWN_MASK));
 		saveMenuItem.getAccessibleContext().setAccessibleDescription("Save Current Game");
 		saveMenuItem.addActionListener(new ActionListener() {
 
@@ -399,7 +400,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		// ***************************************************************************
 
 		exitGameMenuItem = new JMenuItem("Exit");
-		exitGameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_MASK));
+		exitGameMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, InputEvent.CTRL_DOWN_MASK));
 		exitGameMenuItem.getAccessibleContext().setAccessibleDescription("Exit Game");
 		exitGameMenuItem.addActionListener(new ActionListener() {
 
@@ -416,7 +417,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		// ****************************************************************************************
 
 		charecterstatsMenuItem = new JMenuItem("Stats");
-		charecterstatsMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.CTRL_MASK));
+		charecterstatsMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, InputEvent.CTRL_DOWN_MASK));
 		charecterstatsMenuItem.addActionListener(new ActionListener() {
 
 			@Override
@@ -427,7 +428,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		});
 
 		charecterinventoryMenuItem = new JMenuItem("Inventory");
-		charecterinventoryMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_MASK));
+		charecterinventoryMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, InputEvent.CTRL_DOWN_MASK));
 		charecterinventoryMenuItem.addActionListener(new ActionListener() {
 
 			@Override
@@ -446,7 +447,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		// ****************************************************************************************
 
 		gameSettingsMenuItem = new JMenuItem("Settings");
-		gameSettingsMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
+		gameSettingsMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_DOWN_MASK));
 		gameSettingsMenuItem.getAccessibleContext().setAccessibleDescription("Game Settings");
 		gameSettingsMenuItem.addActionListener(new ActionListener() {
 
@@ -471,7 +472,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 
 		// Help and About Menu Items -- About the Game and any Help Information
 		aboutMenuItem = new JMenuItem("About");
-		aboutMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
+		aboutMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_DOWN_MASK));
 		aboutMenuItem.getAccessibleContext().setAccessibleDescription("About Game");
 		aboutMenuItem.addActionListener(new ActionListener() {
 
@@ -525,7 +526,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		});
 
 		helpMenuItem = new JMenuItem("Help");
-		helpMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_MASK));
+		helpMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, InputEvent.CTRL_DOWN_MASK));
 		helpMenuItem.getAccessibleContext().setAccessibleDescription("Help");
 		helpMenuItem.addActionListener(new ActionListener() {
 
@@ -570,7 +571,6 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 				p.add(helpbutton, BorderLayout.SOUTH);
 				helpbutton.setSize(120, 120);
 
-				// frame.setLocationRelativeTo(null);
 				frame.pack();
 				frame.setVisible(true);
 
@@ -608,7 +608,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		// **************************************************************
 
 		mapFloor1MenuItem = new JMenuItem("Floor 1");
-		mapFloor1MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, InputEvent.CTRL_MASK));
+		mapFloor1MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, InputEvent.CTRL_DOWN_MASK));
 		mapFloor1MenuItem.addActionListener(new ActionListener() {
 
 			@Override
@@ -618,7 +618,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		});
 
 		mapFloor2MenuItem = new JMenuItem("Floor 2");
-		mapFloor2MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, InputEvent.CTRL_MASK));
+		mapFloor2MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_2, InputEvent.CTRL_DOWN_MASK));
 		mapFloor2MenuItem.addActionListener(new ActionListener() {
 
 			@Override
@@ -628,7 +628,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 		});
 
 		mapFloor3MenuItem = new JMenuItem("Floor 3");
-		mapFloor3MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_3, InputEvent.CTRL_MASK));
+		mapFloor3MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_3, InputEvent.CTRL_DOWN_MASK));
 		mapFloor3MenuItem.addActionListener(new ActionListener() {
 
 			@Override
@@ -637,7 +637,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 			}
 		});
 		mapFloor4MenuItem = new JMenuItem("Floor 4");
-		mapFloor4MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_4, InputEvent.CTRL_MASK));
+		mapFloor4MenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_4, InputEvent.CTRL_DOWN_MASK));
 		mapFloor4MenuItem.addActionListener(new ActionListener() {
 
 			@Override
@@ -685,13 +685,14 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 
 		MainGameScreenFrame.setResizable(false);
 		MainGameScreenFrame.setVisible(true);
+		MainGameScreenFrame.requestFocus();
 		start();
 
 	}
 
 	private synchronized void start() {
 		running = true;
-	//	thread.start();
+		thread.start();
 	}
 
 	public synchronized void stop() {
@@ -706,7 +707,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 	public void render() {
 		BufferStrategy bs = getBufferStrategy();
 		if (bs == null) {
-			createBufferStrategy(3);
+			MainGameScreenFrame.createBufferStrategy(3);
 			return;
 		}
 		Graphics g = bs.getDrawGraphics();
