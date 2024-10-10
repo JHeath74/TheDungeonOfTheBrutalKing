@@ -2,6 +2,9 @@ package GameEngine;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
+
+import DungeonoftheBrutalKing.Events;
 
 
 public class Camera implements KeyListener{
@@ -16,6 +19,8 @@ public class Camera implements KeyListener{
 		yDir = yd;
 		xPlane = xp;
 		yPlane = yp;
+		
+		
 	}
 	public void keyPressed(KeyEvent key) {
 		if((key.getKeyCode() == KeyEvent.VK_LEFT))
@@ -37,7 +42,11 @@ public class Camera implements KeyListener{
 		if((key.getKeyCode() == KeyEvent.VK_DOWN))
 			back = false;
 	}
-	public void update(int[][] map) {
+	public void update(int[][] map) throws IOException {
+		
+		int newXPos = (int)xPos;
+	    int newYPos = (int)yPos;
+		
 		if(forward) {
 			if(map[(int)(xPos + xDir * MOVE_SPEED)][(int)yPos] == 0) {
 				xPos+=xDir*MOVE_SPEED;
@@ -67,11 +76,19 @@ public class Camera implements KeyListener{
 			xPlane=xPlane*Math.cos(ROTATION_SPEED) - yPlane*Math.sin(ROTATION_SPEED);
 			yPlane=oldxPlane*Math.sin(ROTATION_SPEED) + yPlane*Math.cos(ROTATION_SPEED);
 		}
+		Events myEvents = new Events();
+
+		myEvents.checkEvent(newXPos, newYPos, map);
 	}
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
+	
+
+	
+	
+	
 }
 
 

@@ -101,13 +101,16 @@ public class Game extends JFrame implements Runnable{
 			{
 				//handles all of the logic restricted time
 				screen.update(camera, pixels);
-				camera.update(map);
+				try {
+					camera.update(map);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				delta--;
 			}
 			render();//displays to the screen unrestricted time
 		}
 	}
-	//public static void main(String [] args) {
-	//	Game game = new Game();
-	//}
+
 }

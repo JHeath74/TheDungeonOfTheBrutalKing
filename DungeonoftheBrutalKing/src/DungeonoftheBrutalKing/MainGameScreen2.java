@@ -105,7 +105,7 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 	JSplitPane PicturesAndTextUpdatesPane = null;
 
 	Dimension screenSize = null;
-	int width, height, mapLevel = 0;
+	int width, height, mapLevel, specificX, specificY = 0;
 	Timer timer = null;
 
 	
@@ -731,7 +731,12 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 			{
 				// handles all of the logic restricted time
 				screen.update(camera, pixels);
-				camera.update(map);
+				try {
+					camera.update(map);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				delta--;
 			}
 			render();// displays to the screen unrestricted time
@@ -739,41 +744,49 @@ public class MainGameScreen2 extends JFrame implements Runnable {
 
 	}
 
-	public void changeLevel(int mapLevel) {
-		switch (mapLevel) {
-			case 1: // Going to Level 2
-				
-			
-				
-				if (mapLevel == 1 && myDungeonLevel1.DungeonLevel1 != null )
-					this.mapLevel = ++mapLevel;
-				map = myDungeonLevel2.DungeonLevel2;
 
-				break;
-			case 2://Going to Level 1
-				if (mapLevel == 2 && myDungeonLevel2.DungeonLevel2 != null) {
-					this.mapLevel = --mapLevel;
-					map = myDungeonLevel1.DungeonLevel1;
-				} else {
-					this.mapLevel = ++mapLevel;
-					map = myDungeonLevel3.DungeonLevel3;
-				}
-				break;
-			case 3:
-				if (mapLevel == 3 && myDungeonLevel3.DungeonLevel3 != null) {
-					this.mapLevel = ++mapLevel;
-					map = myDungeonLevel4.DungeonLevel4;
-				} else {
-					this.mapLevel = --mapLevel;
-					map = myDungeonLevel3.DungeonLevel3;
-				}
-				break;
-			case 4:
-				if (mapLevel == 4)
-					this.mapLevel = --mapLevel;
-				map = myDungeonLevel3.DungeonLevel3;
-				break;
+public void changeLevel(int direction, int playerX, int playerY) {
+    // direction: -1 for down, 1 for up
+    // playerX and playerY are the current position of the player
 
-		}
-	}
+    // Check if the player is at the specific location for changing level
+    if ((playerX == specificX) && (playerY == specificY)) {
+        mapLevel += direction;
+
+        switch (mapLevel) {
+            case 1:
+                if (myDungeonLevel1.DungeonLevel1 != null) {
+                    map = myDungeonLevel1.DungeonLevel1;
+                } else {
+                    // handle error: level 1 map is not available
+                }
+                break;
+            case 2:
+                if (myDungeonLevel2.DungeonLevel2 != null) {
+                    map = myDungeonLevel2.DungeonLevel2;
+                } else {
+                    // handle error: level 2 map is not available
+                }
+                break;
+            case 3:
+                if (myDungeonLevel3.DungeonLevel3 != null) {
+                    map = myDungeonLevel3.DungeonLevel3;
+                } else {
+                    // handle error: level 3 map is not available
+                }
+                break;
+            case 4:
+                if (myDungeonLevel4.DungeonLevel4 != null) {
+                    map = myDungeonLevel4.DungeonLevel4;
+                } else {
+                    // handle error: level 4 map is not available
+                }
+                break;
+            default:
+                // handle error: invalid level
+                break;
+        }
+    }
+}
+
 }
